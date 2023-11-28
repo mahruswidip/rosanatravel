@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/images/logo/rose.png') ?>">
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -48,7 +48,7 @@
     <nav class="site-nav">
         <div class="container">
             <div class="site-navigation">
-                <a href="index.html" class="logo m-0"><img style="height: 3.2rem;" src="<?php echo base_url('assets/images/logo/logoros.png') ?>" alt=""></a>
+                <a href="index.html" class="logo m-0"><img style="height: 3.8rem;" src="<?php echo base_url('assets/images/logo/logoroswhite.png') ?>" alt=""></a>
 
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
                     <li class="active"><a href="index.html">Beranda</a></li>

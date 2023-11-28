@@ -9,10 +9,17 @@ class Landing extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Paket_model');
     }
 
     function index()
     {
+        $data['paket'] = $this->Paket_model->get_all_paket();
+
+        // echo '<pre>';
+        // print_r($data['paket']);
+        // exit();
+
         $data['_view'] = 'landing';
         $this->load->view('layouts/main', $data);
     }
