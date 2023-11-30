@@ -30,4 +30,13 @@ class Paket_model extends CI_Model
         $this->db->where('paket.publish', 1);
         return $this->db->get('paket')->result_array();
     }
+
+    function get_all_galeri($params = array())
+    {
+        $this->db->order_by('img_dropzone.id', 'desc');
+        if (isset($params) && !empty($params)) {
+            $this->db->limit($params['limit'], $params['offset']);
+        }
+        return $this->db->get('img_dropzone')->result_array();
+    }
 }
