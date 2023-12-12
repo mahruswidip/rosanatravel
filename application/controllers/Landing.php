@@ -16,10 +16,7 @@ class Landing extends CI_Controller
     {
         $data['paket'] = $this->Paket_model->get_all_paket();
         $data['galeri'] = $this->Paket_model->get_all_galeri();
-
-        // echo '<pre>';
-        // print_r($data['galeri']);
-        // exit();
+        $data['artikel'] = $this->Paket_model->get_all_artikel();
 
         $data['_view'] = 'landing';
         $this->load->view('layouts/main', $data);

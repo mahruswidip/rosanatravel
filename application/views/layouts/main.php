@@ -31,6 +31,20 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/style.css">
 
     <title>Rosana Tour And Travel - Umroh - Haji - Tour</title>
+    <style>
+        body.detail-artikel .site-navigation {
+            background-color: #6998AB;
+            /* Atur warna latar belakang header sesuai dengan kebutuhan Anda */
+            color: #fff;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            padding-right: 5%;
+            padding-left: 5%;
+            margin-bottom: 200px;
+            border-radius: 10px;
+            /* Atur warna teks header agar terlihat di atas latar belakang header */
+        }
+    </style>
 </head>
 
 <body>
@@ -49,9 +63,8 @@
         <div class="container">
             <div class="site-navigation">
                 <a href="index.html" class="logo m-0"><img style="height: 3.8rem;" src="<?php echo base_url('assets/images/logo/logoroswhite.png') ?>" alt=""></a>
-
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="index.html">Beranda</a></li>
+                    <li class="active"><a href="<?php echo base_url('') ?>">Beranda</a></li>
                     <li class="has-children">
                         <a href="#">Umroh</a>
                         <ul class="dropdown">
@@ -92,50 +105,51 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
                         <div class="widget">
-                            <h3 class="heading">About Tour</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
+                            <h3 class="heading">Rosana Tour and Travel</h3>
+                            <p>PT. Rosana Biro Perjalanan Wisata terus berinovasi dan berpacu meningkatkan pelayanan yang profesional dan kekeluargaan untuk dapat secara maksimal melayani dari hati.</p>
                         </div>
                         <div class="widget">
                             <ul class="list-unstyled social">
-                                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                                <!-- <li><a href="#"><span class="icon-twitter"></span></a></li> -->
+                                <li><a href="https://www.instagram.com/rosanatourtravel/"><span class="icon-instagram"></span></a></li>
+                                <li><a href="https://www.facebook.com/rosanatourtravel/"><span class="icon-facebook"></span></a></li>
+                                <!-- <li><a href="#"><span class="icon-linkedin"></span></a></li> -->
+                                <!-- <li><a href="#"><span class="icon-dribbble"></span></a></li>
                                 <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                                <li><a href="#"><span class="icon-apple"></span></a></li>
-                                <li><a href="#"><span class="icon-google"></span></a></li>
+                                <li><a href="#"><span class="icon-apple"></span></a></li> -->
+                                <li><a href="https://www.youtube.com/channel/UCmSxQUoXeZ3QV-VsiHUWtVA/videos"><span class="icon-youtube"></span></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-2 pl-lg-5">
                         <div class="widget">
-                            <h3 class="heading">Pages</h3>
+                            <h3 class="heading">Link Cepat</h3>
                             <ul class="links list-unstyled">
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-2">
-                        <div class="widget">
-                            <h3 class="heading">Resources</h3>
-                            <ul class="links list-unstyled">
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Umroh</a></li>
+                                <li><a href="#">Haji</a></li>
+                                <li><a href="#">Wisata Halal</a></li>
+                                <li><a href="#">Galeri</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="widget">
-                            <h3 class="heading">Contact</h3>
+                            <h3 class="heading">Kontak Kami</h3>
                             <ul class="list-unstyled quick-info links">
-                                <li class="email"><a href="#">mail@example.com</a></li>
-                                <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+                                <li class="email"><a href="#">info@rosanatourtravel.com</a></li>
+                                <li class="phone"><a href="#">+62 811 3003 258</a></li>
+                                <li class="address"><a href="#">Jl. Dr. Setia Budi No. 20,
+                                        Jalan Lingkar Selatan Kota Pasuruan,
+                                        Jawa Timur, Indonesia</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="widget">
+                            <h3 class="heading">Kebijakan Ketentuan</h3>
+                            <ul class="links list-unstyled">
+                                <li><a href="#">Syarat dan Ketentuan</a></li>
+                                <li><a href="#">Kebijakan Privasi</a></li>
                             </ul>
                         </div>
                     </div>

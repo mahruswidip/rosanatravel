@@ -195,6 +195,34 @@
 </div>
 
 
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7">
+                <h2 class="section-title text-center">Blog Artikel</h2>
+                <p>Baca juga informasi menarik, tips & trik seputar traveling berikut ini.</p>
+            </div>
+        </div>
+        <?php foreach ($artikel as $artikel_item) : ?>
+            <a href="<?php echo site_url('artikel/view/' . $artikel_item['id_artikel']); ?>">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-5">
+                        <figure class="img-play-video">
+                            <img src="https://alfatihahtravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
+                        </figure>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h4 class="section-title text-left mb-4"><?php echo $artikel_item['judul_artikel']; ?></h4>
+                        <p><?php echo substr($artikel_item['konten'], 0, 200); ?>...</p>
+                    </div>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
 
 <div class="untree_co-section">
     <div class="container">
@@ -276,42 +304,45 @@
 <div class="untree_co-section">
     <div class="container">
         <div class="row justify-content-between align-items-center">
-
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <figure class="img-play-video">
-                    <a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
+                    <a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=Q9kUi9ZY-Bs&ab_channel=RosanaTravel" data-fancybox>
                         <span></span>
                     </a>
-                    <img src="<?php echo base_url('assets/') ?>images/hero-slider-2.jpg" alt="Image" class="img-fluid rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/hero-slider-99.jpg" alt="Image" class="img-fluid rounded-20">
                 </figure>
             </div>
 
-            <div class="col-lg-5">
-                <h2 class="section-title text-left mb-4">Take a look at Tour Video</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                    live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics,
-                    a large language ocean.</p>
+            <div class="col-lg-6">
+                <h2 class="section-title text-left mb-4">Tentang Kami</h2>
+                <p>Persaingan bisnis biro perjalanan wisata yang makin ketat, membuat kami harus berpikir keras untuk dapat tetap eksis dan menjadi pilihan pelanggan dalam setiap perjalanan wisata mereka. Namun, berbekal pengalaman yang lebih dari 20 tahun tentunya bukan hal mustahil untuk kami dapat bertahan menjadi yang terdepan.</p>
 
-                <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary
-                    regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your
-                    mouth.</p>
+                <p class="mb-4">PT. Rosana Biro Perjalanan Wisata terus berinovasi dan berpacu meningkatkan pelayanan yang profesional dan kekeluargaan untuk dapat secara maksimal melayani dari hati.</p>
 
-                <ul class="list-unstyled two-col clearfix">
-                    <li>Outdoor recreation activities</li>
-                    <li>Airlines</li>
-                    <li>Car Rentals</li>
-                    <li>Cruise Lines</li>
-                    <li>Hotels</li>
-                    <li>Railways</li>
-                    <li>Travel Insurance</li>
-                    <li>Package Tours</li>
-                    <li>Insurance</li>
-                    <li>Guide Books</li>
-                </ul>
-
-                <p><a href="#" class="btn btn-primary">Get Started</a></p>
-
-
+                <div class="tab-pane" id="v-pills-visimisi" role="tabpanel" aria-labelledby="v-pills-visimisi-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <i class="fas fa-binoculars fa-flip-horizontal" style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
+                            <h3 class="mt-4">Visi</h3>
+                            <p class="font-normal">
+                                Menjadi perusahaan penyedia kebutuhan wisata yang terdepan di Indonesia
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <i class="fas fa-lightbulb" style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
+                            <h3 class="text-center mt-4">Misi</h3>
+                            <ol class="text-left">
+                                <li> Menyediakan produk-produk yang berkualitas baik dan berfokus pada kebutuhan pelanggan</li>
+                                <br>
+                                <li> Memberikan pelayanan yang profesional dan amanah untuk membangun loyalitas pelanggan</li>
+                                <br>
+                                <li> Meningkatkan kedekatan dengan pelangan melalui hubungan yang harmonis, komunikatif, dan kekeluargaan</li>
+                                <br>
+                                <li> Menyelenggarakan tata kelola perusahaan dengan management yang baik dengan sumber daya manusia yang berkuaitas</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -323,10 +354,9 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-                <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Excepturi, fugit?</p>
-                <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
+                <h2 class="mb-2 text-white">Ayo, Tunggu apa lagi ?</h2>
+                <p class="mb-4 lead text-white text-white-opacity">Hubungi kami dan dapatkan promo dan penawaran menarik</p>
+                <p class="mb-0"><a href="https://api.whatsapp.com/send/?phone=628113003258&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20Di%20Rosana%20Travel%20&app_absent=0" class="btn btn-outline-white text-white btn-md font-weight-bold">Halo Rosana Travel</a></p>
             </div>
         </div>
     </div>

@@ -39,4 +39,15 @@ class Paket_model extends CI_Model
         }
         return $this->db->get('img_dropzone')->result_array();
     }
+
+    function get_all_artikel($params = array())
+    {
+        $this->db->order_by('artikel.id_artikel', 'desc');
+        return $this->db->get('artikel')->result_array();
+    }
+
+    function get_artikel($id)
+    {
+        return $this->db->get_where('artikel', array('id_artikel' => $id))->row_array();
+    }
 }

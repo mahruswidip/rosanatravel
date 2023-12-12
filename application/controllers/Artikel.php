@@ -126,10 +126,14 @@ class Artikel extends CI_Controller
         }
     }
 
-    function view()
+    function view($id_artikel)
     {
-        $data = $this->Artikel_model->get_all_artikel(); // Call a method from your model to get data from the database
-        echo json_encode($data);
+        $data['artikel'] = $this->Artikel_model->get_artikel($id_artikel); // Call a method from your model to get data from the database
+        // echo json_encode($data);
+        // echo "<pre>";
+        // print_r($data);
+        $data['_view'] = 'artikel/view';
+        $this->load->view('layouts/main', $data);
     }
 
 
