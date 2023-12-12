@@ -21,4 +21,14 @@ class Landing extends CI_Controller
         $data['_view'] = 'landing';
         $this->load->view('layouts/main', $data);
     }
+
+    function detail_paket($id_paket)
+    {
+        // Mengambil data paket dari model (sesuaikan dengan implementasi Anda)
+        $data['detail_paket'] = $this->Paket_model->get_paket($id_paket);
+
+        // Memuat halaman detail paket
+        $data['_view'] = 'paket/detail_paket.php';
+        $this->load->view('layouts/main', $data);
+    }
 }

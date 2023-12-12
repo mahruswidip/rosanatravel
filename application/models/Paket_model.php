@@ -31,6 +31,33 @@ class Paket_model extends CI_Model
         return $this->db->get('paket')->result_array();
     }
 
+    function get_tanggal_keberangkatan()
+    {
+        $this->db->where('is_aktif', '1'); // Tambahkan kondisi is_aktif = 1
+        $this->db->order_by('keberangkatan.id_keberangkatan', 'desc');
+        return $this->db->get('keberangkatan')->result_array();
+    }
+
+    function get_tanggal_keberangkatan_for_detail($id_paket)
+    {
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
+        $this->db->where('id_paket', $id_paket);
+        return $this->db->get('paket')->result_array();
+    }
+
+    function get_record_with_this_paket($id_paket)
+    {
+        $this->db->join('jamaah', 'jamaah.id_jamaah=record_keberangkatan.id_jamaah', 'left');
+        $this->db->where('record_keberangkatan.id_paket', $id_paket);
+        return $this->db->get('record_keberangkatan')->result_array();
+    }
+
+
+
+
+
+
+
     function get_all_galeri($params = array())
     {
         $this->db->order_by('img_dropzone.id', 'desc');
