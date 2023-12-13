@@ -45,12 +45,12 @@ class Landing extends CI_Controller
 
         $data['paketpencarian'] = $this->Paket_model->search_paket($destinasi, $daterangeConverted);
 
-        echo '<pre>';
-        print_r($data['paketpencarian']);
-        exit();
+        // echo '<pre>';
+        // print_r($data['paketpencarian']);
+        // exit();
 
         // Load the view with the search results
-        $data['_view'] = 'paket/pencarian.php';
+        $data['_view'] = 'paket/pencarian';
         $this->load->view('layouts/main', $data);
     }
 }

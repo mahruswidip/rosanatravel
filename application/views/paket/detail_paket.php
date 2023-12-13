@@ -64,7 +64,7 @@
                             <h3>Rp. <?php echo number_format($paket[0]['uang_muka'], 0, ',', '.'); ?></h3>
                         </div>
                         <br>
-                        <a href="<?php echo base_url(''); ?>" class="btn btn-primary">Pesan Sekarang</a>
+                        <a href="https://api.whatsapp.com/send?phone=628113003258&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20produk%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Pesan Sekarang</a>
                     </div>
                 </div>
                 <!-- <?php echo '<pre>';
