@@ -31,12 +31,6 @@ class Paket_model extends CI_Model
         return $this->db->get('paket')->result_array();
     }
 
-    function get_tanggal_keberangkatan()
-    {
-        $this->db->where('is_aktif', '1'); // Tambahkan kondisi is_aktif = 1
-        $this->db->order_by('keberangkatan.id_keberangkatan', 'desc');
-        return $this->db->get('keberangkatan')->result_array();
-    }
 
     function get_tanggal_keberangkatan_for_detail($id_paket)
     {
@@ -52,7 +46,30 @@ class Paket_model extends CI_Model
         return $this->db->get('record_keberangkatan')->result_array();
     }
 
+    function get_tanggal_keberangkatan()
+    {
+        $this->db->where('is_aktif', '1'); // Tambahkan kondisi is_aktif = 1
+        $this->db->order_by('keberangkatan.id_keberangkatan', 'desc');
+        return $this->db->get('keberangkatan')->result_array();
+    }
 
+    function get_paket_umroh_only()
+    {
+        $this->db->where('kategori', 'Umroh');
+        $this->db->where('travel', 'Rosana Travel');
+        $this->db->where('publish', '1'); // Tambahkan kondisi is_aktif = 1
+        $this->db->order_by('paket.id_paket', 'desc');
+        return $this->db->get('paket')->result_array();
+    }
+
+    function get_paket_tour_only()
+    {
+        $this->db->where('kategori', 'Tour');
+        $this->db->where('travel', 'Rosana Travel');
+        $this->db->where('publish', '1'); // Tambahkan kondisi is_aktif = 1
+        $this->db->order_by('paket.id_paket', 'desc');
+        return $this->db->get('paket')->result_array();
+    }
 
 
 
@@ -76,5 +93,30 @@ class Paket_model extends CI_Model
     function get_artikel($id)
     {
         return $this->db->get_where('artikel', array('id_artikel' => $id))->row_array();
+    }
+
+
+    function search_paket($destinasi, $daterange)
+    {
+        $this->db->select('*');
+        $this->db->from('paket');
+
+        // Add conditions based on the provided parameters
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
+        $this->db->where('publish', '1'); // Tambahkan kondisi is_aktif = 1
+
+        if ($destinasi) {
+            $this->db->where('kategori', $destinasi);
+        }
+        if ($daterange) {
+            // Assuming you have a 'tanggal_keberangkatan' column in your table
+            // Adjust the column name as per your actual database structure
+            $this->db->where("tanggal_keberangkatan >=", $daterange[0]);
+            $this->db->where("tanggal_keberangkatan <=", $daterange[1]);
+        }
+
+        $this->db->order_by('id_paket', 'desc');
+
+        return $this->db->get()->result_array();
     }
 }

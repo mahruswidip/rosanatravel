@@ -7,14 +7,14 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <form class="form">
+                            <form class="form" action="<?php echo base_url('landing/search_paket'); ?>" method="post">
                                 <div class="row mb-2">
                                     <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                        <select name="" id="" class="form-control custom-select">
+                                        <select name="destinasi" class="form-control custom-select">
                                             <option value="">Destinasi</option>
-                                            <option value="">Umroh</option>
-                                            <option value="">Haji</option>
-                                            <option value="">Turki</option>
+                                            <option value="Umroh">Umroh</option>
+                                            <option value="Haji">Haji</option>
+                                            <option value="Tour">Wisata Halal</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
@@ -22,10 +22,9 @@
                                     </div>
                                 </div>
                                 <div class="row align-items-center py-3">
-                                    <div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+                                    <div class="col-sm-12 col-md-6 mb-3 col-lg-8">
                                         <input type="submit" class="btn btn-primary btn-block" value="Cari Perjalanan">
                                     </div>
-
                                 </div>
                             </form>
                         </div>

@@ -31,4 +31,26 @@ class Landing extends CI_Controller
         $data['_view'] = 'paket/detail_paket.php';
         $this->load->view('layouts/main', $data);
     }
+
+    public function search_paket()
+    {
+        $destinasi = $this->input->post('destinasi'); // Assuming 'destinasi' is the name attribute in your select element
+        $daterange = $this->input->post('daterange');
+        $daterangeexploded = explode(' - ', $daterange);
+
+        $daterangeConverted = [
+            date('Y-m-d', strtotime($daterangeexploded[0])),
+            date('Y-m-d', strtotime($daterangeexploded[1]))
+        ];
+
+        $data['paketpencarian'] = $this->Paket_model->search_paket($destinasi, $daterangeConverted);
+
+        echo '<pre>';
+        print_r($data['paketpencarian']);
+        exit();
+
+        // Load the view with the search results
+        $data['_view'] = 'paket/pencarian.php';
+        $this->load->view('layouts/main', $data);
+    }
 }

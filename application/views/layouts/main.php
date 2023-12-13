@@ -66,7 +66,7 @@
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
                     <li class="active"><a href="<?php echo base_url('') ?>">Beranda</a></li>
                     <li class="has-children">
-                        <a href="#">Umroh</a>
+                        <a href="<?php echo base_url('paket/umroh/'); ?>">Umroh</a>
                         <ul class="dropdown">
                             <li><a href="elements.html">Umroh Reguler</a></li>
                             <li><a href="elements.html">Tabungan Umroh</a></li>
@@ -79,7 +79,7 @@
                             <li><a href="elements.html">Haji Plus</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Wisata Halal</a></li>
+                    <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a href="#tentang-kami">Tentang Kami</a></li>
                     <!-- <li><a href="services.html">Services</a></li>
