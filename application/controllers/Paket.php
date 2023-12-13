@@ -36,6 +36,7 @@ class Paket extends CI_Controller
     {
         $data['paket'] = $this->Paket_model->get_tanggal_keberangkatan_for_detail($id_paket);
         $data['record'] = $this->Paket_model->get_record_with_this_paket($id_paket);
+        $data['paketlain'] = $this->Paket_model->get_all_paket();
         // echo '<pre>';
         // print_r($data['record']);
         // exit();

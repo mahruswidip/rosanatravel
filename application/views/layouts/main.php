@@ -62,7 +62,7 @@
     <nav class="site-nav">
         <div class="container">
             <div class="site-navigation">
-                <a href="index.html" class="logo m-0"><img style="height: 3.8rem;" src="<?php echo base_url('assets/images/logo/logoroswhite.png') ?>" alt=""></a>
+                <a href="<?php echo base_url('') ?>" class="logo m-0"><img style="height: 3.8rem;" src="<?php echo base_url('assets/images/logo/logoroswhite.png') ?>" alt=""></a>
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
                     <li class="active"><a href="<?php echo base_url('') ?>">Beranda</a></li>
                     <li class="has-children">
@@ -80,8 +80,8 @@
                         </ul>
                     </li>
                     <li><a href="#">Wisata Halal</a></li>
-                    <li><a href="#">Galeri</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#tentang-kami">Tentang Kami</a></li>
                     <!-- <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact Us</a></li> -->

@@ -40,95 +40,13 @@ class Artikel extends CI_Controller
     }
 
     /*
-     * Adding a new artikel
-     */
-
-    function add()
-    {
-        $config['upload_path'] = './assets/images/artikel/'; //path folder
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
-        $user_id = $this->session->userdata('user_id');
-
-        $this->upload->initialize($config);
-        if (!empty($_FILES['artikel_img']['name'])) {
-            if ($this->upload->do_upload('artikel_img')) {
-                $gbr = $this->upload->data();
-                //Compress Image
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './assets/images/artikel/' . $gbr['file_name'];
-                $config['create_thumb'] = FALSE;
-                $config['maintain_ratio'] = FALSE;
-                $config['quality'] = '60%';
-                $config['width'] = '20%';
-                $config['max_size'] = '5000';
-                $config['new_image'] = './assets/images/artikel/' . $gbr['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $gambar = $gbr['file_name'];
-
-                $params = array(
-                    'travel' => $this->input->post('travel'),
-                    'konten' => $this->input->post('konten'),
-                    'artikel_img' => $this->input->post('artikel_img'),
-                    'judul_artikel' => $this->input->post('judul_artikel'),
-
-                );
-                $this->Artikel_model->add_artikel($params, $gambar);
-                redirect('artikel/index');
-            } else {
-                echo "else";
-                exit();
-                redirect('artikel/index');
-            }
-        } else {
-            $data['_view'] = 'artikel/add';
-            $this->load->view('layouts/main', $data);
-        }
-    }
-
-    /*
-     * Editing a artikel
-     */
-
-
-    public function edit($id_artikel)
-    {
-        // Memeriksa apakah artikel ada sebelum mencoba mengeditnya
-        $data['artikel'] = $this->Artikel_model->get_artikel($id_artikel);
-
-        if (isset($data['artikel']['id_artikel'])) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Mendapatkan data dari formulir edit
-                $tanggal_artikel = $this->input->post('tanggal_artikel');
-                $is_aktif = ($this->input->post('is_aktif') == 'on') ? 1 : 0;
-                $tanggal_manasik = $this->input->post('tanggal_manasik');
-
-                // Menyiapkan data untuk diperbarui
-                $params = array(
-                    'tanggal_artikel' => $tanggal_artikel,
-                    'is_aktif' => $is_aktif,
-                    'tanggal_manasik' => $tanggal_manasik,
-                );
-
-                // Memperbarui data artikel berdasarkan ID
-                $this->Artikel_model->update_artikel($id_artikel, $params);
-
-                // Mengalihkan pengguna ke halaman index setelah pembaruan
-                redirect('artikel/index');
-            } else {
-                // Menampilkan halaman edit dengan data artikel
-                $data['_view'] = 'artikel/edit';
-                $this->load->view('layouts/main', $data);
-            }
-        } else {
-            show_error('The artikel you are trying to edit does not exist.');
-        }
-    }
+    * Adding a new artikel
+    */
 
     function view($id_artikel)
     {
         $data['artikel'] = $this->Artikel_model->get_artikel($id_artikel); // Call a method from your model to get data from the database
+        $data['artikellain'] = $this->Artikel_model->get_all_artikel();
         // echo json_encode($data);
         // echo "<pre>";
         // print_r($data);

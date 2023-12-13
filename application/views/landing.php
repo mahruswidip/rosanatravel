@@ -176,7 +176,7 @@
                             </span>
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h3 class="ellipsis"><a href="#"><?php echo $paket_item['nama_program']; ?></a></h3>
+                                    <h3 class="ellipsis"><?php echo $paket_item['nama_program']; ?></h3>
                                     <div class="price ml-auto">
                                         <span>DP Mulai - Rp. <?php echo number_format($paket_item['uang_muka'], 0, ',', '.'); ?></span>
                                     </div>
@@ -227,7 +227,7 @@
 
 
 
-<div class="untree_co-section">
+<div class="untree_co-section" id="galeri">
     <div class="container">
         <div class="row text-center justify-content-center mb-5">
             <div class="col-lg-7">
@@ -304,7 +304,7 @@
 </div>
 
 
-<div class="untree_co-section">
+<div class="untree_co-section" id="tentang-kami">
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-5">
