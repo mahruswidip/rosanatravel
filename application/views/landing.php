@@ -317,8 +317,8 @@
 
             <div class="col-lg-6">
                 <h2 class="section-title text-left mb-4">Tentang Kami</h2>
-                <p>Persaingan bisnis biro perjalanan wisata yang makin ketat, membuat kami harus berpikir keras untuk dapat tetap eksis dan menjadi pilihan pelanggan dalam setiap perjalanan wisata mereka. Namun, berbekal pengalaman yang lebih dari 20 tahun tentunya bukan hal mustahil untuk kami dapat bertahan menjadi yang terdepan.</p>
-
+                <p>Persaingan bisnis biro perjalanan wisata yang makin ketat, membuat kami harus berpikir keras untuk dapat tetap eksis dan menjadi pilihan pelanggan dalam setiap perjalanan wisata mereka. Dengan berbekal pengalaman yang lebih dari 25 tahun tentunya bukan hal mustahil untuk kami dapat bertahan menjadi yang terdepan.</p>
+                <p> Mengantongi <b> Izin Resmi dari KEMENAG RI sebagai Penyelenggara Ibadah Haji Khusus (PIHK) - No. 193 Tahun 2019 dan Penyelenggara Perjalanan Ibadah Umroh (PPIU) - No. 787 Tahun 2019 </b></p>
                 <p class="mb-4">PT. Rosana Biro Perjalanan Wisata terus berinovasi dan berpacu meningkatkan pelayanan yang profesional dan kekeluargaan untuk dapat secara maksimal melayani dari hati.</p>
 
                 <div class="tab-pane" id="v-pills-visimisi" role="tabpanel" aria-labelledby="v-pills-visimisi-tab">
