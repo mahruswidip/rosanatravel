@@ -213,9 +213,8 @@
                             <img src="https://alfatihahtravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
                         </figure>
                     </div>
-
                     <div class="col-lg-6">
-                        <h4 class="section-title text-left mb-4"><?php echo $artikel_item['judul_artikel']; ?></h4>
+                        <h4 class="section-title text-left"><?php echo $artikel_item['judul_artikel']; ?></h4>
                         <p><?php echo substr($artikel_item['konten'], 0, 200); ?>...</p>
                     </div>
                 </div>
