@@ -28,6 +28,7 @@ class Paket_model extends CI_Model
         $this->db->join('tbl_users', 'tbl_users.user_id=paket.created_by', 'left');
         $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
         $this->db->where('paket.publish', 1);
+        $this->db->where('travel', 'Rosana Travel');
         return $this->db->get('paket')->result_array();
     }
 
