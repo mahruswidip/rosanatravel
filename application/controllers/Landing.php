@@ -15,7 +15,7 @@ class Landing extends CI_Controller
     function index()
     {
         $data['paket'] = $this->Paket_model->get_all_paket();
-        $data['galeri'] = $this->Paket_model->get_all_galeri();
+        $data['galeri'] = $this->Paket_model->get_galeri();
         $data['artikel'] = $this->Paket_model->get_artikel_rosana_only();
 
         $data['_view'] = 'landing';

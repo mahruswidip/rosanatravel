@@ -78,6 +78,7 @@ class Paket_model extends CI_Model
 
     function get_all_galeri($params = array())
     {
+        $this->db->where('travel', 'Rosana Travel');
         $this->db->order_by('img_dropzone.id', 'desc');
         if (isset($params) && !empty($params)) {
             $this->db->limit($params['limit'], $params['offset']);
