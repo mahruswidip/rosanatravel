@@ -10,6 +10,7 @@ class Artikel extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Artikel_model');
+        $this->load->model('Paket_model');
     }
 
     /*
@@ -54,7 +55,51 @@ class Artikel extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
 
+    function get()
+    {
+        $result = $this->Paket_model->get_artikel_rosana_only_api();
 
+        // Menyusun data untuk respons JSON
+        $response = array(
+            'status' => '200',
+            'message' => 'Data retrieved successfully',
+            'data' => json_decode($result, true) // Decode JSON menjadi array
+        );
+
+        // Menyusun respons dalam format JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+    function get_detail_artikel($id)
+    {
+        $result = $this->Paket_model->get_artikel_api($id);
+
+        if ($result) {
+            // Menyusun data untuk respons JSON
+            $response = array(
+                'status' => '200',
+                'message' => 'Data retrieved successfully',
+                'data' => json_decode($result, true) // Decode JSON menjadi array
+            );
+
+            // Menyusun respons dalam format JSON
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        } else {
+            // Jika data tidak ditemukan
+            $response = array(
+                'status' => 'error',
+                'message' => 'Data not found'
+            );
+
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        }
+    }
 
 
     /*

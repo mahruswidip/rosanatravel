@@ -19,6 +19,12 @@ class Paket_model extends CI_Model
         return $this->db->get_where('paket', array('id_paket' => $id_paket))->row_array();
     }
 
+    function get_paket_api($id_paket)
+    {
+        $result = $this->db->get_where('paket', array('id_paket' => $id_paket))->row_array();
+        $jsonResult = json_encode($result);
+    }
+
     /*
      * Get all paket
      */
@@ -30,6 +36,33 @@ class Paket_model extends CI_Model
         $this->db->where('paket.publish', 1);
         $this->db->where('travel', 'Rosana Travel');
         return $this->db->get('paket')->result_array();
+    }
+
+    public function get_all_paket_api($params = array())
+    {
+        $this->db->order_by('paket.id_paket', 'desc');
+        $this->db->join('tbl_users', 'tbl_users.user_id=paket.created_by', 'left');
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
+        $this->db->where('paket.publish', 1);
+        $this->db->where('travel', 'Rosana Travel');
+        $result = $this->db->get('paket')->result_array();
+
+        // Convert the result to JSON
+        $jsonResult = json_encode($result);
+
+        return $jsonResult;
+    }
+
+    function get_tanggal_keberangkatan_for_detail_api($id_paket)
+    {
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
+        $this->db->where('id_paket', $id_paket);
+        $result = $this->db->get('paket')->result_array();
+
+        // Convert the result to JSON
+        $jsonResult = json_encode($result);
+
+        return $jsonResult;
     }
 
 
@@ -91,6 +124,7 @@ class Paket_model extends CI_Model
         $this->db->order_by('artikel.id_artikel', 'desc');
         return $this->db->get('artikel')->result_array();
     }
+
     function get_artikel_rosana_only($params = array())
     {
         $this->db->where('travel', 'Rosana Travel');
@@ -98,9 +132,26 @@ class Paket_model extends CI_Model
         return $this->db->get('artikel')->result_array();
     }
 
+    function get_artikel_rosana_only_api($params = array())
+    {
+        $this->db->where('travel', 'Rosana Travel');
+        $this->db->order_by('artikel.id_artikel', 'desc');
+        $result = $this->db->get('artikel')->result_array();
+
+        // Mengubah hasil array menjadi format JSON
+        return json_encode($result);
+    }
+
     function get_artikel($id)
     {
         return $this->db->get_where('artikel', array('id_artikel' => $id))->row_array();
+    }
+
+    function get_artikel_api($id)
+    {
+        $result = $this->db->get_where('artikel', array('id_artikel' => $id))->row_array();
+
+        return json_encode($result);
     }
 
 

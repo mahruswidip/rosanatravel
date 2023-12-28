@@ -59,4 +59,46 @@ class Paket extends CI_Controller
         $data['_view'] = 'paket/tour';
         $this->load->view('layouts/main', $data);
     }
+
+    function get_paket()
+    {
+        // Panggil fungsi get_all_paket dari model
+        $paket = $this->Paket_model->get_all_paket_api();
+
+        // Set header response sebagai JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output($paket);
+    }
+
+    function get_detail_paket($id_paket)
+    {
+        // Assuming you have loaded the necessary database library in your CodeIgniter application
+        $this->load->database();
+
+        // Assuming 'paket' is the name of your database table
+        $this->db->select('*');
+        $this->db->from('paket');
+        $this->db->where('paket.id_paket', $id_paket);
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan = paket.fk_id_keberangkatan', 'left');
+
+        // Perform the query
+        $result = $this->db->get()->row_array();
+
+        // Check if the result is not empty
+        if (!empty($result)) {
+            // Convert the result to JSON
+            $jsonResult = json_encode($result);
+
+            // Return the JSON response
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output($jsonResult);
+        } else {
+            // Return an empty response or handle the case where the paket with the given ID is not found
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(array('error' => 'Paket not found')));
+        }
+    }
 }
