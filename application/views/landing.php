@@ -1,3 +1,18 @@
+<!-- Modal -->
+<div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <?php print_r($paket_terbaru)  ?> -->
+                <img src="https://alfatihahtravel.com/admin/assets/images/' + '<?php echo $paket_terbaru[0]['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="hero">
     <div class="container">
         <div class="row align-items-center">
@@ -424,3 +439,40 @@
 
     </div>
 </section><!-- End Contact Section -->
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Bootstrap CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="..."> -->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
+
+<script>
+    // Fungsi untuk mendapatkan nilai dari localStorage
+    function getLocalStorageItem(key) {
+        return localStorage.getItem(key);
+    }
+
+    // Fungsi untuk menetapkan nilai ke localStorage
+    function setLocalStorageItem(key, value) {
+        localStorage.setItem(key, value);
+    }
+
+    // Fungsi untuk menampilkan modal jika belum pernah ditutup
+    function showPopup() {
+        var reloadCount = getLocalStorageItem('reloadCount') || 0;
+
+        // Tampilkan modal hanya jika pengguna belum reload lebih dari 2 kali
+        if (reloadCount < 2) {
+            $('#promoModal').modal('show');
+            setLocalStorageItem('reloadCount', reloadCount + 1);
+        }
+    }
+
+    // Panggil fungsi showPopup saat halaman dimuat
+    $(document).ready(function() {
+        showPopup();
+        // localStorage.clear();
+    });
+</script>
