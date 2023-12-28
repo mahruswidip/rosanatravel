@@ -3,12 +3,17 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"></h5>
+                <h5 class="modal-title">PROMO TERBARU</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <!-- <?php print_r($paket_terbaru)  ?> -->
-                <img src="https://alfatihahtravel.com/admin/assets/images/' + '<?php echo $paket_terbaru[0]['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            <div class="modal-body d-flex align-items-center">
+                <!-- Gambar loading -->
+                <div class="spinner-border" role="status" id="loadingImage">
+                </div>
+                <!-- <img src="loading.gif" alt="Loading..." class="loading-img" id="loadingImage"> -->
+
+                <!-- Gambar utama (sembunyikan saat loading) -->
+                <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: none;" id="mainImage">
             </div>
         </div>
     </div>
@@ -449,6 +454,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="..."></script>
 
 <script>
+    // Ambil elemen gambar dan loading
+    var mainImage = document.getElementById('mainImage');
+    var loadingImage = document.getElementById('loadingImage');
+
+    // Event listener ketika gambar utama selesai dimuat
+    mainImage.addEventListener('load', function() {
+        // Sembunyikan gambar loading
+        loadingImage.style.display = 'none';
+        // Tampilkan gambar utama
+        mainImage.style.display = 'block';
+    });
+
+    // Event listener ketika terjadi kesalahan saat memuat gambar utama
+    mainImage.addEventListener('error', function() {
+        // Sembunyikan gambar loading
+        loadingImage.style.display = 'none';
+        // Tampilkan pesan kesalahan atau gambar placeholder lainnya
+        // (Misalnya, tampilkan pesan 'Gagal memuat gambar' atau gambar default)
+    });
     // Fungsi untuk mendapatkan nilai dari localStorage
     function getLocalStorageItem(key) {
         return localStorage.getItem(key);
