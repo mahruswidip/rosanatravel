@@ -15,6 +15,9 @@
                 <!-- Gambar utama (sembunyikan saat loading) -->
                 <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: none;" id="mainImage">
             </div>
+            <div class="modal-footer">
+                <a href="https://api.whatsapp.com/send?phone=628113003258&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Info Lebih Lanjut</a>
+            </div>
         </div>
     </div>
 </div>
@@ -243,8 +246,6 @@
     </div>
 </div>
 
-
-
 <div class="untree_co-section" id="galeri">
     <div class="container">
         <div class="row text-center justify-content-center mb-5">
@@ -252,8 +253,7 @@
                 <h2 class="section-title text-center">Galeri Kami</h2>
             </div>
         </div>
-
-        <div class="owl-carousel owl-4-slider">
+        <div class="owl-carousel owl-3-slider">
             <?php foreach ($galeri as $galeri_item) : ?>
                 <div class="item">
                     <a class="media-thumb" href="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
@@ -473,30 +473,30 @@
         // Tampilkan pesan kesalahan atau gambar placeholder lainnya
         // (Misalnya, tampilkan pesan 'Gagal memuat gambar' atau gambar default)
     });
-    // Fungsi untuk mendapatkan nilai dari localStorage
-    function getLocalStorageItem(key) {
-        return localStorage.getItem(key);
+    // Fungsi untuk mendapatkan nilai dari sessionStorage
+    function getSessionStorageItem(key) {
+        return sessionStorage.getItem(key);
     }
 
-    // Fungsi untuk menetapkan nilai ke localStorage
-    function setLocalStorageItem(key, value) {
-        localStorage.setItem(key, value);
+    // Fungsi untuk menetapkan nilai ke sessionStorage
+    function setSessionStorageItem(key, value) {
+        sessionStorage.setItem(key, value);
     }
 
     // Fungsi untuk menampilkan modal jika belum pernah ditutup
     function showPopup() {
-        var reloadCount = getLocalStorageItem('reloadCount') || 0;
+        var reloadCount = getSessionStorageItem('reloadCount') || 0;
 
         // Tampilkan modal hanya jika pengguna belum reload lebih dari 2 kali
         if (reloadCount < 2) {
             $('#promoModal').modal('show');
-            setLocalStorageItem('reloadCount', reloadCount + 1);
+            setSessionStorageItem('reloadCount', parseInt(reloadCount) + 1);
         }
     }
 
     // Panggil fungsi showPopup saat halaman dimuat
     $(document).ready(function() {
         showPopup();
-        // localStorage.clear();
+        // sessionStorage.clear(); // Jika perlu menghapus semua data sesi
     });
 </script>

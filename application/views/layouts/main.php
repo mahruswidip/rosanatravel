@@ -68,7 +68,7 @@
                     <li class="has-children">
                         <a href="<?php echo base_url('paket/umroh/'); ?>">Umroh</a>
                         <ul class="dropdown">
-                            <li><a href="elements.html">Umroh Reguler</a></li>
+                            <li><a href="<?php echo base_url('paket/umroh/'); ?>">Umroh Reguler</a></li>
                             <li><a href="elements.html">Tabungan Umroh</a></li>
                         </ul>
                     </li>

@@ -807,7 +807,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .hero .slides {
-  background: #ffffff;
+  background: #ffffff00;
   max-width: 800px;
   left: -100px;
   z-index: 0;
@@ -832,7 +832,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   -webkit-transition: 4s opacity ease;
   -o-transition: 4s opacity ease;
   transition: 4s opacity ease;
-  background: #ffffff;
+  background: #ffffff00;
 }
 
 .hero .slides img.active {
@@ -1325,7 +1325,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 @media (max-width: 991.98px) {
   .feature-img-bg {
-    height: 300px !important;
+    height: 470px !important;
     margin-bottom: 30px;
   }
 }
