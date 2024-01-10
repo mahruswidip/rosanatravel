@@ -46,17 +46,18 @@ class Pemesanan_model extends CI_Model
     /*
      * function to add new pemesanan
      */
-    function add_jamaah($params)
+
+    function add_pemesan($params)
     {
         $this->db->set('nik', $params['nik']);
-        $this->db->set('nama_jamaah', $params['nama_jamaah']);
-        $this->db->set('nomor_telepon', $params['nomor_telepon']);
-        $this->db->set('jenis_kelamin', $params['jenis_kelamin']);
-        $this->db->set('alamat', $params['alamat']);
-        $this->db->set('created_by', $params['created_by']);
-        $this->db->set('email', $params['email']);
-        $this->db->set('pesan_apa', $params['pesan_apa']);
         $this->db->set('uuid', 'UUID_SHORT()', FALSE);
+        $this->db->set('nama_pendaftar', $params['nama_pendaftar']);
+        $this->db->set('jenis_kelamin', $params['jenis_kelamin']);
+        $this->db->set('email', $params['email']);
+        $this->db->set('nomor_telepon', $params['nomor_telepon']);
+        $this->db->set('alamat', $params['alamat']);
+        $this->db->set('pesan_apa', $params['pesan_apa']);
+        $this->db->set('berapa_orang', $params['berapa_orang']);
         $this->db->insert('pendaftar');
     }
 

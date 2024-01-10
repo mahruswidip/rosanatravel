@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">PROMO TERBARU</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             <div class="modal-body d-flex align-items-center">
                 <!-- Gambar loading -->
@@ -488,7 +488,7 @@
         var reloadCount = getSessionStorageItem('reloadCount') || 0;
 
         // Tampilkan modal hanya jika pengguna belum reload lebih dari 2 kali
-        if (reloadCount < 2) {
+        if (reloadCount < 5) {
             $('#promoModal').modal('show');
             setSessionStorageItem('reloadCount', parseInt(reloadCount) + 1);
         }

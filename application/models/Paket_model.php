@@ -67,14 +67,21 @@ class Paket_model extends CI_Model
 
     function get_paket_terbaru($params = array())
     {
-        $this->db->select('paket.*');
-        $this->db->from('paket');
-        $this->db->where('paket.publish', 1);
-        $this->db->where('paket.travel', 'Rosana Travel');
-        $this->db->where('paket.promo', 1);
-        $this->db->order_by('paket.id_paket', 'DESC');
 
-        return $this->db->get()->result_array();
+        $this->db->where('promo', '1');
+        $this->db->where('paket.travel', 'Rosana Travel');
+        $this->db->order_by('promo', 'DESC');
+        $query = $this->db->get('paket');
+
+        // $this->db->select('paket.*');
+        // $this->db->from('paket');
+        // $this->db->where('paket.publish', 1);
+        // $this->db->where('paket.travel', 'Rosana Travel');
+        // $this->db->where('paket.promo', 1);
+        // $this->db->order_by('paket.id_paket', 'DESC');
+
+        return $query->result_array();
+        // return $this->db->get()->result_array();
     }
 
 

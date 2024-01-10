@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/daterangepicker.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/aos.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/bd-wizard.css">
 
     <title>Rosana Tour And Travel - Umroh - Haji - Tour</title>
     <style>
@@ -194,8 +195,9 @@
     <script src="<?php echo base_url('assets/') ?>js/aos.js"></script>
     <script src="<?php echo base_url('assets/') ?>js/moment.min.js"></script>
     <script src="<?php echo base_url('assets/') ?>js/daterangepicker.js"></script>
-
     <script src="<?php echo base_url('assets/') ?>js/typed.js"></script>
+    <script src="<?php echo base_url('assets/') ?>js/jquery.steps.min.js"></script>
+    <script src="<?php echo base_url('assets/') ?>js/bd-wizard.js"></script>
     <script>
         $(function() {
             var slides = $('.slides'),
@@ -221,7 +223,85 @@
                 }
 
             });
-        })
+        });
+
+        // Ambil elemen radio kantor, radio marketing, dropdown form, dan elemen iframe
+        var kantorRadio = document.getElementById("kantor");
+        var dropdownForm = document.getElementById("branchDropdown");
+        var branchSelect = document.getElementById("branchSelect");
+        var maps = document.querySelectorAll(".map-iframe");
+
+        // Tambahkan event listener untuk perubahan radio button kantor
+        kantorRadio.addEventListener("change", function() {
+            // Tampilkan dropdown form jika radio kantor dipilih, sembunyikan jika tidak
+            dropdownForm.style.display = kantorRadio.checked ? "block" : "none";
+            // Sembunyikan semua peta
+            maps.forEach(function(map) {
+                map.style.display = "none";
+            });
+        });
+
+        // Tambahkan event listener untuk perubahan pilihan dropdown
+        branchSelect.addEventListener("change", function() {
+            // Tampilkan peta yang sesuai dengan pilihan dropdown
+            maps.forEach(function(map) {
+                map.style.display = (map.id === branchSelect.value + "Map") ? "block" : "none";
+            });
+        });
+
+        function savetosession() {
+            // Assuming jQuery is available
+            $.ajax({
+                url: "<?php echo site_url('Pemesanan/savetosession'); ?>",
+                type: "POST",
+                data: $('#registration-form').serialize(),
+                success: function(response) {
+                    // Handle the response from the controller
+                    console.log(response);
+                    // You can perform additional actions based on the response
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function add_pemesan() {
+            // Assuming jQuery is available
+            $.ajax({
+                url: "<?php echo site_url('Pemesanan/add_pemesan'); ?>",
+                type: "POST",
+                data: $('#registration-form').serialize(),
+                success: function(response) {
+                    // Handle the response from the controller
+                    console.log(response);
+                    // You can perform additional actions based on the response
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function confirmation() {
+            // Assuming jQuery is available
+            $.ajax({
+                url: "<?php echo site_url('Pemesanan/confirmation'); ?>",
+                type: "POST",
+                data: $('#registration-form').serialize(),
+                success: function(response) {
+                    // Handle the response from the controller
+                    console.log(response);
+                    // You can perform additional actions based on the response
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
+        }
     </script>
 
     <script src="<?php echo base_url('assets/') ?>js/custom.js"></script>

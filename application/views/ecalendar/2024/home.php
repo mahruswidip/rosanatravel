@@ -17,14 +17,6 @@
                 <img src="<?php echo base_url('assets/images/slider/kalender/') ?>6.jpg" class="img-fluid" style="border-radius: 2rem;">
                 <img src="<?php echo base_url('assets/images/slider/kalender/') ?>7.jpg" class="img-fluid" style="border-radius: 2rem;">
                 <img src="<?php echo base_url('assets/images/slider/kalender/') ?>3.jpg" class="img-fluid" style="border-radius: 2rem;">
-                <!-- <img src="<?php echo base_url('assets/images/slider/kalender/') ?>4.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>1.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>2.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>8.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>5.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>6.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>7.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;">
-                <img src="<?php echo base_url('assets/images/slider/kalender/') ?>3.jpg" class="img-fluid" style="border-top-right-radius: 3rem; border-top-left-radius: 3rem;"> -->
             </div>
         </div>
     </div>

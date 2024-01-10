@@ -25,6 +25,17 @@ class Pemesanan extends CI_Controller
         // print_r($data['paket']);
         // exit();
 
+        $this->session->unset_userdata(array(
+            'nik',
+            'nama_jamaah',
+            'jenis_kelamin',
+            'nomor_telepon',
+            'alamat',
+            'email',
+            'pesan_apa',
+            'berapa_orang'
+        ));
+
         $data['_view'] = 'pemesanan/index';
         $this->load->view('layouts/main', $data);
     }
@@ -39,6 +50,7 @@ class Pemesanan extends CI_Controller
             'alamat' => $this->input->post('alamat'),
             'email' => $this->input->post('email'),
             'pesan_apa' => $this->input->post('pesan_apa'),
+            'berapa_orang' => $this->input->post('berapa_orang'),
         );
 
         echo '<pre>';
@@ -48,6 +60,92 @@ class Pemesanan extends CI_Controller
         $this->Pemesanan_model->add_jamaah($params);
         redirect(base_url());
     }
+
+    function add_pemesan()
+    {
+        $this->session->unset_userdata(array(
+            'nik',
+            'nama_jamaah',
+            'jenis_kelamin',
+            'nomor_telepon',
+            'alamat',
+            'email',
+            'pesan_apa',
+            'berapa_orang'
+        ));
+
+        $params = array(
+            'nik' => $this->input->post('nik'),
+            'nama_pendaftar' => $this->input->post('nama_pendaftar'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'nomor_telepon' => $this->input->post('nomor_telepon'),
+            'alamat' => $this->input->post('alamat'),
+            'email' => $this->input->post('email'),
+            'pesan_apa' => $this->input->post('pesan_apa'),
+            'berapa_orang' => $this->input->post('berapa_orang'),
+        );
+
+        $this->session->set_userdata($params);
+
+        // echo '<pre>';
+        // print_r($params);
+        // exit();
+
+        // $this->Pemesanan_model->add_pemesan($params);
+    }
+
+    function confirmation()
+    {
+        $data['_view'] = 'pemesanan/confirmation';
+        $this->load->view('layouts/main', $data);
+    }
+
+
+    function savetosession()
+    {
+
+        $params = array(
+            'nik' => $this->input->post('nik'),
+            'nama_jamaah' => $this->input->post('nama_jamaah'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'nomor_telepon' => $this->input->post('nomor_telepon'),
+            'alamat' => $this->input->post('alamat'),
+            'email' => $this->input->post('email'),
+            'pesan_apa' => $this->input->post('pesan_apa'),
+            'berapa_orang' => $this->input->post('berapa_orang'),
+        );
+
+        $this->session->set_userdata($params);
+
+        $config['upload_path'] = './assets/images/qrcodependaftar'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+        $this->load->library('ciqrcode');
+
+        $config['cacheable'] = true; //boolean, the default is true
+        $config['cachedir'] = './assets/'; //string, the default is application/cache/
+        $config['errorlog'] = './assets/'; //string, the default is application/logs/
+        $config['imagedir'] = './assets/images/qrcodependaftar/'; //direktori penyimpanan qr code
+        $config['quality'] = true; //boolean, the default is true
+        $config['size'] = '1024'; //interger, the default is 1024
+        $config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
+        $config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+
+        $nama = $this->session->userdata('nik');
+
+        $qr_code = $nama . '.png'; //buat name dari qr code sesuai dengan nim
+
+        $params1['data'] = $nama; //data yang akan di jadikan QR CODE
+        $params1['level'] = 'H'; //H=High
+        $params1['size'] = 10;
+        $params1['savename'] = FCPATH . $config['imagedir'] . $qr_code; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params1); // fungsi untuk generate QR 
+
+        $data = array('status' => 'success', 'message' => 'Function executed successfully');
+        echo json_encode($this->session->all_userdata());
+    }
+
 
     /*
     * Adding a new pemesanan
