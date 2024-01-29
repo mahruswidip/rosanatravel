@@ -198,8 +198,8 @@
                             <div style="position: relative; overflow: hidden;">
                                 <img src="<?php echo $imageSrc; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); filter: <?php echo $filter; ?>">
                                 <?php if ($paket_item['is_aktif'] == 0) : ?>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 30%; background-color: rgba(255, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                        <span style="color: white; font-weight: bold;">Sold Out</span>
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 30%; background-color: rgba(255, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <span style="color: white; font-weight: bold;">SOLD OUT</span>
                                     </div>
                                 <?php endif; ?>
                             </div>
