@@ -83,6 +83,7 @@
                     <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a href="#tentang-kami">Tentang Kami</a></li>
+                    <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li>
                     <!-- <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact Us</a></li> -->
@@ -137,7 +138,7 @@
                         <div class="widget">
                             <h3 class="heading">Kontak Kami</h3>
                             <ul class="list-unstyled quick-info links">
-                                <li class="email"><a href="#">info@rosanatourtravel.com</a></li>
+                                <li class="email"><a href="#">info@rosanatravel.com</a></li>
                                 <li class="phone"><a href="#">+62 811 3003 258</a></li>
                                 <li class="address"><a href="#">Jl. Dr. Setia Budi No. 20,
                                         Jalan Lingkar Selatan Kota Pasuruan,
