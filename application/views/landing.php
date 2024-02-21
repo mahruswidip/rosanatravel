@@ -379,6 +379,92 @@
         </div>
     </div>
 </div>
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <h2 class="section-title text-center mb-4">Seberapa Jauh kami Sudah Berjalan</h2>
+            <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK" class="rounded-20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <img src="<?php echo base_url('assets/') ?>images/kontak/akreditasi.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
+        </div>
+    </div>
+</div>
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6 text-center">
+                <h2 class="section-title mb-3 text-center">Kantor Cabang Kami</h2>
+                <p>Telusuri Kantor Cabang Kami yang Menyebar di Berbagai Lokasi untuk Melayani Anda Lebih Dekat.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/mlg.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Malang</h3>
+                        <a href="https://maps.app.goo.gl/mjH65SgAWFGUfeHB9">
+                            <p><span class="icon-room mr-2"></span>Jl. Kalpataru No.83 kav b, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/prob.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Probolinggo</h3>
+                        <a href="https://maps.app.goo.gl/2zWQsaLn5MKHSWsbA">
+                            <p><span class="icon-room mr-2"></span>Jl. Soekarno - Hatta No.137, Curahgrinting, Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/jbr.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Jember</h3>
+                        <a href="https://maps.app.goo.gl/XJN3Zc9hoQoSVM467">
+                            <p><span class="icon-room mr-2"></span>Jl. PB Sudirman Ruko Sudirman No.4F, Wetan Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/stbd.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Situbondo</h3>
+                        <a href="https://maps.app.goo.gl/t1TYT3ufyksrSPvo6">
+                            <p><span class="icon-room mr-2"></span>Jl. Argopuro No.28-C, Krajan Mimbaan, Mimbaan, Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/stbd.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Jakarta</h3>
+                        <a href="https://maps.app.goo.gl/TgNxp71PCWi9iFZ28">
+                            <p><span class="icon-room mr-2"></span>Jl. Pegambiran No.5 12, RT.12/RW.7, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13220</p>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+</div>
 
 
 
