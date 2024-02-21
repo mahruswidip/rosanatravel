@@ -502,7 +502,7 @@
                         <div class="info">
                             <i class="bi bi-envelope"></i>
                             <h4>Email :</h4>
-                            <p>info@rosanatourtravel.com</p>
+                            <p>info@rosanatravel.com</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
