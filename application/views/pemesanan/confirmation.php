@@ -23,16 +23,6 @@
     }
 </style><!-- Detail Paket Section -->
 
-<?php
-// Fungsi untuk menghasilkan Angka UUID
-function generateNumericUUID()
-{
-    // Menggunakan timestamp dan tambahan random untuk memastikan unik
-    $numericUuid = time() . mt_rand(100000, 999999);
-    return $numericUuid;
-}
-?>
-
 <div class="untree_co-section" style="padding-top: 170px!important;">
     <div class="container">
         <div class="row">
@@ -40,7 +30,7 @@ function generateNumericUUID()
                 <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
                     <h2 class="section-title">Konfirmasi Pemesanan</h2>
                     <br>
-                    <p>UUID : <strong><?php echo generateNumericUUID(); ?></strong></p>
+                    <p>UUID : <strong><?php echo $this->session->userdata('uuid') ?></strong></p>
                     <p>NIK : <strong><?php echo $this->session->userdata('nik') ?></strong></p>
                     <p>Nama Pendaftar : <strong><?php echo $this->session->userdata('nama_pendaftar') ?></strong></p>
                     <p>Jenis Kelamin : <strong><?php echo $this->session->userdata('jenis_kelamin') ?></strong></p>
@@ -50,10 +40,11 @@ function generateNumericUUID()
                     <h6 class="font-weight-bold mt-2">Detail Paket yang dipesan</h6>
                     <p class=""><?php echo $this->session->userdata('pesan_apa') ?></p>
                     <p class="">Rencana Berangkat : <?php echo $this->session->userdata('berapa_orang') ?> Orang</p>
-                    <!-- <?php print_r($this->session->all_userdata()) ?> -->
                 </div>
             </div>
-
+            <div class="col-lg-3">
+                <img src="<?php echo base_url('assets/') ?>images/qrcodependaftar/<?php echo $this->session->userdata('uuid') . '.png' ?>" alt="">
+            </div>
         </div>
     </div>
 </div>

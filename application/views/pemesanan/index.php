@@ -85,6 +85,12 @@
                                     <label class="text-black" for="berapa_orang">Jamaah Berapa Orang ?</label>
                                     <input type="number" required name="berapa_orang" value="<?php echo $this->input->post('berapa_orang'); ?>" class="form-control" id="berapa_orang" />
                                 </div>
+                                <br>
+                                <p style="color: dimgray;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan Durasi Bepergian, Tanggal Berangkat, Kelas Paket, dll.</p>
+                                <div class="form-group">
+                                    <label class="text-black" for="request">Request</label>
+                                    <textarea name="request" class="form-control" id="request" cols="30" rows="5"></textarea>
+                                </div>
                             </section>
                             <h3>Step 2 Title</h3>
                             <section id="jamaahSection">
@@ -137,9 +143,6 @@
                                 <iframe class="map-iframe" id="probolinggoMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.339303865974!2d113.19214437574972!3d-7.753790876886696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7ad89a98e1021%3A0x6089a82fceb380c0!2sRosana%20Travel%20Umroh%20Haji%20Probolinggo%20(Official)!5e0!3m2!1sen!2sid!4v1704772422642!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <iframe class="map-iframe" id="jemberMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.4111455880525!2d113.70551412500892!3d-8.161265841869415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd69449dd069aff%3A0x4d7d68f0a2590734!2sRosana%20Travel%20Jember%20(Official)!5e0!3m2!1sen!2sid!4v1704772536857!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <iframe class="map-iframe" id="situbondoMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.7176228082126!2d114.01264077574912!3d-7.713418176417322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd729103ee8db75%3A0x1a4fd1c29bcf36a6!2sRosana%20Travel%20umroh%20dan%20haji%20Situbondo%20(Official)!5e0!3m2!1sen!2sid!4v1704772624756!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-
                             </section>
                         </div>
                     </form>

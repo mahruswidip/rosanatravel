@@ -15,6 +15,11 @@ class Pemesanan_model extends CI_Model
         return $this->db->get_where('pemesanan', array('id_pemesanan' => $id_pemesanan))->row_array();
     }
 
+    function get_pemesanan_uuid($uuid)
+    {
+        return $this->db->get_where('pendaftar', array('uuid' => $uuid))->row_array();
+    }
+
     /*
      * Get all pemesanan count
      */
@@ -50,7 +55,8 @@ class Pemesanan_model extends CI_Model
     function add_pemesan($params)
     {
         $this->db->set('nik', $params['nik']);
-        $this->db->set('uuid', 'UUID_SHORT()', FALSE);
+        $this->db->set('uuid', $params['uuid']);
+        // $this->db->set('uuid', 'UUID_SHORT()', FALSE);
         $this->db->set('nama_pendaftar', $params['nama_pendaftar']);
         $this->db->set('jenis_kelamin', $params['jenis_kelamin']);
         $this->db->set('email', $params['email']);
@@ -58,6 +64,8 @@ class Pemesanan_model extends CI_Model
         $this->db->set('alamat', $params['alamat']);
         $this->db->set('pesan_apa', $params['pesan_apa']);
         $this->db->set('berapa_orang', $params['berapa_orang']);
+        $this->db->set('request', $params['request']);
+        $this->db->set('qr_code', $params['qr_code']);
         $this->db->insert('pendaftar');
     }
 
