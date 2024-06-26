@@ -73,13 +73,13 @@
                             <li><a href="elements.html">Tabungan Umroh</a></li>
                         </ul>
                     </li>
-                    <li class="has-children">
+                    <li><a href="<?php echo base_url('paket/haji/'); ?>">Haji</a></li>
+                    <!-- <li class="has-children">
                         <a href="#">Haji</a>
                         <ul class="dropdown">
-                            <li><a href="elements.html">Haji Tanpa Antri</a></li>
-                            <li><a href="elements.html">Haji Plus</a></li>
+                            <li><a href="<?php echo base_url('paket/haji/'); ?>">Haji Eksklusif</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a href="#tentang-kami">Tentang Kami</a></li>

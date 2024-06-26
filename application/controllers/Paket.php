@@ -50,6 +50,12 @@ class Paket extends CI_Controller
         $data['_view'] = 'paket/umroh';
         $this->load->view('layouts/main', $data);
     }
+    function haji()
+    {
+        // $data['paketumroh'] = $this->Paket_model->get_paket_umroh_only();
+        $data['_view'] = 'paket/haji';
+        $this->load->view('layouts/main', $data);
+    }
     function wisatahalal()
     {
         $data['pakettour'] = $this->Paket_model->get_paket_tour_only();
