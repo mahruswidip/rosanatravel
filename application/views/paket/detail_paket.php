@@ -17,11 +17,11 @@
         <div class="row justify-content-center text-center mb-5">
         </div>
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket[0]['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="border-radius: 20px;">
             </div>
             <div class="col-lg-6">
-                <div class="">
+                <div class=" feature-1 d-md-flex">
                     <div class="pt-0 p-3 mt-3 mx-2">
                         <h2 class="section-title text-left mb-3"><?php echo $paket[0]['nama_program']; ?></h2>
                         <div class="row">
@@ -67,10 +67,16 @@
                         <!-- <a href="https://api.whatsapp.com/send?phone=628113003258&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20produk%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Pesan Sekarang</a> -->
                     </div>
                 </div>
-                <!-- <?php echo '<pre>';
-                        print_r($paket); ?> -->
-
             </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Detail Paket</h4>
+                    <p><?php echo $paket[0]['konten']; ?></p>
+                </div>
+            </div>
+            <!-- <?php echo '<pre>';
+                    print_r($paket); ?> -->
+
         </div>
     </div>
 </div>

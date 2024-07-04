@@ -1,7 +1,12 @@
 <div class="container" style="margin-top: 150px;">
     <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-6">
-            <h2 class="section-title text-center mb-3">Paket Haji Kami</h2>
+            <h2 class="section-title text-center mb-3">Haji Eksklusif</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-6">
+            <h2 class="section-title text-center mb-3">Pembanding Paket Haji Kami</h2>
         </div>
     </div>
     <div class="row">
