@@ -5,6 +5,7 @@
             <div class="col-lg-7 mx-auto text-center">
                 <div class="intro-wrap">
                     <h1 class="mb-0">Haji Eksklusif</h1>
+                    <h2 class="text-white">Rosana Travel</h2>
                     <br>
                     <h5 class="text-white" style="font-family: 'Source Serif Pro', serif;">Nikmati Ibadah Haji dengan Fasilitas Bintang 5 dan Pengalaman Tak Tertandingi Bersama Rosana Travel</h5>
                 </div>
@@ -15,33 +16,88 @@
 
 <div class="untree_co-section">
     <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-lg-9 text-center">
+                <h2 class="section-title text-center mb-3">Apa yang itu ARMUZNA ?</h2>
+                <h5 style="font-family: 'Source Serif Pro', serif; font-weight: bold;">Arafah, Muzdalifah, Mina </h5>
+                <h5 style="font-family: 'Source Serif Pro', serif;">Prosesi inti yang sakral dalam rangkaian pelaksanaan ibadah haji yang termasuk dalam <b>Rukun Haji: Arafah, Muzdalifah, dan Mina</b></h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="<?php echo base_url('assets/') ?>images/pagehaji/armuzna/arafah.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                    <div>
+                        <h3><a href="#"><b>Arafah</b></a></h3>
+                        <p><b>Wukuf di Arafah:</b> Ini adalah bagian utama dari ibadah haji yang berlangsung pada tanggal 9 Dzulhijjah. Jamaah berkumpul di padang Arafah untuk berdoa, berzikir, dan mendengarkan khotbah di Arafah. Prosesi berlangsung mulai dari Menyingsingnya Matahari di tanggal 9 Dzulhijjah sampai terbenamnya matahari</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="<?php echo base_url('assets/') ?>images/pagehaji/armuzna/muzdalifah.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                    <div>
+                        <h3><a href="#"><b>Muzdalifah</b></a></h3>
+                        <p>Setelah matahari terbenam pada hari Arafah, pada umumnya jamaah bergerak <b>menuju Muzdalifah</b> untuk bermalam. Di sini, mereka mengumpulkan kerikil yang akan digunakan untuk melontar jumrah di Mina.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="<?php echo base_url('assets/') ?>images/pagehaji/armuzna/mina.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                    <div>
+                        <h3><a href="#"><b>Mina</b></a></h3>
+                        <p>Jamaah bergerak ke <b>Mina</b> untuk melaksanakan <b>lempar jumrah</b>. Mereka melontar kerikil ke tiga pilar/tiang : Ula, Wustha, Aqabah. Prosesi ini berlangsung selama beberapa hari.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-lg-9 text-center">
+                <h2 class="section-title text-center mb-3">Fasilitas Haji Eksklusif</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-6 col-md-6 col-lg-3">
                 <div class="service text-center">
-                    <span class="icon-hotel"></span>
-                    <h3>Kenyamanan Bintang 5</h3>
-                    <p>Pengalaman Menginap di Hotel Mewah Dekat Masjid Suci.</p>
+                    <span class="fas fa-praying-hands display-5 text-primary mb-4"></span>
+                    <h3>Arbain di Madinah</h3>
+                    <p>Melaksanakan shalat berjamaah selama empat puluh waktu berturut-turut di Masjid Nabawi, Madinah, untuk mendapatkan keutamaan dan pahala yang besar.</p>
                 </div>
             </div>
             <div class="col-6 col-md-6 col-lg-3">
                 <div class="service text-center">
-                    <span class="icon-user"></span>
-                    <h3>Bimbingan Spiritual Profesional</h3>
-                    <p>Didampingi oleh Pembimbing Ibadah Bersertifikasi Nasional.</p>
+                    <span class="fas fa-hotel display-5 text-primary mb-4"></span>
+                    <div class="row justify-content-center">
+                        <h3>Full Hotel &nbsp;</h3> <i class="fa-solid fa-star"></i>
+                        <h3>&nbsp;5</h3>
+                    </div>
+                    <p>Pengalaman Menginap di Hotel Mekkah selama 15 Hari Penuh dengan Jarak 250m berdampingan dengan Masjidil Haram tanpa Pindah ke Hotel Transit/Rumah Transit</p>
                 </div>
             </div>
             <div class="col-6 col-md-6 col-lg-3">
                 <div class="service text-center">
-                    <span class="icon-book"></span>
-                    <h3>Ilmu dan Iman yang Mendalam</h3>
-                    <p>Program Pesantren Haji untuk Meningkatkan Pemahaman Agama.</p>
+                    <span class="fas fa-star-and-crescent display-5 text-primary mb-4"></span>
+                    <h3>Pesantren Haji</h3>
+                    <p>Program Pesantren Haji untuk membekali jamaah dengan pemahaman agama yang mendalam dan bimbingan spiritual sepanjang prosesi ibadah haji, didampingi oleh pembimbing ibadah bersertifikasi nasional.</p>
                 </div>
             </div>
             <div class="col-6 col-md-6 col-lg-3">
                 <div class="service text-center">
-                    <span class="icon-tag"></span>
-                    <h3>Perjalanan Terjangkau</h3>
-                    <p>Paket Haji Eksklusif dengan Harga Kompetitif dan Fasilitas Terbaik.</p>
+                    <span class="fas fa-book display-5 text-primary mb-4"></span>
+                    <h3>Program Ibadah Lengkap ARMUZNA</h3>
+                    <p>Pelaksanaan ibadah lengkap di Arafah, Muzdalifah, dan Mina, memastikan setiap jamaah menjalani semua rukun dan wajib haji dengan tertib dan lengkap sesuai tuntunan yang benar.</p>
                 </div>
             </div>
         </div>
@@ -79,7 +135,7 @@
                     <div class="d-flex">
                         <div>
                             <h3><a href="#">Program Pesantren Haji Eksklusif</a></h3>
-                            <p>Meningkatkan Ilmu Agama dan Iman Selama Perjalanan Haji</p>
+                            <p>Meningkatkan Ilmu Agama dan Iman Selama Perjalanan Ibadah Haji</p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +180,7 @@
                             <div class="align-self-center">
                                 <span class="fas fa-kaaba display-5 text-primary mb-4"></span>
                                 <h3>Wukuf di Arafah</h3>
-                                <p class="mb-0">Kami menempatkan prioritas utama pada ibadah yang paling krusial dalam pelaksanaan haji, yakni wukuf di Arafah pada tanggal 9 Dzulhijjah, merupakan bagian tak terpisahkan dari rukun haji yang memperdalam makna dan keberkahan perjalanan spiritual jamaah.</p>
+                                <p class="mb-0">Kami menempatkan prioritas utama pada ibadah yang paling krusial dalam pelaksanaan haji, yakni wukuf di Arafah pada tanggal 9 Dzulhijjah, merupakan bagian tak terpisahkan dari rukun haji demi memperdalam makna dan keberkahan perjalanan spiritual jamaah.</p>
                             </div>
                         </div>
                     </div>
@@ -134,7 +190,7 @@
                             <div class="align-self-center">
                                 <span class="fas fa-book display-5 text-primary mb-4"></span>
                                 <h3>Program Pesantren Haji</h3>
-                                <p class="mb-0">Kami menyediakan program pesantren haji yang membekali para jamaah dengan ilmu agama, mempersiapkan mereka untuk pelaksanaan ibadah haji yang lebih khusyuk dan bermakna.</p>
+                                <p class="mb-0">Kami menyediakan program pesantren haji yang membekali para jamaah dengan ilmu agama, mempersiapkan mereka untuk pelaksanaan ibadah haji di <b>ARMUZNA</b> yang lebih khusyuk dan bermakna.</p>
                             </div>
                         </div>
                     </div>
@@ -176,42 +232,13 @@
     </div>
 </div>
 
-<div class="untree_co-section">
-    <div class="container">
-        <div class="row mb-5 justify-content-center">
-            <div class="col-lg-9 text-center">
-                <h2 class="section-title text-center mb-3">Pembimbing Ibadah Haji Bersertifikasi Nasional</h2>
-                <h5 style="font-family: 'Source Serif Pro', serif;">Didampingi oleh Pembimbing Haji Berpengalaman dan Bersertifikasi Nasional untuk Perjalanan Ibadah Haji Anda yang Lebih Bermakna</h5>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6 order-lg-1">
-                <div class="row">
-
-                </div>
-            </div>
-
-            <div class="col-lg-6 order-lg-2">
-                <div class="row">
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    </div>
-</div>
-
 <div class="py-5 cta-section">
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-                <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-                <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
+                <h2 class="mb-2 text-white">Jangan lewatkan kesempatan beribadah yang Nyaman dan Aman</h2>
+                <p class="mb-4 lead text-white text-white-opacity">Bersama Rosana Travel, perjalanan Ibadah Haji anda menjadi bermakna</p>
+                <p class="mb-0"><a href="https://api.whatsapp.com/send/?phone=628113003258&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20Di%20Rosana%20Travel%20&app_absent=0" class="btn btn-outline-white text-white btn-md font-weight-bold">Mau tanya Haji ?</a></p>
             </div>
         </div>
     </div>
