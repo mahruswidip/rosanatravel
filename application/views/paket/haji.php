@@ -281,11 +281,78 @@
 
     </div>
 </div>
+
+<div class="untree_co-section testimonial-section mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <h2 class="section-title text-center mb-5">Apa Kata Alumni Jamaah Haji Eksklusif ?</h2>
+
+                <div class="owl-single owl-carousel no-nav">
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/paksaiful.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Seiful Bahri & Ibu Hj. Dina Mariana</h3>
+                        <h3 class="name" style="font-size: 15px!important; font-weight: bold;">Alumni Jamaah Haji 2024</h3>
+                        <blockquote>
+                            <p>&ldquo;Alhamdulillah, Sangat Luar Biasa dukungannya (Pelayanan) dari PT. Rosana sangat istimewa dari awal sampai akhir. Kami menikmati Full Hotel di Madinah betul-betul FULL, 11 Hari di Mekkah juga 15 Hari selalu dekat dengan Masjidil Haram. TOP MarkoTOP.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakis.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Is Hariyanto & Ibu Hj. Shella</h3>
+                        <h3 class="name" style="font-size: 15px!important; font-weight: bold;">Alumni Jamaah Haji 2023</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami memndapatkan pelayanan yang sangat Hebat, terutama kita bisa beribadah setiap hari di Masjidil Haram, itu yang paling penting buat kami.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakbu.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Fakhruddin & Ibu Hj. Silvi</h3>
+                        <h3 class="name" style="font-size: 15px!important; font-weight: bold;">Alumni Jamaah Haji 2018</h3>
+                        <blockquote>
+                            <p>&ldquo;Alhamdulillah kita merasa nyaman, petugasnya sangat ramah dan juga bersahabat.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakgunawan.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Gunawan Aprilianto</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami sangat puas dengan pelayanan Rosana Travel dalam membimbing ibadah Umroh dan Haji kami bersama seluruh rombongan Pandawa 87 Group.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/paksaudara.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Soeyono</h3>
+                        <blockquote>
+                            <p>&ldquo;Rasa kekeluargaan yang baik terhadap crew (kepada jamaah) itu betul-betul kayak saudara. Betul-betul kayak saudara dan itu yang saya rasakan.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="untree_co-section" id="galeri">
     <div class="container">
         <div class="row text-center justify-content-center mb-5">
             <div class="col-lg-7">
-                <h2 class="section-title text-center">Galeri Kami</h2>
+                <h2 class="section-title text-center">Galeri Haji Kami</h2>
             </div>
         </div>
         <div class="owl-carousel owl-3-slider">
