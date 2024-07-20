@@ -281,6 +281,25 @@
 
     </div>
 </div>
+<div class="untree_co-section" id="galeri">
+    <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7">
+                <h2 class="section-title text-center">Galeri Kami</h2>
+            </div>
+        </div>
+        <div class="owl-carousel owl-3-slider">
+            <?php foreach ($galeri as $galeri_item) : ?>
+                <div class="item">
+                    <a class="media-thumb" href="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
+                        <img src="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+</div>
 
 <div class="py-5 cta-section">
     <div class="container">
