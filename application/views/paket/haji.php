@@ -374,7 +374,7 @@
             <div class="col-md-12">
                 <h2 class="mb-2 text-white">Jangan lewatkan kesempatan beribadah yang Nyaman dan Aman</h2>
                 <p class="mb-4 lead text-white text-white-opacity">Bersama Rosana Travel, perjalanan Ibadah Haji anda menjadi bermakna</p>
-                <p class="mb-0"><a href="https://api.whatsapp.com/send/?phone=628113003258&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20Di%20Rosana%20Travel%20&app_absent=0" class="btn btn-outline-white text-white btn-md font-weight-bold">Mau tanya Haji ?</a></p>
+                <p class="mb-0"><a href="https://api.whatsapp.com/send/?phone=6281133360600&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20HAJI%20Di%20Rosana%20Travel%20&app_absent=0" class="btn btn-outline-white text-white btn-md font-weight-bold">Mau tanya Haji ?</a></p>
             </div>
         </div>
     </div>
