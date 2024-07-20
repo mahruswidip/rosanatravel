@@ -4,11 +4,61 @@
         <div class="row align-items-center">
             <div class="col-lg-7 mx-auto text-center">
                 <div class="intro-wrap">
-                    <h1 class="mb-0">Haji Eksklusif</h1>
-                    <h2 class="text-white">Rosana Travel</h2>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-lg-7">
+                            <img src="<?php echo base_url('assets/') ?>images/pagehaji/exhajjwhite.png" alt="Image" class="img-fluid mb-4">
+                        </div>
+                    </div>
+
+                    <!-- <h1 class="mb-0">Haji Eksklusif</h1>
+                    <h2 class="text-white">Rosana Travel</h2> -->
                     <br>
                     <h5 class="text-white" style="font-family: 'Source Serif Pro', serif;">Nikmati Ibadah Haji dengan Fasilitas Bintang 5 dan Pengalaman Tak Tertandingi Bersama Rosana Travel</h5>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+
+            <div class="col-lg-5">
+                <figure class="img-play-video">
+                    <a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=vlxQWWxz_HM" data-fancybox>
+                        <span></span>
+                    </a>
+                    <img src="<?php echo base_url('assets/') ?>images/pagehaji/sampul2.jpg" alt="Image" class="img-fluid rounded-20">
+                </figure>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="<?php echo base_url('assets/') ?>images/pagehaji/logopagehajinoframe.png" alt="Image" class="img-fluid">
+                    </div>
+                </div>
+                <br>
+                <h2 class="section-title text-left mb-4">Tentang Haji Eksklusif</h2>
+
+                <p class="mb-4"><strong>Haji Eksklusif Rosana Travel: Perjalanan Ibadah yang Tak Terlupakan.</strong> <br>Menghadirkan pengalaman beribadah haji yang istimewa, Haji Eksklusif Rosana Travel menawarkan layanan unggulan dengan fasilitas bintang lima yang memadukan kenyamanan, kemudahan, dan kebersamaan dalam beribadah. <br><br>Dengan Rosana Travel, setiap langkah dalam perjalanan spiritual Anda dirancang khusus untuk memberikan pengalaman yang penuh makna dan berkesan.</p>
+
+                <h4>Mengapa Memilih Haji Eksklusif Rosana Travel?</h4>
+                <p>Kami berkomitmen untuk memberikan layanan terbaik dan fasilitas unggulan yang memastikan kenyamanan, kemudahan, dan keberkahan dalam setiap langkah perjalanan Anda. Dengan pengalaman dan profesionalisme dalam menyelenggarakan perjalanan haji, kami siap mendampingi Anda dalam meraih ibadah haji yang mabrur.</p>
+
+                <h4>7 Keunggulan Rosana Travel</h4>
+
+                <ul class="list-unstyled two-col clearfix">
+                    <li>Full Hotel *5 Mekkah & *5 Madinah tanpa Pindah ke Hotel Transit / Rumah Transit</li>
+                    <li>Paket Arbain di Madinah</li>
+                    <li>Pesantren Haji dibawah bimbingan 2 Pembimbing Ibadah Haji bersertifikasi Nasional</li>
+                    <li>Mengerjakan rangkaian Haji Full ARMUZNA (Arafah - Muzdalifah - Mina)</li>
+                    <li>Mendapat Kesempatan Sholat Idul Adha di Masjidil Haram</li>
+                    <li>Transportasi Bus Mandiri</li>
+                    <li>Makan Full Fullboard Hotel 3x setiap hari</li>
+                </ul>
+
             </div>
         </div>
     </div>
@@ -220,7 +270,7 @@
                             <div class="align-self-center">
                                 <span class="fas fa-money-bill-wave display-5 text-primary mb-4"></span>
                                 <h3>Biaya Efisien</h3>
-                                <p class="mb-0">Tidak perlu khawatir biaya membengkak akibat transportasi, kami menyediakan akomodasi yang nyaman dan terjangkau.</p>
+                                <p class="mb-0">Hotel yang sangat dekat Masjidil Haram dan Masjid Nabawi jadi Tidak perlu khawatir biaya membengkak akibat transportasi.</p>
                             </div>
                         </div>
                     </div>

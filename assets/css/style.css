@@ -1372,7 +1372,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .two-col li {
   display: inline-block;
-  width: 48%;
+  width: 70%;
   position: relative;
   padding-left: 30px;
   margin-bottom: 10px;
