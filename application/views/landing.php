@@ -236,7 +236,7 @@
         <div class="row text-center justify-content-center mb-5">
             <div class="col-lg-7">
                 <h2 class="section-title text-center">Blog Artikel</h2>
-                <p>Baca juga informasi menarik, tips & trik seputar traveling berikut ini.</p>
+                <h4 style="font-size: large;">Baca juga informasi menarik, tips & trik seputar traveling berikut ini.</h4>
             </div>
         </div>
         <?php foreach ($artikel as $artikel_item) : ?>
@@ -381,8 +381,13 @@
 </div>
 <div class="untree_co-section">
     <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7">
+                <h2 class="section-title text-center">Seberapa Jauh kami Sudah Berjalan</h2>
+                <h4 style="font-size: large;">Riwayat perjalanan kami, memulai perusahaan Biro Perjalanan Wisata dari 0</h4>
+            </div>
+        </div>
         <div class="row justify-content-center mb-5">
-            <h2 class="section-title text-center mb-4">Seberapa Jauh kami Sudah Berjalan</h2>
             <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK" class="rounded-20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
@@ -509,7 +514,7 @@
                         <div class="info w-100 mt-4">
                             <i class="bi bi-phone"></i>
                             <h4>Nomor HP / Whatsapp :</h4>
-                            <p>+62 811 3003 258</p>
+                            <p>+62 811 333 60600</p>
                         </div>
                     </div>
                 </div>

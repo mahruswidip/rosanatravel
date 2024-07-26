@@ -286,15 +286,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .site-nav .site-navigation .site-menu .has-children>a:before {
   position: absolute;
-  content: "\e313";
+  content: "\f078";
+  /* Font Awesome down arrow */
   font-size: 14px;
   top: 50%;
   right: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  font-family: 'icomoon';
+  font-family: 'Font Awesome 5 Free';
+  /* Font Awesome font family */
+  font-weight: 900;
+  /* Font Awesome free solid icons */
 }
+
 
 .site-nav .site-navigation .site-menu .has-children .dropdown {
   visibility: hidden;

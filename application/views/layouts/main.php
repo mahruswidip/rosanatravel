@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/aos.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/style.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>css/bd-wizard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <title>Rosana Tour And Travel - Umroh - Haji - Tour</title>
     <style>
@@ -139,7 +140,7 @@
                             <h3 class="heading">Kontak Kami</h3>
                             <ul class="list-unstyled quick-info links">
                                 <li class="email"><a href="#">info@rosanatravel.com</a></li>
-                                <li class="phone"><a href="#">+62 811 3003 258</a></li>
+                                <li class="phone"><a href="#">+62 811 333 60600</a></li>
                                 <li class="address"><a href="#">Jl. Dr. Setia Budi No. 20,
                                         Jalan Lingkar Selatan Kota Pasuruan,
                                         Jawa Timur, Indonesia</a></li>

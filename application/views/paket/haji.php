@@ -47,16 +47,16 @@
                 <h4>Mengapa Memilih Haji Eksklusif Rosana Travel?</h4>
                 <p>Kami berkomitmen untuk memberikan layanan terbaik dan fasilitas unggulan yang memastikan kenyamanan, kemudahan, dan keberkahan dalam setiap langkah perjalanan Anda. Dengan pengalaman dan profesionalisme dalam menyelenggarakan perjalanan haji, kami siap mendampingi Anda dalam meraih ibadah haji yang mabrur.</p>
 
-                <h4>7 Keunggulan Rosana Travel</h4>
+                <h4 class="mt-4">7 Keunggulan Rosana Travel</h4>
 
                 <ul class="list-unstyled two-col clearfix">
-                    <li>Full Hotel *5 Mekkah & *5 Madinah tanpa Pindah ke Hotel Transit / Rumah Transit</li>
-                    <li>Paket Arbain di Madinah</li>
-                    <li>Pesantren Haji dibawah bimbingan 2 Pembimbing Ibadah Haji bersertifikasi Nasional</li>
-                    <li>Mengerjakan rangkaian Haji Full ARMUZNA (Arafah - Muzdalifah - Mina)</li>
-                    <li>Mendapat Kesempatan Sholat Idul Adha di Masjidil Haram</li>
-                    <li>Transportasi Bus Mandiri</li>
-                    <li>Makan Full Fullboard Hotel 3x setiap hari</li>
+                    <li><b>Full Hotel *5 Mekkah & *5 Madinah tanpa Pindah ke Hotel Transit / Rumah Transit</b></li>
+                    <li><b>Paket Arbain di Madinah</b></li>
+                    <li><b>Pesantren Haji dibawah bimbingan 2 Pembimbing Ibadah Haji bersertifikasi Nasional</b></li>
+                    <li><b>Mengerjakan rangkaian Haji Full ARMUZNA (Arafah - Muzdalifah - Mina)</b></li>
+                    <li><b>Mendapat Kesempatan Sholat Idul Adha di Masjidil Haram</b></li>
+                    <li><b>Transportasi Bus Mandiri</b></li>
+                    <li><b>Makan Full Fullboard Hotel 3x setiap hari</b></li>
                 </ul>
 
             </div>
