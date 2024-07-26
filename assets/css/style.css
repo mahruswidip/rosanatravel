@@ -1,5 +1,5 @@
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.5;
   background: #ffffff;
   overflow-x: hidden;
@@ -89,8 +89,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .btn.btn-primary {
-  background: #1A374D;
-  border-color: #1A374D;
+  background: #2BA84A;
+  border-color: #2BA84A;
 }
 
 .btn.btn-primary:hover {
@@ -228,7 +228,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 .site-nav {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #1A374D;
+  background-color: #E6BF50;
 }
 
 .site-nav h1 {
@@ -246,11 +246,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .site-nav .site-navigation .site-menu>li>a {
-  font-size: 14px;
+  font-size: 15px;
   padding: 10px 15px;
   display: inline-block;
-  text-decoration: none !important;
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  /* text-decoration: none !important; */
+  color: rgba(28, 28, 28, 0.7);
 }
 
 .site-nav .site-navigation .site-menu>li>a:hover {
@@ -271,7 +272,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .site-nav .site-navigation .site-menu>li.active>a {
-  color: #ffffff;
+  color: #00133c;
   font-weight: bold;
 }
 
@@ -769,7 +770,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .hero {
   padding: 7rem 0 10rem 0;
-  background: #6998AB;
+  background: #E6BF50;
   margin-bottom: 100px;
 }
 
@@ -780,7 +781,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .hero h1 {
-  color: #ffffff;
+  color: #1f1f1f;
   font-size: 60px;
 }
 
@@ -815,7 +816,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   left: -100px;
   z-index: 0;
   position: relative;
-  border-radius: 200px;
+  border-radius: 150px;
   -webkit-box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4);
   box-shadow: 0 25px 50px -10px rgba(26, 55, 77, 0.4);
   height: 608px;
@@ -830,7 +831,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .hero .slides img {
   position: absolute;
-  border-radius: 200px;
+  border-radius: 150px;
   opacity: 0;
   -webkit-transition: 4s opacity ease;
   -o-transition: 4s opacity ease;
