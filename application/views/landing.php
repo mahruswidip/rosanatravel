@@ -415,7 +415,7 @@
                     <div class="px-3">
                         <h3 class="mb-0">Malang</h3>
                         <a href="https://maps.app.goo.gl/mjH65SgAWFGUfeHB9">
-                            <p><span class="icon-room mr-2"></span>Jl. Kalpataru No.83 kav b, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Kalpataru No.83 kav b, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
                         </a>
                     </div>
                 </div>
@@ -426,7 +426,7 @@
                     <div class="px-3">
                         <h3 class="mb-0">Probolinggo</h3>
                         <a href="https://maps.app.goo.gl/2zWQsaLn5MKHSWsbA">
-                            <p><span class="icon-room mr-2"></span>Jl. Soekarno - Hatta No.137, Curahgrinting, Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Soekarno - Hatta No.137, Curahgrinting, Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
                         </a>
                     </div>
                 </div>
@@ -438,7 +438,7 @@
                     <div class="px-3">
                         <h3 class="mb-0">Jember</h3>
                         <a href="https://maps.app.goo.gl/XJN3Zc9hoQoSVM467">
-                            <p><span class="icon-room mr-2"></span>Jl. PB Sudirman Ruko Sudirman No.4F, Wetan Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. PB Sudirman Ruko Sudirman No.4F, Wetan Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
                         </a>
                     </div>
                 </div>
@@ -449,7 +449,7 @@
                     <div class="px-3">
                         <h3 class="mb-0">Situbondo</h3>
                         <a href="https://maps.app.goo.gl/t1TYT3ufyksrSPvo6">
-                            <p><span class="icon-room mr-2"></span>Jl. Argopuro No.28-C, Krajan Mimbaan, Mimbaan, Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Argopuro No.28-C, Krajan Mimbaan, Mimbaan, Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
                         </a>
                     </div>
                 </div>
