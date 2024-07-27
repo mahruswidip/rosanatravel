@@ -204,7 +204,7 @@
                                 <?php endif; ?>
                             </div>
                             <span class="d-flex align-items-center loc mb-2">
-                                <span class="icon-room mr-3"></span>
+                                <i class="fas fa-map-marker-alt mr-3"></i>
                                 <span><?php echo $paket_item['kategori']; ?></span>
                             </span>
                             <div class="d-flex align-items-center">
