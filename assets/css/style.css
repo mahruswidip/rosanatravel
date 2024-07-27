@@ -228,7 +228,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 .site-nav {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #E6BF50;
+  /* background-color: #E6BF50; */
+  background-image: linear-gradient(to right, #f9d423 20%, #ff8c4e 100%);
 }
 
 .site-nav h1 {
@@ -770,7 +771,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .hero {
   padding: 7rem 0 10rem 0;
-  background: #E6BF50;
+  /* background: #E6BF50; */
+  background-image: linear-gradient(to right, #f9d423 20%, #ff8c4e 100%);
   margin-bottom: 100px;
 }
 
