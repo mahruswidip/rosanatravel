@@ -38,18 +38,15 @@
                                 <h3 style="font-weight: bold;">Data Pendaftar</h3>
                                 <p style="color: dimgray;">Data pendaftar diisi oleh dengan siapa calon jamaah akan didaftarkan. Pendaftar bertanggung jawab atas kebenaran data Jamaah yang didaftarkan nantinya.</p>
                                 <div class="form-group">
-                                    <label class="text-black" for="nik">NIK</label>
-                                    <input type="text" required name="nik" value="<?php echo $this->input->post('nik'); ?>" class="form-control" id="nik" />
+                                    <input type="text" placeholder="NIK" required name="nik" value="<?php echo $this->input->post('nik'); ?>" class="form-control" id="nik" />
                                     <!-- <small id="nikHelp" class="form-text text-muted">We'll never share your nik with anyone else.</small> -->
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-black" for="nama_pendaftar">Nama Jamaah</label>
-                                    <input type="text" required name="nama_pendaftar" value="<?php echo $this->input->post('nama_pendaftar'); ?>" class="form-control" id="nama_pendaftar" />
+                                    <input type="text" placeholder="Nama Jamaah" required name="nama_pendaftar" value="<?php echo $this->input->post('nama_pendaftar'); ?>" class="form-control" id="nama_pendaftar" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Jenis Kelamin</label>
                                     <select name="jenis_kelamin" class="custom-select">
-                                        <option value="">Pilih</option>
+                                        <option value="">Jenis Kelamin</option>
                                         <?php
                                         $jenis_kelamin_values = array(
                                             'Laki-Laki' => 'Laki-Laki',
@@ -66,30 +63,32 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-black" for="email">Email address</label>
-                                    <input type="text" required name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
+                                    <input type="text" placeholder="Email" required name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-black" for="nomor_telepon">Nomor Telepon (WA)</label>
-                                    <input type="text" required name="nomor_telepon" value="<?php echo $this->input->post('nomor_telepon'); ?>" class="form-control" id="nomor_telepon" />
+                                    <p style="color: dimgray; font-size: small;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan Durasi Bepergian, Tanggal Berangkat, Kelas Paket, dll.</p>
+                                    <input type="text" placeholder="Nomor Telepon" required name="nomor_telepon" value="<?php echo $this->input->post('nomor_telepon'); ?>" class="form-control" id="nomor_telepon" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-black" for="alamat">Alamat</label>
-                                    <textarea name="alamat" class="form-control" id="alamat" cols="30" rows="5"></textarea>
+                                    <textarea name="alamat" placeholder="Alamat" class="form-control" id="alamat" cols="30" rows="5"></textarea>
                                 </div>
                                 <div class="form-group d-none">
-                                    <label class="text-black" for="pesan_apa">Pesan Apa</label>
                                     <input type="text" class="form-control" id="pesan_apa" value="<?php echo $paket[0]['nama_program']; ?>" name="pesan_apa">
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-black" for="berapa_orang">Jamaah Berapa Orang ?</label>
-                                    <input type="number" required name="berapa_orang" value="<?php echo $this->input->post('berapa_orang'); ?>" class="form-control" id="berapa_orang" />
+                                    <input type="number" placeholder="Jamaah Berapa Orang ?" required name="berapa_orang" value="<?php echo $this->input->post('berapa_orang'); ?>" class="form-control" id="berapa_orang" />
                                 </div>
                                 <br>
-                                <p style="color: dimgray;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan Durasi Bepergian, Tanggal Berangkat, Kelas Paket, dll.</p>
+                                <p style="color: dimgray;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan
+                                <ul>
+                                    <li>Durasi Bepergian</li>
+                                    <li>Tanggal Berangkat</li>
+                                    <li>Kelas Paket</li>
+                                    <li>dll.</li>
+                                </ul>
+                                </p>
                                 <div class="form-group">
-                                    <label class="text-black" for="request">Request</label>
-                                    <textarea name="request" class="form-control" id="request" cols="30" rows="5"></textarea>
+                                    <textarea name="request" placeholder="Request" class="form-control" id="request" cols="30" rows="5"></textarea>
                                 </div>
                             </section>
                             <h3>Step 2 Title</h3>
@@ -109,7 +108,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col d-none">
                                         <div class="purpose-radio">
                                             <input type="radio" name="purpose" id="kantor" class="purpose-radio-input" value="kantor">
                                             <label for="kantor" class="purpose-radio-label">
