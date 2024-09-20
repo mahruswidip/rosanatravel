@@ -217,7 +217,7 @@
                             </div>
                             <div class="row align-items-center py-3">
                                 <div class="col-sm-12 col-md-6 mb-3 col-lg-8">
-                                    <a href="<?php echo base_url('paket/detail_paket/' . $paket_item['id_paket']); ?>" class="btn btn-primary btn-block">Detail</a>
+                                    <a href="<?php echo base_url('paket/detail_paket/' . $paket_item['id_paket']); ?>" class="btn btn-light btn-sm">Detail <i class="fas fa-arrow-right ml-2"></i></a>
                                 </div>
                             </div>
                         </div>

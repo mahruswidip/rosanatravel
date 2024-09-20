@@ -307,7 +307,22 @@
     </script>
 
     <script src="<?php echo base_url('assets/') ?>js/custom.js"></script>
-
+    <!-- Start of Qontak Webchat Script -->
+    <script>
+        const qchatInit = document.createElement('script');
+        qchatInit.src = "https://webchat.qontak.com/qchatInitialize.js";
+        const qchatWidget = document.createElement('script');
+        qchatWidget.src = "https://webchat.qontak.com/js/app.js";
+        document.head.prepend(qchatInit);
+        document.head.prepend(qchatWidget);
+        qchatInit.onload = function() {
+            qchatInitialize({
+                id: "0c5c6d3e-e8a6-4c58-be69-6f2d50535570",
+                code: "kM3aTWbEZvOoVbcE0ucE4g"
+            })
+        };
+    </script>
+    <!-- End of Qontak Webchat Script -->
 </body>
 
 </html>
