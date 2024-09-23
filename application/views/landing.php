@@ -379,37 +379,29 @@
         </div>
     </div>
 </div>
+
 <div class="untree_co-section">
-    <div class="container">
-        <div class="row text-center justify-content-center mb-5">
-            <div class="col-lg-7">
-                <h2 class="section-title text-center">Seberapa Jauh kami Sudah Berjalan</h2>
-                <h4 style="font-size: large;">Riwayat perjalanan kami, memulai perusahaan Biro Perjalanan Wisata dari 0</h4>
-            </div>
-        </div>
-        <div class="row justify-content-center mb-5">
-            <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK" class="rounded-20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-    </div>
-</div>
-<div class="untree_co-section">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <img src="<?php echo base_url('assets/') ?>images/kontak/akreditasi.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
-        </div>
-    </div>
-</div>
-<div class="untree_co-section">
-    <div class="container">
+    <div class="container" style="max-width: 1250px!important;">
         <div class="row justify-content-center mb-5">
             <div class="col-md-6 text-center">
-                <h2 class="section-title mb-3 text-center">Kantor Cabang Kami</h2>
-                <p>Telusuri Kantor Cabang Kami yang Menyebar di Berbagai Lokasi untuk Melayani Anda Lebih Dekat.</p>
+                <h2 class="section-title mb-3 text-center">Kantor Resmi Kami</h2>
+                <p>Telusuri Kantor Resmi Kami yang Menyebar di Berbagai Lokasi untuk Melayani Anda Lebih Dekat.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-3 mb-4">
+            <div class="col mb-4">
+                <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/sby.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Surabaya</h3>
+                        <a href="https://maps.app.goo.gl/LvCU6VbJRCfEpYWu9">
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Barat Bandara Juanda, Jl. Raya Sedati Gede No.5-B, Sedati Gede, Kabupaten Sidoarjo, Jawa Timur 61253</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
                 <div class="team">
                     <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/mlg.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
@@ -420,7 +412,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 mb-4">
+            <div class="col mb-4">
                 <div class="team">
                     <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/prob.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
@@ -432,7 +424,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 mb-4">
+            <div class="col mb-4">
                 <div class="team">
                     <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/jbr.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
@@ -443,7 +435,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 mb-4">
+            <div class="col mb-4">
                 <div class="team">
                     <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/stbd.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
@@ -470,6 +462,28 @@
 
     </div>
 </div>
+
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7">
+                <h2 class="section-title text-center">Seberapa Jauh kami Sudah Berjalan</h2>
+                <h4 style="font-size: large;">Riwayat perjalanan kami, memulai perusahaan Biro Perjalanan Wisata dari 0</h4>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK" class="rounded-20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <img src="<?php echo base_url('assets/') ?>images/kontak/akreditasi.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
+        </div>
+    </div>
+</div>
+
 
 
 
