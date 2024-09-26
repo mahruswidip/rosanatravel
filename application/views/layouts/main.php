@@ -50,7 +50,36 @@
 </head>
 
 <body>
-
+    <!-- Modal -->
+    <div class="modal fade" id="masukCenter" tabindex="-1" role="dialog" aria-labelledby="masukCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header mx-2 my-2">
+                    <h5 class="modal-title" id="masukLongTitle">Masuk</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="masuk">Nomor HP / NIK</label>
+                                        <input type="text" class="form-control" id="masuk" placeholder="">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Selanjutnya</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
@@ -86,8 +115,9 @@
                     <li><a href="#tentang-kami">Tentang Kami</a></li>
                     <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li>
                     <!-- <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact Us</a></li> -->
+                    <li><a href="about.html">About</a></li>-->
+                    <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mr-1" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li>
+                    <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li>
                 </ul>
 
                 <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -321,6 +351,15 @@
                 code: "kM3aTWbEZvOoVbcE0ucE4g"
             })
         };
+        $('#masuk').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
     </script>
     <!-- End of Qontak Webchat Script -->
 </body>
