@@ -109,6 +109,7 @@ class Paket_model extends CI_Model
     {
         $this->db->where('kategori', 'Umroh');
         $this->db->where('travel', 'Rosana Travel');
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
         $this->db->where('publish', '1'); // Tambahkan kondisi is_aktif = 1
         $this->db->order_by('paket.id_paket', 'desc');
         return $this->db->get('paket')->result_array();
