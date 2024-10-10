@@ -13,7 +13,7 @@
                 <!-- <img src="loading.gif" alt="Loading..." class="loading-img" id="loadingImage"> -->
 
                 <!-- Gambar utama (sembunyikan saat loading) -->
-                <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: none;" id="mainImage">
+                <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: none;" id="mainImage">
             </div>
             <div class="modal-footer">
                 <a href="https://api.whatsapp.com/send?phone=628113003258&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Info Lebih Lanjut</a>
@@ -192,7 +192,7 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                         <div class="media-1">
                             <?php
-                            $imageSrc = 'https://alfatihahtravel.com/admin/assets/images/' . $paket_item['paket_img'];
+                            $imageSrc = 'https://rosanatravel.com/admin/assets/images/' . $paket_item['paket_img'];
                             $filter = ($paket_item['is_aktif'] == 0) ? 'grayscale(100%)' : 'none';
                             ?>
                             <div style="position: relative; overflow: hidden;">
@@ -244,7 +244,7 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-5">
                         <figure class="img-play-video">
-                            <img src="https://alfatihahtravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
+                            <img src="https://rosanatravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
                         </figure>
                     </div>
                     <div class="col-lg-6">
@@ -267,8 +267,8 @@
         <div class="owl-carousel owl-3-slider">
             <?php foreach ($galeri as $galeri_item) : ?>
                 <div class="item">
-                    <a class="media-thumb" href="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
-                        <img src="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
+                    <a class="media-thumb" href="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
+                        <img src="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
                     </a>
                 </div>
             <?php endforeach; ?>

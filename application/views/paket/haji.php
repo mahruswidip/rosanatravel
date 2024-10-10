@@ -358,8 +358,8 @@
         <div class="owl-carousel owl-3-slider">
             <?php foreach ($galeri as $galeri_item) : ?>
                 <div class="item">
-                    <a class="media-thumb" href="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
-                        <img src="https://alfatihahtravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
+                    <a class="media-thumb" href="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
+                        <img src="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
                     </a>
                 </div>
             <?php endforeach; ?>

@@ -9,7 +9,7 @@
             <a href="<?php echo base_url('paket/detail_paket/' . $paket_item['id_paket']); ?>">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <div class="media-1">
-                        <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket_item['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket_item['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
                         <span class="d-flex align-items-center loc mb-2">
                             <span class="icon-room mr-3"></span>
                             <span><?php echo $paket_item['kategori']; ?></span>

@@ -29,7 +29,6 @@
                 <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
                     <h2 class="section-title">Pemesanan</h2>
                     <form id="registration-form" class="contact-form bg-white mt-4" action="<?php echo site_url() . 'pemesanan/add' ?>" method="post" enctype="multipart/form-data">
-
                         <br>
                         <div id="wizard">
                             <h3>Step 1 Title</h3>
@@ -151,7 +150,7 @@
                 <div class="container">
                     <div class="row justify-content-left text-left mb-5">
                         <div class="col-md-5">
-                            <img src="https://alfatihahtravel.com/admin/assets/images/<?php echo $paket[0]['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="border-radius: 20px;">
+                            <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket[0]['paket_img']; ?>" alt="Image" class="img-fluid mb-4" style="border-radius: 20px;">
                         </div>
                         <div class="">
                             <div class="pt-0 p-3 mx-2">

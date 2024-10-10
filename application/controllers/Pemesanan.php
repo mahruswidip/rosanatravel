@@ -57,7 +57,7 @@ class Pemesanan extends CI_Controller
         // print_r($params);
         // exit();
 
-        $this->Pemesanan_model->add_jamaah($params);
+        $this->Pemesanan_model->add_pemesan($params);
         redirect(base_url());
     }
 

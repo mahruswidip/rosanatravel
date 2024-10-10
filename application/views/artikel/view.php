@@ -6,7 +6,7 @@
                 <article>
                     <h2 class="section-title text-left mb-4"><?php echo $artikel['judul_artikel']; ?></h2>
                     <div class="mb-4">
-                        <img src="https://alfatihahtravel.com/admin/assets/images/artikel/<?php echo $artikel['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
+                        <img src="https://rosanatravel.com/admin/assets/images/artikel/<?php echo $artikel['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
                     </div>
                     <p><?php echo $artikel['konten']; ?></p>
                 </article>
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-lg-5">
                                     <figure class="img-play-video">
-                                        <img src="https://alfatihahtravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
+                                        <img src="https://rosanatravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
                                     </figure>
                                 </div>
                             </div>
