@@ -95,7 +95,7 @@
             <div class="site-navigation">
                 <a href="<?php echo base_url('') ?>" class="logo m-0"><img style="height: 3.8rem;" src="<?php echo base_url('assets/images/logo/logoros.png') ?>" alt=""></a>
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="<?php echo base_url('') ?>">Beranda</a></li>
+                    <li class="active"><a href="<?php echo base_url('') ?>">Berandawd</a></li>
                     <li class="has-children">
                         <a href="<?php echo base_url('paket/umroh/'); ?>">Umroh</a>
                         <ul class="dropdown">
