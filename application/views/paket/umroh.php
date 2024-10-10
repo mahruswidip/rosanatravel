@@ -11,11 +11,11 @@
                     <div class="media-1">
                         <?php
                         $imageSrc = 'https://rosanatravel.com/admin/assets/images/' . $paket_item['paket_img'];
-                        $filter = ($paket_item['is_aktif'] == 0) ? 'grayscale(100%)' : 'none';
+                        $filter = ($paket_item['publish'] == 0) ? 'grayscale(100%)' : 'none';
                         ?>
                         <div style="position: relative; overflow: hidden;">
                             <img src="<?php echo $imageSrc; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); filter: <?php echo $filter; ?>">
-                            <?php if ($paket_item['is_aktif'] == 0) : ?>
+                            <?php if ($paket_item['publish'] == 0) : ?>
                                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 30%; background-color: rgba(255, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                     <span style="color: white; font-weight: bold;">SOLD OUT</span>
                                 </div>
