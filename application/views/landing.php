@@ -183,7 +183,7 @@
     <div class="container">
         <div class="row justify-content-center text-center mb-5">
             <div class="col-lg-6">
-                <h2 class="section-title text-center mb-3">Paket Terbaru Kami</h2>
+                <h2 class="section-title text-center mb-3">Paket Terbaru</h2>
             </div>
         </div>
         <div class="row">
