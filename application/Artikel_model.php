@@ -30,7 +30,6 @@ class Artikel_model extends CI_Model
     function get_all_artikel($params = array())
     {
         $this->db->order_by('artikel.id_artikel', 'desc');
-        $this->db->where('travel', 'Rosana Travel');
         // $this->db->join('tbl_users', 'tbl_users.id_artikel=artikel.id_artikel', 'left');
         if (isset($params) && !empty($params)) {
             $this->db->limit($params['limit'], $params['offset']);
