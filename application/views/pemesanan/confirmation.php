@@ -26,6 +26,14 @@
 <div class="untree_co-section" style="padding-top: 170px!important;">
     <div class="container">
         <div class="row">
+            <div class="col">
+                <div class="alert alert-success py-4" role="alert">
+                    <h3 class="alert-heading">Pendaftaran Berhasil !</h3>
+                    <p>Kami akan segera menghubungi anda melalui Nomor Whatsapp: <strong><?php echo $this->session->userdata('nomor_telepon') ?></strong>. Pendaftaran dan pemilihan paket anda telah berhasil dilakukan. <br> Simpan QR Code ini dan tunjukkan kepada tim marketing kami.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-3 mt-4">
             <div class="col-lg-7">
                 <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
                     <h2 class="section-title">Konfirmasi Pemesanan</h2>

@@ -65,8 +65,10 @@
                                     <input type="text" placeholder="Email" required name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
                                 </div>
                                 <div class="form-group">
-                                    <p style="color: dimgray; font-size: small;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan Durasi Bepergian, Tanggal Berangkat, Kelas Paket, dll.</p>
-                                    <input type="text" placeholder="Nomor Telepon" required name="nomor_telepon" value="<?php echo $this->input->post('nomor_telepon'); ?>" class="form-control" id="nomor_telepon" />
+                                    <div class="alert alert-primary" role="alert">
+                                        Sistem akan menghubungi anda melalui Nomor Whatsapp, Pastikan Nomor yang anda cantumkan Whatsappnya aktif ya,
+                                    </div>
+                                    <input type="text" placeholder="Nomor Whatsapp" required name="nomor_telepon" value="<?php echo $this->input->post('nomor_telepon'); ?>" class="form-control" id="nomor_telepon" />
                                 </div>
                                 <div class="form-group">
                                     <textarea name="alamat" placeholder="Alamat" class="form-control" id="alamat" cols="30" rows="5"></textarea>
