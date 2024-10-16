@@ -16,7 +16,7 @@
                 <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: block;" id="mainImage">
             </div>
             <div class="modal-footer">
-                <a href="https://api.whatsapp.com/send?phone=628113003258&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Info Lebih Lanjut</a>
+                <a href="https://api.whatsapp.com/send?phone=6281133360600&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Info Lebih Lanjut</a>
             </div>
         </div>
     </div>
