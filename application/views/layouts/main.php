@@ -302,7 +302,7 @@
         function add_pemesan() {
             // Assuming jQuery is available
             $.ajax({
-                url: "<?php echo site_url('Pemesanan/add_pemesan'); ?>",
+                url: "<?php echo site_url('pemesanan/add_pemesan'); ?>",
                 type: "POST",
                 data: $('#registration-form').serialize(),
                 success: function(response) {
@@ -320,7 +320,7 @@
         function confirmation() {
             // Assuming jQuery is available
             $.ajax({
-                url: "<?php echo site_url('Pemesanan/confirmation'); ?>",
+                url: "<?php echo site_url('pemesanan/confirmation'); ?>",
                 type: "POST",
                 data: $('#registration-form').serialize(),
                 success: function(response) {

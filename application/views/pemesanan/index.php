@@ -109,7 +109,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col d-none">
+                                    <div class="col">
                                         <div class="purpose-radio">
                                             <input type="radio" name="purpose" id="kantor" class="purpose-radio-input" value="kantor">
                                             <label for="kantor" class="purpose-radio-label">
