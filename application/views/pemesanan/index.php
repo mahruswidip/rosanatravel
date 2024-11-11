@@ -128,16 +128,18 @@
                                     <div class="form-group">
                                         <label for="branch">Pilih Kantor Terdekat:</label>
                                         <select class="form-control" name="branch" id="branchSelect">
-                                            <option value="pasuruan">Kantor Pusat Pasuruan</option>
-                                            <option value="malang">Kantor Cabang Malang</option>
-                                            <option value="probolinggo">Kantor Cabang Probolinggo</option>
-                                            <option value="jember">Kantor Cabang Jember</option>
-                                            <option value="situbondo">Kantor Cabang Situbondo</option>
+                                            <option value="surabaya">Kantor Pusat Surabaya</option>
+                                            <option value="pasuruan">Kantor Rosana Pasuruan</option>
+                                            <option value="malang">Kantor Rosana Malang</option>
+                                            <option value="probolinggo">Kantor Rosana Probolinggo</option>
+                                            <option value="jember">Kantor Rosana Jember</option>
+                                            <option value="situbondo">Kantor Rosana Situbondo</option>
                                             <!-- Add other branch options here -->
                                         </select>
                                     </div>
                                 </div>
                                 <!-- Embedded Google Maps Iframes -->
+                                <iframe class="map-iframe" id="surabayaMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4693.554911769428!2d112.76053467574492!3d-7.375639472594392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e59965663827%3A0x238a5f3c6e67dbbe!2sRosana%20Travel%20Surabaya%20-%20Graha%20Rosana%20(Official)!5e1!3m2!1sen!2sid!4v1731289011244!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <iframe class="map-iframe" id="pasuruanMap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15816.675014434899!2d112.902946!3d-7.664999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7cf567c652c2d%3A0x168233139d4ce4fd!2sRosana%20Travel%20Pasuruan%20(Official)!5e0!3m2!1sen!2sid!4v1704771956661!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <iframe class="map-iframe" id="malangMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4778808784868!2d112.62545287575229!3d-7.949466979199226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629da4fb99367%3A0xe3da68a3291f261!2sRosana%20Travel%20Malang%20(Official)!5e0!3m2!1sen!2sid!4v1704771981242!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <iframe class="map-iframe" id="probolinggoMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.339303865974!2d113.19214437574972!3d-7.753790876886696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7ad89a98e1021%3A0x6089a82fceb380c0!2sRosana%20Travel%20Umroh%20Haji%20Probolinggo%20(Official)!5e0!3m2!1sen!2sid!4v1704772422642!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
