@@ -290,7 +290,7 @@
         function confirmation() {
             // Assuming jQuery is available
             $.ajax({
-                url: "<?php echo site_url('Pemesanan/confirmation'); ?>",
+                url: "<?php echo site_url('pemesanan/confirmation'); ?>",
                 type: "POST",
                 data: $('#registration-form').serialize(),
                 success: function(response) {
