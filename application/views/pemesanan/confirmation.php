@@ -54,6 +54,14 @@
                 <img src="<?php echo base_url('assets/') ?>images/qrcodependaftar/<?php echo $this->session->userdata('uuid') . '.png' ?>" alt="">
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success py-4" role="alert">
+                    <h3 class="alert-heading">Pendaftaran Berhasil !</h3>
+                    <p>Kami akan segera menghubungi anda melalui Nomor Whatsapp: <strong><?php echo $this->session->userdata('nomor_telepon') ?></strong>. Pendaftaran dan pemilihan paket anda telah berhasil dilakukan. <br> Simpan QR Code ini dan tunjukkan kepada tim marketing kami.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
