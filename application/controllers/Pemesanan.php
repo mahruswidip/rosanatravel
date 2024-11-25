@@ -149,9 +149,6 @@ class Pemesanan extends CI_Controller
                 redirect('pemesanan/confirmation'); // Ganti dengan halaman form Anda
             }
         }
-        echo "<pre>";
-        print_r($data_input);
-        exit();
 
 
         // Simpan ke database
