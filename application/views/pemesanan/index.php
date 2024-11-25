@@ -106,7 +106,7 @@
                                 <div class="form-group">
                                     <textarea name="request" placeholder="Request" class="form-control" id="request" cols="30" rows="5"></textarea>
                                 </div> -->
-                            <h3 class="mb-4" style="font-weight: bold;">Pilih Metode Pendaftaran</h3>
+                            <!-- <h3 class="mb-4" style="font-weight: bold;">Pilih Metode Pendaftaran</h3>
                             <div class="row purpose-radios-wrapper">
                                 <div class="col">
                                     <div class="purpose-radio">
@@ -140,8 +140,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Dropdown Form -->
                             <div class="dropdown-form mt-3" id="branchDropdown">
                                 <div class="form-group">
                                     <label for="branch">Pilih Kantor Terdekat:</label>
@@ -152,11 +150,9 @@
                                         <option value="probolinggo">Kantor Rosana Probolinggo</option>
                                         <option value="jember">Kantor Rosana Jember</option>
                                         <option value="situbondo">Kantor Rosana Situbondo</option>
-                                        <!-- Add other branch options here -->
                                     </select>
                                 </div>
                             </div>
-                            <!-- Embedded Google Maps Iframes -->
                             <iframe class="map-iframe" id="surabayaMap"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4693.554911769428!2d112.76053467574492!3d-7.375639472594392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e59965663827%3A0x238a5f3c6e67dbbe!2sRosana%20Travel%20Surabaya%20-%20Graha%20Rosana%20(Official)!5e1!3m2!1sen!2sid!4v1731289011244!5m2!1sen!2sid"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -180,7 +176,7 @@
                             <iframe class="map-iframe" id="situbondoMap"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.7176228082126!2d114.01264077574912!3d-7.713418176417322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd729103ee8db75%3A0x1a4fd1c29bcf36a6!2sRosana%20Travel%20umroh%20dan%20haji%20Situbondo%20(Official)!5e0!3m2!1sen!2sid!4v1704772624756!5m2!1sen!2sid"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                             <button type="submit" class="btn btn-primary">
                                 Pesan Sekarang
                             </button>
