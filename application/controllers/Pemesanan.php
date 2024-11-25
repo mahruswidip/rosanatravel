@@ -150,7 +150,7 @@ class Pemesanan extends CI_Controller
             }
         }
         echo "<pre>";
-        print_r();
+        print_r($data_input);
         exit();
 
 
