@@ -146,9 +146,13 @@ class Pemesanan extends CI_Controller
         foreach ($data_input as $key => $value) {
             if (empty($value)) {
                 $this->session->set_flashdata('error', 'Data ' . $key . ' tidak boleh kosong.');
-                redirect('pemesanan/form'); // Ganti dengan halaman form Anda
+                redirect('pemesanan/confirmation'); // Ganti dengan halaman form Anda
             }
         }
+        echo "<pre>";
+        print_r();
+        exit();
+
 
         // Simpan ke database
         $this->Pemesanan_model->add_pemesan($data_input);
