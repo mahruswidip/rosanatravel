@@ -30,12 +30,13 @@ class Paket_model extends CI_Model
      */
     function get_all_paket($params = array())
     {
-        $this->db->order_by('paket.id_paket', 'desc');
-        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan=paket.fk_id_keberangkatan', 'left');
+        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan = paket.fk_id_keberangkatan', 'left');
         $this->db->where('paket.publish', 1);
         $this->db->where('travel', 'Rosana Travel');
+        $this->db->order_by('keberangkatan.tanggal_keberangkatan', 'asc'); // Mengurutkan berdasarkan tanggal keberangkatan (ascending)
         return $this->db->get('paket')->result_array();
     }
+    
 
     public function get_all_paket_api($params = array())
     {
