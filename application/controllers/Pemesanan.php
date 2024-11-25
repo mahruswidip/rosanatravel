@@ -141,6 +141,8 @@ class Pemesanan extends CI_Controller
             'berapa_orang' => $this->input->post('berapa_orang'),
             'qr_code' => base_url('assets/images/qrcodependaftar/' . $qr_code_file),
         );
+        
+        $this->session->set_userdata('registration_data', $data_input);
 
         // Validasi input
         foreach ($data_input as $key => $value) {
