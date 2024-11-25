@@ -194,7 +194,7 @@
             <div class="col-lg-5">
                 <div class="container">
                     <div class="row justify-content-left text-left mb-5">
-                        <div class="col-md-5">
+                        <div class="col">
                             <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket[0]['paket_img']; ?>"
                                 alt="Image" class="img-fluid mb-4" style="border-radius: 20px;">
                         </div>
