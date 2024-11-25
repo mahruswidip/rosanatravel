@@ -33,7 +33,7 @@ class Paket_model extends CI_Model
         $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan = paket.fk_id_keberangkatan', 'left');
         $this->db->where('paket.publish', 1);
         $this->db->where('travel', 'Rosana Travel');
-        $this->db->order_by('keberangkatan.tanggal_keberangkatan', 'asc'); // Mengurutkan berdasarkan tanggal keberangkatan (ascending)
+        $this->db->order_by('keberangkatan.tanggal_keberangkatan', 'desc'); // Mengurutkan berdasarkan tanggal keberangkatan (descending)
         return $this->db->get('paket')->result_array();
     }
     
