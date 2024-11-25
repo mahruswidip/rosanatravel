@@ -69,7 +69,7 @@
                         <a href="<?php echo base_url('pemesanan/index/' . $paket[0]['id_paket']); ?>"
                             class="btn btn-primary">Pesan Sekarang</a>
                         <a href="https://api.whatsapp.com/send?phone=6281133360600&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20produk%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A"
-                            class="btn btn-outline-success">Konsultasi dengan Marketing</a>
+                            class="btn btn-outline-danger">Konsultasi dengan Marketing</a>
                     </div>
                 </div>
             </div>
