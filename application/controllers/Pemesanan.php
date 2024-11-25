@@ -129,17 +129,19 @@ class Pemesanan extends CI_Controller
         $params['savename'] = $qr_code_path . $qr_code_file; // Simpan nama file QR Code
         $this->ciqrcode->generate($params); // Generate QR Code
 
+        $uuid_long = uniqid('', true);
+        $uuid_short = substr(md5($uuid_long), 0, 8);
+
         $paramsinsert = array(
-            'uuid' => $this->session->userdata('uuid'),
-            'nik' => $this->session->userdata('nik'),
-            'nama_pendaftar' => $this->session->userdata('nama_pendaftar'),
-            'jenis_kelamin' => $this->session->userdata('jenis_kelamin'),
-            'nomor_telepon' => $this->session->userdata('nomor_telepon'),
-            'alamat' => $this->session->userdata('alamat'),
-            'email' => $this->session->userdata('email'),
-            'pesan_apa' => $this->session->userdata('pesan_apa'),
-            'berapa_orang' => $this->session->userdata('berapa_orang'),
-            'request' => $this->session->userdata('request'),
+            'uuid' => $uuid_short,
+            'nik' => $this->input->post('nik'),
+            'nama_pendaftar' => $this->input->post('nama_pendaftar'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'nomor_telepon' => $this->input->post('nomor_telepon'),
+            'alamat' => $this->input->post('alamat'),
+            'email' => $this->input->post('email'),
+            'pesan_apa' => $this->input->post('pesan_apa'),
+            'berapa_orang' => $this->input->post('berapa_orang'),
             'qr_code' => base_url() . 'pemesanan/pendaftar/' . $this->session->userdata('uuid'),
         );
         // echo '<pre>';
