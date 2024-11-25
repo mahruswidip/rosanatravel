@@ -218,7 +218,7 @@
                         </div>
                         <span class="d-flex align-items-center loc mb-2">
                             <i class="fas fa-map-marker-alt mr-3"></i>
-                            <span><?php echo $paket_item['kategori']; ?> -
+                            <span style="font-weight:600;"><?php echo $paket_item['kategori']; ?> -
                                 <?php echo $tanggalConverted = date_format(date_create($paket_item['tanggal_keberangkatan']), 'd F Y'); ?>
                             </span>
                         </span>
