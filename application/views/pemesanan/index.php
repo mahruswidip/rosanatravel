@@ -181,8 +181,7 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.7176228082126!2d114.01264077574912!3d-7.713418176417322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd729103ee8db75%3A0x1a4fd1c29bcf36a6!2sRosana%20Travel%20umroh%20dan%20haji%20Situbondo%20(Official)!5e0!3m2!1sen!2sid!4v1704772624756!5m2!1sen!2sid"
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </section>
-                        <button class="btn btn-primary">Pesan Sekarang</button>
+
                     </form>
                 </div>
             </div>
