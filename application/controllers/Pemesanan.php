@@ -103,35 +103,34 @@ class Pemesanan extends CI_Controller
         // Path untuk menyimpan QR Code
         $qr_code_path = FCPATH . 'assets/images/qrcodependaftar/';
 
-        // UUID dari session
-        $uuid = $this->session->userdata('uuid');
+        // Generate UUID (Pendek)
+        $uuid_long = uniqid('', true);
+        $uuid = substr(md5($uuid_long), 0, 8);
 
         // Nama file QR Code
         $qr_code_file = $uuid . '.png';
 
         // Konfigurasi QR Code
-        $config['cacheable'] = true; // cacheable
-        $config['cachedir'] = $qr_code_path; // direktori penyimpanan QR Code
-        $config['errorlog'] = $qr_code_path; // direktori log error
-        $config['imagedir'] = $qr_code_path; // direktori penyimpanan gambar QR Code
-        $config['quality'] = true; // Tingkat kualitas gambar - PNG terbaik
-        $config['size'] = '1024'; // Ukuran gambar
-        $config['black'] = array(224, 255, 255); // Warna hitam, default adalah array(255,255,255)
-        $config['white'] = array(70, 130, 180); // Warna putih, default adalah array(0,0,0)
+        $config['cacheable'] = true; // Cacheable
+        $config['cachedir'] = $qr_code_path; // Direktori cache
+        $config['errorlog'] = $qr_code_path; // Direktori log error
+        $config['imagedir'] = $qr_code_path; // Direktori penyimpanan gambar QR Code
+        $config['quality'] = true; // Kualitas gambar PNG
+        $config['size'] = 1024; // Ukuran gambar
+        $config['black'] = array(0, 0, 0); // Warna hitam
+        $config['white'] = array(255, 255, 255); // Warna putih
         $this->ciqrcode->initialize($config);
 
-        // Data untuk dijadikan QR Code (disesuaikan dengan kebutuhan)
-        $params['data'] = base_url() . 'pemesanan/pendaftar/' . $uuid; // Data yang akan dijadikan QR Code
+        // Data untuk QR Code
+        $params['data'] = base_url() . 'pemesanan/pendaftar/' . $uuid; // Data QR Code
         $params['level'] = 'H'; // Level QR Code (L, M, Q, H)
         $params['size'] = 10; // Ukuran QR Code
-        $params['savename'] = $qr_code_path . $qr_code_file; // Simpan nama file QR Code
+        $params['savename'] = $qr_code_path . $qr_code_file; // Nama file QR Code
         $this->ciqrcode->generate($params); // Generate QR Code
 
-        $uuid_long = uniqid('', true);
-        $uuid_short = substr(md5($uuid_long), 0, 8);
-
-        $paramsinsert = array(
-            'uuid' => $uuid_short,
+        // Ambil data input dari formulir
+        $data_input = array(
+            'uuid' => $uuid,
             'nik' => $this->input->post('nik'),
             'nama_pendaftar' => $this->input->post('nama_pendaftar'),
             'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -140,15 +139,26 @@ class Pemesanan extends CI_Controller
             'email' => $this->input->post('email'),
             'pesan_apa' => $this->input->post('pesan_apa'),
             'berapa_orang' => $this->input->post('berapa_orang'),
-            'qr_code' => base_url() . 'pemesanan/pendaftar/' . $this->session->userdata('uuid'),
+            'qr_code' => base_url('assets/images/qrcodependaftar/' . $qr_code_file),
         );
-        // echo '<pre>';
-        // print_r($paramsinsert);
-        // exit();
-        $this->Pemesanan_model->add_pemesan($paramsinsert);
+
+        // Validasi input
+        foreach ($data_input as $key => $value) {
+            if (empty($value)) {
+                $this->session->set_flashdata('error', 'Data ' . $key . ' tidak boleh kosong.');
+                redirect('pemesanan/form'); // Ganti dengan halaman form Anda
+            }
+        }
+
+        // Simpan ke database
+        $this->Pemesanan_model->add_pemesan($data_input);
+
+        // Load view konfirmasi
         $data['_view'] = 'pemesanan/confirmation';
+        $data['registration_data'] = $data_input; // Data yang ditampilkan di halaman konfirmasi
         $this->load->view('layouts/main', $data);
     }
+
 
     function pendaftar($uuid)
     {
