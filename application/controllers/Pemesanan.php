@@ -73,7 +73,6 @@ class Pemesanan extends CI_Controller
             'email',
             'pesan_apa',
             'berapa_orang',
-            'request'
         ));
 
         $uuid_long = uniqid('', true);
@@ -89,7 +88,6 @@ class Pemesanan extends CI_Controller
             'email' => $this->input->post('email'),
             'pesan_apa' => $this->input->post('pesan_apa'),
             'berapa_orang' => $this->input->post('berapa_orang'),
-            'request' => $this->input->post('request'),
         );
         $this->session->set_userdata($params);
         // echo '<pre>';
