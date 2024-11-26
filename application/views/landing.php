@@ -13,10 +13,12 @@
                 <!-- <img src="loading.gif" alt="Loading..." class="loading-img" id="loadingImage"> -->
 
                 <!-- Gambar utama (sembunyikan saat loading) -->
-                <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>" alt="Image" class="img-fluid" style="display: block;" id="mainImage">
+                <img src="https://rosanatravel.com/admin/assets/images/<?php echo $paket_terbaru[0]['paket_img'] ?>"
+                    alt="Image" class="img-fluid" style="display: block;" id="mainImage">
             </div>
             <div class="modal-footer">
-                <a href="https://api.whatsapp.com/send?phone=6281133360600&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A" class="btn btn-primary">Info Lebih Lanjut</a>
+                <a href="https://api.whatsapp.com/send?phone=6281133360600&text=Halo%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20Promo%20Terbaru%20<?php echo $paket_terbaru[0]['nama_program'] ?>%20yang%20ada%20di%20Website%2C%20%F0%9F%98%8A"
+                    class="btn btn-primary">Info Lebih Lanjut</a>
             </div>
         </div>
     </div>
@@ -26,7 +28,8 @@
         <div class="row align-items-center">
             <div class="col-lg-7 mt-5">
                 <div class="intro-wrap">
-                    <h1 class="mb-5"><span class="d-block">Selagi Muda, </span> Ayo berangkat <span class="typed-words"></span></h1>
+                    <h1 class="mb-5"><span class="d-block">Selagi Muda, </span> Ayo berangkat <span
+                            class="typed-words"></span></h1>
 
                     <div class="row">
                         <div class="col-12">
@@ -56,7 +59,8 @@
             </div>
             <div class="col-lg-5">
                 <div class="slides">
-                    <img src="<?php echo base_url('assets/') ?>images/slider/mekkah1.jpg" alt="Image" class="img-fluid active">
+                    <img src="<?php echo base_url('assets/') ?>images/slider/mekkah1.jpg" alt="Image"
+                        class="img-fluid active">
                     <img src="<?php echo base_url('assets/') ?>images/slider/madinah.jpg" alt="Image" class="img-fluid">
                     <img src="<?php echo base_url('assets/') ?>images/slider/halal.jpg" alt="Image" class="img-fluid">
                     <!-- <img src="<?php echo base_url('assets/') ?>images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
@@ -74,14 +78,17 @@
         <div class="row mb-5 justify-content-center">
             <div class="col-lg-6 text-center">
                 <h2 class="section-title text-center mb-3">Pelayanan Kami</h2>
-                <p>Kami menyediakan layanan terbaik untuk kepuasan pelanggan. Dengan tim profesional kami, kami berkomitmen untuk memberikan solusi yang tepat dan berkualitas.</p>
+                <p>Kami menyediakan layanan terbaik untuk kepuasan pelanggan. Dengan tim profesional kami, kami
+                    berkomitmen untuk memberikan solusi yang tepat dan berkualitas.</p>
             </div>
         </div>
         <div class="row align-items-stretch">
             <div class="col-lg-4 order-lg-1">
                 <div class="h-100">
                     <div class="frame h-100">
-                        <div class="feature-img-bg h-100" style="background-image: url('<?php echo base_url('assets/') ?>images/slider/mekkah3.jpg');"></div>
+                        <div class="feature-img-bg h-100"
+                            style="background-image: url('<?php echo base_url('assets/') ?>images/slider/mekkah3.jpg');">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,7 +97,8 @@
 
                 <div class="feature-1 d-md-flex">
                     <div class="align-self-center">
-                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/haji.png') ?>" alt="" class="mb-4">
+                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/haji.png') ?>" alt=""
+                            class="mb-4">
                         <h3>Haji Plus Kuota</h3>
                         <p class="mb-0">Nikmati kenyamanan Haji Plus dengan kuota yang telah dialokasikan.</p>
                     </div>
@@ -98,7 +106,8 @@
 
                 <div class="feature-1 ">
                     <div class="align-self-center">
-                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/umroh.png') ?>" alt="" class="mb-4">
+                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/umroh.png') ?>" alt=""
+                            class="mb-4">
                         <h3>Umrah</h3>
                         <p class="mb-0">Berangkatlah dalam perjalanan spiritual dengan paket Umrah kami.</p>
                     </div>
@@ -110,7 +119,8 @@
 
                 <div class="feature-1 d-md-flex">
                     <div class="align-self-center">
-                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/hajitanpa.png') ?>" alt="" class="mb-4">
+                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/hajitanpa.png') ?>"
+                            alt="" class="mb-4">
                         <h3>Haji Plus Tanpa Antri</h3>
                         <p class="mb-0">Lewati antrian dan nikmati pengalaman Haji Plus tanpa kesulitan.</p>
                     </div>
@@ -118,7 +128,8 @@
 
                 <div class="feature-1 d-md-flex">
                     <div class="align-self-center">
-                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/halal.png') ?>" alt="" class="mb-4">
+                        <img style="height: 3rem;" src="<?php echo base_url('assets/images/icons/halal.png') ?>" alt=""
+                            class="mb-4">
                         <h3>Wisata Halal</h3>
                         <p class="mb-0">Jelajahi dunia dengan penawaran Wisata Halal kami.</p>
                     </div>
@@ -253,28 +264,35 @@
                             $filter = ($paket_item['is_aktif'] == 0) ? 'grayscale(100%)' : 'none';
                             ?>
                             <div style="position: relative; overflow: hidden;">
-                                <img src="<?php echo $imageSrc; ?>" alt="Image" class="img-fluid mb-4" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); filter: <?php echo $filter; ?>">
+                                <img src="<?php echo $imageSrc; ?>" alt="Image" class="img-fluid mb-4"
+                                    style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); filter: <?php echo $filter; ?>">
                                 <?php if ($paket_item['is_aktif'] == 0) : ?>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 30%; background-color: rgba(255, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                    <div
+                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 30%; background-color: rgba(255, 0, 0, 0.5); display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                         <span style="color: white; font-weight: bold;">SOLD OUT</span>
                                     </div>
                                 <?php endif; ?>
                             </div>
                             <span class="d-flex align-items-center loc mb-2">
-                                <i class="fas fa-map-marker-alt mr-3"></i>
-                                <span><?php echo $paket_item['kategori']; ?></span>
+                                <i class="fas fa-calendar-alt mr-3"></i>
+                                <span style="font-weight:600;">
+                                    <?php echo $tanggalConverted = date_format(date_create($paket_item['tanggal_keberangkatan']), 'd F Y'); ?>
+                                </span>
                             </span>
                             <div class="d-flex align-items-center">
                                 <div>
                                     <h3 class="ellipsis"><?php echo $paket_item['nama_program']; ?></h3>
                                     <div class="price ml-auto">
-                                        <span>DP Mulai - Rp. <?php echo number_format($paket_item['uang_muka'], 0, ',', '.'); ?></span>
+                                        <span>DP Mulai - Rp.
+                                            <?php echo number_format($paket_item['uang_muka'], 0, ',', '.'); ?></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row align-items-center py-3">
                                 <div class="col-sm-12 col-md-6 mb-3 col-lg-8">
-                                    <a href="<?php echo base_url('paket/detail_paket/' . $paket_item['id_paket']); ?>" class="btn btn-light btn-sm">Detail <i class="fas fa-arrow-right ml-2"></i></a>
+                                    <a href="<?php echo base_url('paket/detail_paket/' . $paket_item['id_paket']); ?>"
+                                        class="btn btn-outline-success btn-sm">Detail <i
+                                            class="fas fa-arrow-right ml-2"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +310,8 @@
         <div class="row text-center justify-content-center mb-5">
             <div class="col-lg-7">
                 <h2 class="section-title text-center">Blog Artikel</h2>
-                <h4 style="font-size: large;">Baca juga informasi menarik, tips & trik seputar traveling berikut ini.</h4>
+                <h4 style="font-size: large;">Baca juga informasi menarik, tips & trik seputar traveling berikut ini.
+                </h4>
             </div>
         </div>
         <?php foreach ($artikel as $artikel_item) : ?>
@@ -300,7 +319,8 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-5">
                         <figure class="img-play-video">
-                            <img src="https://rosanatravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>" alt="Image" class="img-fluid rounded-20">
+                            <img src="https://rosanatravel.com/admin/assets/images/artikel/<?php echo $artikel_item['artikel_img']; ?>"
+                                alt="Image" class="img-fluid rounded-20">
                         </figure>
                     </div>
                     <div class="col-lg-6">
@@ -323,8 +343,11 @@
         <div class="owl-carousel owl-3-slider">
             <?php foreach ($galeri as $galeri_item) : ?>
                 <div class="item">
-                    <a class="media-thumb" href="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" data-fancybox="gallery">
-                        <img src="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>" alt="Image" class="img-fluid">
+                    <a class="media-thumb"
+                        href="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>"
+                        data-fancybox="gallery">
+                        <img src="https://rosanatravel.com/admin/assets/images/galeri/<?php echo $galeri_item['nama']; ?>"
+                            alt="Image" class="img-fluid">
                     </a>
                 </div>
             <?php endforeach; ?>
@@ -334,44 +357,112 @@
 </div>
 
 
+<div class="untree_co-section testimonial-section mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <h2 class="section-title text-center mb-5">Apa Kata Mereka ?</h2>
+
+                <div class="owl-single owl-carousel no-nav">
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/burosana.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Ibu Hj. Rosana Hayati</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami Harus membawa sesuatu yang berbeda. Inovasi dan perbaikan pelayanan menunjukkan bahwa kami dinamis dan memahami keinginan pelanggan.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakgunawan.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Gunawan Aprilianto</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami sangat puas dengan pelayanan Rosana Travel dalam membimbing ibadah Umroh dan Haji kami bersama seluruh rombongan Pandawa 87 Group.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakbu.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Fakhruddin & Ibu Hj. Silvi</h3>
+                        <blockquote>
+                            <p>&ldquo;Alhamdulillah kita merasa nyaman, petugasnya sangat ramah dan juga bersahabat.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/paksaudara.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Soeyono</h3>
+                        <blockquote>
+                            <p>&ldquo;Rasa kekeluargaan yang baik terhadap crew (kepada jamaah) itu betul-betul kayak saudara. Betul-betul kayak saudara dan itu yang saya rasakan.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="untree_co-section" id="tentang-kami">
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-5">
                 <figure class="img-play-video">
-                    <a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=Q9kUi9ZY-Bs&ab_channel=RosanaTravel" data-fancybox>
+                    <a id="play-video" class="video-play-button"
+                        href="https://www.youtube.com/watch?v=Q9kUi9ZY-Bs&ab_channel=RosanaTravel" data-fancybox>
                         <span></span>
                     </a>
-                    <img src="<?php echo base_url('assets/') ?>images/hero-slider-99.jpg" alt="Image" class="img-fluid rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/hero-slider-99.jpg" alt="Image"
+                        class="img-fluid rounded-20">
                 </figure>
             </div>
 
             <div class="col-lg-6">
                 <h2 class="section-title text-left mb-4">Tentang Kami</h2>
-                <p>Persaingan bisnis biro perjalanan wisata yang makin ketat, membuat kami harus berpikir keras untuk dapat tetap eksis dan menjadi pilihan pelanggan dalam setiap perjalanan wisata mereka. Dengan berbekal pengalaman yang lebih dari 25 tahun tentunya bukan hal mustahil untuk kami dapat bertahan menjadi yang terdepan.</p>
-                <p> Mengantongi <b> Izin Resmi dari KEMENAG RI sebagai Penyelenggara Ibadah Haji Khusus (PIHK) - No. 193 Tahun 2019 dan Penyelenggara Perjalanan Ibadah Umroh (PPIU) - No. 787 Tahun 2019 </b></p>
-                <p class="mb-4">PT. Rosana Biro Perjalanan Wisata terus berinovasi dan berpacu meningkatkan pelayanan yang profesional dan kekeluargaan untuk dapat secara maksimal melayani dari hati.</p>
+                <p>Persaingan bisnis biro perjalanan wisata yang makin ketat, membuat kami harus berpikir keras untuk
+                    dapat tetap eksis dan menjadi pilihan pelanggan dalam setiap perjalanan wisata mereka. Dengan
+                    berbekal pengalaman yang lebih dari 25 tahun tentunya bukan hal mustahil untuk kami dapat bertahan
+                    menjadi yang terdepan.</p>
+                <p> Mengantongi <b> Izin Resmi dari KEMENAG RI sebagai Penyelenggara Ibadah Haji Khusus (PIHK) - No. 193
+                        Tahun 2019 dan Penyelenggara Perjalanan Ibadah Umroh (PPIU) - No. 787 Tahun 2019 </b></p>
+                <p class="mb-4">PT. Rosana Biro Perjalanan Wisata terus berinovasi dan berpacu meningkatkan pelayanan
+                    yang profesional dan kekeluargaan untuk dapat secara maksimal melayani dari hati.</p>
 
                 <div class="tab-pane" id="v-pills-visimisi" role="tabpanel" aria-labelledby="v-pills-visimisi-tab">
                     <div class="row justify-content-center">
                         <div class="col-md-6 text-center">
-                            <i class="fas fa-binoculars fa-flip-horizontal" style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
+                            <i class="fas fa-binoculars fa-flip-horizontal"
+                                style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
                             <h3 class="mt-4">Visi</h3>
                             <p class="font-normal">
                                 Menjadi perusahaan penyedia kebutuhan wisata yang terdepan di Indonesia
                             </p>
                         </div>
                         <div class="col-md-6 text-center">
-                            <i class="fas fa-lightbulb" style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
+                            <i class="fas fa-lightbulb"
+                                style="font-size: xxx-large; background-color:transparent!important;color:#025287;"></i>
                             <h3 class="text-center mt-4">Misi</h3>
                             <ol class="text-left">
-                                <li> Menyediakan produk-produk yang berkualitas baik dan berfokus pada kebutuhan pelanggan</li>
+                                <li> Menyediakan produk-produk yang berkualitas baik dan berfokus pada kebutuhan
+                                    pelanggan</li>
                                 <br>
-                                <li> Memberikan pelayanan yang profesional dan amanah untuk membangun loyalitas pelanggan</li>
+                                <li> Memberikan pelayanan yang profesional dan amanah untuk membangun loyalitas
+                                    pelanggan</li>
                                 <br>
-                                <li> Meningkatkan kedekatan dengan pelangan melalui hubungan yang harmonis, komunikatif, dan kekeluargaan</li>
+                                <li> Meningkatkan kedekatan dengan pelangan melalui hubungan yang harmonis, komunikatif,
+                                    dan kekeluargaan</li>
                                 <br>
-                                <li> Menyelenggarakan tata kelola perusahaan dengan management yang baik dengan sumber daya manusia yang berkuaitas</li>
+                                <li> Menyelenggarakan tata kelola perusahaan dengan management yang baik dengan sumber
+                                    daya manusia yang berkuaitas</li>
                             </ol>
                         </div>
                     </div>
@@ -393,33 +484,39 @@
         <div class="row">
             <div class="col mb-4">
                 <div class="team">
-                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/sby.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/sby.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Surabaya</h3>
                         <a href="https://maps.app.goo.gl/LvCU6VbJRCfEpYWu9">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Barat Bandara Juanda, Jl. Raya Sedati Gede No.5-B, Sedati Gede, Kabupaten Sidoarjo, Jawa Timur 61253</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Barat Bandara Juanda, Jl. Raya Sedati Gede
+                                No.5-B, Sedati Gede, Kabupaten Sidoarjo, Jawa Timur 61253</p>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col mb-4">
                 <div class="team">
-                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/mlg.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/mlg.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Malang</h3>
                         <a href="https://maps.app.goo.gl/mjH65SgAWFGUfeHB9">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Kalpataru No.83 kav b, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Kalpataru No.83 kav b, Jatimulyo, Kec.
+                                Lowokwaru, Kota Malang, Jawa Timur 65141</p>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col mb-4">
                 <div class="team">
-                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/prob.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/prob.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Probolinggo</h3>
                         <a href="https://maps.app.goo.gl/2zWQsaLn5MKHSWsbA">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Soekarno - Hatta No.137, Curahgrinting, Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Soekarno - Hatta No.137, Curahgrinting,
+                                Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
                         </a>
                     </div>
                 </div>
@@ -427,22 +524,26 @@
 
             <div class="col mb-4">
                 <div class="team">
-                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/jbr.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/jbr.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Jember</h3>
                         <a href="https://maps.app.goo.gl/XJN3Zc9hoQoSVM467">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. PB Sudirman Ruko Sudirman No.4F, Wetan Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. PB Sudirman Ruko Sudirman No.4F, Wetan
+                                Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col mb-4">
                 <div class="team">
-                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/stbd.jpg" alt="Image" class="img-fluid mb-4 rounded-20">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/stbd.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Situbondo</h3>
                         <a href="https://maps.app.goo.gl/t1TYT3ufyksrSPvo6">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Argopuro No.28-C, Krajan Mimbaan, Mimbaan, Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Argopuro No.28-C, Krajan Mimbaan, Mimbaan,
+                                Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
                         </a>
                     </div>
                 </div>
@@ -469,18 +570,23 @@
         <div class="row text-center justify-content-center mb-5">
             <div class="col-lg-7">
                 <h2 class="section-title text-center">Seberapa Jauh kami Sudah Berjalan</h2>
-                <h4 style="font-size: large;">Riwayat perjalanan kami, memulai perusahaan Biro Perjalanan Wisata dari 0</h4>
+                <h4 style="font-size: large;">Riwayat perjalanan kami, memulai perusahaan Biro Perjalanan Wisata dari 0
+                </h4>
             </div>
         </div>
         <div class="row justify-content-center mb-5">
-            <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK" class="rounded-20" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="1050" height="520" src="https://www.youtube.com/embed/bW5fhyUEXto?si=Bjpn5pQkRcXRfOGK"
+                class="rounded-20" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
         </div>
     </div>
 </div>
 <div class="untree_co-section">
     <div class="container">
         <div class="row justify-content-center mb-5">
-            <img src="<?php echo base_url('assets/') ?>images/kontak/akreditasi.jpg" alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
+            <img src="<?php echo base_url('assets/') ?>images/kontak/akreditasi.jpg"
+                alt="Free HTML Template by Untree.co" class="img-fluid rounded-20">
         </div>
     </div>
 </div>
@@ -493,8 +599,11 @@
         <div class="row text-center">
             <div class="col-md-12">
                 <h2 class="mb-2 text-white">Ayo, Tunggu apa lagi ?</h2>
-                <p class="mb-4 lead text-white text-white-opacity">Hubungi kami dan dapatkan promo dan penawaran menarik</p>
-                <p class="mb-0"><a href="https://api.whatsapp.com/send/?phone=628113003258&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20Di%20Rosana%20Travel%20&app_absent=0" class="btn btn-outline-white text-white btn-md font-weight-bold">Halo Rosana Travel</a></p>
+                <p class="mb-4 lead text-white text-white-opacity">Hubungi kami dan dapatkan promo dan penawaran menarik
+                </p>
+                <p class="mb-0"><a
+                        href="https://api.whatsapp.com/send/?phone=628113003258&text=Halo%20Rosana%20Travel%2C%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20mengenai%20paket%20Di%20Rosana%20Travel%20&app_absent=0"
+                        class="btn btn-outline-white text-white btn-md font-weight-bold">Halo Rosana Travel</a></p>
             </div>
         </div>
     </div>
@@ -507,11 +616,14 @@
                 <div class="section-title">
                     <h2>Kontak Kami</h2>
                 </div>
-                <p class="py-4">Temukan Dukungan untuk Kebutuhan Perjalanan Anda. Dapatkan jawaban dan solusi atas pertanyaan Anda di sini. Kami selalu siap untuk membantu Anda.</p>
+                <p class="py-4">Temukan Dukungan untuk Kebutuhan Perjalanan Anda. Dapatkan jawaban dan solusi atas
+                    pertanyaan Anda di sini. Kami selalu siap untuk membantu Anda.</p>
             </div>
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.168803059516!2d112.90037107579782!3d-7.6649936758579384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7cf567c652c2d%3A0x168233139d4ce4fd!2sRosana%20Travel%20Pasuruan%20(Official)!5e0!3m2!1sen!2sid!4v1702372637803!5m2!1sen!2sid" frameborder="0" allowfullscreen></iframe>
+                <iframe style="border:0; width: 100%; height: 270px;"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.168803059516!2d112.90037107579782!3d-7.6649936758579384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7cf567c652c2d%3A0x168233139d4ce4fd!2sRosana%20Travel%20Pasuruan%20(Official)!5e0!3m2!1sen!2sid!4v1702372637803!5m2!1sen!2sid"
+                    frameborder="0" allowfullscreen></iframe>
                 <div class="info mt-4">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Kantor Pusat :</h4>

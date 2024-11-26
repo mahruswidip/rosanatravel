@@ -64,7 +64,6 @@ class Pemesanan_model extends CI_Model
         $this->db->set('alamat', $params['alamat']);
         $this->db->set('pesan_apa', $params['pesan_apa']);
         $this->db->set('berapa_orang', $params['berapa_orang']);
-        $this->db->set('request', $params['request']);
         $this->db->set('qr_code', $params['qr_code']);
         $this->db->insert('pendaftar');
     }
