@@ -179,6 +179,63 @@
     }
 </style>
 
+<div class="untree_co-section testimonial-section mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-title text-center mb-5">Apa Kata Mereka ?</h2>
+
+                <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                <div class="elfsight-app-82d580b6-2a34-4109-946a-fd92912607a4" data-elfsight-app-lazy></div>
+
+                <!-- <div class="owl-single owl-carousel no-nav">
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/burosana.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Ibu Hj. Rosana Hayati</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami Harus membawa sesuatu yang berbeda. Inovasi dan perbaikan pelayanan menunjukkan bahwa kami dinamis dan memahami keinginan pelanggan.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakgunawan.jpg" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Gunawan Aprilianto</h3>
+                        <blockquote>
+                            <p>&ldquo;Kami sangat puas dengan pelayanan Rosana Travel dalam membimbing ibadah Umroh dan Haji kami bersama seluruh rombongan Pandawa 87 Group.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakbu.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Fakhruddin & Ibu Hj. Silvi</h3>
+                        <blockquote>
+                            <p>&ldquo;Alhamdulillah kita merasa nyaman, petugasnya sangat ramah dan juga bersahabat.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="testimonial mx-auto">
+                        <figure class="img-wrap">
+                            <img src="<?php echo base_url('assets/') ?>images/testimoni/paksaudara.png" alt="Image" class="img-fluid">
+                        </figure>
+                        <h3 class="name">Bpk. H. Soeyono</h3>
+                        <blockquote>
+                            <p>&ldquo;Rasa kekeluargaan yang baik terhadap crew (kepada jamaah) itu betul-betul kayak saudara. Betul-betul kayak saudara dan itu yang saya rasakan.&rdquo;</p>
+                        </blockquote>
+                    </div>
+
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="untree_co-section">
     <div class="container">
         <div class="row justify-content-center text-center mb-5">
@@ -230,7 +287,6 @@
     </div>
 </div>
 
-
 <div class="untree_co-section">
     <div class="container">
         <div class="row text-center justify-content-center mb-5">
@@ -274,61 +330,6 @@
             <?php endforeach; ?>
         </div>
 
-    </div>
-</div>
-
-
-<div class="untree_co-section testimonial-section mt-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-                <h2 class="section-title text-center mb-5">Apa Kata Mereka ?</h2>
-
-                <div class="owl-single owl-carousel no-nav">
-                    <div class="testimonial mx-auto">
-                        <figure class="img-wrap">
-                            <img src="<?php echo base_url('assets/') ?>images/testimoni/burosana.png" alt="Image" class="img-fluid">
-                        </figure>
-                        <h3 class="name">Ibu Hj. Rosana Hayati</h3>
-                        <blockquote>
-                            <p>&ldquo;Kami Harus membawa sesuatu yang berbeda. Inovasi dan perbaikan pelayanan menunjukkan bahwa kami dinamis dan memahami keinginan pelanggan.&rdquo;</p>
-                        </blockquote>
-                    </div>
-
-                    <div class="testimonial mx-auto">
-                        <figure class="img-wrap">
-                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakgunawan.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <h3 class="name">Bpk. H. Gunawan Aprilianto</h3>
-                        <blockquote>
-                            <p>&ldquo;Kami sangat puas dengan pelayanan Rosana Travel dalam membimbing ibadah Umroh dan Haji kami bersama seluruh rombongan Pandawa 87 Group.&rdquo;</p>
-                        </blockquote>
-                    </div>
-
-                    <div class="testimonial mx-auto">
-                        <figure class="img-wrap">
-                            <img src="<?php echo base_url('assets/') ?>images/testimoni/pakbu.png" alt="Image" class="img-fluid">
-                        </figure>
-                        <h3 class="name">Bpk. H. Fakhruddin & Ibu Hj. Silvi</h3>
-                        <blockquote>
-                            <p>&ldquo;Alhamdulillah kita merasa nyaman, petugasnya sangat ramah dan juga bersahabat.&rdquo;</p>
-                        </blockquote>
-                    </div>
-
-                    <div class="testimonial mx-auto">
-                        <figure class="img-wrap">
-                            <img src="<?php echo base_url('assets/') ?>images/testimoni/paksaudara.png" alt="Image" class="img-fluid">
-                        </figure>
-                        <h3 class="name">Bpk. H. Soeyono</h3>
-                        <blockquote>
-                            <p>&ldquo;Rasa kekeluargaan yang baik terhadap crew (kepada jamaah) itu betul-betul kayak saudara. Betul-betul kayak saudara dan itu yang saya rasakan.&rdquo;</p>
-                        </blockquote>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
