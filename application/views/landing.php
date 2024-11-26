@@ -493,6 +493,9 @@
                                 No.5-B, Sedati Gede, Kabupaten Sidoarjo, Jawa Timur 61253</p>
                         </a>
                     </div>
+                    <a href="https://g.page/r/Cb7bZ248X4ojEBM/review"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
             <div class="col mb-4">
@@ -506,6 +509,9 @@
                                 Lowokwaru, Kota Malang, Jawa Timur 65141</p>
                         </a>
                     </div>
+                    <a href="https://g.page/r/CWHykTKKpj0OEBM/review"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
             <div class="col mb-4">
@@ -519,6 +525,9 @@
                                 Kec. Kanigaran, Kota Probolinggo, Jawa Timur 67212</p>
                         </a>
                     </div>
+                    <a href="https://maps.app.goo.gl/XbwEuQX6rPAA6nXN7"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
 
@@ -533,6 +542,9 @@
                                 Ktr., Jemberlor, Kec. Patrang, Kabupaten Jember, Jawa Timur 68118</p>
                         </a>
                     </div>
+                    <a href="https://maps.app.goo.gl/XJN3Zc9hoQoSVM467"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
             <div class="col mb-4">
@@ -546,6 +558,9 @@
                                 Kec. Panji, Kabupaten Situbondo, Jawa Timur 68323</p>
                         </a>
                     </div>
+                    <a href="https://maps.app.goo.gl/t1TYT3ufyksrSPvo6"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
             <!-- <div class="col-lg-3 mb-4">
