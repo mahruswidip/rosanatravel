@@ -44,3 +44,15 @@
         <?php endforeach; ?>
     </div>
 </div>
+<div class="untree_co-section testimonial-section mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-title text-center mb-5">Apa Kata Mereka ?</h2>
+
+                <script src="https://static.elfsight.com/platform/platform.js" async></script>
+                <div class="elfsight-app-82d580b6-2a34-4109-946a-fd92912607a4" data-elfsight-app-lazy></div>
+            </div>
+        </div>
+    </div>
+</div>
