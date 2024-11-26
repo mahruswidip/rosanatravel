@@ -356,7 +356,7 @@
     </div>
 </div>
 
-
+<!-- 
 <div class="untree_co-section testimonial-section mt-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -409,7 +409,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <div class="untree_co-section" id="tentang-kami">
