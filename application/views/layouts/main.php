@@ -50,7 +50,6 @@
 </head>
 
 <body>
-    <!-- Modal -->
     <div class="modal fade" id="masukCenter" tabindex="-1" role="dialog" aria-labelledby="masukCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -66,8 +65,12 @@
                             <div class="col">
                                 <form>
                                     <div class="form-group">
-                                        <label for="masuk">Nomor HP / NIK</label>
-                                        <input type="text" class="form-control" id="masuk" placeholder="">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="text" class="form-control" id="password" placeholder="">
                                     </div>
                                 </form>
                             </div>
@@ -113,11 +116,11 @@
                     <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a href="#tentang-kami">Tentang Kami</a></li>
-                    <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li>
+                    <!-- <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li> -->
                     <!-- <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>-->
-                    <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mr-1" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li>
-                    <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li>
+                    <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mx-2 px-4" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li>
+                    <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold px-4" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li>
                 </ul>
 
                 <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -171,9 +174,7 @@
                             <ul class="list-unstyled quick-info links">
                                 <li class="email"><a href="#">info@rosanatravel.com</a></li>
                                 <li class="phone"><a href="#">+62 811 333 60600</a></li>
-                                <li class="address"><a href="#">Jl. Dr. Setia Budi No. 20,
-                                        Jalan Lingkar Selatan Kota Pasuruan,
-                                        Jawa Timur, Indonesia</a></li>
+                                <li class="address"><a href="#">Gedung Graha Rosana - Barat Bandara Juanda Surabaya - Jl. Sedati Gede No. 5 B, Sedati, Sidoarjo, Jawa Timur, Indonesia</a></li>
                             </ul>
                         </div>
                     </div>
