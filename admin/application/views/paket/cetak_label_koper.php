@@ -137,58 +137,6 @@
     </div>
 </div>
 <br>
-
-
-<div class="container-fluid" id="kartubelakang">
-    <div class="card" id="cardGroup_belakang">
-        <div class="card-body">
-            <?php
-            // Assuming $label is your array of data
-            $numItemsBlkg = count($paket);
-            $itemsPerRowBlkg = 3; // Number of items per row
-            $itemsPerColumnBlkg = 3; // Number of items per column
-
-            for ($i = 0; $i < $numItemsBlkg; $i += $itemsPerRowBlkg * $itemsPerColumnBlkg) {
-                echo '<div class="container a4-size" id="myTableBlkg' . $i . '">';
-                echo '<table>';
-
-                for ($row = 0; $row < $itemsPerColumnBlkg; $row++) {
-                    echo '<tr>';
-
-                    for ($col = 0; $col < $itemsPerRowBlkg; $col++) {
-                        $indexBlkg = $i + $row * $itemsPerRowBlkg + $col;
-
-                        echo '<td>';
-                        if ($indexBlkg < $numItemsBlkg) {
-                            $imgSrc = ($paket[0]['travel'] == 'Rosana Travel' && $paket[0]['paket'] == 'Semi VIP')
-                                ? base_url('assets/img/labelkoper/belakangsvip.jpg')
-                                : base_url('assets/img/labelkoper/belakang.jpg');
-                            echo '<img src="' . $imgSrc . '">';
-                            echo '<h4 class="hotelmekkah text-dark">' . $paket[0]['hotel_mekkah'] . ' &#9733;' . $paket[0]['bintang_mekkah'] . '</h4>';
-                            echo '<h4 class="hotelmadinah text-dark">' . $paket[0]['hotel_madinah'] . ' &#9733;' . $paket[0]['bintang_madinah'] . '</h4>';
-                            echo '<h5 class="nomorguide text-dark"><strong>' . $paket[0]['nomor_guide'] . '</strong></h5>';
-                        } else {
-                            echo '<img src="' . base_url('assets/img/labelkoper/belakangnip.jpg') . '">';
-                        }
-                        echo '</td>';
-                    }
-
-                    echo '</tr>';
-                }
-
-                echo '</table>';
-                echo '</div>';
-                echo '<button onclick="printToJpg(\'myTableBlkg' . $i . '\')">Print to jpg</button>';
-            }
-
-            ?>
-
-
-        </div>
-    </div>
-</div>
-
-
 <div class="container-fluid" id="kartubelakang">
     <div class="card" id="cardGroup_belakang">
         <div class="card-body">
