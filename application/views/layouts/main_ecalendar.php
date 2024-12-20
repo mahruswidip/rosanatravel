@@ -1,9 +1,3 @@
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!doctype html>
 <html lang="en">
 
@@ -36,7 +30,7 @@
 
 </head>
 
-<body style="background-color: #1A374D;">
+<body style="background-color: #f3f3f3;">
 
 
 
@@ -45,13 +39,6 @@
         $this->load->view($_view);
     ?>
 
-
-    <div id="overlayer"></div>
-    <div class="loader">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
 
     <script src="<?php echo base_url('assets/') ?>js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url('assets/') ?>js/popper.min.js"></script>
@@ -65,35 +52,8 @@
     <script src="<?php echo base_url('assets/') ?>js/daterangepicker.js"></script>
 
     <script src="<?php echo base_url('assets/') ?>js/typed.js"></script>
-    <script>
-        $(function() {
-            var slides = $('.slides'),
-                images = slides.find('img');
 
-            images.each(function(i) {
-                $(this).attr('data-id', i + 1);
-            })
 
-            var typed = new Typed('.typed-words', {
-                strings: [" Haji.", " Umroh.", " Wisata."],
-                typeSpeed: 80,
-                backSpeed: 80,
-                backDelay: 4000,
-                startDelay: 1000,
-                loop: true,
-                showCursor: true,
-                preStringTyped: (arrayPos, self) => {
-                    arrayPos++;
-                    console.log(arrayPos);
-                    $('.slides img').removeClass('active');
-                    $('.slides img[data-id="' + arrayPos + '"]').addClass('active');
-                }
-
-            });
-        })
-    </script>
-
-    <script src="<?php echo base_url('assets/') ?>js/custom.js"></script>
 
 </body>
 
