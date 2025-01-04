@@ -116,11 +116,12 @@
                     <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a href="#tentang-kami">Tentang Kami</a></li>
+                    <li><a href="https://simpu.kemenag.go.id/home/periksa">Cek Status - SIMPU</a></li>
                     <!-- <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li> -->
                     <!-- <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>-->
                     <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mx-2 px-4" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li>
-                    <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold px-4" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li>
+                    <!-- <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold px-4" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li> -->
                 </ul>
 
                 <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -161,10 +162,11 @@
                         <div class="widget">
                             <h3 class="heading">Link Cepat</h3>
                             <ul class="links list-unstyled">
-                                <li><a href="#">Umroh</a></li>
-                                <li><a href="#">Haji</a></li>
-                                <li><a href="#">Wisata Halal</a></li>
+                                <li><a href="<?php echo base_url('paket/umroh/'); ?>">Umroh</a></li>
+                                <li><a href="<?php echo base_url('paket/haji/'); ?>">Haji</a></li>
+                                <li><a href="<?php echo base_url('paket/wisatahalal/'); ?>">Wisata Halal</a></li>
                                 <li><a href="#">Galeri</a></li>
+                                <li><a href="https://simpu.kemenag.go.id/home/periksa">Cek Status Keberangkatan by SIMPU</a></li>
                             </ul>
                         </div>
                     </div>
