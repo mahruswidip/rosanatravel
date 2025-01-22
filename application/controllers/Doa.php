@@ -11,7 +11,7 @@ class Doa extends CI_Controller
         $this->load->model('Doa_model'); // Pastikan Anda memiliki model ini
     }
 
-    public function index()
+    public function get()
     {
         // Ambil data doa dari model
         $doaList = $this->Doa_model->get_all_doa();
