@@ -272,7 +272,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Konten</label>
-                                    <textarea id="editor" name="konten" required><?php echo $artikel['konten']; ?></textarea>
+                                    <textarea id="editor" name="konten" required><?php echo $paket['konten']; ?></textarea>
                                 </div>
                             </div>
                         </div>
