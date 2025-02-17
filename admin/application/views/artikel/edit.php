@@ -54,6 +54,10 @@
                                 <div class="form-group">
                                     <label class="form-control-label">Foto Konten</label>
                                     <br>
+                                    <?php if (!empty($artikel['artikel_img'])) : ?>
+                                        <img src="<?php echo base_url('/assets/images/artikel/' . $artikel['artikel_img']); ?>" alt="Foto Artikel" width="200">
+                                    <?php endif; ?>
+
                                     <input type="file" class="form-control" name="artikel_img">
                                 </div>
                             </div>

@@ -110,24 +110,4 @@ class Paket_model extends CI_Model
     {
         return $this->db->delete('paket', array('id_paket' => $id_paket));
     }
-
-    public function get_paket_data($id_paket) {
-        $this->db->select('
-            paket.id_paket,
-            paket.nama_program,
-            jamaah.nama_jamaah,
-            jamaah.nomor_telepon,
-            jamaah.jenis_kelamin,
-            jamaah.alamat,
-            keberangkatan.tanggal_keberangkatan
-        ');
-        $this->db->from('paket');
-        $this->db->join('keberangkatan', 'keberangkatan.id_keberangkatan = paket.fk_id_keberangkatan', 'left');
-        $this->db->join('record_keberangkatan', 'record_keberangkatan.id_paket = paket.id_paket', 'left');
-        $this->db->join('jamaah', 'jamaah.id_jamaah = record_keberangkatan.id_jamaah', 'left');
-        $this->db->where('paket.id_paket', $id_paket);
-        
-        $query = $this->db->get();
-        return $query->result_array();
-    }       
 }

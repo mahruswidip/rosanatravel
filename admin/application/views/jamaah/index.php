@@ -4,16 +4,13 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
-                        <h6>Jamaah</h6>
-                        <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
-                        <a href="<?php echo site_url('jamaah/export_excel'); ?>" class="btn bg-gradient-success btn-sm ms-2">
-                            <span class="fa fa-file-excel">&nbsp</span> Unduh Data
-                        </a>
+                        <h6>Ulang Tahun Jamaah</h6>
+                        <!-- <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a> -->
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive px-5 py-2">
-                        <table id="dataTable-jamaah" class="table align-items-center mb-0">
+                        <table id="dataTable-ultah" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
@@ -41,20 +38,20 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
-                        <h6>Ulang Tahun Jamaah</h6>
-                        <!-- <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a> -->
+                        <h6>Jamaah</h6>
+                        <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive px-5 py-2">
-                        <table id="dataTable-ultah" class="table align-items-center mb-0">
+                        <table id="dataTable-jamaah" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail Jamaah</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Lahir</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor Telepon</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">QR Code</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dibuat Pada</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
 
@@ -67,6 +64,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <style>
     #dataTable-jamaah {

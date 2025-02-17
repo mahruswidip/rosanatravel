@@ -91,7 +91,7 @@
                 <li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>artikel/index">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-single-copy-04  text-primary text-sm opacity-10"></i>
+                            <i class="ni ni-collection text-secondary text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Artikel</span>
                     </a>
@@ -131,17 +131,9 @@
                 <li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>galeri/index">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-image text-warning text-sm opacity-10"></i>
+                            <i class="ni ni-collection text-secondary text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Galeri</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="<?php echo site_url(''); ?>token/index">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-key-25 text-danger text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Token</span>
                     </a>
                 </li>
                 <hr>
