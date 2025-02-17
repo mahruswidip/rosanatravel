@@ -340,4 +340,27 @@ class Jamaah_model extends CI_Model
         $this->db->order_by('record_keberangkatan.created_at', 'desc');
         return $this->db->get('record_keberangkatan')->result_array();
     }
+
+    public function get_jamaah_by_pakett() {
+        $this->db->select('
+        paket.id_paket, paket.nama_program,
+        jamaah.id_jamaah, jamaah.nama_jamaah, jamaah.nik, 
+        jamaah.nomor_telepon, jamaah.jenis_kelamin, jamaah.alamat, 
+        jamaah.nomor_paspor
+    ');
+    $this->db->from('record_keberangkatan');
+    $this->db->join('paket', 'record_keberangkatan.id_paket = paket.id_paket', 'left');
+    $this->db->join('jamaah', 'record_keberangkatan.id_jamaah = jamaah.id_jamaah', 'left');
+    $this->db->order_by('paket.id_paket', 'ASC');
+
+    $query = $this->db->get();
+    $result = $query->result_array();
+
+    $grouped_data = [];
+    foreach ($result as $row) {
+        $grouped_data[$row['nama_program']][] = $row;
+    }
+
+    return $grouped_data;
+    }
 }
