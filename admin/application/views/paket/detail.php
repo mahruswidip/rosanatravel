@@ -86,9 +86,12 @@
                                             </form>
                                         </div>
                                     <?php } ?>
-
                                     <a href="<?php echo ($paket[0]['kategori'] == 'Haji') ? site_url() . 'paket/cetak_label_koper_haji/' . $paket[0]['id_paket'] : site_url() . 'paket/cetak_label_koper/' . $paket[0]['id_paket']; ?>" class="btn btn-primary mt-3" style="position: ; bottom: 10px;">
                                         <i class="fas fa-print me-2" aria-hidden="true"></i> Cetak Label Koper
+                                    </a>
+                                    <a href="<?php echo site_url('paket/export_excel/' . $paket[0]['id_paket']); ?>" 
+                                        class="btn btn-success mt-3">
+                                        <i class="fas fa-file-excel me-2"></i> Unduh Data
                                     </a>
                                 </div>
                             </div>

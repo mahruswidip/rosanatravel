@@ -96,68 +96,70 @@ class Artikel extends CI_Controller
 
     function edit($id)
     {
-        $config['upload_path'] = './assets/images/artikel/'; // Path folder penyimpanan
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; // Format yang diperbolehkan
-        $config['encrypt_name'] = TRUE; // Enkripsi nama file
-        $this->upload->initialize($config);
-
+        $config['upload_path'] = './assets/images/artikel/'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
         $user_id = $this->session->userdata('user_id');
+
         $isi_artikel = $this->input->post('konten');
 
-        // Ambil data artikel lama
-        $existing_artikel = $this->Artikel_model->get_artikel($id);
-        $gambar_lama = $existing_artikel['artikel_img']; // Simpan gambar lama
+        $this->upload->initialize($config);
 
+        // Check if the form is submitted
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             if (!empty($_FILES['artikel_img']['name'])) {
                 if ($this->upload->do_upload('artikel_img')) {
-                    // Hapus gambar lama jika ada
-                    if (!empty($gambar_lama) && file_exists('./assets/images/artikel/' . $gambar_lama)) {
-                        unlink('./assets/images/artikel/' . $gambar_lama);
+                    // Delete existing image if any
+                    $existing_artikel = $this->Artikel_model->get_artikel($id);
+                    $existing_image_path = './assets/images/artikel/' . $existing_artikel['artikel_img'];
+                    if (file_exists($existing_image_path)) {
+                        unlink($existing_image_path);
                     }
 
-                    // Simpan nama gambar baru
                     $gbr = $this->upload->data();
-                    $gambar = $gbr['file_name'];
 
-                    // Kompres gambar
+                    // Compress Image
                     $config['image_library'] = 'gd2';
-                    $config['source_image'] = './assets/images/artikel/' . $gambar;
+                    $config['source_image'] = './assets/images/artikel/' . $gbr['file_name'];
                     $config['create_thumb'] = FALSE;
                     $config['maintain_ratio'] = FALSE;
                     $config['quality'] = '60%';
                     $config['width'] = '20%';
                     $config['max_size'] = '5000';
-                    $config['new_image'] = './assets/images/artikel/' . $gambar;
+                    $config['new_image'] = './assets/images/artikel/' . $gbr['file_name'];
                     $this->load->library('image_lib', $config);
                     $this->image_lib->resize();
+                    $gambar = $gbr['file_name'];
                 } else {
-                    // Jika upload gagal, kembali ke halaman edit dengan pesan error
-                    $this->session->set_flashdata('error', $this->upload->display_errors());
-                    redirect('artikel/edit/' . $id);
+                    echo "else";
+                    exit();
+                    redirect('artikel/index');
                 }
             } else {
-                // Jika tidak ada gambar baru, gunakan gambar lama
-                $gambar = $gambar_lama;
+                // No new image uploaded, use the existing one
+                $gambar = $this->input->post('artikel_img');
             }
 
             $params = array(
                 'kategori' => $this->input->post('kategori'),
                 'travel' => $this->input->post('travel'),
                 'konten' => $isi_artikel,
-                'artikel_img' => $gambar, // Gunakan gambar lama jika tidak ada gambar baru
+                'artikel_img' => $gambar,
                 'judul_artikel' => $this->input->post('judul_artikel'),
             );
+
+            // var_dump($params);
+            // exit();
 
             $this->Artikel_model->edit_artikel($id, $params);
             redirect('artikel/index');
         } else {
-            $data['artikel'] = $existing_artikel;
+            // If it's not a POST request, load the edit form
+            $data['artikel'] = $this->Artikel_model->get_artikel($id);
             $data['_view'] = 'artikel/edit';
             $this->load->view('layouts/main', $data);
         }
     }
-
 
 
 

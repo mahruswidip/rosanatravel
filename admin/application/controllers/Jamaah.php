@@ -635,4 +635,76 @@ class Jamaah extends CI_Controller
         $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $write->save('php://output');
     }
+
+    public function export_excel() {
+        // Ambil data jamaah berdasarkan paket
+        $data = $this->Jamaah_model->get_jamaah_by_pakett();
+
+        // Load PHPExcel
+        require_once APPPATH . '../vendor/autoload.php';
+
+        // Jika data kosong, hentikan eksekusi
+        if (!$data) {
+            show_error('Data tidak ditemukan!', 404);
+            return;
+        }
+
+        // Inisialisasi PhpSpreadsheet
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $row = 1; // Baris awal
+
+        foreach ($data as $paket => $jamaah_list) {
+            // Header Paket
+            $sheet->setCellValue('A' . $row, "Paket: " . $paket);
+            $sheet->mergeCells("A{$row}:H{$row}");
+            $sheet->getStyle("A{$row}:H{$row}")->getFont()->setBold(true);
+            $row++;
+
+            // Header Kolom
+            $headers = ['ID Paket', 'Nama Paket', 'ID Jamaah', 'Nama Jamaah', 'NIK', 'Nomor Telepon', 'Jenis Kelamin', 'Alamat', 'Nomor Paspor'];
+            $col = 'A';
+
+            foreach ($headers as $header) {
+                $sheet->setCellValue($col . $row, $header);
+                $sheet->getStyle($col . $row)->getFont()->setBold(true);
+                $col++;
+            }
+            $row++;
+
+            // Isi Data Jamaah
+            foreach ($jamaah_list as $jamaah) {
+                $col = 'A';
+                $sheet->setCellValue($col++ . $row, $jamaah['id_paket']);
+                $sheet->setCellValue($col++ . $row, $jamaah['nama_program']);
+                $sheet->setCellValue($col++ . $row, $jamaah['id_jamaah']);
+                $sheet->setCellValue($col++ . $row, $jamaah['nama_jamaah']);
+                $sheet->setCellValue($col++ . $row, $jamaah['nik']);
+                $sheet->setCellValue($col++ . $row, $jamaah['nomor_telepon']);
+                $sheet->setCellValue($col++ . $row, $jamaah['jenis_kelamin']);
+                $sheet->setCellValue($col++ . $row, $jamaah['alamat']);
+                $sheet->setCellValue($col++ . $row, $jamaah['nomor_paspor']);
+                $row++;
+            }
+
+            // Tambahkan baris kosong antar kategori paket
+            $row++;
+        }
+
+        // Set Auto Width
+        foreach (range('A', 'H') as $col) {
+            $spreadsheet->getActiveSheet()->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Simpan ke file
+        $filename = 'Data_Jamaah_Berdasarkan_Paket.xlsx';
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+    }
 }
