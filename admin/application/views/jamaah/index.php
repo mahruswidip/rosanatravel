@@ -173,7 +173,7 @@
                 {
                     data: 'null',
                     render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.updated_at + '</p>';
+                        return '<p class="text-xs font-weight-bold mb-0">' + row.created_at + '</p>';
                     },
                 },
                 {
