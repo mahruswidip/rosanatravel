@@ -6,7 +6,9 @@
                     <div class="d-flex align-items-center">
                         <h6>Jamaah</h6>
                         <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
-                        <a href="<?php echo site_url('jamaah/export_excel'); ?>" class="btn bg-gradient-success btn-sm ms-2"><span class="fa fa-file-excel">&nbsp</span> Unduh Data</a>
+                        <a href="<?php echo site_url('jamaah/export_excel'); ?>" class="btn bg-gradient-success btn-sm ms-2">
+                            <span class="fa fa-file-excel">&nbsp</span> Unduh Data
+                        </a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -14,13 +16,26 @@
                         <table id="dataTable-jamaah" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail Jamaah</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor Telepon</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">QR Code</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dibuat Pada</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Foto</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Detail Jamaah</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nomor Telepon</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Alamat</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        QR Code</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Dibuat Pada</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Aksi</th>
 
                                 </tr>
                             </thead>
@@ -48,13 +63,25 @@
                         <table id="dataTable-ultah" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail Jamaah</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Lahir</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nomor Telepon</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dibuat Pada</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Foto</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Detail Jamaah</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Tanggal Lahir</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nomor Telepon</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Alamat</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Dibuat Pada</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Aksi</th>
 
                                 </tr>
                             </thead>
@@ -94,7 +121,7 @@
 
 <!-- DataTable initialization with AJAX -->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         function generateStarRating(starCount) {
             var stars = '';
             for (var i = 0; i < starCount; i++) {
@@ -116,9 +143,9 @@
                 type: 'POST',
                 dataSrc: ''
             },
-            rowCallback: function(row, data) {
+            rowCallback: function (row, data) {
                 // Attach click event listener to each row
-                $(row).on('click', function() {
+                $(row).on('click', function () {
                     // Get the ID of the clicked row's data
                     var jamaahId = data.id_jamaah;
 
@@ -127,63 +154,63 @@
                 });
             },
             columns: [{
-                    data: 'jamaah_img',
-                    render: function(data, type, row) {
-                        // Assuming data contains the filename (e.g., "c39f997660f4a7e707658a141d30e7ce.jpg")
-                        // You need to provide the correct path to your image folder.
-                        var imagePath = '<?php echo base_url("assets/images/"); ?>' + data;
-                        // Generate HTML for displaying the image
+                data: 'jamaah_img',
+                render: function (data, type, row) {
+                    // Assuming data contains the filename (e.g., "c39f997660f4a7e707658a141d30e7ce.jpg")
+                    // You need to provide the correct path to your image folder.
+                    var imagePath = '<?php echo base_url("assets/images/"); ?>' + data;
+                    // Generate HTML for displaying the image
+                    return '<img src="' + imagePath + '" alt="Image" class="img-fluid border-radius-lg" style="max-width: 100px; max-height: 100px;">';
+                }
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.nama_jamaah + '</p>' + '<p class="text-xs text-secondary mb-0">' + row.nomor_paspor + '</p>';
+                },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.nomor_telepon + '</p>';
+                },
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0 long-text">' + row.alamat + '</p>';
+                },
+            },
+            {
+                data: 'qr_code_benar',
+                render: function (data, type, row) {
+                    // Assuming data contains the filename (e.g., "c39f997660f4a7e707658a141d30e7ce.jpg")
+                    // You need to provide the correct path to your image folder.
+                    var imagePath = '<?php echo base_url("assets/images/qr_uuid/"); ?>' + data;
+                    // Generate HTML for displaying the image
+                    if (data == "") {
+                        return '<a href="<?php echo base_url() . 'jamaah/updateqr/' ?>' + row.id_jamaah + '"' + 'class="btn btn-dark btn-sm"><span class="fa fa-qrcode"></span></a>';
+                    } else {
                         return '<img src="' + imagePath + '" alt="Image" class="img-fluid border-radius-lg" style="max-width: 100px; max-height: 100px;">';
                     }
+                }
+            },
+            {
+                data: 'null',
+                render: function (data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + row.created_at + '</p>';
                 },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.nama_jamaah + '</p>' + '<p class="text-xs text-secondary mb-0">' + row.nomor_paspor + '</p>';
-                    },
-                },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.nomor_telepon + '</p>';
-                    },
-                },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0 long-text">' + row.alamat + '</p>';
-                    },
-                },
-                {
-                    data: 'qr_code_benar',
-                    render: function(data, type, row) {
-                        // Assuming data contains the filename (e.g., "c39f997660f4a7e707658a141d30e7ce.jpg")
-                        // You need to provide the correct path to your image folder.
-                        var imagePath = '<?php echo base_url("assets/images/qr_uuid/"); ?>' + data;
-                        // Generate HTML for displaying the image
-                        if (data == "") {
-                            return '<a href="<?php echo base_url() . 'jamaah/updateqr/' ?>' + row.id_jamaah + '"' + 'class="btn btn-dark btn-sm"><span class="fa fa-qrcode"></span></a>';
-                        } else {
-                            return '<img src="' + imagePath + '" alt="Image" class="img-fluid border-radius-lg" style="max-width: 100px; max-height: 100px;">';
-                        }
-                    }
-                },
-                {
-                    data: 'null',
-                    render: function(data, type, row) {
-                        return '<p class="text-xs font-weight-bold mb-0">' + row.updated_at + '</p>';
-                    },
-                },
-                {
-                    data: null,
-                    className: 'td-column-right',
-                    render: function(data, type, row) {
-                        var userButton = '<a href="<?php echo site_url('jamaah/buatuser/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-primary btn-sm"><span class="fas fa-user"></span></a>';
-                        var editButton = '<a href="<?php echo site_url('jamaah/edit/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
-                        var deleteButton = '<a href="<?php echo site_url('jamaah/remove/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
-                        return userButton + ' ' + editButton + ' ' + deleteButton;
-                    }
-                },
+            },
+            {
+                data: null,
+                className: 'td-column-right',
+                render: function (data, type, row) {
+                    var userButton = '<a href="<?php echo site_url('jamaah/buatuser/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-primary btn-sm"><span class="fas fa-user"></span></a>';
+                    var editButton = '<a href="<?php echo site_url('jamaah/edit/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                    var deleteButton = '<a href="<?php echo site_url('jamaah/remove/'); ?>' + row.id_jamaah + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                    return userButton + ' ' + editButton + ' ' + deleteButton;
+                }
+            },
 
             ],
             "order": [
