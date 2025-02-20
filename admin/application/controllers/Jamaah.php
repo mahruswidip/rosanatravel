@@ -488,9 +488,22 @@ private function get_nama_wilayah_api($url)
 
         // Check if the jamaah exists and if it was created by the current user
         if (isset($jamaah['id_jamaah']) && $jamaah['created_by'] == $this->session->userdata('user_id')) {
+            
+            // Hapus data di database
             $this->Jamaah_model->delete_jamaah($id_jamaah);
-            unlink(FCPATH . 'assets/images/' . $jamaah['jamaah_img']);
-            unlink(FCPATH . 'assets/images/qr_uuid/' . $jamaah['qr_code_benar']);
+
+            // Hapus file gambar jika ada
+            $jamaah_img_path = FCPATH . 'assets/images/' . $jamaah['jamaah_img'];
+            if (!empty($jamaah['jamaah_img']) && file_exists($jamaah_img_path)) {
+                unlink($jamaah_img_path);
+            }
+
+            // Hapus file QR Code jika ada
+            $qr_code_path = FCPATH . 'assets/images/qr_uuid/' . $jamaah['qr_code_benar'];
+            if (!empty($jamaah['qr_code_benar']) && file_exists($qr_code_path)) {
+                unlink($qr_code_path);
+            }
+
             redirect('jamaah/index');
         } else {
             // Display a warning message using JavaScript
@@ -500,6 +513,7 @@ private function get_nama_wilayah_api($url)
             echo '</script>';
         }
     }
+
     // function remove($id_jamaah)
     // {
     //     $jamaah = $this->Jamaah_model->get_jamaah($id_jamaah);
