@@ -5,45 +5,27 @@
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
                         <p class="mb-0">Tambah Jamaah</p>
-
                     </div>
                 </div>
                 <div class="card-body">
                     <form action="<?php echo site_url() . 'jamaah/add' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <?php if ($this->session->flashdata('nik')) { ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <span class="alert-text"><strong>Aduh !!</strong> Sepertinya NIK sudah ada.</span>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php } else if ($this->session->flashdata('nik2')) { ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <span class="alert-text"><strong>Aduh !!</strong> Sepertinya data anda tanpa foto</span>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                            <?php } ?>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">NIK</label>
-                                    <input type="text" required placeholder="35751515" name="nik" value="<?php echo $this->input->post('nik'); ?>" class="form-control" id="nik" />
+                                    <input type="text" required placeholder="35751515" name="nik" class="form-control" id="nik" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Nama Jamaah (PASPOR)</label>
-                                    <input type="text" required placeholder="MUHAMMAD ALI" name="nama_jamaah" value="<?php echo $this->input->post('nama_jamaah'); ?>" class="form-control" id="nama_jamaah" />
+                                    <input type="text" required placeholder="MUHAMMAD ALI" name="nama_jamaah" class="form-control" id="nama_jamaah" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Nomor Whatsapp</label>
-                                    <input type="text" required placeholder="0881511255" name="nomor_telepon" value="<?php echo $this->input->post('nomor_telepon'); ?>" class="form-control" id="nomor_telepon" />
+                                    <input type="text" required placeholder="0881511255" name="nomor_telepon" class="form-control" id="nomor_telepon" />
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -51,53 +33,57 @@
                                     <label class="form-control-label">Jenis Kelamin</label>
                                     <select name="jenis_kelamin" class="form-control">
                                         <option value="">Pilih</option>
-                                        <?php
-                                        $jenis_kelamin_values = array(
-                                            'Laki-Laki' => 'Laki-Laki',
-                                            'Perempuan' => 'Perempuan',
-
-                                        );
-
-                                        foreach ($jenis_kelamin_values as $value => $display_text) {
-                                            $selected = ($value == $this->input->post('jenis_kelamin')) ? ' selected="selected"' : "";
-
-                                            echo '<option value="' . $value . '" ' . $selected . '>' . $display_text . '</option>';
-                                        }
-                                        ?>
+                                        <option value="Laki-Laki">Laki-Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
                                     </select>
                                 </div>
                             </div>
-                            <?php
-                            if ($this->session->flashdata('error') != '') {
-                                echo '<div class="alert alert-danger" role="alert">';
-                                echo $this->session->flashdata('error');
-                                echo '</div>';
-                            }
-                            ?>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Foto Jamaah</label>
-                                    <br>
                                     <input type="file" class="form-control" name="jamaah_img" required>
                                 </div>
                             </div>
-                            <hr class="horizontal dark mt-0">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Nomor Paspor</label>
-                                    <input type="text" placeholder="C238712" name="nomor_paspor" value="<?php echo $this->input->post('nomor_paspor'); ?>" class="form-control" id="nomor_paspor" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
+                                    <input type="text" placeholder="C238712" name="nomor_paspor" class="form-control" id="nomor_paspor" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Email</label>
-                                    <input type="text" placeholder="contoh@apa.com" name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
+                                    <input type="text" placeholder="contoh@apa.com" name="email" class="form-control" id="email" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Provinsi</label>
+                                    <select id="provinsi" name="provinsi" class="form-control" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Kabupaten/Kota</label>
+                                    <select id="kabupaten_kota" name="kabupaten_kota" class="form-control" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Kecamatan</label>
+                                    <select id="kecamatan" name="kecamatan" class="form-control" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Kelurahan</label>
+                                    <select id="kelurahan" name="kelurahan" class="form-control" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="alamat">Alamat Lengkap</label>
+                                    <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -109,3 +95,60 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
+
+    document.getElementById("provinsi").addEventListener("change", function () {
+        let provinsiId = this.value;
+        resetDropdown("kabupaten_kota");
+        resetDropdown("kecamatan");
+        resetDropdown("kelurahan");
+        if (provinsiId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`, "kabupaten_kota");
+        }
+    });
+
+    document.getElementById("kabupaten_kota").addEventListener("change", function () {
+        let kabupatenId = this.value;
+        resetDropdown("kecamatan");
+        resetDropdown("kelurahan");
+        if (kabupatenId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kabupatenId}.json`, "kecamatan");
+        }
+    });
+
+    document.getElementById("kecamatan").addEventListener("change", function () {
+        let kecamatanId = this.value;
+        resetDropdown("kelurahan");
+        if (kecamatanId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
+        }
+    });
+});
+
+/**
+ * Fungsi untuk mengambil data dari API dan mengisi dropdown
+ */
+function loadDropdown(url, elementId) {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let select = document.getElementById(elementId);
+            select.innerHTML = "<option value=''>Pilih</option>"; // Reset dropdown
+            data.forEach(item => {
+                select.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+            });
+        })
+        .catch(error => console.error("Error fetching data: ", error));
+}
+
+/**
+ * Fungsi untuk mereset dropdown agar tidak menampilkan data lama
+ */
+function resetDropdown(elementId) {
+    let select = document.getElementById(elementId);
+    select.innerHTML = "<option value=''>Pilih</option>";
+}
+</script>

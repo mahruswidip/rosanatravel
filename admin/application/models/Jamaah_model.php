@@ -276,11 +276,16 @@ class Jamaah_model extends CI_Model
         $this->db->set('alamat', $params['alamat']);
         $this->db->set('nomor_paspor', $params['nomor_paspor']);
         $this->db->set('jamaah_img', $gambar);
-        $this->db->set('created_by', $params['created_by']);
         $this->db->set('email', $params['email']);
+        $this->db->set('provinsi', $params['provinsi']);  // Simpan nama provinsi
+        $this->db->set('kabupaten_kota', $params['kabupaten_kota']);  // Simpan nama kabupaten
+        $this->db->set('kecamatan', $params['kecamatan']);  // Simpan nama kecamatan
+        $this->db->set('kelurahan', $params['kelurahan']);  // Simpan nama kelurahan
+        $this->db->set('created_by', $params['created_by']);
         $this->db->set('uuid', 'UUID_SHORT()', FALSE);
         $this->db->insert('jamaah');
     }
+
 
     /*
      * function to update jamaah
@@ -345,7 +350,8 @@ class Jamaah_model extends CI_Model
         $this->db->select('
         paket.id_paket, paket.nama_program,
         jamaah.id_jamaah, jamaah.nama_jamaah, jamaah.nik, 
-        jamaah.nomor_telepon, jamaah.jenis_kelamin, jamaah.alamat, 
+        jamaah.nomor_telepon, jamaah.jenis_kelamin, jamaah.provinsi, 
+        jamaah.kabupaten_kota,jamaah.kecamatan,jamaah.kelurahan,jamaah.alamat,
         jamaah.nomor_paspor
     ');
     $this->db->from('record_keberangkatan');

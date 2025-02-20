@@ -6,9 +6,7 @@
                     <div class="d-flex align-items-center">
                         <h6>Jamaah</h6>
                         <a href="<?php echo site_url('jamaah/add'); ?>" class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span> Tambah</a>
-                        <a href="<?php echo site_url('jamaah/export_excel'); ?>" class="btn bg-gradient-success btn-sm ms-2">
-                            <span class="fa fa-file-excel">&nbsp</span> Unduh Data
-                        </a>
+                        <a href="<?php echo site_url('jamaah/export_excel'); ?>" class="btn bg-gradient-success btn-sm ms-2"><span class="fa fa-file-excel">&nbsp</span> Unduh Data</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
