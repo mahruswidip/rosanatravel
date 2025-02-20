@@ -89,6 +89,48 @@
                                 value="<?php echo $this->input->post('berapa_orang'); ?>" class="form-control"
                                 id="berapa_orang" />
                         </div>
+
+                        <tbody>
+                            <tr>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"><img
+                                        src="https://rosanatravel.com/admin/assets/images/e31c5d6818110d4942bf350be202ea2b.jpg"
+                                        class="foto img-fluid"
+                                        style="border-radius: 10px; object-fit: cover; height: 100px; width: 70px">
+                                    <div class="row nama">
+                                        <div class="col-md-10">
+                                            <h4 class="text-dark"
+                                                style="font-weight:bold;font-size: medium; word-wrap: break-word;width: fit-content;">
+                                                AKHMAD FAIZ</h4>
+                                        </div>
+                                    </div>
+                                    <h5 class="paspor text-dark" style="font-weight:normal;font-size: medium">No. Paspor
+                                        &nbsp;<strong>E5069000</strong></h5>
+                                </td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                                <td><img src="https://rosanatravel.com/admin/assets/img/labelkoper/depansvip.jpg"
+                                        style="width: 350px;"></td>
+                            </tr>
+                        </tbody>
+
+
                         <br>
                         <!-- <p style="color: dimgray;">Sampaikan kepada kami apa yang anda butuhkan terkait paket tertentu seperti keinginan
                                 <ul>
