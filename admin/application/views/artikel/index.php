@@ -18,6 +18,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul Artikel</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created at</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Konten</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -115,6 +116,12 @@
                         var deleteButton = '<a href="<?php echo site_url('artikel/remove/'); ?>' + row.id_artikel + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span>Hapus</a>';
                         return editButton + ' ' + deleteButton;
                     }
+                },
+                {
+                    data: 'null',
+                    render: function(data, type, row) {
+                        return '<p class="text-xs font-weight-bold mb-0">' + row.konten + '</p>';
+                    },
                 },
 
             ],
