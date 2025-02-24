@@ -109,9 +109,9 @@
                     className: 'td-column-right',
                     render: function(data, type, row) {
                         if (<?php echo $this->session->userdata('user_level'); ?> == '1') {
-                            var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span>Edit</a>';
-                            var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span>Hapus</a>';
-                            var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span>Non Aktifkan</a>';
+                            var editButton = '<a href="<?php echo site_url('keberangkatan/edit/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                            var deleteButton = '<a href="<?php echo site_url('keberangkatan/remove/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                            var deactiveButton = '<a href="<?php echo site_url('keberangkatan/deactivate/'); ?>' + row.id_keberangkatan + '" class="btn bg-gradient-warning btn-sm"><span class="fa fa-times"></span></a>';
                             return editButton + ' ' + deleteButton + ' ' + deactiveButton;
                         } else {
                             return '';
