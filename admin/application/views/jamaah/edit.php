@@ -14,7 +14,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label">NIK</label>
-                                <input type="text" required placeholder="35751515" name="nik" value="<?php echo $jamaah['nik']; ?>" class="form-control" id="nik" disabled />
+                                <input type="text" required placeholder="35751515" name="nik" value="<?php echo $jamaah['nik']; ?>" class="form-control" id="nik"/>
                             </div>
                         </div>
                         <div class="col-md-6">
