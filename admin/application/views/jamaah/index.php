@@ -220,13 +220,13 @@ $(document).ready(function() {
                 render: function(data, type, row) {
                     var userButton = '<a href="<?php echo site_url('jamaah/buatuser/'); ?>' +
                         row.id_jamaah +
-                        '" class="btn bg-gradient-primary btn-sm"><span class="fas fa-user"></span></a>';
+                        '" class="btn bg-gradient-primary btn-sm"><span class="fas fa-user"></span>Buat User</a>';
                     var editButton = '<a href="<?php echo site_url('jamaah/edit/'); ?>' + row
                         .id_jamaah +
-                        '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span></a>';
+                        '" class="btn bg-gradient-info btn-sm"><span class="fa fa-pencil"></span>Edit</a>';
                     var deleteButton = '<a href="<?php echo site_url('jamaah/remove/'); ?>' +
                         row.id_jamaah +
-                        '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span></a>';
+                        '" class="btn bg-gradient-danger btn-sm"><span class="fa fa-trash"></span>Hapus</a>';
                     return userButton + ' ' + editButton + ' ' + deleteButton;
                 }
             },
