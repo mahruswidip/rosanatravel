@@ -18,7 +18,6 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul Artikel</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created at</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -35,24 +34,11 @@
         height: 100px !important;
     }
 
-    #dataTable-artikel td:nth-child(4) {
-        width: 50px;
-        /* Set your desired width */
-    }
-
     #dataTable-artikel tbody tr:hover {
         background-color: #f5f5f5;
         /* Change the background color to your desired hover color */
         cursor: pointer;
         /* Change the cursor to a pointer on hover */
-    }
-
-    .long-text {
-        max-width: 200px;
-        /* Sesuaikan dengan lebar maksimum yang diinginkan */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 </style>
 <!-- Include jQuery and DataTables libraries -->
