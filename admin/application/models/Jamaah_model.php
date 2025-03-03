@@ -369,4 +369,10 @@ class Jamaah_model extends CI_Model
 
     return $grouped_data;
     }
+    public function get_ulang_tahun()
+    {
+        $this->db->select('nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
+        $this->db->from('jamaah');
+        return $this->db->get()->result_array();
+    }
 }
