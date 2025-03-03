@@ -6,12 +6,10 @@
                     <div class="d-flex align-items-center">
                         <h6>Jamaah</h6>
                         <a href="<?php echo site_url('jamaah/add'); ?>"
-                            class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span>
-                            Tambah</a>
-                        <a href="<?php echo site_url('jamaah/export_excel'); ?>"
+                            class="btn bg-gradient-primary btn-sm ms-auto"><span class="fa fa-plus">&nbsp</span>Tambah</a>
+                        <a href="<?php echo site_url('jamaah/unduh_data'); ?>"
                             class="btn bg-gradient-success btn-sm ms-2">
-                            <span class="fa fa-file-excel">&nbsp</span> Unduh Data
-                        </a>
+                            <span class="fa fa-file-excel">&nbsp</span> Unduh Data</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -39,7 +37,6 @@
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Aksi</th>
-
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -70,25 +67,17 @@
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Foto</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Detail Jamaah</th>
+                                        Nama Jamaah</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Tanggal Lahir</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Nomor Telepon</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Alamat</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Dibuat Pada</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Aksi</th>
-
                                 </tr>
                             </thead>
-                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -235,6 +224,77 @@ $(document).ready(function() {
         "order": [
             [6, 'asc']
         ] // Menyortir berdasarkan kolom dengan indeks 1 (kolom is_aktif) secara descending (nilai 1 akan berada di atas)
+    });
+});
+</script>
+<!--untuk isi pada tabel ucapan selamat ulang tahun -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#dataTable-ultah').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
+            "paginate": {
+                "previous": "<",
+                "next": ">"
+            },
+        },
+        "pageLength": 10,
+        ajax: {
+            url: '<?php echo base_url("jamaah/view_ultah"); ?>',
+            type: 'POST',
+            dataSrc: ''
+        },
+        columns: [{
+                data: 'jamaah_img',
+                render: function(data, type, row) {
+                    var imagePath = '<?php echo base_url("assets/images/"); ?>' + data;
+                    return '<img src="' + imagePath + '" alt="Foto" class="img-fluid border-radius-lg" style="max-width: 100px; max-height: 100px;">';
+                }
+            },
+            {
+                data: 'nama_jamaah',
+                render: function(data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + data + '</p>';
+                }
+            },
+            {
+                data: 'ttl',
+                render: function(data, type, row) {
+                    if (!data || data === '0000-00-00') {
+                        return 'Data tidak valid';
+                    }
+                    var dateParts = data.split("-");
+                    var tahun = dateParts[0];
+                    var bulan = parseInt(dateParts[1], 10) - 1;
+                    var tanggal = dateParts[2];
+
+                    var bulanNama = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+                    return tanggal + ' ' + bulanNama[bulan] + ' ' + tahun;
+                }
+            },
+            {
+                data: 'nomor_telepon',
+                render: function(data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0">' + data + '</p>';
+                }
+            },
+            {
+                data: 'alamat',
+                render: function(data, type, row) {
+                    return '<p class="text-xs font-weight-bold mb-0 long-text">' + data + '</p>';
+                }
+            },
+            {
+                data: null,
+                render: function() {
+                    return '';
+                }
+            },
+        ],
+        "order": [
+            [3, 'asc']
+        ]
     });
 });
 </script>

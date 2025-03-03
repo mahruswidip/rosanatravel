@@ -120,7 +120,7 @@
                     <!-- <li><a href="<?php echo base_url('kontak/'); ?>">Lokasi</a></li> -->
                     <!-- <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>-->
-                    <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mx-2 px-4" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li>
+                    <!-- <li><a data-toggle="modal" data-target="#masukCenter" class="btn btn-sm btn-outline-white text-white btn-md font-weight-bold mx-2 px-4" href="<?php echo base_url('masuk/'); ?>">Masuk</a></li> -->
                     <!-- <li><a class="btn btn-sm btn-light text-dark btn-md font-weight-bold px-4" href="<?php echo base_url('daftar/'); ?>">Daftar</a></li> -->
                 </ul>
 

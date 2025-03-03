@@ -758,4 +758,12 @@ private function get_nama_wilayah_api($url)
         $writer->save('php://output');
         exit;
     }
+    public function view_ultah()
+    {
+        $this->load->model('Jamaah_model');
+        $jamaah = $this->Jamaah_model->get_ulang_tahun();
+
+        header('Content-Type: application/json');
+        echo json_encode($jamaah);
+    }
 }

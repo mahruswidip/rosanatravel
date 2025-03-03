@@ -500,12 +500,27 @@
             </div>
             <div class="col mb-4">
                 <div class="team">
+                    <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/jkt.jpg" alt="Image"
+                        class="img-fluid mb-4 rounded-20">
+                    <div class="px-3">
+                        <h3 class="mb-0">Jakarta</h3>
+                        <a href="https://maps.app.goo.gl/hXrr8cFhQ6wjyGpD7">
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Graha Rosana, Jl. Pegambiran No.5, RT.12/RW.7, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13220</p>
+                        </a>
+                    </div>
+                    <a href="https://maps.app.goo.gl/hXrr8cFhQ6wjyGpD7"
+                        class="btn btn-outline-success btn-sm">Review us on Google<i
+                            class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="team">
                     <img src="<?php echo base_url('assets/') ?>images/kontak/kantor/mlg.jpg" alt="Image"
                         class="img-fluid mb-4 rounded-20">
                     <div class="px-3">
                         <h3 class="mb-0">Malang</h3>
                         <a href="https://maps.app.goo.gl/mjH65SgAWFGUfeHB9">
-                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Kalpataru No.83 kav b, Jatimulyo, Kec.
+                            <p><i class="fas fa-map-marker-alt"></i>&nbsp;Jl. Kalpataru No.83 B, Kec.
                                 Lowokwaru, Kota Malang, Jawa Timur 65141</p>
                         </a>
                     </div>
