@@ -346,7 +346,8 @@ class Jamaah_model extends CI_Model
         return $this->db->get('record_keberangkatan')->result_array();
     }
 
-    public function get_jamaah_by_pakett() {
+    public function get_jamaah_by_pakett()
+    {
         $this->db->select('
         paket.id_paket, paket.nama_program,
         jamaah.id_jamaah, jamaah.nama_jamaah, jamaah.nik, 
@@ -354,25 +355,34 @@ class Jamaah_model extends CI_Model
         jamaah.kabupaten_kota,jamaah.kecamatan,jamaah.kelurahan,jamaah.alamat,
         jamaah.nomor_paspor
     ');
-    $this->db->from('record_keberangkatan');
-    $this->db->join('paket', 'record_keberangkatan.id_paket = paket.id_paket', 'left');
-    $this->db->join('jamaah', 'record_keberangkatan.id_jamaah = jamaah.id_jamaah', 'left');
-    $this->db->order_by('paket.id_paket', 'ASC');
+        $this->db->from('record_keberangkatan');
+        $this->db->join('paket', 'record_keberangkatan.id_paket = paket.id_paket', 'left');
+        $this->db->join('jamaah', 'record_keberangkatan.id_jamaah = jamaah.id_jamaah', 'left');
+        $this->db->order_by('paket.id_paket', 'ASC');
 
-    $query = $this->db->get();
-    $result = $query->result_array();
+        $query = $this->db->get();
+        $result = $query->result_array();
 
-    $grouped_data = [];
-    foreach ($result as $row) {
-        $grouped_data[$row['nama_program']][] = $row;
+        $grouped_data = [];
+        foreach ($result as $row) {
+            $grouped_data[$row['nama_program']][] = $row;
+        }
+
+        return $grouped_data;
     }
-
-    return $grouped_data;
-    }
+    // public function get_ulang_tahun()
+    // {
+    //     $this->db->select('nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
+    //     $this->db->from('jamaah');
+    //     return $this->db->get()->result_array();
+    // }
     public function get_ulang_tahun()
     {
         $this->db->select('nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
         $this->db->from('jamaah');
+        $this->db->where('MONTH(ttl) =', date('m')); // Ambil data yang lahir di bulan ini
+        $this->db->where('DAY(ttl) !=', '00'); // Pastikan hari valid
+        $this->db->where('MONTH(ttl) !=', '00'); // Pastikan bulan valid
         return $this->db->get()->result_array();
     }
 }
