@@ -242,6 +242,7 @@ class Jamaah extends CI_Controller
                     'nomor_paspor' => $this->input->post('nomor_paspor'),
                     'nomor_telepon' => $this->input->post('nomor_telepon'),
                     'email' => $this->input->post('email'),
+                    'ttl' => $this->input->post('ttl'),
 
                 );
 
