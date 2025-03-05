@@ -234,6 +234,9 @@
     });
 </script>
 <!--untuk isi pada tabel ucapan selamat ulang tahun -->
+<!-- Tambahkan SweetAlert2 di dalam halaman jika belum ada -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#dataTable-ultah').DataTable({
@@ -293,14 +296,48 @@
                 },
                 {
                     data: null,
-                    render: function() {
-                        return '';
+                    render: function(data, type, row) {
+                        return '<button class="btn bg-gradient-primary btn-sm kirim-hut" data-id="' + row.id_jamaah + '">' +
+                            '<span class="fas fa-user"></span> Kirim HUT</button>';
                     }
-                },
+                }
             ],
             "order": [
                 [3, 'asc']
             ]
+        });
+
+        // Event klik tombol Kirim HUT
+        $(document).on('click', '.kirim-hut', function() {
+            var id_jamaah = $(this).data('id');
+
+            Swal.fire({
+                title: 'Kirim Ucapan?',
+                text: "Apakah Anda yakin ingin mengirim ucapan ulang tahun?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Kirim'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '<?php echo base_url("jamaah/kirimhut/"); ?>' + id_jamaah,
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                Swal.fire('Sukses!', response.message, 'success');
+                            } else {
+                                Swal.fire('Gagal!', response.message, 'error');
+                            }
+                        },
+                        error: function() {
+                            Swal.fire('Gagal!', 'Terjadi kesalahan saat mengirim ucapan.', 'error');
+                        }
+                    });
+                }
+            });
         });
     });
 </script>

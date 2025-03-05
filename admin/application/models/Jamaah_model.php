@@ -378,11 +378,16 @@ class Jamaah_model extends CI_Model
     // }
     public function get_ulang_tahun()
     {
-        $this->db->select('nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
+        $this->db->select('id_jamaah, nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
         $this->db->from('jamaah');
         $this->db->where('MONTH(ttl) =', date('m')); // Ambil data yang lahir di bulan ini
         $this->db->where('DAY(ttl) !=', '00'); // Pastikan hari valid
         $this->db->where('MONTH(ttl) !=', '00'); // Pastikan bulan valid
         return $this->db->get()->result_array();
+    }
+
+    public function kirimUcapanUltah($id_jamaah)
+    {
+        return $this->db->get_where('jamaah', ['id_jamaah' => $id_jamaah])->row_array();
     }
 }

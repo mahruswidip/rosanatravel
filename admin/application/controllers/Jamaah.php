@@ -126,94 +126,95 @@ class Jamaah extends CI_Controller
 
 
     function add()
-{
-    if ($this->session->userdata('logged_in') !== TRUE) {
-        redirect('login');
-    }
-
-    $config['upload_path'] = './assets/images/'; // Path folder
-    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; // Jenis file yang diizinkan
-    $config['encrypt_name'] = TRUE; // Enkripsi nama file yang diupload
-    $this->upload->initialize($config);
-
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('nik', 'NIK', 'is_unique[jamaah.nik]');
-
-    if ($this->form_validation->run() != false) {
-        $gambar = "profile_default.jpg"; // Gambar default jika tidak diupload
-        if (!empty($_FILES['jamaah_img']['name'])) {
-            if ($this->upload->do_upload('jamaah_img')) {
-                $gbr = $this->upload->data();
-                // Resize dan kompres gambar
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './assets/images/' . $gbr['file_name'];
-                $config['create_thumb'] = FALSE;
-                $config['maintain_ratio'] = TRUE;
-                $config['quality'] = '70%';
-                $config['width'] = 300;
-                $config['height'] = 300;
-                $config['new_image'] = './assets/images/' . $gbr['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $gambar = $gbr['file_name'];
-            } else {
-                $this->session->set_flashdata('error', 'Gagal mengupload gambar.');
-                redirect('jamaah/bukatambah');
-            }
+    {
+        if ($this->session->userdata('logged_in') !== TRUE) {
+            redirect('login');
         }
 
-        // Ambil ID wilayah dari form
-        $provinsi_id = $this->input->post('provinsi');
-        $kabupaten_id = $this->input->post('kabupaten_kota');
-        $kecamatan_id = $this->input->post('kecamatan');
-        $kelurahan_id = $this->input->post('kelurahan');
+        $config['upload_path'] = './assets/images/'; // Path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; // Jenis file yang diizinkan
+        $config['encrypt_name'] = TRUE; // Enkripsi nama file yang diupload
+        $this->upload->initialize($config);
 
-        // Ambil nama wilayah dari API Emsifa
-        $provinsi = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/province/$provinsi_id.json");
-        $kabupaten = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/regency/$kabupaten_id.json");
-        $kecamatan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/district/$kecamatan_id.json");
-        $kelurahan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/village/$kelurahan_id.json");
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nik', 'NIK', 'is_unique[jamaah.nik]');
 
-        $params = array(
-            'nik' => $this->input->post('nik'),
-            'nama_jamaah' => $this->input->post('nama_jamaah'),
-            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-            'nomor_telepon' => $this->input->post('nomor_telepon'),
-            'alamat' => $this->input->post('alamat'),
-            'nomor_paspor' => $this->input->post('nomor_paspor'),
-            'email' => $this->input->post('email'),
-            'provinsi' => $provinsi,  // Simpan nama provinsi
-            'kabupaten_kota' => $kabupaten,  // Simpan nama kabupaten
-            'kecamatan' => $kecamatan,  // Simpan nama kecamatan
-            'kelurahan' => $kelurahan,  // Simpan nama kelurahan
-            'created_by' => $this->session->userdata('user_id'),
-        );
+        if ($this->form_validation->run() != false) {
+            $gambar = "profile_default.jpg"; // Gambar default jika tidak diupload
+            if (!empty($_FILES['jamaah_img']['name'])) {
+                if ($this->upload->do_upload('jamaah_img')) {
+                    $gbr = $this->upload->data();
+                    // Resize dan kompres gambar
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = './assets/images/' . $gbr['file_name'];
+                    $config['create_thumb'] = FALSE;
+                    $config['maintain_ratio'] = TRUE;
+                    $config['quality'] = '70%';
+                    $config['width'] = 300;
+                    $config['height'] = 300;
+                    $config['new_image'] = './assets/images/' . $gbr['file_name'];
+                    $this->load->library('image_lib', $config);
+                    $this->image_lib->resize();
+                    $gambar = $gbr['file_name'];
+                } else {
+                    $this->session->set_flashdata('error', 'Gagal mengupload gambar.');
+                    redirect('jamaah/bukatambah');
+                }
+            }
 
-        $this->Jamaah_model->add_jamaah($params, $gambar);
-        $this->session->set_flashdata('success', 'Jamaah berhasil ditambahkan.');
-        redirect('jamaah/index');
-    } else {
-        $this->session->set_flashdata('error', 'NIK sudah terdaftar.');
-        redirect('jamaah/bukatambah');
+            // Ambil ID wilayah dari form
+            $provinsi_id = $this->input->post('provinsi');
+            $kabupaten_id = $this->input->post('kabupaten_kota');
+            $kecamatan_id = $this->input->post('kecamatan');
+            $kelurahan_id = $this->input->post('kelurahan');
+
+            // Ambil nama wilayah dari API Emsifa
+            $provinsi = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/province/$provinsi_id.json");
+            $kabupaten = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/regency/$kabupaten_id.json");
+            $kecamatan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/district/$kecamatan_id.json");
+            $kelurahan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/village/$kelurahan_id.json");
+
+            $params = array(
+                'nik' => $this->input->post('nik'),
+                'nama_jamaah' => $this->input->post('nama_jamaah'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'nomor_telepon' => $this->input->post('nomor_telepon'),
+                'alamat' => $this->input->post('alamat'),
+                'nomor_paspor' => $this->input->post('nomor_paspor'),
+                'email' => $this->input->post('email'),
+                'ttl' => $this->input->post('ttl'),
+                'provinsi' => $provinsi,  // Simpan nama provinsi
+                'kabupaten_kota' => $kabupaten,  // Simpan nama kabupaten
+                'kecamatan' => $kecamatan,  // Simpan nama kecamatan
+                'kelurahan' => $kelurahan,  // Simpan nama kelurahan
+                'created_by' => $this->session->userdata('user_id'),
+            );
+
+            $this->Jamaah_model->add_jamaah($params, $gambar);
+            $this->session->set_flashdata('success', 'Jamaah berhasil ditambahkan.');
+            redirect('jamaah/index');
+        } else {
+            $this->session->set_flashdata('error', 'NIK sudah terdaftar.');
+            redirect('jamaah/bukatambah');
+        }
     }
-}
 
-/**
- * Fungsi untuk mendapatkan nama wilayah dari API Emsifa
- */
-private function get_nama_wilayah_api($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    /**
+     * Fungsi untuk mendapatkan nama wilayah dari API Emsifa
+     */
+    private function get_nama_wilayah_api($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-    $response = curl_exec($ch);
-    curl_close($ch);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
-    $data = json_decode($response, true);
-    return $data['name'] ?? null; // Ambil nama wilayah dari API
-}
+        $data = json_decode($response, true);
+        return $data['name'] ?? null; // Ambil nama wilayah dari API
+    }
 
     /*
      * Editing a luasan
@@ -223,15 +224,16 @@ private function get_nama_wilayah_api($url)
         if ($this->session->userdata('logged_in') !== TRUE) {
             redirect('login');
         }
-        // check if the luasan exists before trying to edit it
-        $config['upload_path'] = './assets/images/'; //path folder
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
-        $user_id = $this->session->userdata('user_id');
+
+        $config['upload_path'] = './assets/images/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+        $config['encrypt_name'] = TRUE;
+        $this->upload->initialize($config);
+
         $data['jamaah'] = $this->Jamaah_model->get_jamaah($id_jamaah);
 
         if (isset($data['jamaah']['id_jamaah'])) {
-            if (isset($_POST) && count($_POST) > 0) {
+            if ($_POST) {
                 $params = array(
                     'nik' => $this->input->post('nik'),
                     'nama_jamaah' => $this->input->post('nama_jamaah'),
@@ -240,40 +242,64 @@ private function get_nama_wilayah_api($url)
                     'nomor_paspor' => $this->input->post('nomor_paspor'),
                     'nomor_telepon' => $this->input->post('nomor_telepon'),
                     'email' => $this->input->post('email'),
+
                 );
-                $this->upload->initialize($config); // proses upload baru
+
+                // Ambil ID wilayah dari form
+                $provinsi_id = $this->input->post('provinsi');
+                $kabupaten_id = $this->input->post('kabupaten_kota');
+                $kecamatan_id = $this->input->post('kecamatan');
+                $kelurahan_id = $this->input->post('kelurahan');
+
+                // Ambil nama wilayah dari API
+                $params['provinsi'] = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/province/$provinsi_id.json");
+                $params['kabupaten_kota'] = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/regency/$kabupaten_id.json");
+                $params['kecamatan'] = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/district/$kecamatan_id.json");
+                $params['kelurahan'] = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/village/$kelurahan_id.json");
+
+                // Upload dan kompres gambar jika ada perubahan
                 if (!empty($_FILES['jamaah_img']['name'])) {
                     if ($this->upload->do_upload('jamaah_img')) {
                         $gbr = $this->upload->data();
-                        //Compress Image
+
+                        // Konfigurasi kompresi gambar
                         $config['image_library'] = 'gd2';
                         $config['source_image'] = './assets/images/' . $gbr['file_name'];
                         $config['create_thumb'] = FALSE;
-                        $config['maintain_ratio'] = FALSE;
-                        $config['quality'] = '60%';
-                        $config['width'] = '20%';
-                        $config['max_size'] = '10000';
+                        $config['maintain_ratio'] = TRUE;
+                        $config['quality'] = '70%';
+                        $config['width'] = 300;
+                        $config['height'] = 300;
                         $config['new_image'] = './assets/images/' . $gbr['file_name'];
                         $this->load->library('image_lib', $config);
                         $this->image_lib->resize();
-                        $gambar = $gbr['file_name'];
+
+                        // Hapus gambar lama
+                        if (!empty($data['jamaah']['jamaah_img']) && $data['jamaah']['jamaah_img'] != 'profile_default.jpg') {
+                            unlink(FCPATH . 'assets/images/' . $data['jamaah']['jamaah_img']);
+                        }
+
+                        // Simpan nama file baru
+                        $params['jamaah_img'] = $gbr['file_name'];
+                    } else {
+                        $this->session->set_flashdata('error', 'Gagal mengupload gambar.');
+                        redirect('jamaah/edit/' . $id_jamaah);
                     }
                 }
-                if (isset($gambar)) {
-                    $params['jamaah_img'] = $gambar;
-                    unlink(FCPATH . 'assets/images/' . $data['jamaah']['jamaah_img']); // menghapus file upload seblumnya
-                }
 
+                // Update data jamaah
                 $this->Jamaah_model->update_jamaah($id_jamaah, $params);
+                $this->session->set_flashdata('success', 'Jamaah berhasil diperbarui.');
                 redirect('jamaah/index');
             } else {
                 $data['_view'] = 'jamaah/edit';
                 $this->load->view('layouts/main', $data);
             }
         } else {
-            show_error('The jamaah you are trying to edit does not exist.');
+            show_error('Jamaah yang Anda coba edit tidak ditemukan.');
         }
     }
+
 
     function buatuser($id_jamaah)
     {
@@ -488,7 +514,7 @@ private function get_nama_wilayah_api($url)
 
         // Check if the jamaah exists and if it was created by the current user
         if (isset($jamaah['id_jamaah']) && $jamaah['created_by'] == $this->session->userdata('user_id')) {
-            
+
             // Hapus data di database
             $this->Jamaah_model->delete_jamaah($id_jamaah);
 
@@ -683,7 +709,8 @@ private function get_nama_wilayah_api($url)
         $write->save('php://output');
     }
 
-    public function export_excel() {
+    public function export_excel()
+    {
         // Ambil data jamaah berdasarkan paket
         $data = $this->Jamaah_model->get_jamaah_by_pakett();
 
@@ -765,5 +792,68 @@ private function get_nama_wilayah_api($url)
 
         header('Content-Type: application/json');
         echo json_encode($jamaah);
+    }
+
+    public function kirimhut($id_jamaah)
+    {
+        // Ambil data jamaah berdasarkan ID
+        $jamaah = $this->Jamaah_model->kirimUcapanUltah($id_jamaah);
+
+        if (!$jamaah) {
+            echo json_encode(['status' => 'error', 'message' => 'Data jamaah tidak ditemukan!']);
+            return;
+        }
+
+        // Debugging tambahan
+        log_message('error', 'Data Jamaah: ' . json_encode($jamaah));
+
+        // Data yang dikirim ke API
+        $payload = [
+            "to_number" => $jamaah['nomor_telepon'],
+            "to_name" => $jamaah['nama_jamaah'],
+            "message_template_id" => "826d7eb4-0d91-4891-a64f-7195690648bb",
+            "channel_integration_id" => "407aa84e-8313-4689-b4cf-e4c484bc91ca",
+            "language" => ["code" => "id"],
+            "parameters" => [
+                "body" => [
+                    [
+                        "key" => "1",
+                        "value" => "full_name",
+                        "value_text" => $jamaah['nama_jamaah'],
+                    ]
+                ]
+            ]
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://service-chat.qontak.com/api/open/v1/broadcasts/whatsapp/direct");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: MAoNDjsWfrjCm827rdxpynaPLTsOdfwv6s7JxY5WhoM",
+            "Content-Type: application/json"
+        ]);
+
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curl_error = curl_error($ch);
+        curl_close($ch);
+
+        $response_data = json_decode($response, true); // Decode JSON response
+        log_message('error', 'Qontak API Response: ' . print_r($response_data, true));
+
+        // Cek status pengiriman
+        if ($http_code == 200 && isset($response_data['status']) && $response_data['status'] == "success") {
+            echo json_encode(['status' => 'success', 'message' => 'Pesan ulang tahun berhasil dikirim!']);
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Gagal mengirim pesan.',
+                'api_response' => $response_data,
+                'http_code' => $http_code,
+                'curl_error' => $curl_error
+            ]);
+        }
     }
 }

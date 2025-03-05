@@ -38,6 +38,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-control-label">Tanggal Lahir</label>
+                                    <input type="date" required name="tanggal_lahir" class="form-control" id="tanggal_lahir" />
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Foto Jamaah</label>
@@ -50,6 +56,8 @@
                                     <input type="text" placeholder="C238712" name="nomor_paspor" class="form-control" id="nomor_paspor" />
                                 </div>
                             </div>
+
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Email</label>
@@ -97,58 +105,58 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
+    document.addEventListener("DOMContentLoaded", function() {
+        loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
 
-    document.getElementById("provinsi").addEventListener("change", function () {
-        let provinsiId = this.value;
-        resetDropdown("kabupaten_kota");
-        resetDropdown("kecamatan");
-        resetDropdown("kelurahan");
-        if (provinsiId) {
-            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`, "kabupaten_kota");
-        }
+        document.getElementById("provinsi").addEventListener("change", function() {
+            let provinsiId = this.value;
+            resetDropdown("kabupaten_kota");
+            resetDropdown("kecamatan");
+            resetDropdown("kelurahan");
+            if (provinsiId) {
+                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`, "kabupaten_kota");
+            }
+        });
+
+        document.getElementById("kabupaten_kota").addEventListener("change", function() {
+            let kabupatenId = this.value;
+            resetDropdown("kecamatan");
+            resetDropdown("kelurahan");
+            if (kabupatenId) {
+                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kabupatenId}.json`, "kecamatan");
+            }
+        });
+
+        document.getElementById("kecamatan").addEventListener("change", function() {
+            let kecamatanId = this.value;
+            resetDropdown("kelurahan");
+            if (kecamatanId) {
+                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
+            }
+        });
     });
 
-    document.getElementById("kabupaten_kota").addEventListener("change", function () {
-        let kabupatenId = this.value;
-        resetDropdown("kecamatan");
-        resetDropdown("kelurahan");
-        if (kabupatenId) {
-            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kabupatenId}.json`, "kecamatan");
-        }
-    });
+    /**
+     * Fungsi untuk mengambil data dari API dan mengisi dropdown
+     */
+    function loadDropdown(url, elementId) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let select = document.getElementById(elementId);
+                select.innerHTML = "<option value=''>Pilih</option>"; // Reset dropdown
+                data.forEach(item => {
+                    select.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                });
+            })
+            .catch(error => console.error("Error fetching data: ", error));
+    }
 
-    document.getElementById("kecamatan").addEventListener("change", function () {
-        let kecamatanId = this.value;
-        resetDropdown("kelurahan");
-        if (kecamatanId) {
-            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
-        }
-    });
-});
-
-/**
- * Fungsi untuk mengambil data dari API dan mengisi dropdown
- */
-function loadDropdown(url, elementId) {
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            let select = document.getElementById(elementId);
-            select.innerHTML = "<option value=''>Pilih</option>"; // Reset dropdown
-            data.forEach(item => {
-                select.innerHTML += `<option value="${item.id}">${item.name}</option>`;
-            });
-        })
-        .catch(error => console.error("Error fetching data: ", error));
-}
-
-/**
- * Fungsi untuk mereset dropdown agar tidak menampilkan data lama
- */
-function resetDropdown(elementId) {
-    let select = document.getElementById(elementId);
-    select.innerHTML = "<option value=''>Pilih</option>";
-}
+    /**
+     * Fungsi untuk mereset dropdown agar tidak menampilkan data lama
+     */
+    function resetDropdown(elementId) {
+        let select = document.getElementById(elementId);
+        select.innerHTML = "<option value=''>Pilih</option>";
+    }
 </script>
