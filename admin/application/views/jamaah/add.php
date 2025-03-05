@@ -25,7 +25,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Nomor Whatsapp</label>
-                                    <input type="text" required placeholder="0881511255" name="nomor_telepon" class="form-control" id="nomor_telepon" />
+                                    <input type="text" required placeholder="62881511255" name="nomor_telepon" class="form-control" id="nomor_telepon" />
+                                    <small id="error_message" style="color: red; display: none;">Nomor harus diawali "62" dan hanya angka!</small>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -41,7 +42,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Tanggal Lahir</label>
-                                    <input type="date" required name="tanggal_lahir" class="form-control" id="tanggal_lahir" />
+                                    <input type="date" required name="ttl" class="form-control" id="ttl" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -103,7 +104,6 @@
         </div>
     </div>
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
@@ -159,4 +159,19 @@
         let select = document.getElementById(elementId);
         select.innerHTML = "<option value=''>Pilih</option>";
     }
+</script>
+<script>
+    document.getElementById("nomor_telepon").addEventListener("input", function() {
+        let input = this.value;
+        let errorMessage = document.getElementById("error_message");
+
+        // Cek apakah input hanya angka dan diawali dengan "62"
+        if (!/^62\d{8,13}$/.test(input)) {
+            errorMessage.style.display = "block"; // Tampilkan pesan error
+            this.setCustomValidity("Nomor harus diawali '62' dan hanya angka!");
+        } else {
+            errorMessage.style.display = "none"; // Sembunyikan pesan error
+            this.setCustomValidity(""); // Hilangkan error
+        }
+    });
 </script>
