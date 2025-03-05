@@ -10,7 +10,8 @@
                 </div>
                 <div class="card-body">
                     <!-- <?php var_dump($paket) ?> -->
-                    <form action="<?php echo site_url() . 'paket/edit/' . $paket['id_paket'] ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo site_url() . 'paket/edit/' . $paket['id_paket'] ?>" method="post"
+                        enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="form-group">
@@ -88,13 +89,17 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Lama Hari</label>
-                                    <input type="text" required placeholder="9/13/16" name="lama_hari" value="<?php echo ($this->input->post('lama_hari') ? $this->input->post('lama_hari') : $paket['lama_hari']); ?>" class="form-control" id="lama_hari" />
+                                    <input type="text" required placeholder="9/13/16" name="lama_hari"
+                                        value="<?php echo ($this->input->post('lama_hari') ? $this->input->post('lama_hari') : $paket['lama_hari']); ?>"
+                                        class="form-control" id="lama_hari" />
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="form-control-label">Nama Program</label>
-                                    <input type="text" name="nama_program" placeholder="UMROH MUHARRAM GRUP PAK BUDI" value="<?php echo ($this->input->post('nama_program') ? $this->input->post('nama_program') : $paket['nama_program']); ?>" class="form-control" id="nama_program" />
+                                    <input type="text" name="nama_program" placeholder="UMROH MUHARRAM GRUP PAK BUDI"
+                                        value="<?php echo ($this->input->post('nama_program') ? $this->input->post('nama_program') : $paket['nama_program']); ?>"
+                                        class="form-control" id="nama_program" />
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -135,25 +140,33 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="form-control-label">Hotel Mekkah</label>
-                                    <input type="text" name="hotel_mekkah" placeholder="HILTON HOTEL MEKKAH" value="<?php echo ($this->input->post('hotel_mekkah') ? $this->input->post('hotel_mekkah') : $paket['hotel_mekkah']); ?>" class="form-control" id="hotel_mekkah" />
+                                    <input type="text" name="hotel_mekkah" placeholder="HILTON HOTEL MEKKAH"
+                                        value="<?php echo ($this->input->post('hotel_mekkah') ? $this->input->post('hotel_mekkah') : $paket['hotel_mekkah']); ?>"
+                                        class="form-control" id="hotel_mekkah" />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Bintang Mekkah</label>
-                                    <input type="text" name="bintang_mekkah" placeholder="1-5" value="<?php echo ($this->input->post('bintang_mekkah') ? $this->input->post('bintang_mekkah') : $paket['bintang_mekkah']); ?>" class="form-control" id="bintang_mekkah" />
+                                    <input type="text" name="bintang_mekkah" placeholder="1-5"
+                                        value="<?php echo ($this->input->post('bintang_mekkah') ? $this->input->post('bintang_mekkah') : $paket['bintang_mekkah']); ?>"
+                                        class="form-control" id="bintang_mekkah" />
                                 </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="form-control-label">Hotel Madinah</label>
-                                    <input type="text" name="hotel_madinah" placeholder="FRONT TAIBA HOTEL" value="<?php echo ($this->input->post('hotel_madinah') ? $this->input->post('hotel_madinah') : $paket['hotel_madinah']); ?>" class="form-control" id="hotel_madinah" />
+                                    <input type="text" name="hotel_madinah" placeholder="FRONT TAIBA HOTEL"
+                                        value="<?php echo ($this->input->post('hotel_madinah') ? $this->input->post('hotel_madinah') : $paket['hotel_madinah']); ?>"
+                                        class="form-control" id="hotel_madinah" />
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Bintang Madinah</label>
-                                    <input type="text" name="bintang_madinah" placeholder="1-5" value="<?php echo ($this->input->post('bintang_madinah') ? $this->input->post('bintang_madinah') : $paket['bintang_madinah']); ?>" class="form-control" id="bintang_madinah" />
+                                    <input type="text" name="bintang_madinah" placeholder="1-5"
+                                        value="<?php echo ($this->input->post('bintang_madinah') ? $this->input->post('bintang_madinah') : $paket['bintang_madinah']); ?>"
+                                        class="form-control" id="bintang_madinah" />
                                 </div>
                             </div>
                             <?php
@@ -170,10 +183,12 @@
                                     <input type="file" class="form-control" name="paket_img">
                                     <!-- Menampilkan gambar saat mengedit -->
                                     <?php if (!empty($paket['paket_img'])) : ?>
-                                        <img src="<?php echo base_url('assets/images/' . $paket['paket_img']); ?>" alt="Paket Image" class="img-thumbnail mt-2" style="max-width: 100%;">
+                                    <img src="<?php echo base_url('assets/images/' . $paket['paket_img']); ?>"
+                                        alt="Paket Image" class="img-thumbnail mt-2" style="max-width: 100%;">
                                     <?php endif; ?>
                                     <!-- Input tersembunyi untuk menyimpan nama gambar saat ini -->
-                                    <input type="hidden" name="paket_img" value="<?php echo ($this->input->post('paket_img') ? $this->input->post('paket_img') : $paket['paket_img']); ?>" />
+                                    <input type="hidden" name="paket_img"
+                                        value="<?php echo ($this->input->post('paket_img') ? $this->input->post('paket_img') : $paket['paket_img']); ?>" />
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-0">
@@ -209,7 +224,9 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-control-label">Uang Muka</label>
-                                    <input type="text" placeholder="30000000" name="uang_muka" value="<?php echo ($this->input->post('uang_muka') ? $this->input->post('uang_muka') : $paket['uang_muka']); ?>" class="form-control" id="uang_muka" />
+                                    <input type="text" placeholder="30000000" name="uang_muka"
+                                        value="<?php echo ($this->input->post('uang_muka') ? $this->input->post('uang_muka') : $paket['uang_muka']); ?>"
+                                        class="form-control" id="uang_muka" />
                                 </div>
                             </div>
                             <div class="col-md-1">
@@ -249,22 +266,28 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Harga Paket</label>
-                                    <input type="text" placeholder="30000000" name="harga_paket" value="<?php echo ($this->input->post('harga_paket') ? $this->input->post('harga_paket') : $paket['harga_paket']); ?>" class="form-control" id="harga_paket" />
+                                    <input type="text" placeholder="30000000" name="harga_paket"
+                                        value="<?php echo ($this->input->post('harga_paket') ? $this->input->post('harga_paket') : $paket['harga_paket']); ?>"
+                                        class="form-control" id="harga_paket" />
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-0">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Nomor Guide</label>
-                                    <input type="text" placeholder="+628115148158" name="nomor_guide" value="<?php echo ($this->input->post('nomor_guide') ? $this->input->post('nomor_guide') : $paket['nomor_guide']); ?>" class="form-control" id="nomor_guide" />
+                                    <input type="text" placeholder="+628115148158" name="nomor_guide"
+                                        value="<?php echo ($this->input->post('nomor_guide') ? $this->input->post('nomor_guide') : $paket['nomor_guide']); ?>"
+                                        class="form-control" id="nomor_guide" />
                                 </div>
                             </div>
                             <hr class="horizontal dark mt-0">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Publikasikan <p class="text-secondary text-xs">(Tampilkan di Website dan Aplikasi)</p></label>
+                                    <label class="form-control-label">Publikasikan <p class="text-secondary text-xs">
+                                            (Tampilkan di Website dan Aplikasi)</p></label>
                                     <div class="form-check form-switch">
-                                        <input type="checkbox" class="form-check-input" id="publish" name="publish" <?php echo ($paket['publish'] == 1) ? 'checked' : ''; ?>>
+                                        <input type="checkbox" class="form-check-input" id="publish" name="publish"
+                                            <?php echo ($paket['publish'] == 1) ? 'checked' : ''; ?>>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +295,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Konten</label>
-                                    <textarea id="editor" name="konten" required><?php echo $paket['konten']; ?></textarea>
+                                    <textarea id="editor" name="konten"><?php echo $paket['konten']; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -287,11 +310,11 @@
 <!-- Script CKEditor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+});
 </script>
