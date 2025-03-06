@@ -24,25 +24,36 @@ class Login extends CI_Controller
       $name  = $data['user_name'];
       $email = $data['user_email'];
       $level = $data['user_level'];
+      $is_jamaah = $data['is_jamaah'];
       $created_by = $data['created_by'];
       $sesdata = array(
-        'user_id' => $user_id,
-        'user_name'  => $name,
-        'user_email'     => $email,
-        'user_level'     => $level,
-        'created_by'     => $created_by,
+        'user_id'   => $user_id,
+        'user_name' => $name,
+        'user_email'=> $email,
+        'user_level'=> $level,
+        'is_jamaah' => $is_jamaah,
+        'created_by'=> $created_by,
         'logged_in' => TRUE
       );
       $this->session->set_userdata($sesdata);
       // access login for admin
-      if ($level === '1') {
+      if ($level == 1 && $is_jamaah == 0) {
         redirect('dashboard/index');
 
         // access login for staff
-      } elseif ($level === '2') {
+      } elseif($level == 2 && $is_jamaah == 0) {
         redirect('dashboard/index');
 
-        // access login for author
+        // access login karyawan
+      } elseif($level == 4 && $is_jamaah == 2) {
+        redirect('absen1/index');
+        
+      } elseif($level == 5 && $is_jamaah == 3) {
+        redirect('dashboard/index');
+        
+      } elseif($level == 6 && $is_jamaah == 4) {
+        redirect('dashboard/index');
+        
       } else {
         redirect('dashboard/index');
       }
