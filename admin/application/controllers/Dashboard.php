@@ -18,6 +18,11 @@ class Dashboard extends CI_Controller
 
     function index()
     {
+        $user_level = $this->session->userdata('user_level');
+        if (in_array($user_level, ['4', '5', '6'])) {
+            redirect('absen1/index');
+        }
+
         $data['jamaah'] = $this->Jamaah_model->get_all_jamaah_count();
         $data['jamaah_umroh_only'] = $this->Jamaah_model->get_umroh_only_jamaah_count();
         $data['jamaah_haji_only'] = $this->Jamaah_model->get_haji_only_jamaah_count();

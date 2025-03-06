@@ -72,40 +72,98 @@
     <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <?php 
-                $user_level = $this->session->userdata('user_level');
-                if ($user_level == '4') { ?>
-                    <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
-                        <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-                        <span class="ms-1 font-weight-bold">Absen Karyawan</span>
+            <?php
+            $user_level = $this->session->userdata('user_level');
+            if ($user_level == '4') { ?>
+                <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+                    <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+                    <span class="ms-1 font-weight-bold">Absen Karyawan</span>
+                </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Karyawan</span>
                     </a>
-                <hr class="horizontal dark mt-0">
-                <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Absen</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Data Absen</span>
-                        </a>
-                    </li>
-                </div>
-                </ul>
-                <?php } else { ?>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Log Absen</span>
+                    </a>
+                </li>
+        </div>
+        </ul>
+    <?php } elseif ($user_level == '5') { ?>
+        <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+            <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold">Koordinator Karyawan</span>
+        </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Karyawan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Log Absen</span>
+                    </a>
+                </li>
+        </div>
+        </ul>
+    <?php } elseif ($user_level == '6') { ?>
+        <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+            <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold">Absen Karyawan</span>
+        </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Absensi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Log Anda</span>
+                    </a>
+                </li>
+        </div>
+        </ul>
+    <?php } else { ?>
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>dashboard/index" target="_blank">
                 <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">Data Jamaah</span>
             </a>
         </div>
+
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
@@ -193,12 +251,12 @@
                 </li>
             </ul>
         </div>
-        <?php } ?>
-        <div class="sidenav-footer mx-3 ">
-            <!-- <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a> -->
-            <!-- <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Keluar</a> -->
-            <a class="btn btn-primary btn-sm mb-0 w-100" href="<?php echo site_url(''); ?>login/logout" type=" button">Keluar</a>
-        </div>
+    <?php } ?>
+    <div class="sidenav-footer mx-3 ">
+        <!-- <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a> -->
+        <!-- <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Keluar</a> -->
+        <a class="btn btn-primary btn-sm mb-0 w-100" href="<?php echo site_url(''); ?>login/logout" type=" button">Keluar</a>
+    </div>
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -220,7 +278,7 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Selamat Datang, <?php echo $this->session->userdata('user_id'); ?> lvl<?php echo $this->session->userdata('user_level'); ?></span>
+                                <span class="d-sm-inline d-none">Selamat Datang, User level <?php echo $this->session->userdata('user_level'); ?></span>
                             </a>
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
