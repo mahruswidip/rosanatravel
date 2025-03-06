@@ -845,7 +845,9 @@ class Jamaah extends CI_Controller
         log_message('error', 'Qontak API Response: ' . print_r($response_data, true));
 
         // Cek status pengiriman
-        if ($http_code == 200 && isset($response_data['status']) && $response_data['status'] == "success") {
+        // if ($http_code == 200 && isset($response_data['status']) && $response_data['status'] == "success") {
+        if (in_array($http_code, [200, 201]) && isset($response_data['status']) && $response_data['status'] == "success") {
+
             echo json_encode(['status' => 'success', 'message' => 'Pesan ulang tahun berhasil dikirim!']);
         } else {
             echo json_encode([

@@ -277,6 +277,7 @@ class Jamaah_model extends CI_Model
         $this->db->set('nomor_paspor', $params['nomor_paspor']);
         $this->db->set('jamaah_img', $gambar);
         $this->db->set('email', $params['email']);
+        $this->db->set('ttl', $params['ttl']);
         $this->db->set('provinsi', $params['provinsi']);  // Simpan nama provinsi
         $this->db->set('kabupaten_kota', $params['kabupaten_kota']);  // Simpan nama kabupaten
         $this->db->set('kecamatan', $params['kecamatan']);  // Simpan nama kecamatan
@@ -380,11 +381,23 @@ class Jamaah_model extends CI_Model
     {
         $this->db->select('id_jamaah, nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
         $this->db->from('jamaah');
-        $this->db->where('MONTH(ttl) =', date('m')); // Ambil data yang lahir di bulan ini
-        $this->db->where('DAY(ttl) !=', '00'); // Pastikan hari valid
-        $this->db->where('MONTH(ttl) !=', '00'); // Pastikan bulan valid
+
+        // Ambil bulan dan hari saat ini
+        $bulan_ini = date('m');
+
+        // Ambil range 2 hari ke belakang dan 10 hari ke depan
+        $tanggal_awal = date('d', strtotime('-2 days'));
+        $tanggal_akhir = date('d', strtotime('+10 days'));
+
+        // Filter berdasarkan bulan yang sama dan rentang hari
+        $this->db->where('MONTH(ttl)', $bulan_ini);
+        $this->db->where('DAY(ttl) >=', $tanggal_awal);
+        $this->db->where('DAY(ttl) <=', $tanggal_akhir);
+
         return $this->db->get()->result_array();
     }
+
+
 
     public function kirimUcapanUltah($id_jamaah)
     {
