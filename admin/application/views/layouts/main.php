@@ -72,6 +72,35 @@
     <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <?php 
+                $user_level = $this->session->userdata('user_level');
+                if ($user_level == '4') { ?>
+                    <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+                        <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+                        <span class="ms-1 font-weight-bold">Absen Karyawan</span>
+                    </a>
+                <hr class="horizontal dark mt-0">
+                <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Absen</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Data Absen</span>
+                        </a>
+                    </li>
+                </div>
+                </ul>
+                <?php } else { ?>
             <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>dashboard/index" target="_blank">
                 <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">Data Jamaah</span>
@@ -145,9 +174,11 @@
                     </a>
                 </li>
                 <hr>
-
                 <?php if ($this->session->userdata('user_level') == '1') {
-                    echo '<li class="nav-item"><a class="nav-link" href="' . base_url('scan/index') . '"><div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"><i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i></div><span class="nav-link-text ms-1">Scan Kehadiran Manasik</span></a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="' . base_url('scan/index') . '">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i></div>
+                    <span class="nav-link-text ms-1">Scan Kehadiran Manasik</span></a></li>';
                 } else {
                     echo '';
                 }
@@ -162,6 +193,7 @@
                 </li>
             </ul>
         </div>
+        <?php } ?>
         <div class="sidenav-footer mx-3 ">
             <!-- <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a> -->
             <!-- <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Keluar</a> -->
