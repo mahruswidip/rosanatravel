@@ -73,55 +73,16 @@
             <div class="card mt-4">
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive">
-                        <table id="dataTable-jamaah" class="table align-items-center mb-0">
+                        <table id="dataTable-karyawan" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Tanggal</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Masuk</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Pulang</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Masuk</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pulang</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center text-xxs font-weight-bolder">
-                                        05 Maret 2025</td>
-                                    <td
-                                        class="text-center text-xxs font-weight-bolder">
-                                        07.38</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        16.01</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        Hadir</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center text-xxs font-weight-bolder">
-                                        06 Maret 2025</td>
-                                    <td
-                                        class="text-center text-xxs font-weight-bolder">
-                                        07.38</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        12.20</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        Early Checkout</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center text-xxs font-weight-bolder">
-                                        07 Maret 2025</td>
-                                    <td
-                                        class="text-center text-xxs font-weight-bolder">
-                                        -</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        -</td>
-                                    <td class="text-xxs font-weight-bolder">
-                                        Izin</td>
-                                </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -136,6 +97,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    $(document).ready(function() {
+        function loadAbsensi() {
+            $.ajax({
+                url: "<?= base_url('absensi/get_absensi') ?>",
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    let rows = "";
+                    data.forEach(function(item) {
+                        let tanggal = moment(item.tanggal, "YYYY-MM-DD").format("DD MMMM YYYY");
+                        let masuk = item.masuk ? moment(item.masuk, "HH:mm:ss").format("HH:mm") : "-";
+                        let pulang = item.pulang ? moment(item.pulang, "HH:mm:ss").format("HH:mm") : "-";
+
+                        rows += `<tr>
+                        <td class="text-center">${tanggal}</td>
+                        <td class="text-center">${masuk}</td>
+                        <td>${pulang}</td>
+                        <td>${item.status_absen}</td>
+                    </tr>`;
+                    });
+
+                    $("#dataTable-karyawan tbody").html(rows);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error loading data:", error);
+                }
+            });
+        }
+
+        loadAbsensi();
+    });
     // Menampilkan waktu real-time
     function updateTime() {
         let now = new Date();

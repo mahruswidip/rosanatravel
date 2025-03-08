@@ -8,7 +8,7 @@ class Absensi extends CI_Controller
     if ($this->session->userdata('logged_in') !== TRUE) {
       redirect('login');
     }
-    $this->load->model('Absen_model');
+    $this->load->model('Absensi_model');
   }
 
   public function index()
@@ -82,5 +82,22 @@ class Absensi extends CI_Controller
     error_log("QUERY: " . $this->db->last_query());
 
     echo json_encode(["success" => true]);
+  }
+
+  public function get_absensi()
+  {
+    $user_id = $this->session->userdata('id_karyawan'); // ID user yang login
+
+    $this->db->select("DATE(waktu_absen) AS tanggal, 
+                        MAX(CASE WHEN tipe_absen = 'masuk' THEN TIME(waktu_absen) END) AS masuk,
+                        MAX(CASE WHEN tipe_absen = 'pulang' THEN TIME(waktu_absen) END) AS pulang,
+                        status_absen");
+    $this->db->from("absensi_karyawan");
+    $this->db->where("fk_id_karyawan", $user_id); // Filter hanya untuk user yang sedang login
+    $this->db->group_by("DATE(waktu_absen), status_absen");
+
+    $query = $this->db->get();
+
+    echo json_encode($query->result());
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Absen_model extends CI_Model
+class Absensi_model extends CI_Model
 {
     function __construct()
     {
@@ -82,5 +82,13 @@ class Absen_model extends CI_Model
     function delete_absensi($id_absensi)
     {
         return $this->db->delete('absensi', array('id_absensi' => $id_absensi));
+    }
+
+    public function get_absensi_by_karyawan($fk_id_karyawan)
+    {
+        return $this->db->where('fk_id_karyawan', $fk_id_karyawan)
+            ->order_by('waktu_absen', 'DESC')
+            ->get('absensi_karyawan')
+            ->result();
     }
 }
