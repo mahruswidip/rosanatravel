@@ -14,6 +14,9 @@
                 <button id="capture-btn" class="btn btn-primary mt-3">
                     <i class="fa-solid fa-camera"></i> Ambil Foto
                 </button>
+                <button id="retake-btn" class="btn btn-warning mt-3" style="display: none;">
+                    <i class="fa-solid fa-redo"></i> Ulangi Foto
+                </button>
                 <button id="submit-absen" class="btn btn-success mt-3" style="display: none;">
                     <i class="fa-solid fa-check"></i> Absen Sekarang
                 </button>
@@ -163,22 +166,32 @@
     let canvas = document.getElementById("photo-canvas");
     let photoResult = document.getElementById("photo-result");
     let captureBtn = document.getElementById("capture-btn");
+    let retakeBtn = document.getElementById("retake-btn");
     let submitBtn = document.getElementById("submit-absen");
     let stream;
 
     // Buka kamera saat modal dibuka
     document.getElementById("absenModal").addEventListener("shown.bs.modal", async function() {
+        startCamera();
+    });
+
+    async function startCamera() {
         try {
             stream = await navigator.mediaDevices.getUserMedia({
                 video: {
                     facingMode: "user"
-                } // Pakai kamera depan
+                } // Kamera depan
             });
             video.srcObject = stream;
+            video.style.display = "block";
+            photoResult.style.display = "none";
+            captureBtn.style.display = "block";
+            retakeBtn.style.display = "none";
+            submitBtn.style.display = "none";
         } catch (err) {
             alert("Gagal mengakses kamera: " + err.message);
         }
-    });
+    }
 
     // Ambil gambar saat tombol ditekan
     captureBtn.addEventListener("click", function() {
@@ -192,7 +205,13 @@
         photoResult.style.display = "block";
         video.style.display = "none"; // Sembunyikan video setelah ambil foto
         captureBtn.style.display = "none";
-        submitBtn.style.display = "block"; // Tampilkan tombol absen
+        retakeBtn.style.display = "block";
+        submitBtn.style.display = "block";
+    });
+
+    // Ulangi Foto
+    retakeBtn.addEventListener("click", function() {
+        startCamera(); // Aktifkan kamera lagi
     });
 
     // Kirim foto ke server saat absen
