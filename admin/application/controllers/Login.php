@@ -18,6 +18,7 @@ class Login extends CI_Controller
     $email    = $this->input->post('user_name', TRUE);
     $password = md5($this->input->post('user_password', TRUE));
     $validate = $this->login_model->validate($email, $password);
+
     if ($validate->num_rows() > 0) {
       $data  = $validate->row_array();
       $user_id  = $data['user_id'];
@@ -26,6 +27,12 @@ class Login extends CI_Controller
       $level = $data['user_level'];
       $is_jamaah = $data['is_jamaah'];
       $created_by = $data['created_by'];
+
+      // Ambil data dari tabel karyawan berdasarkan fk_id_user
+      $this->db->where('fk_id_user', $user_id);
+      $karyawan = $this->db->get('karyawan')->row_array();
+
+      // Siapkan session data
       $sesdata = array(
         'user_id'   => $user_id,
         'user_name' => $name,
@@ -33,24 +40,25 @@ class Login extends CI_Controller
         'user_level' => $level,
         'is_jamaah' => $is_jamaah,
         'created_by' => $created_by,
-        'logged_in' => TRUE
+        'logged_in' => TRUE,
+        'id_karyawan' => isset($karyawan['id_karyawan']) ? $karyawan['id_karyawan'] : null,
+        'fk_id_kantor' => isset($karyawan['fk_id_kantor']) ? $karyawan['fk_id_kantor'] : null,
+        'nomor_hp' => isset($karyawan['nomor_hp']) ? $karyawan['nomor_hp'] : null
       );
+
       $this->session->set_userdata($sesdata);
-      // access login for admin
+
+      // Redirect berdasarkan level user
       if ($level == 1 && $is_jamaah == 0) {
         redirect('dashboard/index');
-
-        // access login for staff
       } elseif ($level == 2 && $is_jamaah == 0) {
         redirect('dashboard/index');
-
-        // access login karyawan
       } elseif ($level == 4) {
-        redirect('absen1/index');
+        redirect('absensi/index');
       } elseif ($level == 5) {
-        redirect('absen1/koordinator');
+        redirect('absensi/koordinator');
       } elseif ($level == 6) {
-        redirect('absen1/karyawan');
+        redirect('absensi/karyawan');
       } else {
         redirect('dashboard/index');
       }
@@ -59,6 +67,7 @@ class Login extends CI_Controller
       redirect('login');
     }
   }
+
 
   function logout()
   {

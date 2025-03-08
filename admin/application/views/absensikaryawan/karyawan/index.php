@@ -37,9 +37,10 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <h6 class="font-weight-bolder mb-0">Nama Karyawan</h6>
+                            <h6 class="font-weight-bolder mb-0"><?php echo $this->session->userdata('user_name') ?></h6>
                             <p class="mb-0">
-                                IDKaryawan - IDCabang
+                                <!-- <?php print_r($this->session->all_userdata())  ?> -->
+                                <?php echo $this->session->userdata('id_karyawan') ?> - <?php echo 'Kantor ' . $karyawan['kota'] ?>
                             </p>
                         </div>
                     </div>
@@ -170,8 +171,29 @@
     let submitBtn = document.getElementById("submit-absen");
     let stream;
 
+    let lokasiLat = null;
+    let lokasiLng = null;
+
+    // Ambil lokasi GPS pengguna
+    async function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    lokasiLat = position.coords.latitude;
+                    lokasiLng = position.coords.longitude;
+                },
+                error => {
+                    alert("Gagal mendapatkan lokasi: " + error.message);
+                }
+            );
+        } else {
+            alert("Geolocation tidak didukung oleh browser ini.");
+        }
+    }
+
     // Buka kamera saat modal dibuka
     document.getElementById("absenModal").addEventListener("shown.bs.modal", async function() {
+        await getLocation(); // Ambil lokasi GPS sebelum absen
         startCamera();
     });
 
@@ -214,23 +236,43 @@
         startCamera(); // Aktifkan kamera lagi
     });
 
-    // Kirim foto ke server saat absen
+    // Kirim data ke server saat absen
     submitBtn.addEventListener("click", function() {
         let imageData = canvas.toDataURL("image/png");
+        let fk_id_karyawan = parseInt("<?= $_SESSION['id_karyawan'] ?? '0' ?>");
+        if (!fk_id_karyawan) {
+            alert("Error: ID Karyawan tidak ditemukan. Silakan login ulang.");
+            return;
+        }
 
-        // Simpan ke database via AJAX
-        fetch("proses_absen.php", {
+        let tipe_absen = "masuk"; // Bisa 'pulang' atau 'izin'
+        let status_absen = "normal";
+        let alasan = "";
+
+        let formData = new FormData();
+        formData.append("fk_id_karyawan", fk_id_karyawan);
+        formData.append("foto_absen", imageData);
+        formData.append("lokasi_lat", lokasiLat);
+        formData.append("lokasi_lng", lokasiLng);
+        formData.append("tipe_absen", tipe_absen);
+        formData.append("status_absen", status_absen);
+        formData.append("alasan", alasan);
+
+        fetch("<?= base_url('absensi/proses_absen') ?>", {
                 method: "POST",
-                body: JSON.stringify({
-                    image: imageData
-                }),
-                headers: {
-                    "Content-Type": "application/json"
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Absen berhasil!");
+                } else {
+                    alert("Gagal absen: " + data.message);
                 }
-            }).then(response => response.json())
-            .then(data => alert("Absen berhasil!"))
-            .catch(error => alert("Gagal absen!"));
+            })
+            .catch(error => alert("Error: " + error));
     });
+
 
     // Hentikan kamera saat modal ditutup
     document.getElementById("absenModal").addEventListener("hidden.bs.modal", function() {
