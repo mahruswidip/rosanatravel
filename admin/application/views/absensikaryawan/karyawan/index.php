@@ -183,11 +183,11 @@
                     lokasiLng = position.coords.longitude;
                 },
                 error => {
-                    alert("Gagal mendapatkan lokasi: " + error.message);
+                    Swal.fire("Error!", "Gagal mendapatkan lokasi: " + error.message, "error");
                 }
             );
         } else {
-            alert("Geolocation tidak didukung oleh browser ini.");
+            Swal.fire("Error!", "Geolocation tidak didukung oleh browser ini.", "error");
         }
     }
 
@@ -211,7 +211,7 @@
             retakeBtn.style.display = "none";
             submitBtn.style.display = "none";
         } catch (err) {
-            alert("Gagal mengakses kamera: " + err.message);
+            Swal.fire("Error!", "Gagal mengakses kamera: " + err.message, "error");
         }
     }
 
@@ -241,7 +241,7 @@
         let imageData = canvas.toDataURL("image/png");
         let fk_id_karyawan = parseInt("<?= $_SESSION['id_karyawan'] ?? '0' ?>");
         if (!fk_id_karyawan) {
-            alert("Error: ID Karyawan tidak ditemukan. Silakan login ulang.");
+            Swal.fire("Error!", "ID Karyawan tidak ditemukan. Silakan login ulang.", "error");
             return;
         }
 
@@ -265,14 +265,22 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert("Absen berhasil!");
+                    Swal.fire({
+                        title: "Sukses!",
+                        text: "Absen berhasil!",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    }).then(() => {
+                        location.reload(); // Reload halaman setelah klik OK
+                    });
                 } else {
-                    alert("Gagal absen: " + data.message);
+                    Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
                 }
             })
-            .catch(error => alert("Error: " + error));
+            .catch(error => {
+                Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
+            });
     });
-
 
     // Hentikan kamera saat modal ditutup
     document.getElementById("absenModal").addEventListener("hidden.bs.modal", function() {
