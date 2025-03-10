@@ -90,8 +90,8 @@
                             <a href="" class="btn bg-gradient-secondary btn-md" data-bs-toggle="modal" data-bs-target="#absenpulangModal">
                                 <i class="fa-solid fa-right-from-bracket"></i>&nbsp; Absen Pulang
                             </a>
-                            <a href="" class="btn btn-md">
-                                <i class="fa-solid fa-stethoscope"></i>&nbsp; Ajukan Izin / Cuti
+                            <a href="<?php echo site_url('absensi/izin'); ?>" class="btn btn-md">
+                                <i class="fa-solid fa-stethoscope"></i>&nbsp; Ajukan Izin
                             </a>
                         </div>
                     </div>

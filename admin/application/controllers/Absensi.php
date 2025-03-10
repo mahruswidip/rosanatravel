@@ -43,6 +43,12 @@ class Absensi extends CI_Controller
     $this->load->view('layouts/main', $data);
   }
 
+  public function izin()
+  {
+    $data['_view'] = 'absensikaryawan/karyawan/izin';
+    $this->load->view('layouts/main', $data);
+  }
+
   public function proses_absen()
   {
     date_default_timezone_set('Asia/Jakarta');
