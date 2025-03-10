@@ -7,23 +7,51 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <video id="camera-preview" width="100%" autoplay playsinline></video>
-                <canvas id="photo-canvas" style="display: none;"></canvas>
-                <img id="photo-result" style="display: none; width: 100%;" />
+                <video id="camera-preview-hadir" width="100%" autoplay playsinline></video>
+                <canvas id="photo-canvas-hadir" style="display: none;"></canvas>
+                <img id="photo-result-hadir" style="display: none; width: 100%;" />
 
-                <button id="capture-btn" class="btn btn-primary mt-3">
+                <button id="capture-btn-hadir" class="btn btn-primary mt-3">
                     <i class="fa-solid fa-camera"></i> Ambil Foto
                 </button>
-                <button id="retake-btn" class="btn btn-warning mt-3" style="display: none;">
+                <button id="retake-btn-hadir" class="btn btn-warning mt-3" style="display: none;">
                     <i class="fa-solid fa-redo"></i> Ulangi Foto
                 </button>
-                <button id="submit-absen" class="btn btn-success mt-3" style="display: none;">
+                <button id="submit-absen-hadir" class="btn btn-success mt-3" style="display: none;">
                     <i class="fa-solid fa-check"></i> Absen Sekarang
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- MODAL UNTUK ABSEN PULANG -->
+<div class="modal fade" id="absenpulangModal" tabindex="-1" aria-labelledby="absenpulangModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="absenpulangModalLabel">Absen Kepulangan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <video id="camera-preview-pulang" width="100%" autoplay playsinline></video>
+                <canvas id="photo-canvas-pulang" style="display: none;"></canvas>
+                <img id="photo-result-pulang" style="display: none; width: 100%;" />
+
+                <button id="capture-btn-pulang" class="btn btn-primary mt-3">
+                    <i class="fa-solid fa-camera"></i> Ambil Foto
+                </button>
+                <button id="retake-btn-pulang" class="btn btn-warning mt-3" style="display: none;">
+                    <i class="fa-solid fa-redo"></i> Ulangi Foto
+                </button>
+                <button id="submit-absen-pulang" class="btn btn-success mt-3" style="display: none;">
+                    <i class="fa-solid fa-check"></i> Absen Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
@@ -59,7 +87,7 @@
                                 <i class="fa-solid fa-right-to-bracket"></i>&nbsp; Absen Hadir
                             </button>
                             &nbsp;
-                            <a href="" class="btn bg-gradient-secondary btn-md">
+                            <a href="" class="btn bg-gradient-secondary btn-md" data-bs-toggle="modal" data-bs-target="#absenpulangModal">
                                 <i class="fa-solid fa-right-from-bracket"></i>&nbsp; Absen Pulang
                             </a>
                             <a href="" class="btn btn-md">
@@ -161,12 +189,13 @@
     let captureBtn = document.getElementById("capture-btn");
     let retakeBtn = document.getElementById("retake-btn");
     let submitBtn = document.getElementById("submit-absen");
+    let submitPulangBtn = document.getElementById("submit-absen-pulang");
+
     let stream;
 
     let lokasiLat = null;
     let lokasiLng = null;
 
-    // Ambil lokasi GPS pengguna
     async function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -183,96 +212,114 @@
         }
     }
 
-    // Buka kamera saat modal dibuka
-    document.getElementById("absenModal").addEventListener("shown.bs.modal", async function() {
-        await getLocation(); // Ambil lokasi GPS sebelum absen
-        startCamera();
-    });
-
-    async function startCamera() {
+    async function startCamera(videoElement) {
         try {
-            stream = await navigator.mediaDevices.getUserMedia({
+            let stream = await navigator.mediaDevices.getUserMedia({
                 video: {
                     facingMode: "user"
-                } // Kamera depan
+                }
             });
-            video.srcObject = stream;
-            video.style.display = "block";
-            photoResult.style.display = "none";
-            captureBtn.style.display = "block";
-            retakeBtn.style.display = "none";
-            submitBtn.style.display = "none";
+            videoElement.srcObject = stream;
+            videoElement.dataset.stream = stream;
         } catch (err) {
             Swal.fire("Error!", "Gagal mengakses kamera: " + err.message, "error");
         }
     }
 
-    // Ambil gambar saat tombol ditekan
-    captureBtn.addEventListener("click", function() {
-        let ctx = canvas.getContext("2d");
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        let imageData = canvas.toDataURL("image/png"); // Konversi ke Base64
-        photoResult.src = imageData;
-        photoResult.style.display = "block";
-        video.style.display = "none"; // Sembunyikan video setelah ambil foto
-        captureBtn.style.display = "none";
-        retakeBtn.style.display = "block";
-        submitBtn.style.display = "block";
-    });
-
-    // Ulangi Foto
-    retakeBtn.addEventListener("click", function() {
-        startCamera(); // Aktifkan kamera lagi
-    });
-
-    // Kirim data ke server saat absen
-    submitBtn.addEventListener("click", function() {
-        let imageData = canvas.toDataURL("image/png");
-        let fk_id_karyawan = parseInt("<?= $_SESSION['id_karyawan'] ?? '0' ?>");
-        if (!fk_id_karyawan) {
-            Swal.fire("Error!", "ID Karyawan tidak ditemukan. Silakan login ulang.", "error");
-            return;
+    function stopCamera(videoElement) {
+        let stream = videoElement.dataset.stream;
+        if (stream) {
+            let tracks = stream.getTracks();
+            tracks.forEach(track => track.stop());
         }
+    }
 
-        let tipe_absen = "masuk"; // Bisa 'pulang' atau 'izin'
-        let status_absen = "normal";
-        let alasan = "";
+    function setupAbsen(
+        modalId, videoId, canvasId, imgId, captureBtnId, retakeBtnId, submitBtnId, tipeAbsen
+    ) {
+        let modal = document.getElementById(modalId);
+        let video = document.getElementById(videoId);
+        let canvas = document.getElementById(canvasId);
+        let photoResult = document.getElementById(imgId);
+        let captureBtn = document.getElementById(captureBtnId);
+        let retakeBtn = document.getElementById(retakeBtnId);
+        let submitBtn = document.getElementById(submitBtnId);
 
-        let formData = new FormData();
-        formData.append("fk_id_karyawan", fk_id_karyawan);
-        formData.append("foto_absen", imageData);
-        formData.append("lokasi_lat", lokasiLat);
-        formData.append("lokasi_lng", lokasiLng);
-        formData.append("tipe_absen", tipe_absen);
-        formData.append("status_absen", status_absen);
-        formData.append("alasan", alasan);
+        modal.addEventListener("shown.bs.modal", async function() {
+            await getLocation();
+            startCamera(video);
+        });
 
-        fetch("<?= base_url('absensi/proses_absen') ?>", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        title: "Sukses!",
-                        text: "Absen berhasil!",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    }).then(() => {
-                        location.reload(); // Reload halaman setelah klik OK
-                    });
-                } else {
-                    Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
-                }
-            })
-            .catch(error => {
-                Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
-            });
-    });
+        modal.addEventListener("hidden.bs.modal", function() {
+            stopCamera(video);
+        });
+
+        captureBtn.addEventListener("click", function() {
+            let ctx = canvas.getContext("2d");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            let imageData = canvas.toDataURL("image/png");
+            photoResult.src = imageData;
+            photoResult.style.display = "block";
+            video.style.display = "none";
+            captureBtn.style.display = "none";
+            retakeBtn.style.display = "block";
+            submitBtn.style.display = "block";
+        });
+
+        retakeBtn.addEventListener("click", function() {
+            video.style.display = "block";
+            photoResult.style.display = "none";
+            captureBtn.style.display = "block";
+            retakeBtn.style.display = "none";
+            submitBtn.style.display = "none";
+        });
+
+        submitBtn.addEventListener("click", function() {
+            let imageData = canvas.toDataURL("image/png");
+            let fk_id_karyawan = parseInt("<?= $_SESSION['id_karyawan'] ?? '0' ?>");
+            if (!fk_id_karyawan) {
+                Swal.fire("Error!", "ID Karyawan tidak ditemukan. Silakan login ulang.", "error");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("fk_id_karyawan", fk_id_karyawan);
+            formData.append("foto_absen", imageData);
+            formData.append("lokasi_lat", lokasiLat);
+            formData.append("lokasi_lng", lokasiLng);
+            formData.append("tipe_absen", tipeAbsen);
+            formData.append("status_absen", "normal");
+            formData.append("alasan", "");
+
+            fetch("<?= base_url('absensi/proses_absen') ?>", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire("Sukses!", "Absen berhasil!", "success").then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
+                    }
+                })
+                .catch(error => {
+                    Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
+                });
+        });
+    }
+
+    setupAbsen("absenModal", "camera-preview-hadir", "photo-canvas-hadir", "photo-result-hadir",
+        "capture-btn-hadir", "retake-btn-hadir", "submit-absen-hadir", "masuk");
+
+    setupAbsen("absenpulangModal", "camera-preview-pulang", "photo-canvas-pulang", "photo-result-pulang",
+        "capture-btn-pulang", "retake-btn-pulang", "submit-absen-pulang", "pulang");
+
 
     // Hentikan kamera saat modal ditutup
     document.getElementById("absenModal").addEventListener("hidden.bs.modal", function() {
@@ -281,4 +328,15 @@
             tracks.forEach(track => track.stop()); // Matikan kamera
         }
     });
+
+    document.getElementById("absenpulangModal").addEventListener("hidden.bs.modal", function() {
+        if (stream) {
+            let tracks = stream.getTracks();
+            tracks.forEach(track => track.stop()); // Matikan kamera
+        }
+    });
 </script>
+<?php
+echo "PHP Timezone: " . date_default_timezone_get() . "<br>";
+echo "Current Time: " . date('Y-m-d H:i:s');
+?>

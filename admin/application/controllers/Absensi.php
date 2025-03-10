@@ -4,6 +4,8 @@ class Absensi extends CI_Controller
 {
   function __construct()
   {
+    date_default_timezone_set('Asia/Jakarta');
+
     parent::__construct();
     if ($this->session->userdata('logged_in') !== TRUE) {
       redirect('login');
@@ -43,6 +45,8 @@ class Absensi extends CI_Controller
 
   public function proses_absen()
   {
+    date_default_timezone_set('Asia/Jakarta');
+
     $fk_id_karyawan = $this->session->userdata('id_karyawan');
     $foto_absen = $this->input->post('foto_absen');
     $lokasi_lat = $this->input->post('lokasi_lat');

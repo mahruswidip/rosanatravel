@@ -65,6 +65,9 @@
             /* Change the color of empty stars */
         }
     </style>
+    <?php
+    date_default_timezone_set('Asia/Jakarta'); // Set Timezone ke WIB
+    ?>
 
 </head>
 
