@@ -40,6 +40,10 @@
     <!-- DataTables CSS with Bootstrap 5 support -->
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets'); ?>/css/star-rating.css">
+    <?php
+    // session_start();
+    $user_level = $_SESSION['user_level'] ?? null;
+    ?>
     <style>
         /* Mengatur tombol aksi menjadi di tengah kolom */
         td.td-column-center {
@@ -63,6 +67,12 @@
             color: #ccc;
             /* Change the color of empty stars */
         }
+
+        <?php if (!in_array($user_level, [1, 2, 3])): ?>.bg-gradient-primary {
+            background-image: linear-gradient(310deg, #d37900 0%, #ffcf52 100%) !important;
+        }
+
+        <?php endif; ?>
     </style>
     <?php
     date_default_timezone_set('Asia/Jakarta'); // Set Timezone ke WIB
