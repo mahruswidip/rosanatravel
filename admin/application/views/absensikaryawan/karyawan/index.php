@@ -336,6 +336,6 @@
     });
 </script>
 <?php
-echo "PHP Timezone: " . date_default_timezone_get() . "<br>";
+echo "Timezone: " . date_default_timezone_get() . "<br>";
 echo "Current Time: " . date('Y-m-d H:i:s');
 ?>

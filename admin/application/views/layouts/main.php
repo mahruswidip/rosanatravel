@@ -18,8 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets'); ?>/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="<?php echo base_url('assets'); ?>/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets'); ?>/img/512.png">
+    <link rel="icon" type="image/png" href="<?php echo base_url('assets'); ?>/img/512.png">
     <title>
         Data Jamaah | Admin
     </title>
@@ -30,7 +30,6 @@
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
 
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
