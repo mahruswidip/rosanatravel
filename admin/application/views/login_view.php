@@ -23,13 +23,16 @@
   <title>
     Data Jamaah | Admin
   </title>
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="<?php echo base_url('manifest.json'); ?>">
+  <meta name="theme-color" content="#5e72e4">
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
   <link href="<?php echo base_url('assets'); ?>/css/nucleo-icons.css" rel="stylesheet" />
   <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
   <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="<?php echo base_url('assets'); ?>/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
@@ -90,6 +93,19 @@
   <script src="<?php echo base_url('assets'); ?>/js/core/bootstrap.min.js"></script>
   <script src="<?php echo base_url('assets'); ?>/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="<?php echo base_url('assets'); ?>/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- Service Worker Registration -->
+  <script>
+   if ('serviceWorker' in navigator) {
+     window.addEventListener('load', function() {
+       navigator.serviceWorker.register('<?php echo base_url("service-worker.js"); ?>')
+         .then(function(registration) {
+           console.log('Service Worker registered with scope:', registration.scope);
+         }, function(err) {
+           console.log('Service Worker registration failed:', err);
+         });
+     });
+   }
+  </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
