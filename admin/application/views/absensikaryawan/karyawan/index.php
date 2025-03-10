@@ -293,22 +293,63 @@
             formData.append("status_absen", "normal");
             formData.append("alasan", "");
 
-            fetch("<?= base_url('absensi/proses_absen') ?>", {
-                    method: "POST",
-                    body: formData
-                })
+            // Cek apakah sudah absen hari ini sebelum mengirim
+            fetch("<?= base_url('absensi/cek_absensi_hari_ini') ?>?id_karyawan=" + fk_id_karyawan)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        Swal.fire("Sukses!", "Absen berhasil!", "success").then(() => {
-                            location.reload();
+                    if (data.sudah_absen) {
+                        Swal.fire({
+                            title: "Sudah Absen Hari Ini!",
+                            text: "Anda sudah absen hari ini. Apakah ingin tetap absen?",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonText: "Ya, Absen Lagi",
+                            cancelButtonText: "Batal"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Kirim data ke server untuk tetap melakukan absen
+                                fetch("<?= base_url('absensi/proses_absen') ?>", {
+                                        method: "POST",
+                                        body: formData
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            Swal.fire("Sukses!", "Absen berhasil!", "success").then(() => {
+                                                location.reload();
+                                            });
+                                        } else {
+                                            Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
+                                    });
+                            }
                         });
                     } else {
-                        Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
+                        // Jika belum absen, langsung kirim data ke server
+                        fetch("<?= base_url('absensi/proses_absen') ?>", {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire("Sukses!", "Absen berhasil!", "success").then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire("Gagal!", "Gagal absen: " + data.message, "error");
+                                }
+                            })
+                            .catch(error => {
+                                Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
+                            });
                     }
                 })
                 .catch(error => {
-                    Swal.fire("Error!", "Terjadi kesalahan saat mengirim data.", "error");
+                    Swal.fire("Error!", "Gagal mengecek status absensi.", "error");
                 });
         });
     }

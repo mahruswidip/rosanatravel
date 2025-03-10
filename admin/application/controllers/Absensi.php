@@ -55,9 +55,6 @@ class Absensi extends CI_Controller
     $status_absen = $this->input->post('status_absen');
     $alasan = $this->input->post('alasan');
 
-    error_log("LAT: " . $lokasi_lat);
-    error_log("LNG: " . $lokasi_lng);
-
     if (empty($lokasi_lat) || empty($lokasi_lng)) {
       echo json_encode(["success" => false, "message" => "Lokasi tidak boleh kosong"]);
       return;
@@ -83,9 +80,24 @@ class Absensi extends CI_Controller
     );
 
     $this->db->insert('absensi_karyawan', $data);
-    error_log("QUERY: " . $this->db->last_query());
 
     echo json_encode(["success" => true]);
+  }
+
+  public function cek_absensi_hari_ini()
+  {
+    $id_karyawan = $this->input->get('id_karyawan');
+    $tanggal_hari_ini = date('Y-m-d');
+
+    $cek_absensi = $this->db->where('fk_id_karyawan', $id_karyawan)
+      ->where('DATE(waktu_absen)', $tanggal_hari_ini)
+      ->get('absensi_karyawan');
+
+    if ($cek_absensi->num_rows() > 0) {
+      echo json_encode(["sudah_absen" => true]);
+    } else {
+      echo json_encode(["sudah_absen" => false]);
+    }
   }
 
   public function get_absensi()
@@ -103,5 +115,41 @@ class Absensi extends CI_Controller
     $query = $this->db->get();
 
     echo json_encode($query->result());
+  }
+
+  public function proses_absen_force()
+  {
+    date_default_timezone_set('Asia/Jakarta');
+
+    $fk_id_karyawan = $this->session->userdata('id_karyawan');
+    $foto_absen = $this->input->post('foto_absen');
+    $lokasi_lat = $this->input->post('lokasi_lat');
+    $lokasi_lng = $this->input->post('lokasi_lng');
+    $tipe_absen = $this->input->post('tipe_absen');
+    $status_absen = $this->input->post('status_absen');
+    $alasan = $this->input->post('alasan');
+
+    // Simpan gambar di folder uploads/
+    $image_path = "assets/absensi/absen_" . time() . ".png";
+    $image = str_replace('data:image/png;base64,', '', $foto_absen);
+    $image = base64_decode($image);
+    file_put_contents($image_path, $image);
+
+    // Simpan ke database sebagai record baru
+    $data = array(
+      'fk_id_karyawan' => $fk_id_karyawan,
+      'foto_absen' => $image_path,
+      'lokasi_lat' => $lokasi_lat,
+      'lokasi_lng' => $lokasi_lng,
+      'waktu_absen' => date("Y-m-d H:i:s"),
+      'tipe_absen' => $tipe_absen,
+      'status_absen' => $status_absen,
+      'alasan' => $alasan,
+      'approved_by' => 0
+    );
+
+    $this->db->insert('absensi_karyawan', $data);
+
+    echo json_encode(["success" => true]);
   }
 }
