@@ -34,6 +34,7 @@
     <link href="<?php echo base_url('assets'); ?>/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="<?php echo base_url('assets'); ?>/css/argon-dashboard.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
 
     <!-- my Tambahan -->
@@ -97,7 +98,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absensi/karyawan'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
                         </div>
@@ -105,7 +106,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absensi/karyawan'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
                         </div>
@@ -315,17 +316,7 @@
                 $this->load->view($_view);
             ?>
         </section>
-        <?php
-        if (isset($jamaah_by_paket) && !empty($jamaah_by_paket)) {
-            $labels = array_column($jamaah_by_paket, 'paket');
-            $datapie = array_column($jamaah_by_paket, 'jumlah_jamaah');
-        }
 
-        if (isset($jamaah_perbulan) && !empty($jamaah_perbulan)) {
-            $label_line = array_column($jamaah_perbulan, 'bulan');
-            $dataline = array_column($jamaah_perbulan, 'jumlah_jamaah');
-        }
-        ?>
     </main>
 
     <!--   Core JS Files   -->
@@ -346,6 +337,17 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php
+    if (isset($jamaah_by_paket) && !empty($jamaah_by_paket)) {
+        $labels = array_column($jamaah_by_paket, 'paket');
+        $datapie = array_column($jamaah_by_paket, 'jumlah_jamaah');
+    }
+
+    if (isset($jamaah_perbulan) && !empty($jamaah_perbulan)) {
+        $label_line = array_column($jamaah_perbulan, 'bulan');
+        $dataline = array_column($jamaah_perbulan, 'jumlah_jamaah');
+    }
+    ?>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
         var label_line = <?php echo json_encode($label_line); ?>;
