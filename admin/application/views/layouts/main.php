@@ -91,7 +91,7 @@
             if ($user_level == '4') { ?>
                 <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
                     <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-                    <span class="ms-1 font-weight-bold">Absen Karyawan</span>
+                    <span class="ms-1 font-weight-bold">Admin</span>
                 </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -100,7 +100,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('absen_admin/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                            <i class="ni ni-single-copy-04 text-info text-lg"></i>
                         </div>
                         <span class="nav-link-text ms-1">Data Karyawan</span>
                     </a>
@@ -127,7 +127,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('absen_koor/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
+                            <i class="ni ni-single-copy-04 text-info text-lg"></i>
                         </div>
                         <span class="nav-link-text ms-1">Data Karyawan</span>
                     </a>
