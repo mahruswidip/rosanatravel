@@ -106,7 +106,6 @@
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Masuk</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pulang</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -134,14 +133,26 @@
                     let rows = "";
                     data.forEach(function(item) {
                         let tanggal = moment(item.tanggal, "YYYY-MM-DD").format("DD MMMM YYYY");
-                        let masuk = item.masuk ? moment(item.masuk, "HH:mm:ss").format("HH:mm") : "-";
-                        let pulang = item.pulang ? moment(item.pulang, "HH:mm:ss").format("HH:mm") : "-";
+                        let masukTime = item.masuk ? moment(item.masuk, "HH:mm:ss") : null;
+                        let pulangTime = item.pulang ? moment(item.pulang, "HH:mm:ss") : null;
+
+                        let masuk = masukTime ? masukTime.format("HH:mm") : "-";
+                        let pulang = pulangTime ? pulangTime.format("HH:mm") : "-";
+
+                        let badgeMasuk = "";
+                        if (masukTime && masukTime.isAfter(moment("08:00", "HH:mm"))) {
+                            badgeMasuk = '<br><span class="badge bg-gradient-danger mt-1"><small>Terlambat</small</span>';
+                        }
+
+                        let badgePulang = "";
+                        if (pulangTime && pulangTime.isBefore(moment("16:00", "HH:mm"))) {
+                            badgePulang = '<br><span class="badge bg-gradient-warning mt-1"><small>Early Checkout</small</span>';
+                        }
 
                         rows += `<tr>
                         <td class="text-center">${tanggal}</td>
-                        <td class="text-center">${masuk}</td>
-                        <td>${pulang}</td>
-                        <td>${item.status_absen}</td>
+                        <td class="text-center">${masuk} ${badgeMasuk}</td>
+                        <td class="text-center">${pulang} ${badgePulang}</td>
                     </tr>`;
                     });
 
