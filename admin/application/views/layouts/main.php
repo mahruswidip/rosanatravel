@@ -98,7 +98,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('absensi/karyawan'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_admin/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
                         </div>
@@ -106,7 +106,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('absensi/karyawan'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_admin/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
                         </div>
@@ -125,7 +125,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_koor/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-time-alarm text-warning text-sm opacity-10"></i>
                         </div>
@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('scan/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_koor/index'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
                         </div>
