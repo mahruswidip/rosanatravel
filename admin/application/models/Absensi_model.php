@@ -91,4 +91,24 @@ class Absensi_model extends CI_Model
             ->get('absensi_karyawan')
             ->result();
     }
+
+    public function ajukanIzin($data)
+    {
+        return $this->db->insert('pengajuan_izin', $data);
+    }
+
+    public function getIzinByKaryawan($id_karyawan)
+    {
+        return $this->db->get_where('pengajuan_izin', ['fk_id_karyawan' => $id_karyawan])->result();
+    }
+
+    public function getAllIzin()
+    {
+        return $this->db->get('pengajuan_izin')->result();
+    }
+
+    public function updateStatusIzin($id, $status)
+    {
+        return $this->db->where('id_pengajuan', $id)->update('pengajuan_izin', ['status_pengajuan' => $status]);
+    }
 }

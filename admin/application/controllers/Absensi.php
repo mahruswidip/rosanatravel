@@ -158,4 +158,62 @@ class Absensi extends CI_Controller
 
     echo json_encode(["success" => true]);
   }
+
+  public function ajukan_izin()
+  {
+    $config['upload_path']   = './assets/absensi/lampiran/';
+    $config['allowed_types'] = 'jpg|jpeg|png|pdf|docx';
+    $config['max_size']      = 2048; // Maksimum 2MB
+    $config['encrypt_name']  = TRUE; // Nama file akan diacak untuk menghindari duplikat
+
+    $this->upload->initialize($config);
+
+    $lampiran = null;
+
+    if (!empty($_FILES['lampiran']['name'])) {
+      if ($this->upload->do_upload('lampiran')) {
+        $lampiran = $this->upload->data('file_name');
+      } else {
+        echo $this->upload->display_errors();
+        exit; // Debugging, hapus ini jika sudah berjalan
+      }
+    }
+
+    $data = [
+      'fk_id_karyawan' => $this->input->post('fk_id_karyawan'),
+      'tanggal_pengajuan' => $this->input->post('tanggal_pengajuan'),
+      'jenis_pengajuan' => $this->input->post('jenis_pengajuan'),
+      'tanggal_mulai' => $this->input->post('tanggal_mulai'),
+      'tanggal_selesai' => $this->input->post('tanggal_selesai') ?? null,
+      'alasan' => $this->input->post('alasan'),
+      'status_pengajuan' => 'Diajukan',
+      'lampiran' => $lampiran
+    ];
+
+    $insert = $this->Absensi_model->ajukanIzin($data);
+
+    if ($insert) {
+      echo json_encode(['status' => 'success', 'message' => 'Pengajuan berhasil dikirim!']);
+    } else {
+      echo json_encode(['status' => 'error', 'message' => 'Gagal mengajukan izin.']);
+    }
+  }
+
+
+
+  private function _uploadLampiran()
+  {
+    $config['upload_path']   = './assets/absensi/lampiran/';
+    $config['allowed_types'] = 'jpg|jpeg|png|pdf';
+    $config['max_size']      = 2048; // 2MB
+    $config['encrypt_name']  = TRUE;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('lampiran')) {
+      return ['status' => true, 'file_name' => $this->upload->data('file_name')];
+    } else {
+      return ['status' => false, 'error' => $this->upload->display_errors()];
+    }
+  }
 }
