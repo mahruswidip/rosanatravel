@@ -473,13 +473,25 @@
                     Swal.fire({
                         icon: "warning",
                         title: "Diluar Area Kantor!",
-                        text: `Anda berada di luar area absensi kantor! (Jarak: ${data.jarak} meter)`,
+                        html: `<b>Anda berada di luar area absensi kantor!</b><br><br>
+                       <b>Jarak:</b> ${data.jarak} meter<br>
+                       <b>Koordinat Anda:</b> ${userLat}, ${userLng}`,
                         confirmButtonText: "Mengerti"
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Berada di Area Kantor!",
+                        html: `<b>Anda berada dalam radius kantor.</b><br><br>
+                       <b>Jarak:</b> ${data.jarak} meter<br>
+                       <b>Koordinat Anda:</b> ${userLat}, ${userLng}`,
+                        confirmButtonText: "OK"
                     });
                 }
             })
             .catch(error => console.error("Error:", error));
     }
+
 
     function errorCallback(error) {
         let message = "";
