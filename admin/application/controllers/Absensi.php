@@ -85,7 +85,7 @@ class Absensi extends CI_Controller
     $dist = rad2deg($dist);
     $jarak_meter = $dist * 60 * 1.1515 * 1609.34;
 
-    if ($jarak_meter > 20) { // Batas 20 meter
+    if ($jarak_meter > 50) { // Batas 20 meter
       echo json_encode(["success" => false, "message" => "Anda berada di luar radius kantor"]);
       return;
     }
