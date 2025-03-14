@@ -237,6 +237,14 @@ class Absensi extends CI_Controller
     ]);
   }
 
+  public function get_pengajuan_izin()
+  {
+    $id_karyawan = $this->session->userdata('id_karyawan'); // Ambil ID karyawan dari sesi
+
+    $data_izin = $this->Absensi_model->getIzinByKaryawan($id_karyawan);
+
+    echo json_encode($data_izin);
+  }
 
   public function ajukan_izin()
   {

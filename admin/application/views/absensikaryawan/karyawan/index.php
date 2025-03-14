@@ -119,15 +119,15 @@
             <div class="card mt-4 collapse-anim" id="collapseExample">
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive">
-                        <table id="dataTable" class="table align-items-center mb-0">
+                        <table id="dataTable-izin" class="table align-items-center mb-0">
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Masuk</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pulang</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jenis Izin</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="izin-body">
                                 <tr>
                                     <td colspan="3" class="text-center">Belum ada data</td>
                                 </tr>
@@ -136,6 +136,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="card mt-4">
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive">
@@ -440,6 +441,43 @@
     });
 </script>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("<?= base_url('absensi/get_pengajuan_izin') ?>")
+            .then(response => response.json())
+            .then(data => {
+                let tbody = document.getElementById("izin-body");
+                tbody.innerHTML = ""; // Kosongkan tabel sebelum menampilkan data
+
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        let row = `<tr>
+                        <td class="text-center">${item.tanggal_pengajuan}</td>
+                        <td class="text-center">${item.jenis_pengajuan}</td>
+                        <td class="text-center"><span class="badge bg-${getStatusColor(item.status_pengajuan)}">${item.status_pengajuan}</span></td>
+                    </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="3" class="text-center">Belum ada data</td></tr>`;
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
+
+    // Fungsi untuk mengatur warna status
+    function getStatusColor(status) {
+        switch (status) {
+            case "Diajukan":
+                return "warning";
+            case "Disetujui":
+                return "success";
+            case "Ditolak":
+                return "danger";
+            default:
+                return "secondary";
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
