@@ -473,7 +473,7 @@
                     Swal.fire({
                         icon: "warning",
                         title: "Diluar Area Kantor!",
-                        text: "Anda berada di luar area absensi kantor!",
+                        text: `Anda berada di luar area absensi kantor! (Jarak: ${data.jarak} meter)`,
                         confirmButtonText: "Mengerti"
                     });
                 }

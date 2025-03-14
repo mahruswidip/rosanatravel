@@ -54,7 +54,6 @@ class Absensi extends CI_Controller
     date_default_timezone_set('Asia/Jakarta');
 
     $fk_id_karyawan = $this->session->userdata('id_karyawan');
-    $id_kantor = $this->session->userdata('id_kantor'); // Kantor karyawan
     $foto_absen = $this->input->post('foto_absen');
     $lokasi_lat = $this->input->post('lokasi_lat');
     $lokasi_lng = $this->input->post('lokasi_lng');
@@ -67,11 +66,27 @@ class Absensi extends CI_Controller
       return;
     }
 
-    $this->load->model('Absensi_model');
+    // Ambil data kantor cabang berdasarkan id_karyawan
+    $this->db->select('kantor_cabang.lokasi_lat, kantor_cabang.lokasi_lng');
+    $this->db->from('karyawan');
+    $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor');
+    $this->db->where('karyawan.id_karyawan', $fk_id_karyawan);
+    $kantor = $this->db->get()->row();
 
-    // Cek apakah karyawan absen dalam radius kantor
-    if (!$this->Absensi_model->cek_radius_absensi($lokasi_lat, $lokasi_lng, $id_kantor)) {
-      echo json_encode(["success" => false, "message" => "Anda berada di luar area kantor!"]);
+    if (!$kantor) {
+      echo json_encode(["success" => false, "message" => "Data kantor tidak ditemukan"]);
+      return;
+    }
+
+    // Hitung jarak antara lokasi absen dan kantor
+    $theta = $lokasi_lng - $kantor->lokasi_lng;
+    $dist = sin(deg2rad($lokasi_lat)) * sin(deg2rad($kantor->lokasi_lat)) + cos(deg2rad($lokasi_lat)) * cos(deg2rad($kantor->lokasi_lat)) * cos(deg2rad($theta));
+    $dist = acos($dist);
+    $dist = rad2deg($dist);
+    $jarak_meter = $dist * 60 * 1.1515 * 1609.34;
+
+    if ($jarak_meter > 20) { // Batas 20 meter
+      echo json_encode(["success" => false, "message" => "Anda berada di luar radius kantor"]);
       return;
     }
 
@@ -96,8 +111,9 @@ class Absensi extends CI_Controller
 
     $this->db->insert('absensi_karyawan', $data);
 
-    echo json_encode(["success" => true, "message" => "Absensi berhasil!"]);
+    echo json_encode(["success" => true]);
   }
+
 
   public function cek_absensi_hari_ini()
   {
@@ -168,18 +184,59 @@ class Absensi extends CI_Controller
     echo json_encode(["success" => true, "message" => "Absensi force berhasil!"]);
   }
 
+  private function haversine_distance($lat1, $lng1, $lat2, $lng2)
+  {
+    $earth_radius = 6371000; // Radius bumi dalam meter
+
+    // Konversi derajat ke radian
+    $lat1 = deg2rad($lat1);
+    $lng1 = deg2rad($lng1);
+    $lat2 = deg2rad($lat2);
+    $lng2 = deg2rad($lng2);
+
+    // Haversine Formula
+    $dlat = $lat2 - $lat1;
+    $dlng = $lng2 - $lng1;
+
+    $a = sin($dlat / 2) * sin($dlat / 2) +
+      cos($lat1) * cos($lat2) *
+      sin($dlng / 2) * sin($dlng / 2);
+
+    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+    $distance = $earth_radius * $c; // Jarak dalam meter
+
+    return $distance;
+  }
+
+
   public function cek_radius()
   {
-    $postData = json_decode(file_get_contents("php://input"), true);
-    $lokasi_lat = $postData['lokasi_lat'];
-    $lokasi_lng = $postData['lokasi_lng'];
-    $id_kantor = $this->session->userdata('id_kantor');
+    $post = json_decode(file_get_contents("php://input"), true);
+    $lokasi_lat = $post['lokasi_lat'];
+    $lokasi_lng = $post['lokasi_lng'];
 
-    $this->load->model('Absensi_model');
-    $dalam_radius = $this->Absensi_model->cek_radius_absensi($lokasi_lat, $lokasi_lng, $id_kantor);
+    // Ambil koordinat kantor dari database
+    $kantor = $this->db->get_where('kantor_cabang', ['id_kantor' => 1])->row(); // Sesuaikan ID kantor
 
-    echo json_encode(["dalam_radius" => $dalam_radius]);
+    if (!$kantor) {
+      echo json_encode(["success" => false, "message" => "Data kantor tidak ditemukan"]);
+      return;
+    }
+
+    // Hitung jarak menggunakan Haversine
+    $distance = $this->haversine_distance($lokasi_lat, $lokasi_lng, $kantor->lokasi_lat, $kantor->lokasi_lng);
+    $radius = 50; // Radius maksimal dalam meter
+
+    // Cek apakah dalam radius
+    $dalam_radius = $distance <= $radius;
+
+    echo json_encode([
+      "dalam_radius" => $dalam_radius,
+      "jarak" => round($distance, 2) // Kirim jarak dengan 2 angka desimal
+    ]);
   }
+
 
   public function ajukan_izin()
   {
