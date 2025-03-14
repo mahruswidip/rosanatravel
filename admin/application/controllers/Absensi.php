@@ -54,6 +54,7 @@ class Absensi extends CI_Controller
     date_default_timezone_set('Asia/Jakarta');
 
     $fk_id_karyawan = $this->session->userdata('id_karyawan');
+    $id_kantor = $this->session->userdata('id_kantor'); // Kantor karyawan
     $foto_absen = $this->input->post('foto_absen');
     $lokasi_lat = $this->input->post('lokasi_lat');
     $lokasi_lng = $this->input->post('lokasi_lng');
@@ -63,6 +64,14 @@ class Absensi extends CI_Controller
 
     if (empty($lokasi_lat) || empty($lokasi_lng)) {
       echo json_encode(["success" => false, "message" => "Lokasi tidak boleh kosong"]);
+      return;
+    }
+
+    $this->load->model('Absensi_model');
+
+    // Cek apakah karyawan absen dalam radius kantor
+    if (!$this->Absensi_model->cek_radius_absensi($lokasi_lat, $lokasi_lng, $id_kantor)) {
+      echo json_encode(["success" => false, "message" => "Anda berada di luar area kantor!"]);
       return;
     }
 
@@ -87,7 +96,7 @@ class Absensi extends CI_Controller
 
     $this->db->insert('absensi_karyawan', $data);
 
-    echo json_encode(["success" => true]);
+    echo json_encode(["success" => true, "message" => "Absensi berhasil!"]);
   }
 
   public function cek_absensi_hari_ini()
@@ -156,7 +165,20 @@ class Absensi extends CI_Controller
 
     $this->db->insert('absensi_karyawan', $data);
 
-    echo json_encode(["success" => true]);
+    echo json_encode(["success" => true, "message" => "Absensi force berhasil!"]);
+  }
+
+  public function cek_radius()
+  {
+    $postData = json_decode(file_get_contents("php://input"), true);
+    $lokasi_lat = $postData['lokasi_lat'];
+    $lokasi_lng = $postData['lokasi_lng'];
+    $id_kantor = $this->session->userdata('id_kantor');
+
+    $this->load->model('Absensi_model');
+    $dalam_radius = $this->Absensi_model->cek_radius_absensi($lokasi_lat, $lokasi_lng, $id_kantor);
+
+    echo json_encode(["dalam_radius" => $dalam_radius]);
   }
 
   public function ajukan_izin()

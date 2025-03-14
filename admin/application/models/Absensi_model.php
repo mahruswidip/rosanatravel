@@ -92,6 +92,36 @@ class Absensi_model extends CI_Model
             ->result();
     }
 
+    public function cek_radius_absensi($lat_absen, $lng_absen, $id_kantor)
+    {
+        // Ambil koordinat kantor cabang berdasarkan ID kantor
+        $this->db->select("lokasi_lat, lokasi_lng");
+        $this->db->from("kantor_cabang");
+        $this->db->where("id_kantor", $id_kantor);
+        $kantor = $this->db->get()->row();
+
+        if ($kantor) {
+            $lat_kantor = $kantor->lokasi_lat;
+            $lng_kantor = $kantor->lokasi_lng;
+
+            // Perhitungan Haversine Formula dalam PHP
+            $earth_radius = 6371; // Radius bumi dalam km
+
+            $dLat = deg2rad($lat_absen - $lat_kantor);
+            $dLng = deg2rad($lng_absen - $lng_kantor);
+
+            $a = sin($dLat / 2) * sin($dLat / 2) +
+                cos(deg2rad($lat_kantor)) * cos(deg2rad($lat_absen)) *
+                sin($dLng / 2) * sin($dLng / 2);
+
+            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $distance = $earth_radius * $c * 1000; // Hasil dalam meter
+
+            return ($distance <= 20); // True jika dalam radius 20m, false jika di luar
+        }
+        return false;
+    }
+
     public function ajukanIzin($data)
     {
         return $this->db->insert('pengajuan_izin', $data);

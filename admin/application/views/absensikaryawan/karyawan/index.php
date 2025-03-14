@@ -1,3 +1,17 @@
+<style>
+    .collapse-anim {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+    }
+
+    .collapse-anim.open {
+        max-height: 500px;
+        /* Sesuaikan tinggi maksimal */
+        transition: max-height 0.4s ease-in;
+    }
+</style>
+
 <!-- MODAL UNTUK ABSEN HADIR -->
 <div class="modal fade" id="absenModal" tabindex="-1" aria-labelledby="absenModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -93,7 +107,32 @@
                             <a href="<?php echo site_url('absensi/izin'); ?>" class="btn btn-md">
                                 <i class="fa-solid fa-stethoscope"></i>&nbsp; Ajukan Izin
                             </a>
+                            <br>
+                            <a href="#" class="btn btn-link mb-0 pb-0" id="toggleRiwayat">
+                                Riwayat Izin <br><i id="toggleIcon" class="fa-solid fa-chevron-down"></i>
+                            </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Collapse dengan Animasi -->
+            <div class="card mt-4 collapse-anim" id="collapseExample">
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive">
+                        <table id="dataTable" class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Masuk</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pulang</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">Belum ada data</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -121,7 +160,6 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/js/moment.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     $(document).ready(function() {
         function loadAbsensi() {
@@ -386,6 +424,85 @@
             tracks.forEach(track => track.stop()); // Matikan kamera
         }
     });
+
+    document.getElementById("toggleRiwayat").addEventListener("click", function(event) {
+        event.preventDefault();
+        let collapseDiv = document.getElementById("collapseExample");
+        let icon = document.getElementById("toggleIcon");
+
+        if (collapseDiv.classList.contains("open")) {
+            collapseDiv.classList.remove("open");
+            icon.classList.replace("fa-chevron-up", "fa-chevron-down");
+        } else {
+            collapseDiv.classList.add("open");
+            icon.classList.replace("fa-chevron-down", "fa-chevron-up");
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Geolocation tidak didukung oleh browser ini!",
+            });
+        }
+    });
+
+    function successCallback(position) {
+        let userLat = position.coords.latitude;
+        let userLng = position.coords.longitude;
+
+        // Kirim koordinat ke server untuk pengecekan
+        fetch("<?= base_url('absensi/cek_radius') ?>", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    lokasi_lat: userLat,
+                    lokasi_lng: userLng
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.dalam_radius) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Diluar Area Kantor!",
+                        text: "Anda berada di luar area absensi kantor!",
+                        confirmButtonText: "Mengerti"
+                    });
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    }
+
+    function errorCallback(error) {
+        let message = "";
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                message = "Izin lokasi ditolak. Aktifkan GPS dan izinkan akses lokasi!";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                message = "Lokasi tidak tersedia!";
+                break;
+            case error.TIMEOUT:
+                message = "Permintaan lokasi timeout!";
+                break;
+            default:
+                message = "Terjadi kesalahan saat mendapatkan lokasi.";
+                break;
+        }
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: message,
+        });
+    }
 </script>
 <?php
 echo "Timezone: " . date_default_timezone_get() . "<br>";
