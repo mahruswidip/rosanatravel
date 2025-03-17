@@ -113,4 +113,174 @@ class Absen_koor extends CI_Controller
             show_404();
         }
     }
+    public function logabsen()
+    {
+        $tanggal = $this->input->get('tanggal');
+        $kota = $this->input->get('kota');
+        $nama_pegawai = $this->input->get('nama_pegawai');
+        $data['presensi'] = $this->AbsenKoor_model->get_all_presensi([], $tanggal, $kota, $nama_pegawai);
+        $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
+        $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
+        $data['_view'] = 'absensikaryawan/koordinator/logabsen';
+        $this->load->view('layouts/main', $data);
+    }
+    public function get_filtered_absen() 
+    {
+        $tanggal = $this->input->post('tanggal');
+        $cabang = $this->input->post('cabang');
+        $nama_pegawai = $this->input->post('nama_pegawai');
+        log_message('debug', 'Filter diterima - Tanggal: ' . $tanggal . ', Cabang: ' . $cabang . ', Nama Pegawai: ' . $nama_pegawai);
+        $tanggal_awal = null;
+        $tanggal_akhir = null;
+        
+        if (!empty($tanggal)) {
+            $tanggal_range = explode(' s.d. ', $tanggal);
+            if (isset($tanggal_range[0])) {
+                $tanggal_awal = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[0]))));
+            }
+            if (isset($tanggal_range[1])) {
+                $tanggal_akhir = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[1]))));
+            }
+        }
+
+        $result = $this->AbsenKoor_model->get_filtered_absen($tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
+        $totalData = $this->AbsenKoor_model->get_all_presensi_count();
+        $totalFiltered = count($result);
+        echo json_encode([
+            "draw" => intval($this->input->post('draw')),
+            "recordsTotal" => $totalData,
+            "recordsFiltered" => $totalFiltered,
+            "data" => $result
+        ]);
+    }
+    public function download_absen()
+{
+    require_once APPPATH . '../vendor/autoload.php';
+
+    $tanggal = $this->input->get('tanggal');
+    $cabang = $this->input->get('cabang');
+    $nama_pegawai = $this->input->get('nama_pegawai');
+
+    $tanggal_awal = null;
+    $tanggal_akhir = null;
+    if (!empty($tanggal)) {
+        $tanggal_range = explode(' s.d. ', $tanggal);
+        if (isset($tanggal_range[0])) {
+            $tanggal_awal = date('Y-m-d', strtotime(trim($tanggal_range[0])));
+        }
+        if (isset($tanggal_range[1])) {
+            $tanggal_akhir = date('Y-m-d', strtotime(trim($tanggal_range[1])));
+        }
+    }
+    $data = $this->AbsenKoor_model->get_filtered_absen($tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
+    if (!$data) {
+        show_error('Data tidak ditemukan!', 404);
+        return;
+    }
+
+    $grouped_data = [];
+    foreach ($data as $absen) {
+        $id_karyawan = $absen['id_karyawan'];
+        if (!isset($grouped_data[$id_karyawan])) {
+            $grouped_data[$id_karyawan] = [
+                'nama_karyawan' => $absen['nama_karyawan'],
+                'cabang' => $absen['cabang'],
+                'presensi' => []
+            ];
+        }
+        $tanggal_str = $absen['tanggal'];
+        $grouped_data[$id_karyawan]['presensi'][$tanggal_str] = [
+            'masuk' => $absen['masuk'] ?? '',
+            'pulang' => $absen['pulang'] ?? ''
+        ];
+    }
+
+    $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'Periode:');
+    $sheet->setCellValue('B1', "$tanggal_awal ~ $tanggal_akhir (ROSANA GROUP)");
+    $sheet->getStyle('A1:B1')->getFont()->setBold(true)->setName('Arial');
+    $sheet->setCellValue('A3', 'No');
+    $sheet->setCellValue('B3', 'Nama');
+    $sheet->setCellValue('C3', 'Cabang');
+    $sheet->getStyle('A3:C3')->getFont()->setBold(true)->setName('Times New Roman');
+
+    $dateColumnIndex = 'D';
+    $period = new DatePeriod(
+        new DateTime($tanggal_awal),
+        new DateInterval('P1D'),
+        (new DateTime($tanggal_akhir))->modify('+1 day')
+    );
+    foreach ($period as $date) {
+        $sheet->setCellValue($dateColumnIndex . '3', $date->format('d'));
+        $hari_indonesia = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+        $sheet->setCellValue($dateColumnIndex . '4', ucfirst($hari_indonesia[$date->format('l')]));
+        $dateColumnIndex++;
+    }
+
+    $row = 5;
+    $nomor = 1;
+    foreach ($grouped_data as $id_karyawan => $absen) {
+        $col = 'D';
+        
+        foreach ($period as $date) {
+            $tanggal_str = $date->format('Y-m-d');
+            $masuk = !empty($absen['presensi'][$tanggal_str]['masuk']) ? date('H:i:s', strtotime($absen['presensi'][$tanggal_str]['masuk'])) : '-';
+            $pulang = !empty($absen['presensi'][$tanggal_str]['pulang']) ? date('H:i:s', strtotime($absen['presensi'][$tanggal_str]['pulang'])) : '-';
+            $cellValue = ($masuk !== '-' || $pulang !== '-') ? trim($masuk . "\n" . $pulang) : "-";
+            $sheet->setCellValue($col . $row, $cellValue);
+            $sheet->getStyle($col . $row)->getAlignment()->setWrapText(true);
+            $col++;
+        }
+        $sheet->setCellValue('A' . $row, $nomor);
+        $sheet->setCellValue('B' . $row, $absen['nama_karyawan']);
+        $sheet->setCellValue('C' . $row, $absen['cabang']);
+        $sheet->mergeCells("A3:A4");
+        $sheet->mergeCells("B3:B4");
+        $sheet->mergeCells("C3:C4");
+        if ($nomor % 2 == 1) {
+            $sheet->getStyle("A$row:$col$row")->applyFromArray([
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'D9D9D9']
+                ]
+            ]);
+        }
+        $nomor++;
+        $row++;
+    }
+    foreach (range('A', $col) as $columnID) {
+        $sheet->getColumnDimension($columnID)->setAutoSize(true);
+    }
+    $lastColumn = $col;
+    $lastRow = $row - 1;
+    $sheet->getStyle("A3:$lastColumn$lastRow")->applyFromArray([
+        'borders' => [
+            'allBorders' => [
+                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                'color' => ['rgb' => '000000']
+            ]
+        ]
+    ]);
+    $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
+    $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $bulanTahun = date('F_Y', strtotime($tanggal_awal)); 
+    $filename = "Absensi_" . $bulanTahun . ".xlsx";
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $filename . '"');
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+}
+
 }

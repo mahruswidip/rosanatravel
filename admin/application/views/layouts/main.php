@@ -133,7 +133,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('absen_koor/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_koor/logabsen'); ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
                         </div>

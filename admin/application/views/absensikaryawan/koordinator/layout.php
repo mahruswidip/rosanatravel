@@ -18,7 +18,7 @@
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
+                                    <!--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>-->
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cabang</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No HP</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
@@ -30,14 +30,14 @@
                                         <td class="text-center"><?php echo $row['id_karyawan']; ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['user_name']); ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['user_email']); ?></td>
-                                        <td class="wrap-column text-center">
+                                        <!--<td class="wrap-column text-center">
                                             <div class="password-container">
                                                 <input type="password" class="password-field" value="<?php echo htmlspecialchars($row['pass']); ?>" readonly>
                                                 <span class="toggle-password">
                                                     <i class="fa fa-eye"></i>
                                                 </span>
                                             </div>
-                                        </td>
+                                        </td>-->
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['kota']); ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['nomor_hp']); ?></td>
                                         <td class="text-center">
