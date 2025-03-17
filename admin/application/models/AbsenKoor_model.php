@@ -170,13 +170,13 @@ class AbsenKoor_model extends CI_Model
              AND DATE(b.waktu_absen) = DATE(absensi_karyawan.waktu_absen) 
              ORDER BY b.waktu_absen DESC LIMIT 1) AS foto_pulang,
     
-            (SELECT CONCAT('Lat: ', lokasi_lat, '<br>Lng: ', lokasi_lng) FROM absensi_karyawan AS a 
+            (SELECT CONCAT('Lat: ', lokasi_lat) FROM absensi_karyawan AS a 
              WHERE a.fk_id_karyawan = absensi_karyawan.fk_id_karyawan 
              AND a.tipe_absen = 'Masuk' 
              AND DATE(a.waktu_absen) = DATE(absensi_karyawan.waktu_absen) 
              ORDER BY a.waktu_absen DESC LIMIT 1) AS lokasi_masuk,
     
-            (SELECT CONCAT('Lat: ', lokasi_lat, '<br>Lng: ', lokasi_lng) FROM absensi_karyawan AS b 
+            (SELECT CONCAT('Lat: ', lokasi_lat) FROM absensi_karyawan AS b 
              WHERE b.fk_id_karyawan = absensi_karyawan.fk_id_karyawan 
              AND b.tipe_absen = 'Pulang' 
              AND DATE(b.waktu_absen) = DATE(absensi_karyawan.waktu_absen) 
