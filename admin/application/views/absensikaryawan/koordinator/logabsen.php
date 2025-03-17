@@ -9,7 +9,7 @@
                     <div class="row mb-4">
                         <div class="col-md-3">
                             <label for="tanggal">Tanggal</label>
-                            <input type="text" class="form-control" id="tanggal" placeholder="2001-01-01 s.d. 2001-01-01">
+                            <input type="text" class="form-control" id="tanggal" placeholder="2001-01-01 s.d. 2001-01-07">
                         </div>
                         <div class="col-md-3">
                             <label for="cabang">Cabang</label>
