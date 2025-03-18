@@ -352,26 +352,24 @@
         var ctx1 = document.getElementById("chart-line").getContext("2d");
         var label_line = <?php echo json_encode($label_line); ?>;
         var dataline = <?php echo json_encode($dataline); ?>;
+        var tahun = <?php echo json_encode($tahun); ?>;
         var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
         gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
         gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
         gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+
         new Chart(ctx1, {
             type: "line",
             data: {
                 labels: label_line,
                 datasets: [{
-                    label: "Jumlah Jamaah",
+                    label: "Jumlah Jamaah (" + tahun + ")",
                     tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#5e72e4",
-                    backgroundColor: gradientStroke1,
                     borderWidth: 3,
-                    fill: true,
+                    borderColor: "#5e72e4",
+                    backgroundColor: "rgba(94, 114, 228, 0.2)",
                     data: dataline,
-                    maxBarThickness: 6
-
+                    fill: true
                 }],
             },
             options: {
@@ -379,77 +377,52 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true
+                    },
+                    datalabels: { // ✅ Tambahkan plugin ini
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#000',
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: function(value) {
+                            return value.toLocaleString(); // Format angka dengan separator ribuan
+                        }
                     }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
                 },
                 scales: {
                     y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
                         ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#fbfbfb',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
+                            color: '#fbfbfb'
                         }
                     },
                     x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
                         ticks: {
-                            display: true,
-                            color: '#ccc',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
+                            color: '#ccc'
                         }
-                    },
+                    }
                 },
             },
+            plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
         });
 
-        // Pie chart
-        var ctx4 = document.getElementById("pie-chart").getContext("2d");
-        var labels = <?php echo json_encode($labels); ?>;
-        var datapie = <?php echo json_encode($datapie); ?>;
 
-        new Chart(ctx4, {
+        // Pie chart
+        var ctx2 = document.getElementById("pie-chart").getContext("2d");
+        var label_pie = <?php echo json_encode(array_column($jamaah_by_paket, 'nama_paket')); ?>;
+        var datapie = <?php echo json_encode(array_column($jamaah_by_paket, 'jumlah_jamaah')); ?>;
+        var tahun = <?php echo json_encode($tahun); ?>;
+
+        new Chart(ctx2, {
             type: "pie",
             data: {
-                labels: labels,
+                labels: label_pie,
                 datasets: [{
-                    label: "Projects",
-                    weight: 9,
-                    cutout: 0,
-                    tension: 0.9,
-                    pointRadius: 2,
-                    borderWidth: 2,
-                    backgroundColor: ['#17c1e8', '#5e72e4', '#3A416F', '#a8b8d8'],
+                    label: "Jamaah Berdasarkan Paket (" + tahun + ")",
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50", "#9966FF", "#FF9F40"],
                     data: datapie,
-                    fill: false
                 }],
             },
             options: {
@@ -457,50 +430,23 @@
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false,
+                        display: true
                     },
-                    datalabels: {
-                        formatter: (value, ctx) => {
-                            let sum = 0;
-                            let dataArr = ctx.chart.data.datasets[0].data;
-                            dataArr.map(data => {
-                                sum += data;
-                            });
-                            let percentage = (value * 100 / sum).toFixed(2) + "%";
-                            return percentage;
-                        },
+                    datalabels: { // ✅ Tambahkan plugin ini
                         color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: function(value, ctx) {
+                            let sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                            let percentage = (value * 100 / sum).toFixed(1) + "%";
+                            return value.toLocaleString() + " (" + percentage + ")"; // Format angka + persentase
+                        }
                     }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            display: false
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            display: false,
-                        }
-                    },
-                },
+                }
             },
+            plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
         });
     </script>
 

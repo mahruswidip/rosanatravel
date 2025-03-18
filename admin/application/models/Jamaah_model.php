@@ -162,16 +162,19 @@ class Jamaah_model extends CI_Model
     }
 
 
-    public function get_jamaah_by_paket()
+    public function get_jamaah_by_paket($tahun)
     {
         $this->db->select('p.paket, COUNT(r.id_jamaah) as jumlah_jamaah');
         $this->db->from('paket p');
         $this->db->join('record_keberangkatan r', 'p.id_paket = r.id_paket');
+        $this->db->join('keberangkatan k', 'p.fk_id_keberangkatan = k.id_keberangkatan');
+        $this->db->where('YEAR(k.tanggal_keberangkatan)', $tahun);
         $this->db->group_by('p.paket');
         $query = $this->db->get();
 
         return $query->result_array();
     }
+
 
     // public function get_jamaah_per_bulan()
     // {
@@ -185,19 +188,19 @@ class Jamaah_model extends CI_Model
 
     //     return $query->result_array();
     // }
-    public function get_jamaah_per_bulan()
+    public function get_jamaah_per_bulan($tahun)
     {
         $this->db->select('MONTH(k.tanggal_keberangkatan) as bulan, COUNT(r.id_jamaah) as jumlah_jamaah');
         $this->db->from('keberangkatan k');
         $this->db->join('paket p', 'k.id_keberangkatan = p.fk_id_keberangkatan');
         $this->db->join('record_keberangkatan r', 'p.id_paket = r.id_paket');
-        $this->db->where('YEAR(k.tanggal_keberangkatan)', 2023);
+        $this->db->where('YEAR(k.tanggal_keberangkatan)', $tahun);
         $this->db->group_by('MONTH(k.tanggal_keberangkatan)');
         $query = $this->db->get();
 
         $result = $query->result_array();
 
-        $bulan = array(
+        $bulan = [
             1 => 'Januari',
             2 => 'Februari',
             3 => 'Maret',
@@ -210,7 +213,7 @@ class Jamaah_model extends CI_Model
             10 => 'Oktober',
             11 => 'November',
             12 => 'Desember'
-        );
+        ];
 
         foreach ($result as $key => $value) {
             $result[$key]['bulan'] = $bulan[$value['bulan']];
@@ -218,6 +221,7 @@ class Jamaah_model extends CI_Model
 
         return $result;
     }
+
 
 
 

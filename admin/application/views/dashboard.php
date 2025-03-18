@@ -96,11 +96,24 @@
             </div>
         </div>
     </div>
+
     <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
             <div class="card z-index-2 h-100">
                 <div class="card-header pb-0 pt-3 bg-transparent">
                     <h6 class="text-capitalize">Perolehan Jamaah Per-Bulan</h6>
+                    <form method="GET" action="">
+                        <label for="tahun">Pilih Tahun:</label>
+                        <select name="tahun" id="tahun" onchange="this.form.submit()">
+                            <?php
+                            $tahun_sekarang = date('Y');
+                            for ($i = 2020; $i <= $tahun_sekarang; $i++) {
+                                $selected = ($tahun == $i) ? 'selected' : '';
+                                echo "<option value='$i' $selected>$i</option>";
+                            }
+                            ?>
+                        </select>
+                    </form>
                     <p class="text-sm mb-0">
                         <i class="fa fa-arrow-up text-success"></i>
                         <span class="font-weight-normal">Data seluruh Cabang & Pusat</span>
