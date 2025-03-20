@@ -187,6 +187,7 @@ class Jamaah extends CI_Controller
                 'kabupaten_kota' => $kabupaten,  // Simpan nama kabupaten
                 'kecamatan' => $kecamatan,  // Simpan nama kecamatan
                 'kelurahan' => $kelurahan,  // Simpan nama kelurahan
+                // 'profesi' => $this->input->post('profesi'),
                 'created_by' => $this->session->userdata('user_id'),
             );
 
@@ -196,6 +197,18 @@ class Jamaah extends CI_Controller
         } else {
             $this->session->set_flashdata('error', 'NIK sudah terdaftar.');
             redirect('jamaah/bukatambah');
+        }
+    }
+
+    public function cek_nomor_telepon()
+    {
+        $nomor = $this->input->get('nomor');
+        $cek = $this->db->get_where('jamaah', ['nomor_telepon' => $nomor])->row();
+
+        if ($cek) {
+            echo json_encode(["status" => "duplikat"]);
+        } else {
+            echo json_encode(["status" => "tersedia"]);
         }
     }
 

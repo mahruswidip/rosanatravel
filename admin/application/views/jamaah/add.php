@@ -89,6 +89,12 @@
                                     <select id="kelurahan" name="kelurahan" class="form-control" required></select>
                                 </div>
                             </div>
+                            <!-- <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Profesi</label>
+                                    <input type="text" name="profesi" class="form-control" id="profesi" />
+                                </div>
+                            </div> -->
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="alamat">Alamat Lengkap</label>
@@ -134,6 +140,24 @@
                 loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
             }
         });
+    });
+
+    document.getElementById("nomor_telepon").addEventListener("blur", function() {
+        var nomor = this.value;
+        fetch("<?= site_url('jamaah/cek_nomor_telepon') ?>?nomor=" + nomor)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "duplikat") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Nomor telepon sudah terdaftar!",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    document.getElementById("nomor_telepon").value = ""; // Kosongkan input
+                }
+            });
     });
 
     /**
