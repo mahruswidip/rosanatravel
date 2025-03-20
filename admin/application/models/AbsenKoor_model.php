@@ -226,5 +226,34 @@ class AbsenKoor_model extends CI_Model
     
         return $query->result_array();
     }    
-    
+    public function getIzin() {
+        $this->db->select('
+            pengajuan_izin.id_pengajuan,
+            karyawan.nama_karyawan,
+            pengajuan_izin.jenis_pengajuan,
+            pengajuan_izin.tanggal_mulai,
+            pengajuan_izin.tanggal_selesai,
+            kantor_cabang.kota AS nama_cabang,
+            pengajuan_izin.alasan,
+            pengajuan_izin.lampiran,
+            pengajuan_izin.status_pengajuan
+        ');
+        $this->db->from('pengajuan_izin');
+        $this->db->join('karyawan', 'pengajuan_izin.fk_id_karyawan = karyawan.id_karyawan');
+        $this->db->join('kantor_cabang', 'pengajuan_izin.fk_id_kantor = kantor_cabang.id_kantor', 'left');
+        return $this->db->get()->result_array();
+    }
+
+    public function updateStatus($id, $status)
+{
+    // Pastikan status yang dikirim valid
+    $allowed_statuses = ['Ditolak', 'Disetujui'];
+    if (!in_array($status, $allowed_statuses)) {
+        return false;
+    }
+
+    $this->db->where('id_pengajuan', $id);
+    return $this->db->update('pengajuan_izin', ['status_pengajuan' => $status]); 
+}
+
 }
