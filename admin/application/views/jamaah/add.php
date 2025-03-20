@@ -101,6 +101,32 @@
                                     <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Profesi</label>
+                                    <select name="profesi" class="form-control" id="profesi" required>
+                                        <option value="">Pilih Profesi</option>
+                                        <option value="PNS">PNS (Pegawai Negeri Sipil)</option>
+                                        <option value="TNI">TNI (Tentara Nasional Indonesia)</option>
+                                        <option value="Polri">Polri</option>
+                                        <option value="Dokter">Dokter</option>
+                                        <option value="Perawat">Perawat</option>
+                                        <option value="Guru">Guru</option>
+                                        <option value="Dosen">Dosen</option>
+                                        <option value="Wiraswasta">Wiraswasta</option>
+                                        <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Input Profesi Lainnya (Default: Tersembunyi) -->
+                            <div class="col-md-6" id="div_profesi_lainnya" style="display: none;">
+                                <div class="form-group">
+                                    <label class="form-control-label">Detail Profesi</label>
+                                    <input type="text" name="profesi_lainnya" class="form-control" id="profesi_lainnya" placeholder="Masukkan profesi lainnya">
+                                </div>
+                            </div>
                         </div>
                         <hr class="horizontal dark mt-0">
                         <button class="btn btn-primary btn-sm ms-auto" type="submit">Tambah</button>
@@ -158,6 +184,20 @@
                     document.getElementById("nomor_telepon").value = ""; // Kosongkan input
                 }
             });
+    });
+
+    document.getElementById("profesi").addEventListener("change", function() {
+        var selectedValue = this.value;
+        var inputProfesiLainnya = document.getElementById("div_profesi_lainnya");
+
+        // Jika memilih "Wiraswasta" atau "Lainnya", munculkan input tambahan
+        if (selectedValue === "Wiraswasta" || selectedValue === "Lainnya") {
+            inputProfesiLainnya.style.display = "block";
+            document.getElementById("profesi_lainnya").setAttribute("required", "required");
+        } else {
+            inputProfesiLainnya.style.display = "none";
+            document.getElementById("profesi_lainnya").removeAttribute("required");
+        }
     });
 
     /**

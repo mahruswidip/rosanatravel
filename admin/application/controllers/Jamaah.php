@@ -174,6 +174,13 @@ class Jamaah extends CI_Controller
             $kecamatan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/district/$kecamatan_id.json");
             $kelurahan = $this->get_nama_wilayah_api("https://www.emsifa.com/api-wilayah-indonesia/api/village/$kelurahan_id.json");
 
+            $profesi = $this->input->post('profesi');
+            $profesi_lainnya = $this->input->post('profesi_lainnya');
+
+            if (($profesi == "Wiraswasta" || $profesi == "Lainnya") && !empty($profesi_lainnya)) {
+                $profesi = $profesi_lainnya;
+            }
+
             $params = array(
                 'nik' => $this->input->post('nik'),
                 'nama_jamaah' => $this->input->post('nama_jamaah'),
@@ -187,7 +194,7 @@ class Jamaah extends CI_Controller
                 'kabupaten_kota' => $kabupaten,  // Simpan nama kabupaten
                 'kecamatan' => $kecamatan,  // Simpan nama kecamatan
                 'kelurahan' => $kelurahan,  // Simpan nama kelurahan
-                // 'profesi' => $this->input->post('profesi'),
+                'profesi' => $profesi, // Simpan profesi yang dipilih atau diinput
                 'created_by' => $this->session->userdata('user_id'),
             );
 
