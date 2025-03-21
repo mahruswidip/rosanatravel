@@ -213,6 +213,7 @@ class Jamaah extends CI_Controller
         $this->db->select("user_id, user_name");
         $this->db->from("tbl_users");
         $this->db->where("user_level", 6);
+        $this->db->order_by("user_id", "DESC");
 
         if (!empty($search)) {
             $this->db->like("user_name", $search);
