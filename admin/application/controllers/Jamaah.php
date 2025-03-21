@@ -209,9 +209,9 @@ class Jamaah extends CI_Controller
 
     public function get_marketing()
     {
-        $search = $this->input->get("search"); // Ambil parameter pencarian
+        $search = $this->input->get("search");
         $this->db->select("user_id, user_name");
-        $this->db->from("jamaah");
+        $this->db->from("tbl_users");
         $this->db->where("user_level", 6);
 
         if (!empty($search)) {

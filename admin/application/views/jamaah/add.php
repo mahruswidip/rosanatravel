@@ -144,7 +144,7 @@
             placeholder: "Pilih Marketing",
             allowClear: true,
             ajax: {
-                url: "<?= base_url('absensi/get_marketing') ?>", // Panggil controller
+                url: "<?= base_url('jamaah/get_marketing') ?>", // Panggil controller
                 dataType: "json",
                 delay: 250,
                 data: function(params) {
