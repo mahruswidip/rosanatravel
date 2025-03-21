@@ -297,33 +297,24 @@ class Absen_koor extends CI_Controller
         $data['_view'] = 'absensikaryawan/koordinator/logizin';
         $this->load->view('layouts/main', $data);
     }
-    public function update_status()
-    {
-        // Debug: Cek apakah data masuk ke controller
-        var_dump($_POST);
-        exit(); 
-
-        $id = $this->input->post('id');
-        $status = $this->input->post('status');
-
-        if (!empty($id) && !empty($status)) {
-            $this->load->model('AbsenKoor_model');
-
-            $allowed_statuses = ['Disetujui', 'Ditolak'];
-            if (in_array($status, $allowed_statuses)) {
-                $update = $this->AbsenKoor_model->updateStatus($id, $status);
-
-                if ($update) {
-                    echo json_encode(['status' => 'success', 'message' => 'Status berhasil diperbarui']);
-                } else {
-                    echo json_encode(['status' => 'error', 'message' => 'Gagal memperbarui status']);
-                }
+    public function update_status() {
+        $id = $this->input->get('id'); // Pakai GET
+        $status = $this->input->get('status'); // Pakai GET
+    
+        if ($id && $status) {
+            $this->load->model('AbsenKoor_model'); // Panggil model
+            $update = $this->AbsenKoor_model->updateStatus($id, $status); // Update status
+    
+            if ($update) {
+                $this->session->set_flashdata('success', 'Status berhasil diperbarui.');
             } else {
-                echo json_encode(['status' => 'error', 'message' => 'Status tidak valid']);
+                $this->session->set_flashdata('error', 'Gagal memperbarui status.');
             }
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Data tidak valid']);
+            $this->session->set_flashdata('error', 'Data tidak valid.');
         }
-    }
+    
+        redirect($_SERVER['HTTP_REFERER']); // Kembali ke halaman sebelumnya
+    }    
 
 }
