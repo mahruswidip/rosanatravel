@@ -10,6 +10,13 @@
                 <div class="card-body">
                     <form action="<?php echo site_url() . 'jamaah/add' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">Marketing yang Menangani</label>
+                                    <select name="marketing" class="form-control" id="marketing" required></select>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">NIK</label>
@@ -57,8 +64,6 @@
                                     <input type="text" placeholder="C238712" name="nomor_paspor" class="form-control" id="nomor_paspor" />
                                 </div>
                             </div>
-
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Email</label>
@@ -89,12 +94,6 @@
                                     <select id="kelurahan" name="kelurahan" class="form-control" required></select>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-control-label">Profesi</label>
-                                    <input type="text" name="profesi" class="form-control" id="profesi" />
-                                </div>
-                            </div> -->
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="alamat">Alamat Lengkap</label>
@@ -223,8 +222,7 @@
         let select = document.getElementById(elementId);
         select.innerHTML = "<option value=''>Pilih</option>";
     }
-</script>
-<script>
+
     document.getElementById("nomor_telepon").addEventListener("input", function() {
         let input = this.value;
         let errorMessage = document.getElementById("error_message");
@@ -237,5 +235,32 @@
             errorMessage.style.display = "none"; // Sembunyikan pesan error
             this.setCustomValidity(""); // Hilangkan error
         }
+    });
+
+    $(document).ready(function() {
+        $('#marketing').select2({
+            placeholder: "Pilih Marketing",
+            allowClear: true,
+            ajax: {
+                url: "<?= base_url('absensi/get_marketing') ?>", // Panggil controller
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term // Kirimkan teks pencarian
+                    };
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.user_id, // Sesuaikan dengan field di database
+                                text: item.user_name
+                            };
+                        })
+                    };
+                }
+            }
+        });
     });
 </script>

@@ -207,6 +207,23 @@ class Jamaah extends CI_Controller
         }
     }
 
+    public function get_marketing()
+    {
+        $search = $this->input->get("search"); // Ambil parameter pencarian
+        $this->db->select("user_id, user_name");
+        $this->db->from("jamaah");
+        $this->db->where("user_level", 6);
+
+        if (!empty($search)) {
+            $this->db->like("user_name", $search);
+        }
+
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        echo json_encode($result);
+    }
+
     public function cek_nomor_telepon()
     {
         $nomor = $this->input->get('nomor');

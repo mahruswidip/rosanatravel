@@ -36,46 +36,48 @@
     <link id="pagestyle" href="<?php echo base_url('assets'); ?>/css/argon-dashboard.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
     <!-- my Tambahan -->
     <!-- DataTables CSS with Bootstrap 5 support -->
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets'); ?>/css/star-rating.css">
+
+
     <?php
     // session_start();
     $user_level = $_SESSION['user_level'] ?? null;
     ?>
     <style>
-    /* Mengatur tombol aksi menjadi di tengah kolom */
-    td.td-column-center {
-        text-align: center;
-    }
+        /* Mengatur tombol aksi menjadi di tengah kolom */
+        td.td-column-center {
+            text-align: center;
+        }
 
-    td.td-column-right {
-        text-align: right;
-    }
+        td.td-column-right {
+            text-align: right;
+        }
 
-    .star {
-        cursor: pointer;
-    }
+        .star {
+            cursor: pointer;
+        }
 
-    .star.fas {
-        color: gold;
-        /* Change the color of filled stars */
-    }
+        .star.fas {
+            color: gold;
+            /* Change the color of filled stars */
+        }
 
-    .star.far {
-        color: #ccc;
-        /* Change the color of empty stars */
-    }
+        .star.far {
+            color: #ccc;
+            /* Change the color of empty stars */
+        }
 
-    <?php if ( !in_array($user_level, [1, 2, 3])): ?>.bg-gradient-primary {
-        background-image: linear-gradient(310deg, #d37900 0%, #ffcf52 100%) !important;
-    }
+        <?php if (!in_array($user_level, [1, 2, 3])): ?>.bg-gradient-primary {
+            background-image: linear-gradient(310deg, #d37900 0%, #ffcf52 100%) !important;
+        }
 
-    <?php endif;
-    ?>
+        <?php endif;
+        ?>
     </style>
     <?php
     date_default_timezone_set('Asia/Jakarta'); // Set Timezone ke WIB
@@ -94,11 +96,11 @@
             <?php
             $user_level = $this->session->userdata('user_level');
             if ($user_level == '4') { ?>
-            <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
-                <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100"
-                    alt="main_logo">
-                <span class="ms-1 font-weight-bold">Admin</span>
-            </a>
+                <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+                    <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100"
+                        alt="main_logo">
+                    <span class="ms-1 font-weight-bold">Admin</span>
+                </a>
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
@@ -123,7 +125,7 @@
                 </li>
         </div>
         </ul>
-        <?php } elseif ($user_level == '5') { ?>
+    <?php } elseif ($user_level == '5') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
             <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100"
                 alt="main_logo">
@@ -163,7 +165,7 @@
                 </li>
         </div>
         </ul>
-        <?php } elseif ($user_level == '6') { ?>
+    <?php } elseif ($user_level == '6') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
             <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100"
                 alt="main_logo">
@@ -193,7 +195,7 @@
                 </li>
         </div>
         </ul>
-        <?php } else { ?>
+    <?php } else { ?>
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
@@ -300,13 +302,13 @@
                 </li>
             </ul>
         </div>
-        <?php } ?>
-        <div class="sidenav-footer mx-3 ">
-            <!-- <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a> -->
-            <!-- <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Keluar</a> -->
-            <a class="btn btn-primary btn-sm mb-0 w-100" href="<?php echo site_url(''); ?>login/logout"
-                type=" button">Keluar</a>
-        </div>
+    <?php } ?>
+    <div class="sidenav-footer mx-3 ">
+        <!-- <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a> -->
+        <!-- <a class="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Keluar</a> -->
+        <a class="btn btn-primary btn-sm mb-0 w-100" href="<?php echo site_url(''); ?>login/logout"
+            type=" button">Keluar</a>
+    </div>
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
@@ -376,6 +378,8 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
     <?php
     if (isset($jamaah_by_paket) && !empty($jamaah_by_paket)) {
         $labels = array_column($jamaah_by_paket, 'paket');
@@ -388,116 +392,116 @@
     }
     ?>
     <script>
-    var ctx1 = document.getElementById("chart-line").getContext("2d");
-    var label_line = <?php echo json_encode($label_line); ?>;
-    var dataline = <?php echo json_encode($dataline); ?>;
-    var tahun = <?php echo json_encode($tahun); ?>;
-    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+        var ctx1 = document.getElementById("chart-line").getContext("2d");
+        var label_line = <?php echo json_encode($label_line); ?>;
+        var dataline = <?php echo json_encode($dataline); ?>;
+        var tahun = <?php echo json_encode($tahun); ?>;
+        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+        gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
 
-    new Chart(ctx1, {
-        type: "line",
-        data: {
-            labels: label_line,
-            datasets: [{
-                label: "Jumlah Jamaah (" + tahun + ")",
-                tension: 0.4,
-                borderWidth: 3,
-                borderColor: "#5e72e4",
-                backgroundColor: "rgba(94, 114, 228, 0.2)",
-                data: dataline,
-                fill: true
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true
-                },
-                datalabels: { // ✅ Tambahkan plugin ini
-                    anchor: 'end',
-                    align: 'top',
-                    color: '#000',
-                    font: {
-                        weight: 'bold',
-                        size: 12
+        new Chart(ctx1, {
+            type: "line",
+            data: {
+                labels: label_line,
+                datasets: [{
+                    label: "Jumlah Jamaah (" + tahun + ")",
+                    tension: 0.4,
+                    borderWidth: 3,
+                    borderColor: "#5e72e4",
+                    backgroundColor: "rgba(94, 114, 228, 0.2)",
+                    data: dataline,
+                    fill: true
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true
                     },
-                    formatter: function(value) {
-                        return value.toLocaleString(); // Format angka dengan separator ribuan
+                    datalabels: { // ✅ Tambahkan plugin ini
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#000',
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: function(value) {
+                            return value.toLocaleString(); // Format angka dengan separator ribuan
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#fbfbfb'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ccc'
+                        }
+                    }
+                },
+            },
+            plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
+        });
+
+
+        // Pie chart
+        var ctx2 = document.getElementById("pie-chart").getContext("2d");
+        var label_pie = <?php echo json_encode(array_column($jamaah_by_paket, 'nama_paket')); ?>;
+        var datapie = <?php echo json_encode(array_column($jamaah_by_paket, 'jumlah_jamaah')); ?>;
+        var tahun = <?php echo json_encode($tahun); ?>;
+
+        new Chart(ctx2, {
+            type: "pie",
+            data: {
+                labels: label_pie,
+                datasets: [{
+                    label: "Jamaah Berdasarkan Paket (" + tahun + ")",
+                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50", "#9966FF", "#FF9F40"],
+                    data: datapie,
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    datalabels: { // ✅ Tambahkan plugin ini
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: function(value, ctx) {
+                            let sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                            let percentage = (value * 100 / sum).toFixed(1) + "%";
+                            return value.toLocaleString() + " (" + percentage +
+                                ")"; // Format angka + persentase
+                        }
                     }
                 }
             },
-            scales: {
-                y: {
-                    ticks: {
-                        color: '#fbfbfb'
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: '#ccc'
-                    }
-                }
-            },
-        },
-        plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
-    });
-
-
-    // Pie chart
-    var ctx2 = document.getElementById("pie-chart").getContext("2d");
-    var label_pie = <?php echo json_encode(array_column($jamaah_by_paket, 'nama_paket')); ?>;
-    var datapie = <?php echo json_encode(array_column($jamaah_by_paket, 'jumlah_jamaah')); ?>;
-    var tahun = <?php echo json_encode($tahun); ?>;
-
-    new Chart(ctx2, {
-        type: "pie",
-        data: {
-            labels: label_pie,
-            datasets: [{
-                label: "Jamaah Berdasarkan Paket (" + tahun + ")",
-                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50", "#9966FF", "#FF9F40"],
-                data: datapie,
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true
-                },
-                datalabels: { // ✅ Tambahkan plugin ini
-                    color: '#fff',
-                    font: {
-                        weight: 'bold',
-                        size: 14
-                    },
-                    formatter: function(value, ctx) {
-                        let sum = ctx.dataset.data.reduce((a, b) => a + b, 0);
-                        let percentage = (value * 100 / sum).toFixed(1) + "%";
-                        return value.toLocaleString() + " (" + percentage +
-                            ")"; // Format angka + persentase
-                    }
-                }
-            }
-        },
-        plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
-    });
+            plugins: [ChartDataLabels] // ✅ Tambahkan plugin ini
+        });
     </script>
 
     <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
     </script>
 
     <!-- Github buttons -->
