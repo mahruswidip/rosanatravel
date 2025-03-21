@@ -182,6 +182,7 @@ class Jamaah extends CI_Controller
             }
 
             $params = array(
+                'marketing' => $this->input->post('marketing'),
                 'nik' => $this->input->post('nik'),
                 'nama_jamaah' => $this->input->post('nama_jamaah'),
                 'jenis_kelamin' => $this->input->post('jenis_kelamin'),
