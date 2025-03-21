@@ -135,7 +135,36 @@
         </div>
     </div>
 </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('#marketing').select2({
+            placeholder: "Pilih Marketing",
+            allowClear: true,
+            ajax: {
+                url: "<?= base_url('absensi/get_marketing') ?>", // Panggil controller
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term // Kirimkan teks pencarian
+                    };
+                },
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.user_id, // Sesuaikan dengan field di database
+                                text: item.user_name
+                            };
+                        })
+                    };
+                }
+            }
+        });
+    });
     document.addEventListener("DOMContentLoaded", function() {
         loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
 
@@ -235,32 +264,5 @@
             errorMessage.style.display = "none"; // Sembunyikan pesan error
             this.setCustomValidity(""); // Hilangkan error
         }
-    });
-
-    $(document).ready(function() {
-        $('#marketing').select2({
-            placeholder: "Pilih Marketing",
-            allowClear: true,
-            ajax: {
-                url: "<?= base_url('absensi/get_marketing') ?>", // Panggil controller
-                dataType: "json",
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term // Kirimkan teks pencarian
-                    };
-                },
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                id: item.user_id, // Sesuaikan dengan field di database
-                                text: item.user_name
-                            };
-                        })
-                    };
-                }
-            }
-        });
     });
 </script>
