@@ -244,16 +244,17 @@ class AbsenKoor_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function updateStatus($id, $status)
-{
-    // Pastikan status yang dikirim valid
-    $allowed_statuses = ['Ditolak', 'Disetujui'];
-    if (!in_array($status, $allowed_statuses)) {
-        return false;
+    public function updateStatus($id, $status) {
+        // Validasi status
+        $allowed_statuses = ['Disetujui', 'Ditolak'];
+        if (!in_array($status, $allowed_statuses)) {
+            return false;
+        }
+    
+        // Update database
+        $this->db->where('id_pengajuan', $id);
+        return $this->db->update('pengajuan_izin', ['status_pengajuan' => $status]);
     }
-
-    $this->db->where('id_pengajuan', $id);
-    return $this->db->update('pengajuan_izin', ['status_pengajuan' => $status]); 
-}
+    
 
 }
