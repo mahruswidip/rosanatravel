@@ -20,7 +20,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">NIK</label>
-                                    <input type="text" required placeholder="35751515" name="nik" class="form-control" id="nik" />
+                                    <input type="text" required placeholder="16 Digit" id="nik" name="nik" maxlength="16" class="form-control" required>
+                                    <small id="nikError" style="color: red; display: none;">NIK harus terdiri dari 16 digit</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -67,7 +68,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Email</label>
-                                    <input type="text" placeholder="contoh@apa.com" name="email" class="form-control" id="email" />
+                                    <input type="email" placeholder="contoh@apa.com" name="email" class="form-control" id="email" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -118,8 +119,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <!-- Input Profesi Lainnya (Default: Tersembunyi) -->
                             <div class="col-md-6" id="div_profesi_lainnya" style="display: none;">
                                 <div class="form-group">
                                     <label class="form-control-label">Detail Profesi</label>
@@ -140,129 +139,122 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#marketing').select2({
-            placeholder: "Pilih Marketing",
-            allowClear: true,
-            ajax: {
-                url: "<?= base_url('jamaah/get_marketing') ?>", // Panggil controller
-                dataType: "json",
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term // Kirimkan teks pencarian
-                    };
-                },
-                processResults: function(data) {
-                    return {
-                        results: $.map(data, function(item) {
-                            return {
-                                id: item.user_id, // Sesuaikan dengan field di database
-                                text: item.user_name
-                            };
-                        })
-                    };
-                }
+    $('#marketing').select2({
+        placeholder: "Pilih Marketing",
+        allowClear: true,
+        ajax: {
+            url: "<?= base_url('jamaah/get_marketing') ?>",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            id: item.user_id,
+                            text: item.user_name
+                        };
+                    })
+                };
             }
-        });
+        }
     });
-    document.addEventListener("DOMContentLoaded", function() {
-        loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
-
-        document.getElementById("provinsi").addEventListener("change", function() {
-            let provinsiId = this.value;
-            resetDropdown("kabupaten_kota");
-            resetDropdown("kecamatan");
-            resetDropdown("kelurahan");
-            if (provinsiId) {
-                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`, "kabupaten_kota");
-            }
-        });
-
-        document.getElementById("kabupaten_kota").addEventListener("change", function() {
-            let kabupatenId = this.value;
-            resetDropdown("kecamatan");
-            resetDropdown("kelurahan");
-            if (kabupatenId) {
-                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kabupatenId}.json`, "kecamatan");
-            }
-        });
-
-        document.getElementById("kecamatan").addEventListener("change", function() {
-            let kecamatanId = this.value;
-            resetDropdown("kelurahan");
-            if (kecamatanId) {
-                loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
-            }
-        });
+    $('#provinsi, #kabupaten_kota, #kecamatan, #kelurahan').select2({
+        placeholder: "Pilih",
+        allowClear: true
     });
 
-    document.getElementById("nomor_telepon").addEventListener("blur", function() {
-        var nomor = this.value;
-        fetch("<?= site_url('jamaah/cek_nomor_telepon') ?>?nomor=" + nomor)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "duplikat") {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Nomor telepon sudah terdaftar!",
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                    document.getElementById("nomor_telepon").value = ""; // Kosongkan input
-                }
-            });
-    });
+    loadDropdown("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json", "provinsi");
 
-    document.getElementById("profesi").addEventListener("change", function() {
-        var selectedValue = this.value;
-        var inputProfesiLainnya = document.getElementById("div_profesi_lainnya");
-
-        // Jika memilih "Wiraswasta" atau "Lainnya", munculkan input tambahan
-        if (selectedValue === "Wiraswasta" || selectedValue === "Lainnya") {
-            inputProfesiLainnya.style.display = "block";
-            document.getElementById("profesi_lainnya").setAttribute("required", "required");
-        } else {
-            inputProfesiLainnya.style.display = "none";
-            document.getElementById("profesi_lainnya").removeAttribute("required");
+    $("#provinsi").on("change", function() {
+        let provinsiId = this.value;
+        resetDropdown("kabupaten_kota");
+        resetDropdown("kecamatan");
+        resetDropdown("kelurahan");
+        if (provinsiId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provinsiId}.json`, "kabupaten_kota");
         }
     });
 
-    /**
-     * Fungsi untuk mengambil data dari API dan mengisi dropdown
-     */
+    $("#kabupaten_kota").on("change", function() {
+        let kabupatenId = this.value;
+        resetDropdown("kecamatan");
+        resetDropdown("kelurahan");
+        if (kabupatenId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kabupatenId}.json`, "kecamatan");
+        }
+    });
+
+    $("#kecamatan").on("change", function() {
+        let kecamatanId = this.value;
+        resetDropdown("kelurahan");
+        if (kecamatanId) {
+            loadDropdown(`https://www.emsifa.com/api-wilayah-indonesia/api/villages/${kecamatanId}.json`, "kelurahan");
+        }
+    });
+});
     function loadDropdown(url, elementId) {
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 let select = document.getElementById(elementId);
-                select.innerHTML = "<option value=''>Pilih</option>"; // Reset dropdown
+                select.innerHTML = "<option value=''>Pilih</option>";
                 data.forEach(item => {
-                    select.innerHTML += `<option value="${item.id}">${item.name}</option>`;
+                    let option = new Option(item.name, item.id);
+                    select.add(option);
                 });
+                $(`#${elementId}`).select2();
             })
             .catch(error => console.error("Error fetching data: ", error));
     }
-
-    /**
-     * Fungsi untuk mereset dropdown agar tidak menampilkan data lama
-     */
     function resetDropdown(elementId) {
         let select = document.getElementById(elementId);
         select.innerHTML = "<option value=''>Pilih</option>";
+        $(`#${elementId}`).select2();
     }
 
     document.getElementById("nomor_telepon").addEventListener("input", function() {
         let input = this.value;
         let errorMessage = document.getElementById("error_message");
-
-        // Cek apakah input hanya angka dan diawali dengan "62"
-        if (!/^62\d{8,13}$/.test(input)) {
-            errorMessage.style.display = "block"; // Tampilkan pesan error
+        if (!/^62\d{7,12}$/.test(input)) {
+            errorMessage.style.display = "block";
             this.setCustomValidity("Nomor harus diawali '62' dan hanya angka!");
         } else {
-            errorMessage.style.display = "none"; // Sembunyikan pesan error
-            this.setCustomValidity(""); // Hilangkan error
+            errorMessage.style.display = "none";
+            this.setCustomValidity("");
         }
+    });
+    document.getElementById("nik").addEventListener("input", function() {
+    let nikInput = this.value;
+    let nikError = document.getElementById("nikError");
+    if (!/^\d*$/.test(nikInput)) {
+        nikError.style.display = "inline";
+        this.value = nikInput.replace(/\D/g, '');
+    } else {
+        nikError.style.display = "none";
+    }
+    if (nikInput.length > 16) {
+        this.value = nikInput.slice(0, 16);
+    } else if (nikInput.length < 16) {
+        nikError.style.display = "inline";
+    } else {
+        nikError.style.display = "none";
+    }
+    });
+    document.getElementById("email").addEventListener("input", function() {
+    let emailInput = this.value;
+    let emailError = document.getElementById("emailError");
+    if (!emailInput.includes("@")) {
+        emailError.style.display = "inline";
+    } else {
+        emailError.style.display = "none";
+    }
+    });
+    document.getElementById("nama_jamaah").addEventListener("input", function() {
+    this.value = this.value.toUpperCase();
     });
 </script>
