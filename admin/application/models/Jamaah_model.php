@@ -382,25 +382,19 @@ class Jamaah_model extends CI_Model
     //     return $this->db->get()->result_array();
     // }
     public function get_ulang_tahun()
-    {
-        $this->db->select('id_jamaah, nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
-        $this->db->from('jamaah');
+{
+    $this->db->select('id_jamaah, nama_jamaah, ttl, nomor_telepon, alamat, jamaah_img');
+    $this->db->from('jamaah');
 
-        // Ambil bulan dan hari saat ini
-        $bulan_ini = date('m');
+    // Ambil rentang tanggal ulang tahun (-2 hari hingga +10 hari)
+    $tanggal_awal = date('m-d', strtotime('-2 days'));
+    $tanggal_akhir = date('m-d', strtotime('+10 days'));
 
-        // Ambil range 2 hari ke belakang dan 10 hari ke depan
-        $tanggal_awal = date('d', strtotime('-2 days'));
-        $tanggal_akhir = date('d', strtotime('+10 days'));
+    // Filter berdasarkan bulan & hari dalam rentang waktu
+    $this->db->where("DATE_FORMAT(ttl, '%m-%d') BETWEEN '$tanggal_awal' AND '$tanggal_akhir'");
 
-        // Filter berdasarkan bulan yang sama dan rentang hari
-        $this->db->where('MONTH(ttl)', $bulan_ini);
-        $this->db->where('DAY(ttl) >=', $tanggal_awal);
-        $this->db->where('DAY(ttl) <=', $tanggal_akhir);
-
-        return $this->db->get()->result_array();
-    }
-
+    return $this->db->get()->result_array();
+}
 
 
     public function kirimUcapanUltah($id_jamaah)
