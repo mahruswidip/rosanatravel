@@ -272,7 +272,16 @@
                         <span class="nav-link-text ms-1">Galeri</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <?php if ($this->session->userdata('user_level') == '1') {
+                    echo '<li class="nav-item"><a class="nav-link" href="' . base_url('token/index') . '">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-key-25 text-danger text-sm opacity-10"></i></div>
+                    <span class="nav-link-text ms-1">Token</span></a></li>';
+                } else {
+                    echo '';
+                }
+                ?>
+                <!--<li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>token/index">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -280,7 +289,7 @@
                         </div>
                         <span class="nav-link-text ms-1">Token</span>
                     </a>
-                </li>
+                </li>-->
                 <hr>
                 <?php if ($this->session->userdata('user_level') == '1') {
                     echo '<li class="nav-item"><a class="nav-link" href="' . base_url('scan/index') . '">
@@ -291,7 +300,7 @@
                     echo '';
                 }
                 ?>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link " href="<?php echo site_url(''); ?>login/logout">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -299,7 +308,7 @@
                         </div>
                         <span class="nav-link-text ms-1">Keluar</span>
                     </a>
-                </li>
+                </li>-->
             </ul>
         </div>
     <?php } ?>
