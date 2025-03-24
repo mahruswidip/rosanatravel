@@ -21,11 +21,7 @@ class AbsenKoor_model extends CI_Model
         $this->db->from('karyawan');
         $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
         $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
-
-        if (isset($params['limit']) && isset($params['offset'])) {
-            $this->db->limit($params['limit'], $params['offset']);
-        }
-
+        
         return $this->db->get()->result_array();
     }
     public function get_karyawan($id_karyawan)
@@ -255,6 +251,4 @@ class AbsenKoor_model extends CI_Model
         $this->db->where('id_pengajuan', $id);
         return $this->db->update('pengajuan_izin', ['status_pengajuan' => $status]);
     }
-    
-
 }
