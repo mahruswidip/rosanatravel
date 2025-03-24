@@ -115,7 +115,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('absen_admin/index'); ?>">
+                    <a class="nav-link" href="<?php echo base_url('absen_admin/logabsen'); ?>">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
@@ -123,7 +123,17 @@
                         <span class="nav-link-text ms-1">Data Log Absen</span>
                     </a>
                 </li>
-        </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('absen_admin/logizin'); ?>">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-danger text-sm opacity-10"></i>
+
+                        </div>
+                        <span class="nav-link-text ms-1">Data Log Izin</span>
+                    </a>
+                </li>
+            </div>
         </ul>
     <?php } elseif ($user_level == '5') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
@@ -163,7 +173,7 @@
                         <span class="nav-link-text ms-1">Data Log Izin</span>
                     </a>
                 </li>
-        </div>
+            </div>
         </ul>
     <?php } elseif ($user_level == '6') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
