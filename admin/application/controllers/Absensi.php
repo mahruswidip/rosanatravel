@@ -66,27 +66,45 @@ class Absensi extends CI_Controller
       return;
     }
 
-    // Ambil data kantor cabang berdasarkan id_karyawan
-    $this->db->select('kantor_cabang.lokasi_lat, kantor_cabang.lokasi_lng');
-    $this->db->from('karyawan');
-    $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor');
-    $this->db->where('karyawan.id_karyawan', $fk_id_karyawan);
-    $kantor = $this->db->get()->row();
+    // Ambil kantor asal karyawan
+    $karyawan = $this->db->select('fk_id_kantor')
+      ->from('karyawan')
+      ->where('id_karyawan', $fk_id_karyawan)
+      ->get()
+      ->row();
 
-    if (!$kantor) {
-      echo json_encode(["success" => false, "message" => "Data kantor tidak ditemukan"]);
+    if (!$karyawan) {
+      echo json_encode(["success" => false, "message" => "Data karyawan tidak ditemukan"]);
       return;
     }
 
-    // Hitung jarak antara lokasi absen dan kantor
-    $theta = $lokasi_lng - $kantor->lokasi_lng;
-    $dist = sin(deg2rad($lokasi_lat)) * sin(deg2rad($kantor->lokasi_lat)) + cos(deg2rad($lokasi_lat)) * cos(deg2rad($kantor->lokasi_lat)) * cos(deg2rad($theta));
-    $dist = acos($dist);
-    $dist = rad2deg($dist);
-    $jarak_meter = $dist * 60 * 1.1515 * 1609.34;
+    $id_kantor_karyawan = $karyawan->fk_id_kantor;
 
-    if ($jarak_meter > 50) { // Batas 20 meter
-      echo json_encode(["success" => false, "message" => "Anda berada di luar radius kantor"]);
+    // Ambil lokasi kantor asal karyawan dan kantor Pasuruan (id_kantor = 1)
+    $kantor_cabang = $this->db->select('lokasi_lat, lokasi_lng')
+      ->from('kantor_cabang')
+      ->where_in('id_kantor', [$id_kantor_karyawan, 1]) // Hanya kantor asal dan kantor Pasuruan
+      ->get()
+      ->result();
+
+    $absen_valid = false;
+
+    foreach ($kantor_cabang as $kantor) {
+      $theta = $lokasi_lng - $kantor->lokasi_lng;
+      $dist = sin(deg2rad($lokasi_lat)) * sin(deg2rad($kantor->lokasi_lat)) +
+        cos(deg2rad($lokasi_lat)) * cos(deg2rad($kantor->lokasi_lat)) * cos(deg2rad($theta));
+      $dist = acos($dist);
+      $dist = rad2deg($dist);
+      $jarak_meter = $dist * 60 * 1.1515 * 1609.34;
+
+      if ($jarak_meter <= 50) { // Maksimal jarak 50 meter
+        $absen_valid = true;
+        break;
+      }
+    }
+
+    if (!$absen_valid) {
+      echo json_encode(["success" => false, "message" => "Anda hanya bisa absen di kantor asal atau kantor Pasuruan"]);
       return;
     }
 
