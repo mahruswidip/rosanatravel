@@ -75,15 +75,15 @@ class AbsenKoor_model extends CI_Model
             if (!empty($fk_id_user)) {
                 $this->db->delete('tbl_users', array('user_id' => $fk_id_user));
             }
-            $this->reorder_karyawan_ids();
+            // $this->reorder_karyawan_ids();
         }
     }
-    public function reorder_karyawan_ids()
-    {
-        $this->db->query("SET @num := 0;");
-        $this->db->query("UPDATE karyawan SET id_karyawan = (@num := @num + 1) ORDER BY id_karyawan;");
-        $this->db->query("ALTER TABLE karyawan AUTO_INCREMENT = 1;");
-    }
+    // public function reorder_karyawan_ids()
+    // {
+    //     $this->db->query("SET @num := 0;");
+    //     $this->db->query("UPDATE karyawan SET id_karyawan = (@num := @num + 1) ORDER BY id_karyawan;");
+    //     $this->db->query("ALTER TABLE karyawan AUTO_INCREMENT = 1;");
+    // }
     
     public function update_user($user_id, $data)
     {
@@ -95,7 +95,7 @@ class AbsenKoor_model extends CI_Model
         return $this->db->count_all('absensi_karyawan');
     }
 
-    public function get_all_presensi($params= array(), $tanggal = null, $kota = null, $nama_pegawai = null)
+    public function get_all_presensi($params, $tanggal = null, $kota = null, $nama_pegawai = null)
     {
         $this->db->select('
             absensi_karyawan.*, 
@@ -219,7 +219,6 @@ class AbsenKoor_model extends CI_Model
     
         $query = $this->db->get();
         log_message('debug', 'Query executed: ' . $this->db->last_query());
-        $this->db->limit($limit, $start); 
         return $query->result_array();
     }    
     public function getIzin() {
