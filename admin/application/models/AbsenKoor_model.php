@@ -75,15 +75,15 @@ class AbsenKoor_model extends CI_Model
             if (!empty($fk_id_user)) {
                 $this->db->delete('tbl_users', array('user_id' => $fk_id_user));
             }
-            // $this->reorder_karyawan_ids();
+            $this->reorder_karyawan_ids();
         }
     }
-    // public function reorder_karyawan_ids()
-    // {
-    //     $this->db->query("SET @num := 0;");
-    //     $this->db->query("UPDATE karyawan SET id_karyawan = (@num := @num + 1) ORDER BY id_karyawan;");
-    //     $this->db->query("ALTER TABLE karyawan AUTO_INCREMENT = 1;");
-    // }
+    public function reorder_karyawan_ids()
+    {
+        $this->db->query("SET @num := 0;");
+        $this->db->query("UPDATE karyawan SET id_karyawan = (@num := @num + 1) ORDER BY id_karyawan;");
+        $this->db->query("ALTER TABLE karyawan AUTO_INCREMENT = 1;");
+    }
     
     public function update_user($user_id, $data)
     {
