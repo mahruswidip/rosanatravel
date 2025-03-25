@@ -106,7 +106,7 @@ class Absen_koor extends CI_Controller
         $karyawan = $this->AbsenKoor_model->get_karyawan($id_karyawan);
         if ($karyawan) {
             $this->AbsenKoor_model->delete_karyawan($id_karyawan);
-            // $this->AbsenKoor_model->reorder_karyawan_ids();
+            $this->AbsenKoor_model->reorder_karyawan_ids();
             $this->session->set_flashdata('success', 'Data karyawan berhasil dihapus!');
             redirect('absen_koor/index');
         } else {
