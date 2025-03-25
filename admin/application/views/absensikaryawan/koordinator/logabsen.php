@@ -66,7 +66,7 @@
 $(document).ready(function () {
     var table = $('#dataTable-presensi').DataTable({
         "processing": true,
-        "serverSide": true,
+        "serverSide": false,
         "ajax": {
             "url": "<?php echo site_url('absen_koor/get_filtered_absen'); ?>",
             "type": "POST",
@@ -77,6 +77,14 @@ $(document).ready(function () {
                 d.nama_pegawai = $('#nama_pegawai').val();
             }
         },
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
+            "paginate": {
+                "previous": "<",
+                "next": ">"
+            }
+        },
+        "pageLength": 10,
         "columns": [
             { "data": "foto_masuk", "render": function(data) {
                 return data ? '<img src="<?php echo base_url(); ?>'+ data +'" width="100" onerror="this.onerror=null;this.src=\'<?php echo base_url('assets/no-image.png'); ?>\';">' : '-';
@@ -94,14 +102,6 @@ $(document).ready(function () {
             }},
             { "data": "cabang" }
         ],
-        "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
-                "paginate": {
-                    "previous": "<",
-                    "next": ">"
-                },
-            },
-            "pageLength": 10
     });
 
     $('#filter-btn').click(function () {
