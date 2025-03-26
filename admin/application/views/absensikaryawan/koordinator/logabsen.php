@@ -34,8 +34,8 @@
                             </select>
                         </div>
                         <div class="col-md-3 d-flex align-items-end">
-                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"><i class="fa fa-filter"></i>Filter</button>
-                            <button id="export-excel" class="btn btn-success btn-sm"><i class="fa fa-file-excel"></i>Unduh</button>
+                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"></i>Filter</button>
+                            <button id="export-excel" class="btn btn-success btn-sm"></i>Unduh</button>
                         </div>
                     </div>
                     <!-- Tabel Data Presensi -->
@@ -95,10 +95,10 @@ $(document).ready(function () {
             { "data": "nama_karyawan" },
             { "data": "tanggal" },
             { "data": "masuk", "render": function(data, type, row) {
-                return data ? data.split(' ')[1] + "<br>" + (row.status_masuk ? row.status_masuk : '') + "<br>" + (row.lokasi_masuk ? "<small>" + row.lokasi_masuk + "</small>" : '') : '-';
+                return data ? data.split(' ')[1] + "<br>" + (row.status_masuk ? row.status_masuk : '') : '-';
             }},
             { "data": "pulang", "render": function(data, type, row) {
-                return data ? data.split(' ')[1] + "<br>" + (row.status_pulang ? row.status_pulang : '') + "<br>" + (row.lokasi_pulang ? "<small>" + row.lokasi_pulang + "</small>" : '') : '-';
+                return data ? data.split(' ')[1] + "<br>" + (row.status_pulang ? row.status_pulang : '') : '-';
             }},
             { "data": "cabang" }
         ],
