@@ -1,0 +1,39 @@
+[08-Mar-2025 11:11:41 Asia/Jakarta] LAT: -7.6651601129596845
+[08-Mar-2025 11:11:41 Asia/Jakarta] LNG: 112.90297800305224
+[08-Mar-2025 11:11:41 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741407101.png', '-7.6651601129596845', '112.90297800305224', '2025-03-08 11:11:41', 'masuk', 'normal', '', 0)
+[08-Mar-2025 11:11:50 Asia/Jakarta] LAT: -7.6651601129596845
+[08-Mar-2025 11:11:50 Asia/Jakarta] LNG: 112.90297800305224
+[08-Mar-2025 11:11:50 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741407110.png', '-7.6651601129596845', '112.90297800305224', '2025-03-08 11:11:50', 'masuk', 'normal', '', 0)
+[08-Mar-2025 11:14:49 Asia/Jakarta] LAT: -7.665115234204179
+[08-Mar-2025 11:14:49 Asia/Jakarta] LNG: 112.90297208152822
+[08-Mar-2025 11:14:49 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741407289.png', '-7.665115234204179', '112.90297208152822', '2025-03-08 11:14:49', 'masuk', 'normal', '', 0)
+[08-Mar-2025 11:15:55 Asia/Jakarta] LAT: -7.66510454018011
+[08-Mar-2025 11:15:55 Asia/Jakarta] LNG: 112.90296304220966
+[08-Mar-2025 11:15:55 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741407355.png', '-7.66510454018011', '112.90296304220966', '2025-03-08 11:15:55', 'masuk', 'normal', '', 0)
+[08-Mar-2025 11:15:56 Asia/Jakarta] LAT: -7.66510454018011
+[08-Mar-2025 11:15:56 Asia/Jakarta] LNG: 112.90296304220966
+[08-Mar-2025 11:15:56 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741407356.png', '-7.66510454018011', '112.90296304220966', '2025-03-08 11:15:56', 'masuk', 'normal', '', 0)
+[10-Mar-2025 11:28:52 Asia/Jakarta] LAT: -7.665151640297016
+[10-Mar-2025 11:28:52 Asia/Jakarta] LNG: 112.90299904225661
+[10-Mar-2025 11:28:52 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741580932.png', '-7.665151640297016', '112.90299904225661', '2025-03-10 11:28:52', 'masuk', 'normal', '', 0)
+[10-Mar-2025 11:28:53 Asia/Jakarta] LAT: -7.665151640297016
+[10-Mar-2025 11:28:53 Asia/Jakarta] LNG: 112.90299904225661
+[10-Mar-2025 11:28:53 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741580933.png', '-7.665151640297016', '112.90299904225661', '2025-03-10 11:28:53', 'masuk', 'normal', '', 0)
+[10-Mar-2025 11:30:42 Asia/Jakarta] LAT: -7.665116924710034
+[10-Mar-2025 11:30:42 Asia/Jakarta] LNG: 112.90319570320692
+[10-Mar-2025 11:30:42 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741581042.png', '-7.665116924710034', '112.90319570320692', '2025-03-10 11:30:42', 'pulang', 'normal', '', 0)
+[10-Mar-2025 11:32:11 Asia/Jakarta] LAT: -7.5414435
+[10-Mar-2025 11:32:11 Asia/Jakarta] LNG: 112.7032829
+[10-Mar-2025 11:32:11 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741581131.png', '-7.5414435', '112.7032829', '2025-03-10 11:32:11', 'masuk', 'normal', '', 0)
+[10-Mar-2025 11:43:41 Asia/Jakarta] LAT: -7.5414435
+[10-Mar-2025 11:43:41 Asia/Jakarta] LNG: 112.7032829
+[10-Mar-2025 11:43:41 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741581821.png', '-7.5414435', '112.7032829', '2025-03-10 11:43:41', 'pulang', 'normal', '', 0)
+[10-Mar-2025 12:52:41 Asia/Jakarta] LAT: -7.6650019
+[10-Mar-2025 12:52:41 Asia/Jakarta] LNG: 112.9029693
+[10-Mar-2025 12:52:41 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741585961.png', '-7.6650019', '112.9029693', '2025-03-10 12:52:41', 'masuk', 'normal', '', 0)
+[10-Mar-2025 12:53:47 Asia/Jakarta] LAT: -7.6649997
+[10-Mar-2025 12:53:47 Asia/Jakarta] LNG: 112.9029659
+[10-Mar-2025 12:53:47 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741586027.png', '-7.6649997', '112.9029659', '2025-03-10 12:53:47', 'masuk', 'normal', '', 0)
+[10-Mar-2025 13:00:22 Asia/Jakarta] LAT: -7.5414435
+[10-Mar-2025 13:00:22 Asia/Jakarta] LNG: 112.7032829
+[10-Mar-2025 13:00:22 Asia/Jakarta] QUERY: INSERT INTO `absensi_karyawan` (`fk_id_karyawan`, `foto_absen`, `lokasi_lat`, `lokasi_lng`, `waktu_absen`, `tipe_absen`, `status_absen`, `alasan`, `approved_by`) VALUES ('1', 'assets/absensi/absen_1741586422.png', '-7.5414435', '112.7032829', '2025-03-10 13:00:22', 'pulang', 'normal', '', 0)

@@ -14,7 +14,7 @@ class Agora extends CI_Controller
         // Konfigurasi Agora yang bisa diubah dari backend
         $config = [
             'appId' => '41019619f375437fa941d7d995b9f103', // Ganti dengan App ID yang benar
-            'token' => '007eJxTYPghcShbbOKfLy/NropNvOLXf3Oib7p4EIPuv5rtG5t8uxUVGAyMTYwtktISk41NTE1S00wsUkxNTdKSTC0Mk42MLY2SPm7dlt4QyMjwJ9+ElZEBAkF8Hoai/OLEvMSSosSy1BwGBgDAAiQx',
+            'token' => '007eJxTYPh/0Ja3ujZlZxvv9omrlq8Lbrzt7B0rV5J30ey75O06NQEFBgNjE2OLpLTEZGMTU5PUNBOLFFNTk7QkUwvDZCNjS6OkgzfupDcEMjK0NZxnZGSAQBCfh6EovzgxL7GkKLEsNYeBAQBsoiOE',
             'channelId' => 'rosanatravel'
         ];
 

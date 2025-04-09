@@ -2,12 +2,12 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('pwa-cache-v1').then((cache) => {
             return cache.addAll([
-                '/rosanatravel_1/admin/',
-                '/rosanatravel_1/admin/manifest.json',
-                '/rosanatravel_1/admin/assets/css/argon-dashboard.css',
-                '/rosanatravel_1/admin/assets/js/argon-dashboard.js',
-                "/rosanatravel_1/admin/assets/img/192.png",
-                "/rosanatravel_1/admin/assets/img/512.png"
+                '/admin/',
+                '/admin/manifest.json',
+                '/admin/assets/css/argon-dashboard.css',
+                '/admin/assets/js/argon-dashboard.js',
+                '/admin/assets/img/192.png',
+                '/admin/assets/img/512.png'
             ]);
         })
     );
