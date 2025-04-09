@@ -24,8 +24,10 @@ class Agora extends CI_Controller
     // }
     public function get_config()
     {
-        // Ambil token terbaru dari database (bisa pakai LIMIT 1 atau ORDER BY id DESC)
-        $query = $this->db->get_where('token', ['channel_id' => 'rosanatravel'], 1);
+        $this->db->where('channel_id', 'rosanatravel');
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get('token');
         $row = $query->row();
 
         if ($row) {
