@@ -9,7 +9,6 @@ class Agora extends CI_Controller
         parent::__construct();
         $this->load->database(); // Pastikan database diload
     }
-
     // public function get_config()
     // {
     //     // Konfigurasi Agora yang bisa diubah dari backend
