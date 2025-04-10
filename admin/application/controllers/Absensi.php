@@ -107,9 +107,17 @@ class Absensi extends CI_Controller
       echo json_encode(["success" => false, "message" => "Anda hanya bisa absen di kantor asal atau kantor Pasuruan"]);
       return;
     }
+    // Cek nama perusahaan dari session
+    $company = isset($_SESSION['company']) ? $_SESSION['company'] : '';
+    // Tentukan folder berdasarkan company
+    if ($company === 'Warung Wakro') {
+      $folder = 'assets/absensi/warungwakro/';
+    } else {
+      $folder = 'assets/absensi/';
+    }
 
-    // Simpan gambar di folder uploads/
-    $image_path = "assets/absensi/absen_" . time() . ".png";
+    // Simpan gambar
+    $image_path = $folder . "absen_" . time() . ".png";
     $image = str_replace('data:image/png;base64,', '', $foto_absen);
     $image = base64_decode($image);
     file_put_contents($image_path, $image);

@@ -95,16 +95,16 @@
   <script src="<?php echo base_url('assets'); ?>/js/plugins/smooth-scrollbar.min.js"></script>
   <!-- Service Worker Registration -->
   <script>
-   if ('serviceWorker' in navigator) {
-     window.addEventListener('load', function() {
-       navigator.serviceWorker.register('<?php echo base_url("service-worker.js"); ?>')
-         .then(function(registration) {
-           console.log('Service Worker registered with scope:', registration.scope);
-         }, function(err) {
-           console.log('Service Worker registration failed:', err);
-         });
-     });
-   }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('<?php echo base_url("service-worker.js"); ?>')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          }, function(err) {
+            console.log('Service Worker registration failed:', err);
+          });
+      });
+    }
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

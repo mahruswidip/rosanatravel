@@ -60,8 +60,6 @@ class Login extends CI_Controller
         redirect('absen_koor/koordinator');
       } elseif ($level == 6) {
         redirect('absensi/karyawan');
-      } elseif ($level == 7) {
-        redirect('koor_wakro/koordinator');
       } else {
         redirect('dashboard/index');
       }
