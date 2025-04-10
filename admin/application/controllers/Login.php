@@ -56,9 +56,11 @@ class Login extends CI_Controller
       } elseif ($level == 4) {
         redirect('absensi/index');
       } elseif ($level == 5) {
-        redirect('absensi/koordinator');
+        redirect('absen_koor/koordinator');
       } elseif ($level == 6) {
         redirect('absensi/karyawan');
+      } elseif ($level == 7) {
+        redirect('koor_wakro/koordinator');
       } else {
         redirect('dashboard/index');
       }
