@@ -69,6 +69,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">User Level</label>
+                                    <select name="user_level" class="form-control" required>
+                                        <option value="">-- Pilih User Level --</option>
+                                        <option value="5">Koordinator</option>
+                                        <option value="6">Karyawan</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <hr class="horizontal dark mt-0">
                         <button class="btn btn-primary btn-sm" type="submit">Tambah</button>

@@ -40,7 +40,7 @@ class Absen_admin extends CI_Controller
                     'user_email' => $this->input->post('user_email', true),
                     'pass'       => $this->input->post('pass', true),
                     'user_password' => md5($this->input->post('pass', true)),
-                    'user_level' => 6,
+                    'user_level' => $this->input->post('user_level', true),
                     'created_at' => date('Y-m-d H:i:s'),
                     'created_by' => 1,
                     'is_jamaah'  => 0
