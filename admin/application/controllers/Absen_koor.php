@@ -8,6 +8,11 @@ class Absen_koor extends CI_Controller
         $this->load->library('session');
         $this->load->library('form_validation');
     }
+    public function koordinator()
+  {
+    $data['_view'] = 'absensikaryawan/koordinator/rosana/index';
+    $this->load->view('layouts/main', $data);
+  }
     public function index()
     {
         $params['limit'] = RECORDS_PER_PAGE;
@@ -19,7 +24,7 @@ class Absen_koor extends CI_Controller
         $this->pagination->initialize($config);
 
         $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan($params);
-        $data['_view'] = 'absensikaryawan/koordinator/layout';
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/layout';
 
         $this->load->view('layouts/main', $data);
     }
@@ -59,7 +64,7 @@ class Absen_koor extends CI_Controller
                 }
             }
         }
-        $data['_view'] = 'absensikaryawan/koordinator/add';
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/add';
         $this->load->view('layouts/main', $data);
     }
     public function edit($id_karyawan) 
@@ -98,7 +103,7 @@ class Absen_koor extends CI_Controller
             'karyawan' => $karyawan,
             'kantor_cabang' => $kantor_cabang
         ];
-        $data['_view'] = 'absensikaryawan/koordinator/edit';
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/edit';
         $this->load->view('layouts/main', $data);
     }
     public function remove($id_karyawan)
@@ -121,7 +126,7 @@ class Absen_koor extends CI_Controller
         $data['presensi'] = $this->AbsenKoor_model->get_all_presensi([], $tanggal, $kota, $nama_pegawai);
         $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
         $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
-        $data['_view'] = 'absensikaryawan/koordinator/logabsen';
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/logabsen';
         $this->load->view('layouts/main', $data);
     }
     public function get_filtered_absen() 
@@ -294,7 +299,7 @@ class Absen_koor extends CI_Controller
         $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
 
         // Menampilkan view log izin
-        $data['_view'] = 'absensikaryawan/koordinator/logizin';
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/logizin';
         $this->load->view('layouts/main', $data);
     }
     public function update_status() {
