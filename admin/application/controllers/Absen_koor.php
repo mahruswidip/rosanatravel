@@ -23,15 +23,12 @@ class Absen_koor extends CI_Controller
         $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
         $this->pagination->initialize($config);
 
-        // var_dump($this->session->all_userdata());
-        // exit();
+        var_dump($this->session->all_userdata());
+        exit();
 
         if ($this->session->userdata('company') == 'Rosana Travel') {
             $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_rosana($params);
             $data['_view'] = 'absensikaryawan/koordinator/rosana/layout';
-        } elseif ($this->session->userdata('company') == 'Nipindo Travel') {
-            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_rosana($params);
-            $data['_view'] = 'absensikaryawan/koordinator/nipindo/layout';
         } elseif ($this->session->userdata('company') == 'Warung Wakro') {
             $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_wakro($params);
             $data['_view'] = 'absensikaryawan/koordinator/wakro/layout';
