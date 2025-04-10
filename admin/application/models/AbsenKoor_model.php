@@ -21,7 +21,39 @@ class AbsenKoor_model extends CI_Model
         $this->db->from('karyawan');
         $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
         $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
-        
+
+        return $this->db->get()->result_array();
+    }
+    public function get_all_karyawan_rosana($params = array())
+    {
+        $this->db->select('
+            karyawan.id_karyawan,
+            tbl_users.user_name,
+            tbl_users.user_email,
+            kantor_cabang.kota,
+            karyawan.nomor_hp
+        ');
+        $this->db->from('karyawan');
+        $this->db->where('company', 'Rosana Travel');
+        $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
+        $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
+
+        return $this->db->get()->result_array();
+    }
+    public function get_all_karyawan_wakro($params = array())
+    {
+        $this->db->select('
+            karyawan.id_karyawan,
+            tbl_users.user_name,
+            tbl_users.user_email,
+            kantor_cabang.kota,
+            karyawan.nomor_hp
+        ');
+        $this->db->from('karyawan');
+        $this->db->where('company', 'Warung Wakro');
+        $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
+        $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
+
         return $this->db->get()->result_array();
     }
     public function get_karyawan($id_karyawan)
@@ -40,7 +72,7 @@ class AbsenKoor_model extends CI_Model
         $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
         $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
         $this->db->where('karyawan.id_karyawan', $id_karyawan);
-    
+
         return $this->db->get()->row_array();
     }
     public function get_kantor_cabang()
@@ -84,7 +116,7 @@ class AbsenKoor_model extends CI_Model
     //     $this->db->query("UPDATE karyawan SET id_karyawan = (@num := @num + 1) ORDER BY id_karyawan;");
     //     $this->db->query("ALTER TABLE karyawan AUTO_INCREMENT = 1;");
     // }
-    
+
     public function update_user($user_id, $data)
     {
         $this->db->where('user_id', $user_id);
@@ -135,7 +167,8 @@ class AbsenKoor_model extends CI_Model
         $this->db->from('karyawan');
         return $this->db->get()->result_array();
     }
-    public function get_filtered_absen($tanggal_awal = null, $tanggal_akhir = null, $cabang = null, $nama_pegawai = null) {
+    public function get_filtered_absen($tanggal_awal = null, $tanggal_akhir = null, $cabang = null, $nama_pegawai = null)
+    {
         $this->db->select("
             DATE(waktu_absen) as tanggal,
             nama_karyawan,
@@ -196,32 +229,33 @@ class AbsenKoor_model extends CI_Model
              AND DATE(b.waktu_absen) = DATE(absensi_karyawan.waktu_absen) 
              ORDER BY b.waktu_absen DESC LIMIT 1) AS status_pulang
         ");
-    
+
         $this->db->from('absensi_karyawan');
         $this->db->join('karyawan', 'karyawan.id_karyawan = absensi_karyawan.fk_id_karyawan', 'left');
         $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
-    
+
         if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
             $this->db->where("DATE(waktu_absen) >=", $tanggal_awal);
             $this->db->where("DATE(waktu_absen) <=", $tanggal_akhir);
         }
-    
+
         if (!empty($nama_pegawai)) {
             $this->db->where('karyawan.id_karyawan', $nama_pegawai);
         }
-    
+
         if (!empty($cabang)) {
             $this->db->where('kantor_cabang.id_kantor', $cabang);
         }
-    
+
         $this->db->group_by(['nama_karyawan', 'DATE(waktu_absen)']);
         $this->db->order_by('tanggal', 'DESC');
-    
+
         $query = $this->db->get();
         log_message('debug', 'Query executed: ' . $this->db->last_query());
         return $query->result_array();
-    }    
-    public function getIzin() {
+    }
+    public function getIzin()
+    {
         $this->db->select('
             pengajuan_izin.id_pengajuan,
             karyawan.nama_karyawan,
@@ -239,13 +273,14 @@ class AbsenKoor_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function updateStatus($id, $status) {
+    public function updateStatus($id, $status)
+    {
         // Validasi status
         $allowed_statuses = ['Disetujui', 'Ditolak'];
         if (!in_array($status, $allowed_statuses)) {
             return false;
         }
-    
+
         // Update database
         $this->db->where('id_pengajuan', $id);
         return $this->db->update('pengajuan_izin', ['status_pengajuan' => $status]);

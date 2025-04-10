@@ -16,6 +16,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
@@ -28,6 +29,7 @@
                                 <?php foreach ($karyawan as $row): ?>
                                     <tr>
                                         <td class="text-center"><?php echo $row['id_karyawan']; ?></td>
+                                        <td class="wrap-column"><?php echo htmlspecialchars($row['company']); ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['user_name']); ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['user_email']); ?></td>
                                         <td class="wrap-column text-center">
@@ -41,10 +43,10 @@
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['kota']); ?></td>
                                         <td class="wrap-column"><?php echo htmlspecialchars($row['nomor_hp']); ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('absen_admin/edit/'.$row['id_karyawan']); ?>" class="btn bg-gradient-info btn-sm">
+                                            <a href="<?php echo site_url('absen_admin/edit/' . $row['id_karyawan']); ?>" class="btn bg-gradient-info btn-sm">
                                                 <span class="fa fa-edit"></span> Edit
                                             </a>
-                                            <a href="<?php echo site_url('absen_admin/remove/'.$row['id_karyawan']); ?>" class="btn bg-gradient-danger btn-sm">
+                                            <a href="<?php echo site_url('absen_admin/remove/' . $row['id_karyawan']); ?>" class="btn bg-gradient-danger btn-sm">
                                                 <span class="fa fa-trash"></span> Hapus
                                             </a>
                                         </td>
@@ -62,28 +64,34 @@
     #dataTable-karyawan {
         height: auto !important;
     }
+
     #dataTable-karyawan tbody tr:hover {
         background-color: #f5f5f5;
         cursor: pointer;
     }
+
     .card {
         border-radius: 15px;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
     }
+
     td.wrap-column {
         white-space: normal !important;
         word-wrap: break-word;
         word-break: break-word;
     }
+
     .text-center {
         text-align: center;
     }
+
     .password-container {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     .password-field {
         border: none;
         background: transparent;
@@ -91,6 +99,7 @@
         width: 100px;
         font-size: 14px;
     }
+
     .toggle-password {
         cursor: pointer;
         margin-left: 5px;

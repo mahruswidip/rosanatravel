@@ -133,7 +133,7 @@
                         <span class="nav-link-text ms-1">Data Log Izin</span>
                     </a>
                 </li>
-            </div>
+        </div>
         </ul>
     <?php } elseif ($user_level == '5') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
@@ -173,7 +173,7 @@
                         <span class="nav-link-text ms-1">Data Log Izin</span>
                     </a>
                 </li>
-            </div>
+        </div>
         </ul>
     <?php } elseif ($user_level == '6') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
@@ -203,7 +203,7 @@
                         <span class="nav-link-text ms-1">Log Anda</span>
                     </a>
                 </li>
-            </div>
+        </div>
         </ul>
     <?php } elseif ($user_level == '7') { ?>
         <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
@@ -243,7 +243,7 @@
                         <span class="nav-link-text ms-1">Data Log Izin</span>
                     </a>
                 </li>
-            </div>
+        </div>
         </ul>
     <?php } else { ?>
         <div class="sidenav-header">
@@ -390,8 +390,8 @@
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Selamat Datang, User level
-                                    <?php echo $this->session->userdata('user_level'); ?></span>
+                                <span class="d-sm-inline d-none">Selamat Datang,
+                                    <?php echo $this->session->userdata('user_name'); ?></span>
                             </a>
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

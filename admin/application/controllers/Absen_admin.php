@@ -32,7 +32,8 @@ class Absen_admin extends CI_Controller
             $this->form_validation->set_rules('pass', 'Password', 'required|trim');
             $this->form_validation->set_rules('fk_id_kantor', 'Cabang', 'required|trim');
             $this->form_validation->set_rules('nomor_hp', 'No HP', 'required|trim');
-            
+            $this->form_validation->set_rules('company', 'Badan Usaha', 'required|trim');
+
             if ($this->form_validation->run()) {
                 $userData = [
                     'user_name'  => $this->input->post('user_name', true),
@@ -44,15 +45,16 @@ class Absen_admin extends CI_Controller
                     'created_by' => 1,
                     'is_jamaah'  => 0
                 ];
-                
+
                 $user_id = $this->AbsenAdmin_model->insert_user($userData);
                 if ($user_id) {
                     $karyawanData = [
                         'fk_id_user'  => $user_id,
                         'fk_id_kantor' => $this->input->post('fk_id_kantor', true),
-                        'nomor_hp'    => $this->input->post('nomor_hp', true)
+                        'nomor_hp'    => $this->input->post('nomor_hp', true),
+                        'company'    => $this->input->post('company', true)
                     ];
-    
+
                     $this->AbsenAdmin_model->insert_karyawan($karyawanData);
                     $this->session->set_flashdata('success', 'Data karyawan berhasil ditambahkan!');
                     redirect('absen_admin/index');
@@ -62,7 +64,7 @@ class Absen_admin extends CI_Controller
         $data['_view'] = 'absensikaryawan/admin/add';
         $this->load->view('layouts/main', $data);
     }
-    public function edit($id_karyawan) 
+    public function edit($id_karyawan)
     {
         $karyawan = $this->AbsenAdmin_model->get_karyawan($id_karyawan);
         $kantor_cabang = $this->AbsenAdmin_model->get_kantor_cabang();
@@ -74,7 +76,7 @@ class Absen_admin extends CI_Controller
             $this->form_validation->set_rules('user_email', 'Username', 'required|trim');
             $this->form_validation->set_rules('fk_id_kantor', 'Cabang', 'required|trim');
             $this->form_validation->set_rules('nomor_hp', 'No HP', 'required|trim');
-    
+
             if ($this->form_validation->run()) {
                 $userData = [
                     'user_name'  => $this->input->post('user_name', true),
@@ -124,7 +126,7 @@ class Absen_admin extends CI_Controller
         $data['_view'] = 'absensikaryawan/admin/logabsen';
         $this->load->view('layouts/main', $data);
     }
-    public function get_filtered_absen() 
+    public function get_filtered_absen()
     {
         $tanggal = $this->input->post('tanggal');
         $cabang = $this->input->post('cabang');
@@ -132,7 +134,7 @@ class Absen_admin extends CI_Controller
         log_message('debug', 'Filter diterima - Tanggal: ' . $tanggal . ', Cabang: ' . $cabang . ', Nama Pegawai: ' . $nama_pegawai);
         $tanggal_awal = null;
         $tanggal_akhir = null;
-        
+
         if (!empty($tanggal)) {
             $tanggal_range = explode(' s.d. ', $tanggal);
             if (isset($tanggal_range[0])) {
@@ -230,7 +232,7 @@ class Absen_admin extends CI_Controller
         $nomor = 1;
         foreach ($grouped_data as $id_karyawan => $absen) {
             $col = 'D';
-            
+
             foreach ($period as $date) {
                 $tanggal_str = $date->format('Y-m-d');
                 $masuk = !empty($absen['presensi'][$tanggal_str]['masuk']) ? date('H:i:s', strtotime($absen['presensi'][$tanggal_str]['masuk'])) : '-';
@@ -273,7 +275,7 @@ class Absen_admin extends CI_Controller
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
-        $bulanTahun = date('F_Y', strtotime($tanggal_awal)); 
+        $bulanTahun = date('F_Y', strtotime($tanggal_awal));
         $filename = "Absensi_" . $bulanTahun . ".xlsx";
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -297,14 +299,15 @@ class Absen_admin extends CI_Controller
         $data['_view'] = 'absensikaryawan/admin/logizin';
         $this->load->view('layouts/main', $data);
     }
-    public function update_status() {
+    public function update_status()
+    {
         $id = $this->input->get('id'); // Pakai GET
         $status = $this->input->get('status'); // Pakai GET
-    
+
         if ($id && $status) {
             $this->load->model('AbsenAdmin_model'); // Panggil model
             $update = $this->AbsenAdmin_model->updateStatus($id, $status); // Update status
-    
+
             if ($update) {
                 $this->session->set_flashdata('success', 'Status berhasil diperbarui.');
             } else {
@@ -313,8 +316,7 @@ class Absen_admin extends CI_Controller
         } else {
             $this->session->set_flashdata('error', 'Data tidak valid.');
         }
-    
-        redirect($_SERVER['HTTP_REFERER']); // Kembali ke halaman sebelumnya
-    }    
 
+        redirect($_SERVER['HTTP_REFERER']); // Kembali ke halaman sebelumnya
+    }
 }

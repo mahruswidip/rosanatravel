@@ -57,6 +57,18 @@
                                     <input type="text" name="nomor_hp" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Badan Usaha</label>
+                                    <select name="company" class="form-control" required>
+                                        <option value="">-- Pilih Badan Usaha --</option>
+                                        <option value="Rosana Travel">Rosana Travel</option>
+                                        <option value="Nipindo Travel">Nipindo Travel</option>
+                                        <option value="Warung Wakro">Warung Wakro</option>
+                                        <option value="Binaland">Binaland</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <hr class="horizontal dark mt-0">
                         <button class="btn btn-primary btn-sm" type="submit">Tambah</button>

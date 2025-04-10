@@ -43,7 +43,8 @@ class Login extends CI_Controller
         'logged_in' => TRUE,
         'id_karyawan' => isset($karyawan['id_karyawan']) ? $karyawan['id_karyawan'] : null,
         'fk_id_kantor' => isset($karyawan['fk_id_kantor']) ? $karyawan['fk_id_kantor'] : null,
-        'nomor_hp' => isset($karyawan['nomor_hp']) ? $karyawan['nomor_hp'] : null
+        'nomor_hp' => isset($karyawan['nomor_hp']) ? $karyawan['nomor_hp'] : null,
+        'company' => isset($karyawan['company']) ? $karyawan['company'] : null
       );
 
       $this->session->set_userdata($sesdata);

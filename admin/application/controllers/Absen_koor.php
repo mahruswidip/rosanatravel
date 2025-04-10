@@ -9,10 +9,10 @@ class Absen_koor extends CI_Controller
         $this->load->library('form_validation');
     }
     public function koordinator()
-  {
-    $data['_view'] = 'absensikaryawan/koordinator/rosana/index';
-    $this->load->view('layouts/main', $data);
-  }
+    {
+        $data['_view'] = 'absensikaryawan/koordinator/rosana/index';
+        $this->load->view('layouts/main', $data);
+    }
     public function index()
     {
         $params['limit'] = RECORDS_PER_PAGE;
@@ -23,8 +23,22 @@ class Absen_koor extends CI_Controller
         $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
         $this->pagination->initialize($config);
 
-        $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan($params);
-        $data['_view'] = 'absensikaryawan/koordinator/rosana/layout';
+        // var_dump($this->session->all_userdata());
+        // exit();
+
+        if ($this->session->userdata('company') == 'Rosana Travel') {
+            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_rosana($params);
+            $data['_view'] = 'absensikaryawan/koordinator/rosana/layout';
+        } elseif ($this->session->userdata('company') == 'Nipindo Travel') {
+            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_rosana($params);
+            $data['_view'] = 'absensikaryawan/koordinator/nipindo/layout';
+        } elseif ($this->session->userdata('company') == 'Warung Wakro') {
+            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_wakro($params);
+            $data['_view'] = 'absensikaryawan/koordinator/wakro/layout';
+        } elseif ($this->session->userdata('company') == 'Binaland') {
+            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_binaland($params);
+            $data['_view'] = 'absensikaryawan/koordinator/binaland/layout';
+        }
 
         $this->load->view('layouts/main', $data);
     }
@@ -37,7 +51,7 @@ class Absen_koor extends CI_Controller
             $this->form_validation->set_rules('pass', 'Password', 'required|trim');
             $this->form_validation->set_rules('fk_id_kantor', 'Cabang', 'required|trim');
             $this->form_validation->set_rules('nomor_hp', 'No HP', 'required|trim');
-            
+
             if ($this->form_validation->run()) {
                 $userData = [
                     'user_name'  => $this->input->post('user_name', true),
@@ -49,15 +63,16 @@ class Absen_koor extends CI_Controller
                     'created_by' => 1,
                     'is_jamaah'  => 0
                 ];
-                
+                $company = $this->session->userdata('company');
                 $user_id = $this->AbsenKoor_model->insert_user($userData);
                 if ($user_id) {
                     $karyawanData = [
                         'fk_id_user'  => $user_id,
                         'fk_id_kantor' => $this->input->post('fk_id_kantor', true),
-                        'nomor_hp'    => $this->input->post('nomor_hp', true)
+                        'nomor_hp'    => $this->input->post('nomor_hp', true),
+                        'company'      => $company, // dinamis sesuai session
                     ];
-    
+
                     $this->AbsenKoor_model->insert_karyawan($karyawanData);
                     $this->session->set_flashdata('success', 'Data karyawan berhasil ditambahkan!');
                     redirect('absen_koor/index');
@@ -67,7 +82,7 @@ class Absen_koor extends CI_Controller
         $data['_view'] = 'absensikaryawan/koordinator/rosana/add';
         $this->load->view('layouts/main', $data);
     }
-    public function edit($id_karyawan) 
+    public function edit($id_karyawan)
     {
         $karyawan = $this->AbsenKoor_model->get_karyawan($id_karyawan);
         $kantor_cabang = $this->AbsenKoor_model->get_kantor_cabang();
@@ -79,7 +94,7 @@ class Absen_koor extends CI_Controller
             $this->form_validation->set_rules('user_email', 'Username', 'required|trim');
             $this->form_validation->set_rules('fk_id_kantor', 'Cabang', 'required|trim');
             $this->form_validation->set_rules('nomor_hp', 'No HP', 'required|trim');
-    
+
             if ($this->form_validation->run()) {
                 $userData = [
                     'user_name'  => $this->input->post('user_name', true),
@@ -129,7 +144,7 @@ class Absen_koor extends CI_Controller
         $data['_view'] = 'absensikaryawan/koordinator/rosana/logabsen';
         $this->load->view('layouts/main', $data);
     }
-    public function get_filtered_absen() 
+    public function get_filtered_absen()
     {
         $tanggal = $this->input->post('tanggal');
         $cabang = $this->input->post('cabang');
@@ -137,7 +152,7 @@ class Absen_koor extends CI_Controller
         log_message('debug', 'Filter diterima - Tanggal: ' . $tanggal . ', Cabang: ' . $cabang . ', Nama Pegawai: ' . $nama_pegawai);
         $tanggal_awal = null;
         $tanggal_akhir = null;
-        
+
         if (!empty($tanggal)) {
             $tanggal_range = explode(' s.d. ', $tanggal);
             if (isset($tanggal_range[0])) {
@@ -235,7 +250,7 @@ class Absen_koor extends CI_Controller
         $nomor = 1;
         foreach ($grouped_data as $id_karyawan => $absen) {
             $col = 'D';
-            
+
             foreach ($period as $date) {
                 $tanggal_str = $date->format('Y-m-d');
                 $masuk = !empty($absen['presensi'][$tanggal_str]['masuk']) ? date('H:i:s', strtotime($absen['presensi'][$tanggal_str]['masuk'])) : '-';
@@ -278,7 +293,7 @@ class Absen_koor extends CI_Controller
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
-        $bulanTahun = date('F_Y', strtotime($tanggal_awal)); 
+        $bulanTahun = date('F_Y', strtotime($tanggal_awal));
         $filename = "Absensi_" . $bulanTahun . ".xlsx";
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -302,14 +317,15 @@ class Absen_koor extends CI_Controller
         $data['_view'] = 'absensikaryawan/koordinator/rosana/logizin';
         $this->load->view('layouts/main', $data);
     }
-    public function update_status() {
+    public function update_status()
+    {
         $id = $this->input->get('id'); // Pakai GET
         $status = $this->input->get('status'); // Pakai GET
-    
+
         if ($id && $status) {
             $this->load->model('AbsenKoor_model'); // Panggil model
             $update = $this->AbsenKoor_model->updateStatus($id, $status); // Update status
-    
+
             if ($update) {
                 $this->session->set_flashdata('success', 'Status berhasil diperbarui.');
             } else {
@@ -318,8 +334,7 @@ class Absen_koor extends CI_Controller
         } else {
             $this->session->set_flashdata('error', 'Data tidak valid.');
         }
-    
-        redirect($_SERVER['HTTP_REFERER']); // Kembali ke halaman sebelumnya
-    }    
 
+        redirect($_SERVER['HTTP_REFERER']); // Kembali ke halaman sebelumnya
+    }
 }
