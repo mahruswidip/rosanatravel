@@ -203,7 +203,47 @@
                         <span class="nav-link-text ms-1">Log Anda</span>
                     </a>
                 </li>
+            </div>
+        </ul>
+    <?php } elseif ($user_level == '7') { ?>
+        <a class="navbar-brand m-0" href="<?php echo site_url(''); ?>" target="_blank">
+            <img src="<?php echo base_url('assets'); ?>/img/logo-ct-dark.png" class="navbar-brand-img h-100"
+                alt="main_logo">
+            <span class="ms-1 font-weight-bold">Koordinator Karyawan</span>
+        </a>
         </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('koor_wakro/index'); ?>">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-copy-04 text-info text-lg"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Karyawan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('koor_wakro/logabsen'); ?>">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Data Log Absen</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('koor_wakro/logizin'); ?>">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-danger text-sm opacity-10"></i>
+
+                        </div>
+                        <span class="nav-link-text ms-1">Data Log Izin</span>
+                    </a>
+                </li>
+            </div>
         </ul>
     <?php } else { ?>
         <div class="sidenav-header">
@@ -215,7 +255,6 @@
                 <span class="ms-1 font-weight-bold">Data Jamaah</span>
             </a>
         </div>
-
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
