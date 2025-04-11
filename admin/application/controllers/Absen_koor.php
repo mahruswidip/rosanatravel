@@ -14,28 +14,20 @@ class Absen_koor extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
     public function index()
-    {
-        $params['limit'] = RECORDS_PER_PAGE;
-        $params['offset'] = $this->input->get('per_page') ? $this->input->get('per_page') : 0;
+{
+    $params['limit'] = RECORDS_PER_PAGE;
+    $params['offset'] = $this->input->get('per_page') ? $this->input->get('per_page') : 0;
 
-        $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('absen_koor/index?');
-        $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
-        $this->pagination->initialize($config);
-        // var_dump($this->session->all_userdata());
-        // exit();
-        if ($this->session->userdata('company') == 'Rosana Travel') {
-            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_rosana($params);
-            $data['_view'] = 'absensikaryawan/koordinator/layout';
-        } elseif ($this->session->userdata('company') == 'Warung Wakro') {
-            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_wakro($params);
-            $data['_view'] = 'absensikaryawan/koordinator/layout';
-        } elseif ($this->session->userdata('company') == 'Binaland') {
-            $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan_binaland($params);
-            $data['_view'] = 'absensikaryawan/koordinator/layout';
-        }
-        $this->load->view('layouts/main', $data);
-    }
+    $config = $this->config->item('pagination');
+    $config['base_url'] = site_url('absen_koor/index?');
+    $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
+    $this->pagination->initialize($config);
+
+    $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan($params);
+    $data['_view'] = 'absensikaryawan/koordinator/layout';
+    $this->load->view('layouts/main', $data);
+}
+
     public function add()
     {
         $data['kantor_cabang'] = $this->AbsenKoor_model->get_kantor_cabang();
@@ -64,7 +56,7 @@ class Absen_koor extends CI_Controller
                         'fk_id_user'  => $user_id,
                         'fk_id_kantor' => $this->input->post('fk_id_kantor', true),
                         'nomor_hp'    => $this->input->post('nomor_hp', true),
-                        'company'      => $company, // dinamis sesuai session
+                        'company'      => $company,
                     ];
 
                     $this->AbsenKoor_model->insert_karyawan($karyawanData);
@@ -156,7 +148,6 @@ class Absen_koor extends CI_Controller
                 $tanggal_akhir = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[1]))));
             }
         }
-
         $result = $this->AbsenKoor_model->get_filtered_absen($company, $tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
         $totalData = $this->AbsenKoor_model->get_all_presensi_count();
         $totalFiltered = count($result);
@@ -171,7 +162,7 @@ class Absen_koor extends CI_Controller
     public function download_absen()
     {
         require_once APPPATH . '../vendor/autoload.php';
-
+        $company = $this->session->userdata('company');
         $tanggal = $this->input->get('tanggal');
         $cabang = $this->input->get('cabang');
         $nama_pegawai = $this->input->get('nama_pegawai');
@@ -187,7 +178,7 @@ class Absen_koor extends CI_Controller
                 $tanggal_akhir = date('Y-m-d', strtotime(trim($tanggal_range[1])));
             }
         }
-        $data = $this->AbsenKoor_model->get_filtered_absen($tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
+        $data = $this->AbsenKoor_model->get_filtered_absen($company, $tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
         if (!$data) {
             show_error('Data tidak ditemukan!', 404);
             return;
@@ -302,25 +293,9 @@ class Absen_koor extends CI_Controller
         $tanggal = $this->input->get('tanggal');
         $kota = $this->input->get('kota');
         $nama_pegawai = $this->input->get('nama_pegawai');
-        if ($this->session->userdata('company') == 'Rosana Travel') {
-            $data['izin'] = $this->AbsenKoor_model->getIzin_rosana([], $tanggal, $kota, $nama_pegawai);
-            $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
-            $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
-            $data['_view'] = 'absensikaryawan/koordinator/logizin';
-        } elseif ($this->session->userdata('company') == 'Warung Wakro') {
-            $data['izin'] = $this->AbsenKoor_model->getIzin_wakro([], $tanggal, $kota, $nama_pegawai);
-            $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
-            $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
-            $data['_view'] = 'absensikaryawan/koordinator/logizin';
-        } elseif ($this->session->userdata('company') == 'Binaland') {
-            $data['izin'] = $this->AbsenKoor_model->getIzin_binaland([], $tanggal, $kota, $nama_pegawai);
-            $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
-            $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
-            $data['_view'] = 'absensikaryawan/koordinator/logizin';
-        }
-        // $data['izin'] = $this->AbsenKoor_model->getIzin([], $tanggal, $kota, $nama_pegawai);
-        // $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
-        // $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
+        $data['izin'] = $this->AbsenKoor_model->getIzin([], $tanggal, $kota, $nama_pegawai);
+        $data['cabang'] = $this->AbsenKoor_model->get_all_cabang();
+        $data['pegawai'] = $this->AbsenKoor_model->get_all_karyawan_log();
         $data['_view'] = 'absensikaryawan/koordinator/logizin';
         $this->load->view('layouts/main', $data);
     }
