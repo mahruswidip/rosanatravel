@@ -195,7 +195,7 @@
                             const jamEmpat = moment("16:00", "HH:mm");
 
                             if (pulangTime.isBefore(jamEmpat)) {
-                                badgePulang = '<br><span class="badge bg-gradient-warning mt-1"><small>Pamit Dulu ya :)</small></span>';
+                                badgePulang = '<br><span class="badge bg-gradient-danger mt-1"><small>Pamit Dulu ya :)</small></span>';
                             } else if (pulangTime.isSame(jamEmpat)) {
                                 badgePulang = '<br><span class="badge bg-gradient-success mt-1"><small>On Time !</small></span>';
                             } else {
