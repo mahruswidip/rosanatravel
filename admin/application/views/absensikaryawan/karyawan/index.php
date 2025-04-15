@@ -179,7 +179,7 @@
                         let pulang = pulangTime ? pulangTime.format("HH:mm") : "-";
 
                         let badgeMasuk = "";
-                        if (masukTime && masukTime.isAfter(moment("08:00", "HH:mm"))) {
+                        if (masukTime && masukTime.isAfter(moment("08:01", "HH:mm"))) {
                             badgeMasuk = '<br><span class="badge bg-gradient-danger mt-1"><small>Terlambat</small</span>';
                         }
 
