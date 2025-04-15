@@ -179,13 +179,28 @@
                         let pulang = pulangTime ? pulangTime.format("HH:mm") : "-";
 
                         let badgeMasuk = "";
-                        if (masukTime && masukTime.isAfter(moment("08:01", "HH:mm"))) {
-                            badgeMasuk = '<br><span class="badge bg-gradient-danger mt-1"><small>Terlambat</small</span>';
+                        if (masukTime) {
+                            const jamDelapan = moment("08:00", "HH:mm");
+                            if (masukTime.isBefore(jamDelapan)) {
+                                badgeMasuk = '<br><span class="badge bg-gradient-primary mt-1"><small>Mantab Cuy</small></span>';
+                            } else if (masukTime.isSame(jamDelapan)) {
+                                badgeMasuk = '<br><span class="badge bg-gradient-success mt-1"><small>Tepat Waktu</small></span>';
+                            } else {
+                                badgeMasuk = '<br><span class="badge bg-gradient-danger mt-1"><small>Aduh !</small></span>';
+                            }
                         }
 
                         let badgePulang = "";
-                        if (pulangTime && pulangTime.isBefore(moment("16:00", "HH:mm"))) {
-                            badgePulang = '<br><span class="badge bg-gradient-warning mt-1"><small>Early Checkout</small</span>';
+                        if (pulangTime) {
+                            const jamEmpat = moment("16:00", "HH:mm");
+
+                            if (pulangTime.isBefore(jamEmpat)) {
+                                badgePulang = '<br><span class="badge bg-gradient-warning mt-1"><small>Pamit Dulu ya :)</small></span>';
+                            } else if (pulangTime.isSame(jamEmpat)) {
+                                badgePulang = '<br><span class="badge bg-gradient-success mt-1"><small>On Time !</small></span>';
+                            } else {
+                                badgePulang = '<br><span class="badge bg-gradient-primary mt-1"><small>Lembur nih</small></span>';
+                            }
                         }
 
                         rows += `<tr>
