@@ -199,7 +199,7 @@
                             } else if (pulangTime.isSame(jamEmpat)) {
                                 badgePulang = '<br><span class="badge bg-gradient-success mt-1"><small>On Time !</small></span>';
                             } else {
-                                badgePulang = '<br><span class="badge bg-gradient-primary mt-1"><small>Lembur nih</small></span>';
+                                badgePulang = '<br><span class="badge bg-gradient-primary mt-1"><small>Pulang telat</small></span>';
                             }
                         }
 
