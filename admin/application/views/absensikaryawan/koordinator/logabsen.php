@@ -7,9 +7,19 @@
                 </div>
                 <div class="card-body px-4 pt-3 pb-2">
                     <div class="row mb-4">
-                        <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <label for="tanggal">Isi Sesuai Kebutuhan</label>
                             <input type="text" class="form-control" id="tanggal" placeholder="2025-01-01 s.d. 2025-01-31">
+                        </div> -->
+                        <div class="col-md-3">
+                            <label for="tanggal">Tanggal</label> 
+                            <select class="form-control" id="tanggal-filter">
+                                <option value="">Pilih Rentang</option>
+                                <option value="today">Hari Ini</option>
+                                <option value="week">1 Minggu</option>
+                                <option value="month">1 Bulan</option>
+                            </select>
+                            <input type="hidden" id="tanggal">
                         </div>
                         <div class="col-md-3">
                             <label for="cabang">Cabang</label>
@@ -103,12 +113,31 @@ $(document).ready(function () {
             { "data": "cabang" }
         ],
         "order": [
-                [3, 'DESC']
+                [3, 'ASC']
         ]
     });
 
     $('#filter-btn').click(function () {
         table.ajax.reload();
+    });
+    $('#tanggal-filter').change(function () {
+    const selected = $(this).val();
+    const today = new Date();
+    let start = '';
+    let end = today.toISOString().split('T')[0];
+
+    if (selected === 'today') {
+        start = end;
+    } else if (selected === 'week') {
+        const past = new Date(today);
+        past.setDate(today.getDate() - 6);
+        start = past.toISOString().split('T')[0];
+    } else if (selected === 'month') {
+        const past = new Date(today);
+        past.setDate(today.getDate() - 29);
+        start = past.toISOString().split('T')[0];
+    } 
+    $('#tanggal').val(`${start} s.d. ${end}`).prop('disabled', true);
     });
 
     $("#export-excel").click(function () {
