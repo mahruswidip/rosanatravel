@@ -14,19 +14,19 @@ class Absen_koor extends CI_Controller
         $this->load->view('layouts/main', $data);
     }
     public function index()
-{
-    $params['limit'] = RECORDS_PER_PAGE;
-    $params['offset'] = $this->input->get('per_page') ? $this->input->get('per_page') : 0;
+    {
+        $params['limit'] = RECORDS_PER_PAGE;
+        $params['offset'] = $this->input->get('per_page') ? $this->input->get('per_page') : 0;
 
-    $config = $this->config->item('pagination');
-    $config['base_url'] = site_url('absen_koor/index?');
-    $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
-    $this->pagination->initialize($config);
+        $config = $this->config->item('pagination');
+        $config['base_url'] = site_url('absen_koor/index?');
+        $config['total_rows'] = $this->AbsenKoor_model->get_all_karyawan_count();
+        $this->pagination->initialize($config);
 
-    $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan($params);
-    $data['_view'] = 'absensikaryawan/koordinator/layout';
-    $this->load->view('layouts/main', $data);
-}
+        $data['karyawan'] = $this->AbsenKoor_model->get_all_karyawan($params);
+        $data['_view'] = 'absensikaryawan/koordinator/layout';
+        $this->load->view('layouts/main', $data);
+    }
 
     public function add()
     {
@@ -139,15 +139,18 @@ class Absen_koor extends CI_Controller
 
         $tanggal_awal = null;
         $tanggal_akhir = null;
+
+        // Format yang didukung: "2025-01-01 - 2025-01-31"
         if (!empty($tanggal)) {
-            $tanggal_range = explode(' s.d. ', $tanggal);
+            $tanggal_range = explode(' - ', $tanggal);
             if (isset($tanggal_range[0])) {
-                $tanggal_awal = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[0]))));
+                $tanggal_awal = date('Y-m-d', strtotime(trim($tanggal_range[0])));
             }
             if (isset($tanggal_range[1])) {
-                $tanggal_akhir = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[1]))));
+                $tanggal_akhir = date('Y-m-d', strtotime(trim($tanggal_range[1])));
             }
         }
+
         $result = $this->AbsenKoor_model->get_filtered_absen($company, $tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
         $totalData = $this->AbsenKoor_model->get_all_presensi_count();
         $totalFiltered = count($result);
@@ -159,6 +162,7 @@ class Absen_koor extends CI_Controller
             "data" => $result
         ]);
     }
+
     public function download_absen()
     {
         require_once APPPATH . '../vendor/autoload.php';
@@ -169,8 +173,10 @@ class Absen_koor extends CI_Controller
 
         $tanggal_awal = null;
         $tanggal_akhir = null;
+
+        // Format yang didukung: "2025-01-01 - 2025-01-31"
         if (!empty($tanggal)) {
-            $tanggal_range = explode(' s.d. ', $tanggal);
+            $tanggal_range = explode(' - ', $tanggal);
             if (isset($tanggal_range[0])) {
                 $tanggal_awal = date('Y-m-d', strtotime(trim($tanggal_range[0])));
             }
@@ -178,6 +184,7 @@ class Absen_koor extends CI_Controller
                 $tanggal_akhir = date('Y-m-d', strtotime(trim($tanggal_range[1])));
             }
         }
+
         $data = $this->AbsenKoor_model->get_filtered_absen($company, $tanggal_awal, $tanggal_akhir, $cabang, $nama_pegawai);
         if (!$data) {
             show_error('Data tidak ditemukan!', 404);

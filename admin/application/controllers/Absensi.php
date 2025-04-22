@@ -138,6 +138,7 @@ class Absensi extends CI_Controller
     $this->db->insert('absensi_karyawan', $data);
 
     echo json_encode(["success" => true]);
+    $this->db->close();
   }
 
 
@@ -172,6 +173,7 @@ class Absensi extends CI_Controller
     $query = $this->db->get();
 
     echo json_encode($query->result());
+    $this->db->close();
   }
 
   public function proses_absen_force()
@@ -208,6 +210,7 @@ class Absensi extends CI_Controller
     $this->db->insert('absensi_karyawan', $data);
 
     echo json_encode(["success" => true, "message" => "Absensi force berhasil!"]);
+    $this->db->close();
   }
 
   private function haversine_distance($lat1, $lng1, $lat2, $lng2)
@@ -233,6 +236,7 @@ class Absensi extends CI_Controller
     $distance = $earth_radius * $c; // Jarak dalam meter
 
     return $distance;
+    $this->db->close();
   }
 
 
@@ -261,6 +265,7 @@ class Absensi extends CI_Controller
       "dalam_radius" => $dalam_radius,
       "jarak" => round($distance, 2) // Kirim jarak dengan 2 angka desimal
     ]);
+    $this->db->close();
   }
 
   public function get_pengajuan_izin()

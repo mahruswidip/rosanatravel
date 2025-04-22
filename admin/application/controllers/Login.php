@@ -67,6 +67,7 @@ class Login extends CI_Controller
       echo $this->session->set_flashdata('err', 'Username or Password is Wrong');
       redirect('login');
     }
+    $this->db->close();
   }
 
 
@@ -74,6 +75,7 @@ class Login extends CI_Controller
   {
     $this->session->sess_destroy();
     redirect('login');
+    $this->db->close();
   }
 
   public function register()
