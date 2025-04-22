@@ -117,13 +117,24 @@ class AbsenKoor_model extends CI_Model
         if (!empty($company)) {
             $this->db->where('karyawan.company', $company);
         }
+        // if (!empty($tanggal)) {
+        //     $dates = explode(' s.d. ', $tanggal);
+        //     if (count($dates) == 2) {
+        //         $this->db->where('DATE(waktu_absen) >=', date('Y-m-d', strtotime(str_replace('-', '/', $dates[0]))));
+        //         $this->db->where('DATE(waktu_absen) <=', date('Y-m-d', strtotime(str_replace('-', '/', $dates[1]))));
+        //     }
+        // }
         if (!empty($tanggal)) {
-            $dates = explode(' s.d. ', $tanggal);
-            if (count($dates) == 2) {
-                $this->db->where('DATE(waktu_absen) >=', date('Y-m-d', strtotime(str_replace('-', '/', $dates[0]))));
-                $this->db->where('DATE(waktu_absen) <=', date('Y-m-d', strtotime(str_replace('-', '/', $dates[1]))));
+            if ($tanggal == 'Hari Ini') {
+                $this->db->where('DATE(waktu_absen)', date('Y-m-d'));
+            } elseif ($tanggal == '1 Minggu') {
+                $this->db->where('DATE(waktu_absen) >=', date('Y-m-d', strtotime('-6 days')));
+                $this->db->where('DATE(waktu_absen) <=', date('Y-m-d'));
+            } elseif ($tanggal == '1 Bulan') {
+                $this->db->where('DATE(waktu_absen) >=', date('Y-m-d', strtotime('-29 days')));
+                $this->db->where('DATE(waktu_absen) <=', date('Y-m-d'));
             }
-        }
+        }    
         if (!empty($kota)) {
             $this->db->where('karyawan.fk_id_kantor', $kota);
         }
