@@ -283,7 +283,7 @@ class Absen_koor extends CI_Controller
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle("A3:$lastColumn$lastRow")->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
-        $bulanTahun = date('F_Y', strtotime($tanggal_awal));
+        $bulanTahun = date('F_Y', strtotime($tanggal_akhir));
         $filename = "Absensi_" . $bulanTahun . ".xlsx";
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
