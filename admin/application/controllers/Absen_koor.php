@@ -139,15 +139,13 @@ class Absen_koor extends CI_Controller
 
         $tanggal_awal = null;
         $tanggal_akhir = null;
-
-        // Format yang didukung: "2025-01-01 - 2025-01-31"
         if (!empty($tanggal)) {
-            $tanggal_range = explode(' - ', $tanggal);
+            $tanggal_range = explode(' s.d. ', $tanggal);
             if (isset($tanggal_range[0])) {
-                $tanggal_awal = date('Y-m-d', strtotime(trim($tanggal_range[0])));
+                $tanggal_awal = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[0]))));
             }
             if (isset($tanggal_range[1])) {
-                $tanggal_akhir = date('Y-m-d', strtotime(trim($tanggal_range[1])));
+                $tanggal_akhir = date('Y-m-d', strtotime(str_replace('-', '/', trim($tanggal_range[1]))));
             }
         }
 
@@ -174,9 +172,8 @@ class Absen_koor extends CI_Controller
         $tanggal_awal = null;
         $tanggal_akhir = null;
 
-        // Format yang didukung: "2025-01-01 - 2025-01-31"
         if (!empty($tanggal)) {
-            $tanggal_range = explode(' - ', $tanggal);
+            $tanggal_range = explode(' s.d. ', $tanggal);
             if (isset($tanggal_range[0])) {
                 $tanggal_awal = date('Y-m-d', strtotime(trim($tanggal_range[0])));
             }
