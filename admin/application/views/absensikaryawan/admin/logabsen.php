@@ -7,9 +7,19 @@
                 </div>
                 <div class="card-body px-4 pt-3 pb-2">
                     <div class="row mb-4">
+                        <!-- <div class="col-md-3">
+                            <label for="tanggal">Isi Sesuai Kebutuhan</label>
+                            <input type="text" class="form-control" id="tanggal" placeholder="2025-01-01 s.d. 2025-01-31">
+                        </div> -->
                         <div class="col-md-3">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="text" class="form-control" id="tanggal" placeholder="2001-01-01 s.d. 2001-01-07">
+                            <label for="tanggal">Tanggal</label> 
+                            <select class="form-control" id="tanggal-filter">
+                                <option value="">Pilih Rentang</option>
+                                <option value="today">Hari Ini</option>
+                                <option value="week">1 Minggu</option>
+                                <option value="month">1 Bulan</option>
+                            </select>
+                            <input type="hidden" id="tanggal">
                         </div>
                         <div class="col-md-3">
                             <label for="cabang">Cabang</label>
@@ -34,8 +44,8 @@
                             </select>
                         </div>
                         <div class="col-md-3 d-flex align-items-end">
-                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"><i class="fa fa-filter"></i>Filter</button>
-                            <button id="export-excel" class="btn btn-success btn-sm"><i class="fa fa-file-excel"></i>Unduh</button>
+                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"></i>Filter</button>
+                            <button id="export-excel" class="btn btn-success btn-sm"></i>Unduh</button>
                         </div>
                     </div>
                     <!-- Tabel Data Presensi -->
@@ -66,9 +76,9 @@
 $(document).ready(function () {
     var table = $('#dataTable-presensi').DataTable({
         "processing": true,
-        "serverSide": true,
+        "serverSide": false,
         "ajax": {
-            "url": "<?php echo site_url('absen_koor/get_filtered_absen'); ?>",
+            "url": "<?php echo site_url('absen_admin/get_filtered_absen'); ?>",
             "type": "POST",
             "data": function (d) {
                 d.draw = d.draw;
@@ -77,6 +87,14 @@ $(document).ready(function () {
                 d.nama_pegawai = $('#nama_pegawai').val();
             }
         },
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
+            "paginate": {
+                "previous": "<",
+                "next": ">"
+            }
+        },
+        "pageLength": 10,
         "columns": [
             { "data": "foto_masuk", "render": function(data) {
                 return data ? '<img src="<?php echo base_url(); ?>'+ data +'" width="100" onerror="this.onerror=null;this.src=\'<?php echo base_url('assets/no-image.png'); ?>\';">' : '-';
@@ -87,32 +105,46 @@ $(document).ready(function () {
             { "data": "nama_karyawan" },
             { "data": "tanggal" },
             { "data": "masuk", "render": function(data, type, row) {
-                return data ? data.split(' ')[1] + "<br>" + (row.status_masuk ? row.status_masuk : '') + "<br>" + (row.lokasi_masuk ? "<small>" + row.lokasi_masuk + "</small>" : '') : '-';
+                return data ? data.split(' ')[1] + "<br>" + (row.status_masuk ? row.status_masuk : '') : '-';
             }},
             { "data": "pulang", "render": function(data, type, row) {
-                return data ? data.split(' ')[1] + "<br>" + (row.status_pulang ? row.status_pulang : '') + "<br>" + (row.lokasi_pulang ? "<small>" + row.lokasi_pulang + "</small>" : '') : '-';
+                return data ? data.split(' ')[1] + "<br>" + (row.status_pulang ? row.status_pulang : '') : '-';
             }},
             { "data": "cabang" }
         ],
-        "language": {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
-                "paginate": {
-                    "previous": "<",
-                    "next": ">"
-                },
-            },
-            "pageLength": 10
+        "order": [
+                [3, 'ASC']
+        ]
     });
 
     $('#filter-btn').click(function () {
         table.ajax.reload();
+    });
+    $('#tanggal-filter').change(function () {
+    const selected = $(this).val();
+    const today = new Date();
+    let start = '';
+    let end = today.toISOString().split('T')[0];
+
+    if (selected === 'today') {
+        start = end;
+    } else if (selected === 'week') {
+        const past = new Date(today);
+        past.setDate(today.getDate() - 6);
+        start = past.toISOString().split('T')[0];
+    } else if (selected === 'month') {
+        const past = new Date(today);
+        past.setDate(today.getDate() - 29);
+        start = past.toISOString().split('T')[0];
+    } 
+    $('#tanggal').val(`${start} s.d. ${end}`).prop('disabled', true);
     });
 
     $("#export-excel").click(function () {
         let tanggal = $('#tanggal').val();
         let cabang = $('#cabang').val();
         let namaPegawai = $('#nama_pegawai').val();
-        window.location.href = "<?php echo site_url('absen_koor/download_absen'); ?>" +
+        window.location.href = "<?php echo site_url('absen_admin/download_absen'); ?>" +
             "?tanggal=" + encodeURIComponent(tanggal) +
             "&cabang=" + encodeURIComponent(cabang) +
             "&nama_pegawai=" + encodeURIComponent(namaPegawai);
