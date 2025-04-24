@@ -51,13 +51,13 @@
                                             <a href="<?php echo site_url('absen_admin/update_status?id='.$row['id_pengajuan'].'&status=Ditolak'); ?>" class="btn bg-gradient-danger btn-sm">
                                                 <span class="fa fa-times"></span> Tolak
                                             </a>
-                                            <a href="<?php echo site_url('absen_admin/update_status?id='.$row['id_pengajuan'].'&status=Ditolak'); ?>" class="btn bg-gradient-danger btn-sm">
-                                                <span class="fa fa-times"></span> Tolak
-                                            </a>
                                         <?php else: ?>
-                                            <span class="badge bg-<?php echo ($row['status_pengajuan'] == 'Disetujui') ? 'success' : 'danger'; ?>">
+                                            <!-- <span class="badge bg-<?php echo ($row['status_pengajuan'] == 'Disetujui') ? 'success' : 'danger'; ?>">
                                                 <?php echo $row['status_pengajuan']; ?>
-                                            </span>
+                                            </span> -->
+                                            <a href="<?php echo site_url('absen_admin/update_status?id='.$row['id_pengajuan'].'&status=Diajukan'); ?>" class=" btn bg-gradient-info btn-sm">
+                                                </span> Tinjau
+                                            </a>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
