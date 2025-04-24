@@ -160,7 +160,24 @@ class Absen_koor extends CI_Controller
             "data" => $result
         ]);
     }
+    public function get_pegawai()
+    {
+        $search = $this->input->get("search");
+        $company = $this->session->userdata('company');
+        $this->db->select("id_karyawan, nama_karyawan");
+        $this->db->from("karyawan");
+        $this->db->order_by("id_karyawan", "DESC");
+        if (!empty($search)) {
+            $this->db->like("nama_karyawan", $search);
+        }
+        if (!empty($company)) {
+            $this->db->where('company', $company);
+        }
+        $query = $this->db->get();
+        $result = $query->result_array();
 
+        echo json_encode($result);
+    }
     public function download_absen()
     {
         require_once APPPATH . '../vendor/autoload.php';
