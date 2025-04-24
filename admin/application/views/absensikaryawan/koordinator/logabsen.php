@@ -34,14 +34,15 @@
                         </div>
                         <div class="col-md-3">
                             <label for="nama_pegawai">Nama Pegawai</label>
-                            <select class="form-control" id="nama_pegawai">
+                            <select name="nama_pegawai" class="form-control" id="nama_pegawai" required></select>
+                            <!-- <select class="form-control" id="nama_pegawai">
                                 <option value="">Semua</option>
                                 <?php foreach ($pegawai as $p): ?>
                                     <option value="<?php echo htmlspecialchars($p['id_karyawan']); ?>">
                                         <?php echo htmlspecialchars($p['nama_karyawan']); ?>
                                     </option>
                                 <?php endforeach; ?>
-                            </select>
+                            </select> -->
                         </div>
                         <div class="col-md-3 d-flex align-items-end">
                             <button id="filter-btn" class="btn btn-primary btn-sm me-2"></i>Filter</button>
@@ -74,6 +75,30 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
+    $('#nama_pegawai').select2({
+        placeholder: "Pilih Pegawai",
+        allowClear: true,
+        ajax: {
+            url: "<?= base_url('absen_koor/get_pegawai') ?>",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            id: item.id_karyawan,
+                            text: item.nama_karyawan
+                        };
+                    })
+                };
+            }
+        }
+    });
     var table = $('#dataTable-presensi').DataTable({
         "processing": true,
         "serverSide": false,
