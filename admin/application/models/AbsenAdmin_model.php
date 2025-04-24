@@ -23,12 +23,7 @@ class AbsenAdmin_model extends CI_Model
         $this->db->from('karyawan');
         $this->db->join('tbl_users', 'karyawan.fk_id_user = tbl_users.user_id', 'left');
         $this->db->join('kantor_cabang', 'karyawan.fk_id_kantor = kantor_cabang.id_kantor', 'left');
-
-        if (isset($params['limit']) && isset($params['offset'])) {
-            $this->db->limit($params['limit'], $params['offset']);
-        }
-
-        return $this->db->get()->result_array();
+            return $this->db->get()->result_array();
     }
     public function get_karyawan($id_karyawan)
     {
@@ -251,7 +246,7 @@ class AbsenAdmin_model extends CI_Model
     public function updateStatus($id, $status)
     {
         // Validasi status
-        $allowed_statuses = ['Disetujui', 'Ditolak'];
+        $allowed_statuses = ['Diajukan', 'Disetujui', 'Ditolak'];
         if (!in_array($status, $allowed_statuses)) {
             return false;
         }
