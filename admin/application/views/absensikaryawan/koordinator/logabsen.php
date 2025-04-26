@@ -14,12 +14,12 @@
                         <div class="col-md-3">
                             <label for="tanggal">Tanggal</label> 
                             <select class="form-control" id="tanggal-filter">
-                                <option value="">Pilih Rentang</option>
                                 <option value="today">Hari Ini</option>
                                 <option value="week">1 Minggu</option>
                                 <option value="month">1 Bulan</option>
+                                <option value="manual">Pilih Rentang</option>
                             </select>
-                            <input type="hidden" id="tanggal">
+                            <input type="text" class="form-control" id="tanggal" value="2025-01-01 s.d. 2025-01-31">    
                         </div>
                         <div class="col-md-3">
                             <label for="cabang">Cabang</label>
@@ -134,9 +134,12 @@ var table = $('#dataTable-presensi').DataTable({
         start = past.toISOString().split('T')[0];
     } else if (selected === 'month') {
         const past = new Date(today);
-        past.setDate(today.getDate() - 31);
+        past.setDate(today.getDate() - 29);
         start = past.toISOString().split('T')[0];
-    } 
+    } else if (selected === 'manual') {
+        $('#tanggal').prop('disabled', false);
+        return;
+    }
     $('#tanggal').val(`${start} s.d. ${end}`).prop('disabled', true);
     });
 
