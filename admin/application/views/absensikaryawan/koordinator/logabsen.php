@@ -43,9 +43,11 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-md-3 d-flex align-items-end">
-                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"></i>Filter</button>
-                            <button id="export-excel" class="btn btn-success btn-sm"></i>Unduh</button>
+                        <div class="col-md-3">
+                            <div class="d-flex gap-2 mt-md-4 mt-2">
+                                <button id="filter-btn" class="btn btn-primary btn-sm w-100">Filter</button>
+                                <button id="export-excel" class="btn btn-success btn-sm w-100">Unduh</button>
+                            </div>
                         </div>
                     </div>
                     <!-- Tabel Data Presensi -->
