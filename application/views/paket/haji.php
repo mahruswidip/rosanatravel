@@ -50,13 +50,17 @@
                 <h4 class="mt-4">7 Keunggulan Rosana Travel</h4>
 
                 <ul class="list-unstyled two-col clearfix">
-                    <li><b>Full Hotel *5 Mekkah & *5 Madinah tanpa Pindah ke Hotel Transit / Rumah Transit</b></li>
-                    <li><b>Paket Arbain di Madinah</b></li>
-                    <li><b>Pesantren Haji dibawah bimbingan 2 Pembimbing Ibadah Haji bersertifikasi Nasional</b></li>
-                    <li><b>Mengerjakan rangkaian Haji Full ARMUZNA (Arafah - Muzdalifah - Mina)</b></li>
-                    <li><b>Mendapat Kesempatan Sholat Idul Adha di Masjidil Haram</b></li>
-                    <li><b>Transportasi Bus Mandiri</b></li>
-                    <li><b>Makan Full Fullboard Hotel 3x setiap hari</b></li>
+                    <li><b>Berpengalaman Lebih Dari 30 Tahun</b></li>
+                    <li><b>Program Istimewa Yaitu : Haji Full Hotel *5 tanpa Pindah ke Hotel Transit. Yaitu di Mekkah 15H di Tanggal 1 Dzulhijah s/d 15 Dzulhijah, Sangat Dekat Berdampingan dengan Masjidil Haram</b></li>
+                    <li><b>Paket Arbain 9 Hari di Madinah, Hotel *5 Nol Meter</b></li>
+                    <li><b>Makan Full Boart Hotel</b></li>
+                    <li><b>Dilengkapi Program Pesantren Haji Haji Setiap Hari</b></li>
+                    <li><b>Pelaksanaan Ibadah Full Armuzna</b></li>
+                    <li><b>Tenda Mina, Wilayah Haji Plus, Dekat JAMAROT</b></li>
+                    <li><b>Ziarah Komplit Mekkah dan Madinah</b></li>
+                    <li><b>Bus Mandiri Super Nyaman</b></li>
+                    <li><b>Didamping TIM Profesional Yaitu : Dokter, Pembimbing Ibadah, Muthowif</b></li>
+                    <li><b>Rosana Travel, Layanan Baik, Harga Tetap Murah di Kelasnya</b></li>
                 </ul>
 
             </div>

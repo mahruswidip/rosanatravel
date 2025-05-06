@@ -14,12 +14,12 @@
                         <div class="col-md-3">
                             <label for="tanggal">Tanggal</label> 
                             <select class="form-control" id="tanggal-filter">
-                                <option value="">Pilih Rentang</option>
                                 <option value="today">Hari Ini</option>
                                 <option value="week">1 Minggu</option>
                                 <option value="month">1 Bulan</option>
+                                <option value="manual">Pilih Rentang</option>
                             </select>
-                            <input type="hidden" id="tanggal">
+                            <input type="text" class="form-control" id="tanggal" value="2025-01-01 s.d. 2025-01-31">    
                         </div>
                         <div class="col-md-3">
                             <label for="cabang">Cabang</label>
@@ -34,19 +34,20 @@
                         </div>
                         <div class="col-md-3">
                             <label for="nama_pegawai">Nama Pegawai</label>
-                            <select name="nama_pegawai" class="form-control" id="nama_pegawai" required></select>
-                            <!-- <select class="form-control" id="nama_pegawai">
+                            <select class="form-control" id="nama_pegawai">
                                 <option value="">Semua</option>
                                 <?php foreach ($pegawai as $p): ?>
                                     <option value="<?php echo htmlspecialchars($p['id_karyawan']); ?>">
                                         <?php echo htmlspecialchars($p['nama_karyawan']); ?>
                                     </option>
                                 <?php endforeach; ?>
-                            </select> -->
+                            </select>
                         </div>
-                        <div class="col-md-3 d-flex align-items-end">
-                            <button id="filter-btn" class="btn btn-primary btn-sm me-2"></i>Filter</button>
-                            <button id="export-excel" class="btn btn-success btn-sm"></i>Unduh</button>
+                        <div class="col-md-3">
+                            <div class="d-flex gap-2 mt-md-4 mt-2">
+                                <button id="filter-btn" class="btn btn-primary btn-sm w-100">Filter</button>
+                                <button id="export-excel" class="btn btn-success btn-sm w-100">Unduh</button>
+                            </div>
                         </div>
                     </div>
                     <!-- Tabel Data Presensi -->
@@ -75,31 +76,7 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-    $('#nama_pegawai').select2({
-        placeholder: "Pilih Pegawai",
-        allowClear: true,
-        ajax: {
-            url: "<?= base_url('absen_koor/get_pegawai') ?>",
-            dataType: "json",
-            delay: 250,
-            data: function(params) {
-                return {
-                    search: params.term
-                };
-            },
-            processResults: function(data) {
-                return {
-                    results: $.map(data, function(item) {
-                        return {
-                            id: item.id_karyawan,
-                            text: item.nama_karyawan
-                        };
-                    })
-                };
-            }
-        }
-    });
-    var table = $('#dataTable-presensi').DataTable({
+var table = $('#dataTable-presensi').DataTable({
         "processing": true,
         "serverSide": false,
         "ajax": {
@@ -161,7 +138,10 @@ $(document).ready(function () {
         const past = new Date(today);
         past.setDate(today.getDate() - 29);
         start = past.toISOString().split('T')[0];
-    } 
+    } else if (selected === 'manual') {
+        $('#tanggal').prop('disabled', false);
+        return;
+    }
     $('#tanggal').val(`${start} s.d. ${end}`).prop('disabled', true);
     });
 
