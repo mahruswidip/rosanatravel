@@ -10,12 +10,12 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive px-5 py-2">
-                        <table class="table">
+                        <table id="dataTable-galeri" class="table">
                             <thead class=" text-primary">
                                 <th>Foto</th>
                                 <th>Nama</th>
                                 <th>Ukuran</th>
-                                <th>Travel</th> <!-- Add this line for the new column -->
+                                <th>Travel</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
@@ -43,8 +43,8 @@
             <div class="col-lg-7">
                 <form action="<?php echo site_url() . 'galeri/gambar_upload' ?>" method="post" enctype="multipart/form-data">
                     <div class="col-lg-3">
-                        <label for="travel">Travel:</label>
-                        <select class="form-select" id="travelDropdown" name="travel">
+                        <label for="travel">Travel</label>
+                        <select id="travelDropdown" name="travel">
                             <option value="Rosana Travel">Rosana Travel</option>
                             <option value="Nipindo Travel">Nipindo Travel</option>
                         </select>
@@ -188,8 +188,6 @@
 <!-- Include jQuery and DataTables libraries -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-
 <script src="<?php echo $js; ?>/dropzone/dropzone.js"></script>
 <script src="<?php echo $js; ?>/dropzone/build.js"></script>
 <script>
@@ -256,4 +254,18 @@
     document.querySelector("#actions .cancel").onclick = function() {
         myDropzone.removeAllFiles(true);
     };
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#dataTable-galeri').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json",
+                "paginate": {
+                    "previous": "<",
+                    "next": ">"
+                },
+            },
+            "pageLength": 10
+        });
+    });
 </script>
